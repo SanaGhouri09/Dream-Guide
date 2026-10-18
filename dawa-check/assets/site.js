@@ -13,17 +13,18 @@ const DC=(()=>{
     set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   };
   const S={
-    ru:{cardH:"Galat qeemat ya missing alert dekha?",cardP:"Dawa ka naam, pack aur screenshot bhejein. Hum DRAP ke asal source se mila kar theek karte hain.",
+    ru:{cardH:"Galat qeemat ya missing alert dekha?",cardP:"Dawa ka naam, pack aur screenshot bhejein. Hum DRAP ke asal source se mila kar theek kar dete hain.",
       xBtn:"X par message karein",mailBtn:"Email karein",
-      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Taaza alerts",faq:"Sawal jawab",
+      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"Hum data kaise check karte hain",cset:"Cookie settings",
-      about:"Pakistan ke liye bana. Koi dawa nahi bechte, koi commission nahi leti. Sirf DRAP ka public data, asaan zaban mein.",
-      notDrap:"DRAP ya kisi sarkari idare se mutaliq nahi",updated:"Data update",
-      bannerP:"<b>Analytics cookies?</b> Hum Google Analytics se sirf yeh ginte hain ke kaun se features aur dawaon ke naam search hote hain. Naam, phone ya CNIC kabhi nahi.",
-      yes:"Theek hai",no:"Nahi chahiye",more:"Tafseel",
-      dlgH:"Cookie settings",need:"Zaroori",needP:"Zaban, install reminder aur aap ki yeh choice. Sirf aap ke phone par rehti hain.",
-      ana:"Analytics",anaP:"Google Analytics: page views aur feature use ki ginti. Band karne se tool par koi asar nahi.",
-      anaOff:"Is waqt site par analytics laga hi nahi.",save:"Save karein",close:"Band karein",top:"Upar jayein"},
+      about:"Pakistan ke liye banaya gaya. Hum dawa nahi bechte aur koi commission nahi lete. Sirf DRAP ka public data, asaan zaban mein.",
+      notDrap:"DRAP ya government ka hissa nahi",updated:"Data update",
+      bannerP:"<b>Analytics cookies?</b> Hum Google Analytics se sirf yeh count karte hain ke kaun se features use hue aur kaun si dawaein search huin. Aap ka naam, phone ya CNIC kabhi nahi.",
+      yes:"Theek hai",no:"Nahi chahiye",more:"Detail",
+      dlgH:"Cookie settings",need:"Zaroori",needP:"Aap ki language, install reminder aur yeh choice. Sirf aap ke phone par save hoti hain.",
+      ana:"Analytics",anaP:"Google Analytics: page views aur features ka count. Band karne se tool par koi farq nahi parta.",
+      anaOff:"Abhi site par analytics laga hua nahi.",save:"Save karein",close:"Band karein",top:"Upar jayein",
+      toast:"Website ab Roman Urdu mein hai",back:"← Tool par wapas jayein"},
     en:{cardH:"Spotted a wrong price or a missing alert?",cardP:"Send the medicine name, pack size and a screenshot. We check it against DRAP's original source and fix it.",
       xBtn:"Message us on X",mailBtn:"Email us",
       colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",
@@ -34,7 +35,8 @@ const DC=(()=>{
       yes:"Allow",no:"No thanks",more:"Details",
       dlgH:"Cookie settings",need:"Essential",needP:"Your language, the install reminder and this choice. Stored only on your device.",
       ana:"Analytics",anaP:"Google Analytics: counts page views and feature use. Turning it off doesn't change how the tool works.",
-      anaOff:"Analytics isn't installed on the site right now.",save:"Save",close:"Close",top:"Back to top"}
+      anaOff:"Analytics isn't installed on the site right now.",save:"Save",close:"Close",top:"Back to top",
+      toast:"Website is now in English",back:"← Back to the tool"}
   };
   let lang=store.get("dc-lang")==="en"?"en":"ru";
   const t=k=>S[lang][k];
@@ -126,9 +128,22 @@ const DC=(()=>{
     const on=()=>b.classList.toggle("on",scrollY>700);addEventListener("scroll",on,{passive:true});on();
   }
 
-  function setLang(l){lang=l==="en"?"en":"ru";store.set("dc-lang",lang);renderFooter();const tb=document.querySelector(".totop");if(tb)tb.setAttribute("aria-label",t("top"));if(bar){hideBanner();showBanner()}}
+  function markLang(){
+    document.documentElement.dataset.lang=lang;
+    document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+    document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));
+    if(document.body.dataset.page==="doc")document.documentElement.lang=lang==="en"?"en":"ur-Latn";
+  }
+  let toastEl=null,toastTimer=0;
+  function toast(msg){
+    if(!toastEl){toastEl=document.createElement("div");toastEl.className="toast";toastEl.setAttribute("role","status");document.body.appendChild(toastEl)}
+    toastEl.textContent=msg;toastEl.classList.remove("on");void toastEl.offsetWidth;toastEl.classList.add("on");
+    clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove("on"),2200);
+  }
+  document.querySelectorAll(".lang[data-auto] button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+  function setLang(l){const was=lang;lang=l==="en"?"en":"ru";store.set("dc-lang",lang);renderFooter();markLang();if(was!==lang)toast(t("toast"));const tb=document.querySelector(".totop");if(tb)tb.setAttribute("aria-label",t("top"));if(bar){hideBanner();showBanner()}}
 
-  renderFooter();initTop();
+  renderFooter();markLang();initTop();
   if(allowed())loadGA();
   if(SITE.gaId&&askFirst&&!choice())showBanner();
 

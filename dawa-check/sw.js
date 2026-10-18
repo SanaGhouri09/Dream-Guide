@@ -1,5 +1,5 @@
 /* Offline copy of the site. Bump VERSION whenever data/*.js or any page changes. */
-const VERSION = "dc-2026-10-18";
+const VERSION = "dc-2026-10-18b";
 const FILES = [
   "./", "index.html", "privacy.html", "terms.html", "cookies.html", "how-we-verify.html", "404.html",
   "assets/site.css", "assets/site.js", "data/alerts.js", "data/prices.js",

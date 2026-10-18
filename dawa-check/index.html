@@ -24,10 +24,11 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* hero */
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:20px 0 56px;position:relative}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6.4vw,62px);line-height:1.06;letter-spacing:-.035em;margin:0 0 20px;text-transform:none}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;grid-template-areas:"text tool" "scene tool" "facts tool";column-gap:48px;row-gap:22px;align-items:start;padding:20px 0 56px;position:relative}
+.h-text{grid-area:text}.scene{grid-area:scene}.hero .facts{grid-area:facts}#tool{grid-area:tool}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5.6vw,56px);line-height:1.06;letter-spacing:-.035em;margin:0 0 20px;text-transform:none}
 .hero h1 span{display:block}
-.hero p.lede{font-size:17.5px;line-height:1.6;color:var(--soft);max-width:44ch;margin:0 0 24px}
+.hero p.lede{font-size:17.5px;line-height:1.6;color:var(--soft);max-width:46ch;margin:0}
 .facts{display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px;color:var(--soft)}
 .facts b{display:block;font-family:var(--display);font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
 .float{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
@@ -40,6 +41,62 @@
   @keyframes drift{from{transform:translateY(0) rotate(var(--r,0deg))}to{transform:translateY(-18px) rotate(calc(var(--r,0deg) + 14deg))}}
 }
 
+
+/* hero scene: 12s loop of a pharmacy counter. Story: overcharged, check, refund. */
+.scene{margin:0;position:relative}
+.stage{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink);box-shadow:var(--shadow);container-type:inline-size;background:var(--rxbg)}
+.stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .ani{--d:12s;animation-duration:var(--d);animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+.cust{animation-name:sc-walk}
+.m-flat{animation-name:sc-flat}.m-smile{animation-name:sc-smile;opacity:0}
+.cash1{animation-name:sc-cash1;opacity:0}.cash2{animation-name:sc-cash2;opacity:0}
+.hphone{animation-name:sc-hphone;opacity:0}.okb{animation-name:sc-ok;opacity:0;transform-box:fill-box;transform-origin:center}
+.bub{position:absolute;background:var(--panel);color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:.35em .7em;font-family:var(--display);font-weight:800;font-size:15px;font-size:clamp(11px,3.4cqw,17px);line-height:1.2;opacity:0;transform-origin:85% 100%;box-shadow:0 6px 14px -8px rgba(20,10,60,.5)}
+.bub::after{content:"";position:absolute;right:22%;bottom:-8px;width:12px;height:12px;background:var(--panel);border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+.b1{left:56%;top:13%;font-size:clamp(14px,4.6cqw,24px);animation-name:sc-b1}
+.b3{right:3%;top:7%;max-width:46%;animation-name:sc-b3}
+.dim{position:absolute;inset:0;background:#120B2A;opacity:0;animation-name:sc-dim}
+.sphone{position:absolute;left:50%;top:5%;width:46%;background:var(--panel);color:var(--ink);border:3px solid var(--ink);border-radius:16px;padding:6% 5% 5%;padding:3cqw 2.6cqw 2.6cqw;display:grid;gap:1.4cqw;opacity:0;animation-name:sc-phone;font-size:12px;font-size:clamp(9px,2.8cqw,14px)}
+.sphone::before{content:"";position:absolute;top:1.1cqw;left:50%;width:18%;height:.9cqw;min-height:3px;border-radius:9px;background:var(--line);transform:translateX(-50%)}
+.sp-wm{font-family:var(--mark);font-weight:800;letter-spacing:-.04em;font-size:1.25em}
+.sp-name{font-weight:700;border-bottom:1px dashed var(--line);padding-bottom:1cqw}
+.sp-row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;color:var(--soft)}
+.sp-row b{font-family:var(--display);font-weight:800;color:var(--ink);font-size:1.35em;white-space:nowrap}
+.sp-row.good b{color:var(--rx)}
+.sp-row.bad b{color:var(--red)}
+.sp-stamp{justify-self:center;margin-top:.6cqw;font-family:var(--display);font-weight:800;color:var(--red);border:3px double var(--red);border-radius:8px;padding:.25em .6em;font-size:1.15em;white-space:nowrap;opacity:0;animation-name:sc-stamp}
+.sc-cap{position:absolute;left:0;right:0;bottom:0;height:29%;display:grid;align-items:center;padding:0 16% 0 4%;pointer-events:none}
+.sc-cap>span{grid-area:1/1;display:flex;gap:.6em;align-items:center;font-weight:700;font-size:13px;font-size:clamp(12px,3.3cqw,16.5px);line-height:1.3;color:var(--ink);opacity:0}
+.sc-cap>span>b{flex:none;width:1.7em;height:1.7em;border-radius:50%;display:grid;place-items:center;background:var(--rx);color:#fff;font-size:.85em}
+.c1{animation-name:sc-c1}.c2{animation-name:sc-c2}.c3{animation-name:sc-c3}
+.sc-bar{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--or);transform-origin:0 50%;animation:sc-bar var(--d,12s) linear infinite}
+.sc-pp{position:absolute;right:10px;bottom:10px;width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);background:var(--panel);color:var(--ink);display:grid;place-items:center;padding:0;z-index:3}
+.scene.paused .ani,.scene.paused .sc-bar{animation-play-state:paused}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes sc-walk{0%{transform:translateX(-170px);opacity:0}3%{opacity:1}9%,96%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:0}}
+@keyframes sc-flat{0%,84%{opacity:1}86%,100%{opacity:0}}
+@keyframes sc-smile{0%,84%{opacity:0}86%,96%{opacity:1}100%{opacity:0}}
+@keyframes sc-b1{0%,10%{opacity:0;transform:scale(.6)}13%,36%{opacity:1;transform:scale(1)}40%,100%{opacity:0;transform:scale(.6)}}
+@keyframes sc-cash1{0%,20%{opacity:0;transform:translate(0,0)}23%{opacity:1;transform:translate(0,0)}35%{opacity:1;transform:translate(150px,-4px)}39%,100%{opacity:0;transform:translate(150px,-4px)}}
+@keyframes sc-dim{0%,41%{opacity:0}46%,68%{opacity:.4}72%,100%{opacity:0}}
+@keyframes sc-phone{0%,41%{opacity:0;transform:translate(-50%,12%) scale(.7)}46%,68%{opacity:1;transform:translate(-50%,0) scale(1)}72%,100%{opacity:0;transform:translate(-120%,40%) scale(.3)}}
+@keyframes sc-stamp{0%,51%{opacity:0;transform:rotate(-8deg) scale(1.9)}55%,68%{opacity:1;transform:rotate(-8deg) scale(1)}72%,100%{opacity:0;transform:rotate(-8deg)}}
+@keyframes sc-hphone{0%,70%{opacity:0}73%,96%{opacity:1}100%{opacity:0}}
+@keyframes sc-b3{0%,75%{opacity:0;transform:scale(.6)}78%,96%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes sc-cash2{0%,79%{opacity:0;transform:translate(0,0)}81%{opacity:1;transform:translate(0,0)}90%{opacity:1;transform:translate(-150px,-4px)}94%,100%{opacity:0;transform:translate(-150px,-4px)}}
+@keyframes sc-ok{0%,88%{opacity:0;transform:scale(.3)}91%,97%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes sc-c1{0%,1%{opacity:0}4%,38%{opacity:1}41%,100%{opacity:0}}
+@keyframes sc-c2{0%,41%{opacity:0}44%,69%{opacity:1}72%,100%{opacity:0}}
+@keyframes sc-c3{0%,72%{opacity:0}75%,97%{opacity:1}100%{opacity:0}}
+@keyframes sc-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .stage .ani,.sc-bar{animation:none!important}
+  .sc-pp{display:none}
+  .sphone{opacity:1;transform:translate(-50%,0)}
+  .sp-stamp{opacity:1;transform:rotate(-8deg)}
+  .dim{opacity:.4}
+  .c2{opacity:1}
+}
 /* capsule switch */
 .capsule{display:grid;grid-template-columns:1fr 1fr;border-radius:999px;overflow:hidden;border:2px solid var(--ink);margin-bottom:18px;box-shadow:var(--shadow)}
 .capsule button{border:0;padding:13px 10px;font-family:var(--display);font-weight:750;font-size:17px;background:var(--panel);color:var(--soft);transition:background .2s,color .2s}
@@ -236,9 +293,10 @@ section.demos{padding:28px 0 6px}
 .step h3{font-family:var(--display);font-size:20px;margin:6px 0 4px}
 .step p{margin:0;font-size:15px;color:var(--soft)}
 @media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "scene" "tool" "facts"}
   .float svg:nth-child(1),.float svg:nth-child(3){display:none}
   .stamp{font-size:17px;padding:6px 9px}
-  .hero{grid-template-columns:1fr;gap:28px;padding-top:6px}
+  .hero{row-gap:24px;padding-top:6px}
   .steps{grid-template-columns:1fr}
   .where.on{grid-template-columns:1fr}
 }
@@ -265,7 +323,7 @@ section.faq{padding:20px 0 0}
     <span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span>
   </a>
   <nav class="nav" aria-label="Main"><a href="#tool" data-i="navPrice"></a><a href="#batch" data-i="navBatch"></a><a href="#latest" data-i="navLatest"></a><a href="#faq" data-i="navFaq"></a></nav>
-  <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true">Roman</button><button data-lang="en" aria-pressed="false">EN</button></div>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true">Roman</button><button data-lang="en" aria-pressed="false">English</button></div>
 </header>
 <div class="install hidden" id="install" role="region" aria-label="Install">
   <img src="icons/icon-192.png" alt="" width="44" height="44">
@@ -281,11 +339,54 @@ section.faq{padding:20px 0 0}
     <svg style="left:44%;bottom:6%;--r:20deg" width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M8 22h28" stroke="var(--line)" stroke-width="2"/></svg>
     <svg style="left:46%;top:2%;--r:40deg" width="54" height="24" viewBox="0 0 54 24"><rect x="1" y="1" width="52" height="22" rx="11" fill="var(--rx2)"/><rect x="27" y="1" width="26" height="22" rx="11" fill="var(--panel)"/><rect x="27" y="1" width="10" height="22" fill="var(--panel)"/></svg>
   </div>
-  <div>
+  <div class="h-text">
     <h1 id="h1"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
     <p class="lede" data-i="lede"></p>
-    <div class="facts"><div><b id="fP"></b><span data-i="fP"></span></div><div><b id="fA"></b><span data-i="fA"></span></div><div><b id="fU"></b><span data-i="fU"></span></div></div>
   </div>
+  <figure class="scene" id="scene">
+    <div class="stage">
+      <svg viewBox="0 0 480 300" aria-hidden="true">
+        <rect x="0" y="0" width="480" height="300" fill="var(--rxbg)"/>
+        <g><rect x="150" y="12" width="180" height="32" rx="7" fill="#4B2BB8"/><circle cx="170" cy="28" r="10" fill="#FFFFFF"/><rect x="167.5" y="21" width="5" height="14" fill="#1FA45B"/><rect x="163" y="25.5" width="14" height="5" fill="#1FA45B"/><text x="254" y="33" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="13" letter-spacing="2" fill="#FFFFFF" data-i="scStore">MEDICAL STORE</text></g>
+        <g><circle cx="58" cy="62" r="17" fill="var(--panel)" stroke="var(--foil2)" stroke-width="3"/><path d="M58 62V52M58 62l7 4" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+        <g><rect x="22" y="98" width="58" height="46" rx="4" fill="var(--panel)" stroke="var(--foil2)" stroke-width="2"/><rect x="30" y="107" width="42" height="5" rx="2" fill="var(--rx2)"/><rect x="30" y="117" width="30" height="4" rx="2" fill="var(--foil2)"/><rect x="30" y="125" width="36" height="4" rx="2" fill="var(--foil2)"/><rect x="30" y="133" width="24" height="4" rx="2" fill="var(--foil2)"/></g>
+        <g><rect x="250" y="92" width="222" height="6" fill="var(--foil2)"/><rect x="250" y="150" width="222" height="6" fill="var(--foil2)"/>
+          <rect x="256" y="64" width="20" height="28" rx="2" fill="var(--or)"/><rect x="280" y="72" width="16" height="20" rx="2" fill="#F27468"/><rect x="300" y="60" width="22" height="32" rx="2" fill="var(--panel)" stroke="var(--foil2)"/><rect x="398" y="68" width="20" height="24" rx="2" fill="#6CC3A0"/><rect x="422" y="58" width="24" height="34" rx="2" fill="var(--rx2)"/><rect x="450" y="70" width="16" height="22" rx="2" fill="var(--or)"/>
+          <rect x="256" y="124" width="24" height="26" rx="2" fill="var(--rx2)"/><rect x="284" y="130" width="18" height="20" rx="2" fill="#6CC3A0"/><rect x="404" y="126" width="22" height="24" rx="2" fill="#F27468"/><rect x="430" y="118" width="18" height="32" rx="2" fill="var(--panel)" stroke="var(--foil2)"/><rect x="452" y="128" width="16" height="22" rx="2" fill="var(--or)"/></g>
+        <g><rect x="322" y="150" width="76" height="72" rx="26" fill="#FFFFFF" stroke="var(--foil2)" stroke-width="2"/><path d="M347 152 L360 174 L373 152 Z" fill="var(--rx)"/><rect x="353" y="136" width="14" height="16" fill="#C68B59"/><circle cx="360" cy="120" r="21" fill="#C68B59"/><path d="M339 120 C339 94 381 94 381 120 C376 106 344 106 339 120 Z" fill="#2B1D14"/><circle cx="352" cy="122" r="2.2" fill="#2B1D14"/><circle cx="366" cy="122" r="2.2" fill="#2B1D14"/><path d="M352 130 q8 5 16 0" stroke="#2B1D14" stroke-width="3" stroke-linecap="round" fill="none"/></g>
+        <g class="cust ani">
+          <rect x="84" y="150" width="72" height="72" rx="26" fill="#2E8B7A"/><path d="M110 152 L120 166 L130 152 Z" fill="#23705F"/><rect x="113" y="136" width="14" height="16" fill="#B97A4E"/><circle cx="120" cy="120" r="21" fill="#B97A4E"/><path d="M99 118 C99 92 141 92 141 118 C136 104 104 104 99 118 Z" fill="#1E1410"/><circle cx="126" cy="121" r="2.2" fill="#1E1410"/><circle cx="136" cy="121" r="2.2" fill="#1E1410"/>
+          <path class="m-flat ani" d="M126 131 h10" stroke="#1E1410" stroke-width="2.5" stroke-linecap="round" fill="none"/><path class="m-smile ani" d="M124 129 q7 7 14 0" stroke="#1E1410" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <rect x="144" y="164" width="40" height="13" rx="6.5" fill="#2E8B7A"/><circle cx="187" cy="170" r="7" fill="#B97A4E"/>
+          <g class="hphone ani"><rect x="181" y="140" width="18" height="30" rx="4" fill="var(--ink)"/><rect x="183.5" y="144" width="13" height="20" rx="2" fill="var(--or)"/></g>
+        </g>
+        <g><rect x="0" y="198" width="480" height="11" fill="var(--rx)"/><rect x="0" y="209" width="480" height="91" fill="var(--panel)"/><rect x="0" y="209" width="480" height="4" fill="var(--or)"/></g>
+        <g><rect x="272" y="176" width="40" height="22" rx="2" fill="#FFFFFF" stroke="var(--foil2)" stroke-width="1.5"/><rect x="272" y="176" width="40" height="6" fill="var(--rx)"/><rect x="298" y="176" width="14" height="6" fill="var(--or)"/><rect x="278" y="187" width="20" height="3" rx="1.5" fill="var(--foil2)"/></g>
+        <g class="cash1 ani"><rect x="168" y="176" width="40" height="20" rx="3" fill="#7BC08A" stroke="#2F7A44" stroke-width="2"/><text x="188" y="190.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="11" fill="#1F4F2C">250</text></g>
+        <g class="cash2 ani"><rect x="318" y="176" width="44" height="20" rx="3" fill="#7BC08A" stroke="#2F7A44" stroke-width="2"/><text x="340" y="190.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="10" fill="#1F4F2C">89.43</text></g>
+        <g class="okb ani"><circle cx="160" cy="92" r="13" fill="#1FA45B"/><path d="M153 92 l5 5 l9 -10" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+      </svg>
+      <div class="bub b1 ani" aria-hidden="true">Rs 250</div>
+      <div class="dim ani"></div>
+      <div class="sphone ani" aria-hidden="true">
+        <span class="sp-wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span>
+        <span class="sp-name">Panadol Extend 20's</span>
+        <span class="sp-row good"><span data-i="scDrap"></span><b>Rs 160.57</b></span>
+        <span class="sp-row bad"><span data-i="scPaid"></span><b>Rs 250</b></span>
+        <span class="sp-stamp ani" data-i="scOver"></span>
+      </div>
+      <div class="bub b3 ani" aria-hidden="true" data-i="scReply"></div>
+      <div class="sc-cap" aria-hidden="true">
+        <span class="c1 ani"><b>1</b><span data-i="sc1"></span></span>
+        <span class="c2 ani"><b>2</b><span data-i="sc2"></span></span>
+        <span class="c3 ani"><b>3</b><span data-i="sc3"></span></span>
+      </div>
+      <div class="sc-bar"></div>
+      <button type="button" class="sc-pp" id="scPP" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><g class="i-pause"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor"/></g><path class="i-play hidden" d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg></button>
+    </div>
+    <figcaption class="sr-only"><span data-i="sceneLbl"></span>. <span data-i="sc1"></span> <span data-i="sc2"></span> <span data-i="sc3"></span></figcaption>
+  </figure>
+  <div class="facts"><div><b id="fP"></b><span data-i="fP"></span></div><div><b id="fA"></b><span data-i="fA"></span></div><div><b id="fU"></b><span data-i="fU"></span></div></div>
 
   <div id="tool">
     <div class="capsule" role="tablist">
@@ -340,7 +441,7 @@ section.faq{padding:20px 0 0}
     </figure>
     <figure class="demo">
       <div class="screen" aria-hidden="true">
-        <div class="dm-box"><div class="dm-strip"><span class="lbl">B. No.</span><span class="typed2">139N086</span><span class="beam"></span></div><div class="dm-strip"><span class="lbl">Dawa</span><span class="nmtxt">Novidat 500mg</span></div><span class="dm-stamp" data-i="dAlert"></span></div>
+        <div class="dm-box"><div class="dm-strip"><span class="lbl">B. No.</span><span class="typed2">139N086</span><span class="beam"></span></div><div class="dm-strip"><span class="lbl" data-i="nameLbl"></span><span class="nmtxt">Novidat 500mg</span></div><span class="dm-stamp" data-i="dAlert"></span></div>
       </div>
       <figcaption data-i="dBatchCap"></figcaption>
     </figure>
@@ -390,132 +491,132 @@ section.faq{padding:20px 0 0}
 <script>
 const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
 const T={
-ru:{h1a:"Dawa ki sarkari qeemat dekhein,",h1b:"zyada dene se bachein.",
- lede:"Drug Regulatory Authority of Pakistan (DRAP) ki tay ki hui qeemat, 21,651 dawaon ke packs ke liye, ek search mein. Naam likhein, apna pack chunein, aur jo diya woh daalein. Saath mein batch number se check karein ke dawa naqli ya kharab to nahi.",
- fA:"naqli aur kharab dawa alerts",fP:"packs ki sarkari qeemat",fU:"data update hua",
+ru:{titleT:"Dawa Check: sahi qeemat, asli dawa",
+ h1a:"Dawa ki asli qeemat check karein,",h1b:"zyada paise na dein.",
+ lede:"Pharmacy jo qeemat bataye, woh hamesha sahi nahi hoti. Dawa ka naam likhein, apna pack chunein aur dekhein ke DRAP (government) ne kitni qeemat fix ki hai. Batch number se yeh bhi check karein ke dawa naqli to nahi.",
+ fA:"naqli ya kharab dawa ke alerts",fP:"packs ki government qeemat",fU:"last data update",
  tabBatch:"Batch check",tabPrice:"Qeemat check",
- cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail batches ki list se",
+ cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail dawaon ki list se",
  cpTitle:"Dawa ki qeemat check karein",cpSub:"Naam likhein, phir apna pack chunein",
- nameLbl:"Dawa",where:"Batch number kahan milega?",
- whereTxt:"Dibbe ki side ya neeche, ya goliyon ke patte ki pusht par. “B.No.”, “Batch” ya “Lot” ke saath likha hota hai, aksar expiry date ke paas.",
- checkBtn:"Batch check karein",findBtn:"Qeemat dekhein",try:"Misaal:",
+ nameLbl:"Dawa",where:"Batch number kahan likha hota hai?",
+ whereTxt:"Dibbe ki side ya neeche, ya goliyon ke patte ki peechli taraf. \"B.No.\", \"Batch\" ya \"Lot\" ke saath likha hota hai, aksar expiry date ke paas.",
+ checkBtn:"Batch check karein",findBtn:"Qeemat dekhein",try:"Try karein:",
  needInput:"Dawa ka naam ya batch number likhein",needInputP:"Shuru karne ke liye ek cheez kaafi hai.",
- stampHit:"DRAP ALERT",stampClose:"DOBARA DEKHEIN",stampClear:"KOI ALERT NAHI",
+ stampHit:"DRAP ALERT",stampClose:"DOBARA CHECK KAREIN",stampClear:"KOI ALERT NAHI",
  hitTitle:"Is batch par DRAP ka alert hai",
- hitBody:"DRAP ya provincial lab ne is batch ko naqli ya test mein fail qarar diya hai. Dawa band karne se pehle doctor ya pharmacist se baat karein, khaas taur par agar yeh roz ki dawa hai. Dawa aur rasid pharmacy wapas le jaayein.",
- closeTitle:"Milta julta batch alert mein hai",closeBody:"Number bilkul same nahi, lekin qareeb hai. Dibbe par number dobara dhyan se parhein aur neeche wala alert dekhein.",
- nameTitle:"Is dawa ke kuch batches par alert hain",nameBody:"Aap ka batch number in mein nahi mila. Neeche list se apna batch match kar ke dekhein.",
- nameOnlyTitle:"Is naam se milte alerts",nameOnlyBody:"Apne dibbe ka batch number bhi daalein taake pakka pata chale.",
- clearTitle:"Is batch par koi alert nahi mila",clearBody:"DRAP ke alerts (__RANGE__) mein yeh batch nahi hai. Iska matlab hai ke abhi tak is par alert nahi aaya; yeh lab test ki guarantee nahi.",
- kind:{fake:"Naqli",substandard:"Test mein fail",unregistered:"Ghair registered",recall:"Recall"},
- maker:"Company",date:"Alert",reason:"Wajah",readAlert:"DRAP ka poora alert",
- share:"WhatsApp par bhejein",
- priceNone:"Is dawa ki qeemat DRAP tay nahi karta",priceNoneBody:"DRAP sirf zaroori aur sasti dawaon ki qeemat tay karta hai. Baqi dawaon ke liye dibbe par chhapi qeemat (MRP) hi hadd hai, aur pharmacy is se zyada nahi le sakti.",
- notListed:"Mera pack list mein nahi",mrpLbl:"Dibbe par chhapi qeemat (MRP)",mrpOver:"Aap se Rs __X__ zyada liye gaye",mrpOverBody:"Dibbe par chhapi qeemat Rs __M__ hai. Pharmacy is se zyada nahi le sakti. Pharmacist se baat karein aur dibba aur rasid sambhal kar rakhein.",mrpOk:"Aap ne dibbe ki qeemat ke andar diya",mrpOkBody:"Dibbe par chhapi qeemat Rs __M__ hai.",
- variants:"variants",variant:"variant",chooseVar:"Strength chunein",regNo:"Reg. No.",since:"lagu",standard:"Standard",
- instH:"Home screen par lagayein",instP:"Agli baar ek tap mein khulega, internet ke baghair bhi.",instBtn:"Lagayein",iosHelp:"Safari mein neeche Share button (⬆︎) dabayein, phir “Add to Home Screen” chunein.",
- whoHelps:"Shikayat kahan karein",callDrap:"DRAP helpline (muft)",reportQuality:"DRAP ko naqli ya kharab dawa report karein",reportSide:"Agar dawa le li aur side effect hua to report karein",fileComplaint:"DRAP complaint page (Citizen's Portal ka link bhi yahin hai)",
- draftH:"Shikayat ka tayyar text",copy:"Text copy karein",copied:"Copy ho gaya",copyManual:"Text select ho gaya, ab copy karein",keepProof:"Dawa ka dibba, rasid aur pharmacy ka naam/pata sambhal kar rakhein. Shikayat mein yehi saboot kaam aata hai.",waFamily:"Ghar walon ko batayein",printedOnBox:"dibbe par chhapi qeemat",
- draftPrice:"Tareekh: __T__\nPharmacy ka naam aur pata: [yahan likhein]\nDawa: __N__\nMujh se Rs __V__ liye gaye, jab ke jaiz qeemat Rs __M__ hai (__S__).\nRasid mere paas mehfooz hai. Baraye meharbani karwai karein.",
- draftBatch:"Tareekh: __T__\nPharmacy ka naam aur pata: [yahan likhein]\nDawa: __N__, Batch __B__\nYeh batch DRAP alert (__D__) mein __K__ qarar diya gaya hai, lekin ab bhi bik raha hai.\nDibba aur rasid mere paas mehfooz hain.",
- scanBtn:"Dibbe ki photo se scan karein",scanSub:"Naya 2D barcode ya chhapa hua batch number",scanBtnP:"Dibbe ki photo se qeemat parhein",scanSubP:"Dawa ka naam aur chhapi qeemat",orType:"ya khud likhein",
- scanBar:"Barcode dhoond rahe hain…",scanAI:"Dibba parh rahe hain… is mein kuch second lag sakte hain",
- scanGotBar:"2D barcode se mila: batch __B__. Neeche result dekhein.",scanGotAI:"Photo se parha: __W__. Ek baar dibbe se zaroor mila lein, phir result dekhein.",
- scanNone:"Photo se number nahi mil saka. Barcode ya batch number saaf roshni mein, qareeb se photo lein, ya khud likh dein.",
- scanNoAI:"Is box par 2D barcode nahi mila. Purane dibbon ke liye batch number khud likh dein.",scanDenied:"Photo parhne ki ijazat nahi mili. Batch number khud likh dein.",
- pickPack:"Apni dawa ki strength chunein, phir pack size",paidLbl:"Aap ne kitne diye?",limit:"Hadd",
- over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki sarkari qeemat Rs __M__ hai (__D__ se lagu). Pehle pharmacist ko yeh screen dikhayein. Wapas na karein to neeche diye tareeqon se shikayat karein.",
- ok:"Aap ne sahi qeemat di",okBody:"DRAP ki sarkari qeemat Rs __M__ hai (__D__ se lagu).",
- latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke taaza alerts. Kisi dibbe par tap karein aur uska batch check ho jayega.",
+ hitBody:"DRAP ya government lab ne is batch ko naqli ya test mein fail paya hai. Dawa band karne se pehle doctor ya pharmacist se baat karein, khaas kar agar yeh roz ki dawa hai. Dawa aur receipt pharmacy wapas le jayein.",
+ closeTitle:"Milta julta batch alert mein hai",closeBody:"Number bilkul same nahi, lekin bohat qareeb hai. Dibbe par number dobara dhyan se parhein aur neeche wala alert dekhein.",
+ nameTitle:"Is dawa ke kuch batches par alert hai",nameBody:"Aap ka batch number in mein nahi mila. Neeche wali list se apna batch mila kar dekhein.",
+ nameOnlyTitle:"Is naam ke alerts",nameOnlyBody:"Pakka pata karne ke liye dibbe ka batch number bhi likhein.",
+ clearTitle:"Is batch par koi alert nahi mila",clearBody:"DRAP ke alerts (__RANGE__) mein yeh batch nahi hai. Matlab abhi tak is par koi alert nahi aaya. Yeh lab test ki guarantee nahi hai.",
+ kind:{fake:"Naqli",substandard:"Test mein fail",unregistered:"Registered nahi",recall:"Recall"},
+ batch:"Batch",maker:"Company",date:"Alert date",reason:"Wajah",readAlert:"DRAP ka poora alert parhein",
+ priceNone:"Yeh dawa hamari price list mein nahi",priceNoneBody:"Aisi dawa ke liye dibbe par chhapi qeemat (MRP) hi limit hai. Pharmacy is se zyada nahi le sakti.",
+ notListed:"Mera pack list mein nahi",mrpLbl:"Dibbe par chhapi qeemat (MRP)",mrpOver:"Aap se Rs __X__ zyada liye gaye",mrpOverBody:"Dibbe par chhapi qeemat Rs __M__ hai. Pharmacy is se zyada nahi le sakti. Pharmacist se baat karein aur dibba aur receipt sambhal kar rakhein.",mrpOk:"Aap ne dibbe ki qeemat ke andar pay kiya",mrpOkBody:"Dibbe par chhapi qeemat Rs __M__ hai.",
+ variants:"options",variant:"option",chooseVar:"Strength chunein",regNo:"Reg. No.",since:"__D__ se",standard:"Standard",pack:"Pack",
+ instH:"Phone ki home screen par add karein",instP:"Agli baar ek tap mein khulega, internet ke baghair bhi.",instBtn:"Add karein",iosHelp:"Safari mein neeche Share button (⬆︎) dabayein, phir \"Add to Home Screen\" chunein.",close:"Band karein",
+ whoHelps:"Complaint kahan karein",callDrap:"DRAP helpline (free call)",reportQuality:"Naqli ya kharab dawa DRAP ko report karein",reportSide:"Dawa khane ke baad side effect hua? Report karein",fileComplaint:"DRAP complaint page (Citizen's Portal ka link bhi yahin hai)",
+ draftH:"Complaint ka ready text",copy:"Text copy karein",copied:"Copy ho gaya",copyManual:"Text select ho gaya, ab copy karein",keepProof:"Dawa ka dibba, receipt aur pharmacy ka naam aur address sambhal kar rakhein. Complaint mein yehi saboot kaam aata hai.",waFamily:"Ghar walon ko batayein",printedOnBox:"dibbe par chhapi qeemat",
+ draftPrice:"Date: __T__\nPharmacy ka naam aur address: [yahan likhein]\nDawa: __N__\nMujh se Rs __V__ liye gaye, jab ke sahi qeemat Rs __M__ hai (__S__).\nReceipt mere paas hai. Meharbani kar ke action lein.",
+ draftBatch:"Date: __T__\nPharmacy ka naam aur address: [yahan likhein]\nDawa: __N__, Batch __B__\nDRAP ke alert (__D__) mein yeh batch \"__K__\" hai, lekin ab bhi bik raha hai.\nDibba aur receipt mere paas hain.",
+ shareP:"__N__: DRAP qeemat Rs __M__, mujh se Rs __V__ liye gaye",shareM:"__N__: dibbe par Rs __M__ likha hai, mujh se Rs __V__ liye gaye",
+ pickPack:"Pehle strength chunein, phir pack size",paidLbl:"Aap ne kitne paise diye?",limit:"Limit",
+ over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki qeemat Rs __M__ hai (__D__ se). Pehle pharmacist ko yeh screen dikhayein. Paise wapas na karein to neeche diye tareeqon se complaint karein.",
+ ok:"Aap ne sahi qeemat di",okBody:"DRAP ki qeemat Rs __M__ hai (__D__ se).",
+ latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke naye alerts. Kisi dibbe par tap karein, uska batch check ho jayega.",
  tapCheck:"Batch check karein",
  s1h:"Naam likhein",s1p:"Likhna shuru karte hi dawaon ki list aa jati hai.",
- s2h:"Jo diya woh daalein",s2p:"Apna pack chunein aur rasid wali qeemat likhein. Meter foran batata hai ke qeemat hadd ke andar hai ya bahar.",
- s3h:"Zyada liya? Shikayat karein",s3p:"DRAP helpline ek tap par, aur shikayat ka text pehle se likha hua.",
- demoH:"Kaise kaam karta hai",demoP:"Har check 10 second se kam mein.",dPriceCap:"Qeemat check: pack chunein, jo diya woh likhein",dBatchCap:"Batch check: dibbe ka batch number likhein",dOver:"Rs 39.43 zyada liye gaye",dAlert:"DRAP ALERT",
- foot1:"Yeh medical mashwara nahi hai. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
- foot2:"Data: DRAP recall aur rapid alerts (__RANGE__, __N__ entries) aur DRAP PharmaPrice Index (__P__ packs). Aakhri update: __U__.",
- skip:"Seedha tool par jayein",navPrice:"Qeemat",navBatch:"Batch",navLatest:"Alerts",navFaq:"Sawal jawab",
- faqH:"Aksar pooche gaye sawal",faqP:"Pharmacy counter par yahi baatein sab se zyada hoti hain.",
- q1:"Pharmacist keh raha hai ke nayi qeemat aa gayi hai. Kya karun?",
- a1:"Ho sakta hai. DRAP waqt waqt par qeemat badalta hai, aur har pack ke saath likha hai ke qeemat kis tareekh se lagu hai. Pharmacist se nayi notification dikhane ko kahein aur dibbe par chhapi qeemat (MRP) dekhein. Pharmacy us se zyada nahi le sakti.",
+ s2h:"Jitne diye, woh likhein",s2p:"Apna pack chunein aur receipt wali qeemat likhein. Meter foran batata hai ke qeemat limit ke andar hai ya bahar.",
+ s3h:"Zyada liye? Complaint karein",s3p:"DRAP helpline ek tap par, aur complaint ka text pehle se likha hua.",
+ demoH:"Kaise kaam karta hai",demoP:"Har check 10 second se kam mein.",dPriceCap:"Qeemat check: pack chunein, jitne diye woh likhein",dBatchCap:"Batch check: dibbe se batch number likhein",dOver:"Rs 39.43 zyada liye gaye",dAlert:"DRAP ALERT",
+ foot2:"Data: DRAP recall aur rapid alerts (__RANGE__, __N__ entries) aur DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
+ skip:"Seedha tool par jayein",navPrice:"Qeemat check",navBatch:"Batch check",navLatest:"Naye alerts",navFaq:"Sawal jawab",
+ faqH:"Aap ke sawal",faqP:"Pharmacy counter par yahi sawal sab se zyada aate hain.",
+ q1:"Pharmacist kehta hai nayi qeemat aa gayi hai. Ab kya karun?",
+ a1:"Ho sakta hai. DRAP kabhi kabhi qeemat badalta hai, aur har pack ke saath likha hai ke yeh qeemat kis date se hai. Pharmacist se nayi notification dikhane ko kahein, aur dibbe par chhapi qeemat (MRP) dekhein. Pharmacy is se zyada nahi le sakti.",
  q2:"Meri dawa list mein nahi mil rahi.",
- a2:"Naam ka sirf pehla hissa likh kar dekhein, jaise \"Augmentin\" ke bajaye \"Augm\". Phir bhi na mile to \"Mera pack list mein nahi\" dabayein aur dibbe par chhapi qeemat se mila lein.",
+ a2:"Naam ka sirf pehla hissa likh kar dekhein, jaise \"Augmentin\" ki jagah \"Augm\". Phir bhi na mile to \"Mera pack list mein nahi\" dabayein aur dibbe par chhapi qeemat se mila lein.",
  q3:"Batch par koi alert nahi aaya. Kya dawa pakka asli hai?",
- a3:"Yeh guarantee nahi. Hum sirf woh batches dikhate hain jin par DRAP alert jaari kar chuka hai. Packing ajeeb lage, seal tooti ho ya qeemat shak ki had tak kam ho, to dawa na lein aur pharmacist se poochein.",
- q4:"Kya aap meri searches ya qeemat save karte hain?",
- a4:"Nahi. Search aap ke phone par hi chalti hai. Analytics on ho to sirf itna gina jata hai ke kaun si dawa search hui, aap ka naam ya number kabhi nahi. Tafseel <a href=\"privacy.html\">Privacy</a> page par hai.",
+ a3:"Pakka nahi keh sakte. Hum sirf woh batches dikhate hain jin par DRAP alert de chuka hai. Packing ajeeb lage, seal tooti ho ya qeemat bohat hi kam ho, to dawa na lein aur pharmacist se poochein.",
+ q4:"Kya aap meri searches save karte hain?",
+ a4:"Nahi. Search aap ke phone par hi hoti hai. Analytics on ho to sirf yeh count hota hai ke kaun si dawa search hui. Aap ka naam ya number kabhi nahi. Poori detail <a href=\"privacy.html\">Privacy</a> page par hai.",
  q5:"Yeh data kahan se aata hai?",
- a5:"Qeematein DRAP ki price list se aur alerts DRAP ke recall aur rapid alert pages se. Har alert ke neeche asal DRAP link hai. Poora tareeqa <a href=\"how-we-verify.html\">yahan</a> likha hai.",
- discH:"Zaroori baat",
- d1:"Dawa Check sirf maloomat ke liye hai, medical mashwara nahi. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
- d2:"DRAP qeematein badalta rehta hai. Hamara data aakhri update ki tareekh tak ka hai, is liye bara faisla karne se pehle DRAP ki website par bhi dekh lein.",
- d3:"Alert na milna is baat ki guarantee nahi ke dawa asli hai. Hum sirf DRAP ke jaari kiye hue alerts dikhate hain.",
- d4:"Hum DRAP, kisi sarkari idare, pharmacy ya dawa company se mutaliq nahi, aur koi dawa nahi bechte.",
- d5:"Na account, na login. Search aap ke phone par rehti hai. Google Analytics cookies sirf page ginti ke liye hain, aur Europe ke visitors se pehle poocha jata hai. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
- foot3:"Alert na milna is baat ki guarantee nahi ke dawa asli ya theek hai. Shak ho to dibba, batch aur rasid sambhal kar rakhein."},
-en:{h1a:"See the official medicine price,",h1b:"and stop overpaying.",
- lede:"Official prices set by the Drug Regulatory Authority of Pakistan (DRAP) for 21,651 medicine packs, in one search. Type the name, pick your pack, and enter what you paid. You can also check the batch number against DRAP's fake and failed medicine alerts.",
- fA:"fake and failed medicine alerts",fP:"packs with official prices",fU:"data last updated",
+ a5:"Qeematein DRAP ki price list se aati hain aur alerts DRAP ke recall aur rapid alert pages se. Har alert ke neeche DRAP ka asal link hai. Hum data kaise check karte hain, woh <a href=\"how-we-verify.html\">yahan</a> parhein.",
+ discH:"Disclaimer",
+ d1:"Dawa Check sirf information ke liye hai, yeh medical advice nahi. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
+ d2:"DRAP qeematein badalta rehta hai. Hamara data last update ki date tak ka hai, is liye koi bara faisla lene se pehle DRAP ki website bhi dekh lein.",
+ d3:"Alert na aane ka matlab yeh nahi ke dawa pakka asli hai. Hum sirf woh alerts dikhate hain jo DRAP ne jaari kiye hain.",
+ d4:"Hum DRAP, government, kisi pharmacy ya dawa company ka hissa nahi. Hum koi dawa nahi bechte.",
+ d5:"Na account, na login. Aap ki search aap ke phone par hi rehti hai. Google Analytics cookies sirf visitors ginne ke liye hain, aur Europe ke visitors se pehle poocha jata hai. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ sceneLbl:"Kahani: pharmacy par zyada paise, phir Dawa Check se paise wapas",
+ sc1:"Pharmacist ne kaha \"Rs 250\". Humne bina check kiye de diye.",
+ sc2:"Dawa Check ne asli qeemat batayi: sirf Rs 160.57.",
+ sc3:"Screen dikhayi, aur Rs 89.43 wapas mil gaye.",
+ scDrap:"DRAP qeemat",scPaid:"Aap ne diye",scOver:"Rs 89.43 zyada!",scReply:"Sorry ji, yeh lein Rs 89.43 wapas",scStore:"MEDICAL STORE",
+ scPause:"Rokein",scPlay:"Chalayein"},
+en:{titleT:"Dawa Check: real prices, genuine medicine",
+ h1a:"Check the real medicine price,",h1b:"and stop overpaying.",
+ lede:"The price a pharmacy asks for isn't always the legal one. Type the medicine name, pick your pack, and see the price set by DRAP, Pakistan's drug regulator. You can also check the batch number to see if a medicine has been reported fake.",
+ fA:"fake or failed medicine alerts",fP:"packs with official prices",fU:"last data update",
  tabBatch:"Batch check",tabPrice:"Price check",
  cbTitle:"Check a batch number",cbSub:"Against DRAP's list of fake and failed batches",
  cpTitle:"Check a medicine price",cpSub:"Type the name, then pick your pack",
  nameLbl:"Medicine",where:"Where do I find the batch number?",
- whereTxt:"On the side or bottom of the box, or the back of the tablet strip. It's printed after “B.No.”, “Batch” or “Lot”, usually near the expiry date.",
+ whereTxt:"On the side or bottom of the box, or the back of the tablet strip. It's printed after \"B.No.\", \"Batch\" or \"Lot\", usually near the expiry date.",
  checkBtn:"Check the batch",findBtn:"See the price",try:"Try:",
  needInput:"Type a medicine name or batch number",needInputP:"Either one is enough to start.",
  stampHit:"DRAP ALERT",stampClose:"CHECK AGAIN",stampClear:"NO ALERT",
  hitTitle:"DRAP has an alert on this batch",
- hitBody:"DRAP or a provincial lab found this batch fake or failing lab tests. Talk to your doctor or pharmacist before stopping it, especially if you take it daily. Take the medicine and receipt back to the pharmacy.",
- closeTitle:"A similar batch is in an alert",closeBody:"The number isn't an exact match, but it's close. Re-read the number on the box and check the alert below.",
- nameTitle:"Some batches of this medicine have alerts",nameBody:"Your batch number isn't among them. Compare your batch with the list below.",
- nameOnlyTitle:"Alerts matching this name",nameOnlyBody:"Add your box's batch number for a definite answer.",
- clearTitle:"No alert on this batch",clearBody:"This batch isn't in DRAP's alerts (__RANGE__). That means no alert has been issued for it so far; it isn't a lab-test guarantee.",
+ hitBody:"DRAP or a government lab found this batch fake or failing lab tests. Talk to your doctor or pharmacist before stopping it, especially if you take it every day. Take the medicine and receipt back to the pharmacy.",
+ closeTitle:"A similar batch has an alert",closeBody:"The number isn't an exact match, but it's very close. Read the number on the box again carefully and check the alert below.",
+ nameTitle:"Some batches of this medicine have alerts",nameBody:"Your batch number isn't one of them. Compare your batch with the list below.",
+ nameOnlyTitle:"Alerts for this name",nameOnlyBody:"Add the batch number from your box for a definite answer.",
+ clearTitle:"No alert on this batch",clearBody:"This batch isn't in DRAP's alerts (__RANGE__). That means no alert has been issued for it so far. It isn't a lab-test guarantee.",
  kind:{fake:"Fake",substandard:"Failed lab test",unregistered:"Unregistered",recall:"Recall"},
- maker:"Company",date:"Alert",reason:"Reason",readAlert:"Full DRAP alert",
- share:"Send on WhatsApp",
- priceNone:"DRAP doesn't set the price for this medicine",priceNoneBody:"DRAP sets prices only for essential and low-price medicines. For everything else, the price printed on the box (MRP) is the limit, and a pharmacy can't charge more.",
+ batch:"Batch",maker:"Company",date:"Alert date",reason:"Reason",readAlert:"Read the full DRAP alert",
+ priceNone:"This medicine isn't in our price list",priceNoneBody:"For medicines like this, the price printed on the box (MRP) is the limit. A pharmacy can't charge more than that.",
  notListed:"My pack isn't listed",mrpLbl:"Price printed on the box (MRP)",mrpOver:"You paid Rs __X__ over the printed price",mrpOverBody:"The printed price is Rs __M__. A pharmacy can't charge more than that. Talk to the pharmacist and keep the box and receipt.",mrpOk:"You paid within the printed price",mrpOkBody:"The printed price is Rs __M__.",
- variants:"variants",variant:"variant",chooseVar:"Pick a strength",regNo:"Reg. No.",since:"since",standard:"Standard",
- instH:"Add to your home screen",instP:"Opens in one tap next time, even offline.",instBtn:"Add",iosHelp:"In Safari, tap the Share button (⬆︎) at the bottom, then choose “Add to Home Screen”.",
- whoHelps:"Who can act on this",callDrap:"DRAP helpline (toll-free)",reportQuality:"Report a fake or defective medicine to DRAP",reportSide:"Took it and had a side effect? Report it",fileComplaint:"DRAP complaints page (links to the Citizen's Portal too)",
- draftH:"Ready-made complaint text",copy:"Copy text",copied:"Copied",copyManual:"Text selected, copy it now",keepProof:"Keep the box, receipt, and the pharmacy's name and address. That's the evidence a complaint needs.",waFamily:"Warn family",printedOnBox:"printed on the box",
- draftPrice:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__\nI was charged Rs __V__, while the legal price is Rs __M__ (__S__).\nI have kept the receipt. Please take action.",
- draftBatch:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__, Batch __B__\nDRAP declared this batch __K__ in an alert (__D__), but it is still being sold.\nI have kept the box and receipt.",
- scanBtn:"Scan a photo of the box",scanSub:"New 2D barcode or the printed batch number",scanBtnP:"Read the price from a photo",scanSubP:"Medicine name and printed price",orType:"or type it",
- scanBar:"Looking for a barcode…",scanAI:"Reading the box… this can take a few seconds",
- scanGotBar:"Found in the 2D barcode: batch __B__. See the result below.",scanGotAI:"Read from the photo: __W__. Double-check it against the box, then see the result.",
- scanNone:"Couldn't read a number from this photo. Take a closer, well-lit photo of the barcode or batch number, or type it.",
- scanNoAI:"No 2D barcode found on this box. For older boxes, type the batch number.",scanDenied:"Permission to read the photo wasn't given. Type the batch number instead.",
- pickPack:"Pick your medicine's strength, then the pack size",paidLbl:"What did you pay?",limit:"Legal limit",
- over:"You paid Rs __X__ over the legal price",overBody:"DRAP's official price is Rs __M__ (in effect since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
- ok:"You paid within the legal price",okBody:"DRAP's official price is Rs __M__ (in effect since __D__).",
+ variants:"options",variant:"option",chooseVar:"Pick a strength",regNo:"Reg. No.",since:"since __D__",standard:"Standard",pack:"Pack",
+ instH:"Add to your home screen",instP:"Opens in one tap next time, even without internet.",instBtn:"Add",iosHelp:"In Safari, tap the Share button (⬆︎) at the bottom, then choose \"Add to Home Screen\".",close:"Close",
+ whoHelps:"Where to complain",callDrap:"DRAP helpline (free call)",reportQuality:"Report a fake or defective medicine to DRAP",reportSide:"Took it and had a side effect? Report it",fileComplaint:"DRAP complaints page (links to the Citizen's Portal too)",
+ draftH:"Ready-made complaint text",copy:"Copy text",copied:"Copied",copyManual:"Text selected, copy it now",keepProof:"Keep the box, the receipt, and the pharmacy's name and address. That's the proof a complaint needs.",waFamily:"Tell your family",printedOnBox:"printed on the box",
+ draftPrice:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__\nI was charged Rs __V__, but the legal price is Rs __M__ (__S__).\nI have kept the receipt. Please take action.",
+ draftBatch:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__, Batch __B__\nA DRAP alert (__D__) lists this batch as \"__K__\", but it is still being sold.\nI have kept the box and receipt.",
+ shareP:"__N__: DRAP price Rs __M__, I was charged Rs __V__",shareM:"__N__: Rs __M__ printed on the box, I was charged Rs __V__",
+ pickPack:"Pick the strength first, then the pack size",paidLbl:"How much did you pay?",limit:"Limit",
+ over:"You paid Rs __X__ over the legal price",overBody:"DRAP's price is Rs __M__ (since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
+ ok:"You paid the right price",okBody:"DRAP's price is Rs __M__ (since __D__).",
  latestH:"Fake medicines caught recently",latestP:"DRAP's latest alerts. Tap a box to check its batch.",
  tapCheck:"Check this batch",
- s1h:"Type the name",s1p:"Matching medicines appear as you type.",
- s2h:"Enter what you paid",s2p:"Pick your pack and type the price on your receipt. The meter shows right away whether it's within the limit.",
- s3h:"Overcharged? Complain",s3p:"DRAP's helpline is one tap away, with the complaint text already written.",
+ s1h:"Type the name",s1p:"Matching medicines show up as you type.",
+ s2h:"Enter what you paid",s2p:"Pick your pack and type the price on your receipt. The meter shows right away if it's within the limit.",
+ s3h:"Overcharged? Complain",s3p:"DRAP's helpline is one tap away, and the complaint text is already written.",
  demoH:"How it works",demoP:"Each check takes under 10 seconds.",dPriceCap:"Price check: pick your pack, type what you paid",dBatchCap:"Batch check: type the batch number from the box",dOver:"Rs 39.43 overcharged",dAlert:"DRAP ALERT",
- foot1:"This isn't medical advice. Ask a doctor or pharmacist before stopping or switching any medicine.",
- foot2:"Data: DRAP recall and rapid alerts (__RANGE__, __N__ entries) and the DRAP PharmaPrice Index (__P__ packs). Last updated: __U__.",
- skip:"Skip to the tool",navPrice:"Price",navBatch:"Batch",navLatest:"Alerts",navFaq:"FAQ",
- faqH:"Questions people ask",faqP:"The arguments that happen at the pharmacy counter.",
- q1:"The pharmacist says a new price came out. What now?",
- a1:"It's possible. DRAP revises prices from time to time, and each pack here shows the date its price took effect. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that.",
+ foot2:"Data: DRAP recall and rapid alerts (__RANGE__, __N__ entries) and the DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
+ skip:"Skip to the tool",navPrice:"Price check",navBatch:"Batch check",navLatest:"Latest alerts",navFaq:"FAQ",
+ faqH:"Your questions",faqP:"The questions that come up most at the pharmacy counter.",
+ q1:"The pharmacist says there's a new price. What should I do?",
+ a1:"It's possible. DRAP changes prices from time to time, and each pack here shows the date its price started. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that.",
  q2:"I can't find my medicine.",
  a2:"Type only the start of the name, like \"Augm\" instead of \"Augmentin\". Still nothing? Tap \"My pack isn't listed\" and compare with the price printed on the box.",
- q3:"No alert came up. Does that mean the medicine is genuine?",
- a3:"No guarantee. We only show batches DRAP has already issued an alert for. If the packing looks off, the seal is broken or the price is suspiciously low, don't take it and ask a pharmacist.",
- q4:"Do you save my searches or what I paid?",
- a4:"No. The search runs on your phone. If analytics is on, it counts which medicine names get searched, never your name or number. Details are on the <a href=\"privacy.html\">Privacy</a> page.",
+ q3:"No alert came up. Is the medicine definitely genuine?",
+ a3:"We can't promise that. We only show batches DRAP has already issued an alert for. If the packing looks strange, the seal is broken or the price is very low, don't take it and ask a pharmacist.",
+ q4:"Do you save my searches?",
+ a4:"No. The search happens on your phone. If analytics is on, it only counts which medicine names get searched, never your name or number. Full details are on the <a href=\"privacy.html\">Privacy</a> page.",
  q5:"Where does the data come from?",
- a5:"Prices come from DRAP's price list and alerts from DRAP's recall and rapid alert pages. Every alert links to the original DRAP notice. The full method is <a href=\"how-we-verify.html\">here</a>.",
+ a5:"Prices come from DRAP's price list, and alerts come from DRAP's recall and rapid alert pages. Every alert links to the original DRAP notice. Read how we check the data <a href=\"how-we-verify.html\">here</a>.",
  discH:"Disclaimer",
- d1:"Dawa Check is an information tool, not medical advice. Ask a doctor or pharmacist before stopping or switching any medicine.",
- d2:"DRAP revises prices often. Our data is current up to the last update date, so check DRAP's own website before acting on anything big.",
- d3:"No alert doesn't prove a medicine is genuine. We only show alerts DRAP has published.",
- d4:"We aren't affiliated with DRAP, any government body, pharmacy or drug company, and we sell nothing.",
- d5:"No account, no login. Your searches stay on your phone. Optional Google Analytics cookies count page visits, and visitors in Europe are asked first. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
- foot3:"No alert is no guarantee a medicine is genuine. If in doubt, keep the box, batch number, and receipt."}};
+ d1:"Dawa Check is for information only. It isn't medical advice. Ask a doctor or pharmacist before stopping or changing any medicine.",
+ d2:"DRAP changes prices often. Our data is correct up to the last update date, so check DRAP's website too before any big decision.",
+ d3:"No alert doesn't prove a medicine is genuine. We only show alerts that DRAP has published.",
+ d4:"We aren't part of DRAP, the government, any pharmacy or any drug company. We don't sell medicines.",
+ d5:"No account, no login. Your searches stay on your phone. Optional Google Analytics cookies count visitors, and visitors in Europe are asked first. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ sceneLbl:"Story: overcharged at a pharmacy, then money back with Dawa Check",
+ sc1:"The pharmacist says \"Rs 250\". We pay without checking.",
+ sc2:"Dawa Check shows the real price: only Rs 160.57.",
+ sc3:"Show the screen and get Rs 89.43 back.",
+ scDrap:"DRAP price",scPaid:"You paid",scOver:"Rs 89.43 too much!",scReply:"Sorry, here's Rs 89.43 back",scStore:"MEDICAL STORE",
+ scPause:"Pause",scPlay:"Play"}};
 let L=DC.lang;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -536,11 +637,13 @@ $("fP").textContent=PRICES.length.toLocaleString("en");
 $("fU").textContent=META.updated;
 
 function applyLang(){
-  document.documentElement.lang=L==="en"?"en":"ur-Latn";
+  document.documentElement.lang=L==="en"?"en":"ur-Latn";document.documentElement.dataset.lang=L;document.title=T[L].titleT;
+  $("instX").setAttribute("aria-label",T[L].close);
   document.querySelectorAll("[data-i]").forEach(el=>el.textContent=fill(T[L][el.dataset.i]));
   document.querySelectorAll("[data-ih]").forEach(el=>el.innerHTML=T[L][el.dataset.ih]);
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===L));
   renderShelf();
+  window.sceneLabel&&sceneLabel();
   if(state==="b")runBatch(true); else if(state==="p")runPrice(true);
 }
 document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.lang;DC.setLang(L);applyLang();DC.track("lang_switch",{lang:L})});
@@ -589,7 +692,7 @@ function showStamp(kind,text){const s=$("stamp");s.className="stamp";void s.offs
 
 const kindTag=k=>`<span class="tag ${k==="fake"?"t-fake":k==="substandard"?"t-sub":"t-other"}">${esc(T[L].kind[k]||k)}</span>`;
 const alertCard=a=>`<article class="item"><div class="t"><b>${esc(a.p)}</b>${kindTag(a.k)}</div>
- <div class="meta">${a.b?`Batch <span class="bn">${esc(a.b)}</span> · `:""}${T[L].date}: ${fmtDate(a.d)}</div>
+ <div class="meta">${a.b?`${T[L].batch} <span class="bn">${esc(a.b)}</span> · `:""}${T[L].date}: ${fmtDate(a.d)}</div>
  ${a.m?`<div class="meta">${T[L].maker}: ${esc(a.m)}</div>`:""}${a.r?`<div class="meta">${T[L].reason}: ${esc(a.r)}</div>`:""}
  <div class="meta"><a href="${esc(a.l)}" target="_blank" rel="noopener">${T[L].readAlert} ↗</a></div></article>`;
 const verdict=(cls,ic,h,p,extra)=>`<div class="verdict ${cls}"><div class="ic" aria-hidden="true">${ic}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>${extra?`<div class="vx">${extra}</div>`:""}</div>`;
@@ -727,7 +830,7 @@ function runPrice(silent){
 }
 function renderPacks(gi,vi){
   const v=groups[gi].vars[vi],box=$("packs"+gi);
-  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||"Pack")}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since} ${esc(r[5])}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
+  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||T[L].pack)}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since.replace("__D__",esc(r[5]))}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
   box.querySelectorAll(".pack").forEach(b=>b.onclick=()=>openPay(+b.dataset.i));
 }
 function mrpBox(){return `<div class="paybox"><label for="mrp" class="meta" style="display:block;margin:0 0 6px">${T[L].mrpLbl}</label><div class="payrow"><span>Rs</span><input id="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div><label for="mpaid" class="meta" style="display:block;margin:16px 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="mpaid" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="mmeter"></div><div id="mout"></div></div>`}
@@ -736,7 +839,7 @@ function wireMrp(){
     if(!(m>0)||!(v>0)){o.innerHTML="";mt.innerHTML="";return}
     const max=Math.max(v,m)*1.25;
     mt.innerHTML=`<div class="meter" style="--lim:${m/max*100}%;--pos:${Math.min(v/max*100,100)}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(m)}</span></div>`;
-    o.innerHTML=v>m+0.5?`<div style="margin-top:14px">${verdict("v-red","!",T[L].mrpOver.replace("__X__",rs(v-m)),T[L].mrpOverBody.replace("__M__",rs(m)),actions("price",T[L].draftPrice.replace("__N__",$("qp").value).replace("__V__",rs(v)).replace("__M__",rs(m)).replace("__S__",T[L].printedOnBox).replace("__T__",today()),`${$("qp").value}: printed MRP Rs ${rs(m)}, charged Rs ${rs(v)}`))}</div>`:`<div style="margin-top:14px">${verdict("v-green","✓",T[L].mrpOk,T[L].mrpOkBody.replace("__M__",rs(m)))}</div>`};
+    o.innerHTML=v>m+0.5?`<div style="margin-top:14px">${verdict("v-red","!",T[L].mrpOver.replace("__X__",rs(v-m)),T[L].mrpOverBody.replace("__M__",rs(m)),actions("price",T[L].draftPrice.replace("__N__",$("qp").value).replace("__V__",rs(v)).replace("__M__",rs(m)).replace("__S__",T[L].printedOnBox).replace("__T__",today()),T[L].shareM.replace("__N__",$("qp").value).replace("__M__",rs(m)).replace("__V__",rs(v))))}</div>`:`<div style="margin-top:14px">${verdict("v-green","✓",T[L].mrpOk,T[L].mrpOkBody.replace("__M__",rs(m)))}</div>`};
   $("mrp").addEventListener("input",go);$("mpaid").addEventListener("input",go);
 }
 function openPay(i){
@@ -754,7 +857,7 @@ function openPay(i){
     m.innerHTML=`<div class="meter" style="--lim:${lim}%;--pos:${pos}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(r[4])}</span></div>`;
     const md=r[5];
     o.innerHTML=v>r[4]+0.5
-      ?`<div style="margin-top:14px">${verdict("v-red","!",T[L].over.replace("__X__",rs(v-r[4])),T[L].overBody.replace("__M__",rs(r[4])).replace("__D__",md),actions("price",T[L].draftPrice.replace("__N__",r[0]+" ("+r[3]+")").replace("__V__",rs(v)).replace("__M__",rs(r[4])).replace("__S__","DRAP ("+md+")").replace("__T__",today()),`${r[0]} (${r[3]}): DRAP price Rs ${rs(r[4])}, charged Rs ${rs(v)}`))}</div>`
+      ?`<div style="margin-top:14px">${verdict("v-red","!",T[L].over.replace("__X__",rs(v-r[4])),T[L].overBody.replace("__M__",rs(r[4])).replace("__D__",md),actions("price",T[L].draftPrice.replace("__N__",r[0]+" ("+r[3]+")").replace("__V__",rs(v)).replace("__M__",rs(r[4])).replace("__S__","DRAP ("+md+")").replace("__T__",today()),T[L].shareP.replace("__N__",r[0]+" ("+r[3]+")").replace("__M__",rs(r[4])).replace("__V__",rs(v))))}</div>`
       :`<div style="margin-top:14px">${verdict("v-green","✓",T[L].ok,T[L].okBody.replace("__M__",rs(r[4])).replace("__D__",md))}</div>`;
   });
 }
@@ -789,6 +892,15 @@ function renderShelf(){
   };
   $("instX").onclick=()=>{bar.classList.add("hidden");try{localStorage.setItem("dc-install-snooze",String(Date.now()+14*864e5))}catch(e){}};
   window.addEventListener("appinstalled",()=>bar.classList.add("hidden"));
+})();
+
+/* hero scene: pause button, and pause while off screen */
+(()=>{
+  const sc=$("scene"),pp=$("scPP");let manual=false;
+  const label=()=>{const p=sc.classList.contains("paused");pp.setAttribute("aria-label",p?T[L].scPlay:T[L].scPause);pp.setAttribute("aria-pressed",p);pp.querySelector(".i-play").classList.toggle("hidden",!p);pp.querySelector(".i-pause").classList.toggle("hidden",p)};
+  pp.onclick=()=>{manual=!sc.classList.contains("paused");sc.classList.toggle("paused",manual);label();DC.track("scene_toggle",{paused:manual})};
+  if("IntersectionObserver" in window)new IntersectionObserver(es=>{if(!manual)sc.classList.toggle("paused",!es[0].isIntersecting);label()}).observe(sc);
+  window.sceneLabel=label;label();
 })();
 applyLang();
 fromHash();
