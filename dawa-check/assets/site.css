@@ -5,6 +5,7 @@
   --rx:#4B2BB8; --rx2:#6A4FD6; --rxbg:#EEEAFE; --mint:#FFE9A8; --or:#FFD23F; --orbg:#FFF6D6; --on-or:#2A1670;
   --red:#C42B1C; --redbg:#FDE8E6; --amber:#8A5A00; --amberbg:#FFF4D1;
   --ink-dot:#4B2BB8; --foil1:#ECE9F6; --foil2:#C9C3E0; --tape:#C42B1C;
+  --band:#2A1670; --band-ink:#F3F0FF; --band-soft:#BDB3EE; --band-line:#4A3A96; --band-hi:#FFD23F;
   --foot:#1B1240; --foot-ink:#E9E4FF; --foot-soft:#A79FC9; --foot-line:#33296A; --foot-card:#241A52;
   --shadow:0 1px 0 rgba(42,22,112,.06), 0 12px 28px -14px rgba(42,22,112,.28);
   --display:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -18,6 +19,7 @@
   --rx:#A592FF; --rx2:#BCAEFF; --rxbg:#261C55; --mint:#5A4A10; --or:#FFD23F; --orbg:#3A3010; --on-or:#2A1670;
   --red:#F27468; --redbg:#3A1612; --amber:#FFC94D; --amberbg:#3A2E10;
   --ink-dot:#C6B9FF; --foil1:#221A4A; --foil2:#3A2F6E; --tape:#D9443C;
+  --band:#241A52; --band-ink:#F3F0FF; --band-soft:#B4A9E6; --band-line:#3A2F6E; --band-hi:#FFD23F;
   --foot:#0C0720; --foot-ink:#F0ECFF; --foot-soft:#A79FC9; --foot-line:#2A2158; --foot-card:#170F36;
   --shadow:0 1px 0 rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.7); color-scheme:dark;}}
 :root[data-theme="dark"]{
@@ -25,6 +27,7 @@
   --rx:#A592FF; --rx2:#BCAEFF; --rxbg:#261C55; --mint:#5A4A10; --or:#FFD23F; --orbg:#3A3010; --on-or:#2A1670;
   --red:#F27468; --redbg:#3A1612; --amber:#FFC94D; --amberbg:#3A2E10;
   --ink-dot:#C6B9FF; --foil1:#221A4A; --foil2:#3A2F6E; --tape:#D9443C;
+  --band:#241A52; --band-ink:#F3F0FF; --band-soft:#B4A9E6; --band-line:#3A2F6E; --band-hi:#FFD23F;
   --foot:#0C0720; --foot-ink:#F0ECFF; --foot-soft:#A79FC9; --foot-line:#2A2158; --foot-card:#170F36;
   --shadow:0 1px 0 rgba(0,0,0,.4), 0 16px 32px -16px rgba(0,0,0,.7); color-scheme:dark;}
 

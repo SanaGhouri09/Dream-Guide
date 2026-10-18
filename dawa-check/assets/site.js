@@ -4,6 +4,8 @@ const SITE={
   gaId:"",              // Google Analytics 4 measurement ID, e.g. "G-ABC123XYZ". Empty = no analytics at all.
   x:"emeraldofhope",    // X (Twitter) handle for the contact card, without @. Empty hides the button.
   email:"",             // Contact email shown in the footer. Empty hides it.
+  formEmail:"",         // Inbox that receives the "missing medicine" and feedback forms (sent via formsubmit.co). Empty = forms can't send.
+  formEndpoint:"",      // Optional: your own form endpoint (Formspree, Web3Forms...). Overrides formEmail.
   updated:"18 Oct 2026" // Last data update, shown in the footer.
 };
 
@@ -15,7 +17,7 @@ const DC=(()=>{
   const S={
     ru:{cardH:"Galat qeemat ya missing alert dekha?",cardP:"Dawa ka naam, pack aur screenshot bhejein. Hum DRAP ke asal source se mila kar theek kar dete hain.",
       xBtn:"X par message karein",mailBtn:"Email karein",
-      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",
+      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",complain:"Complaint kaise karein",missing:"Missing dawa batayein",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"Hum data kaise check karte hain",cset:"Cookie settings",
       about:"Pakistan ke liye banaya gaya. Hum dawa nahi bechte aur koi commission nahi lete. Sirf DRAP ka public data, asaan zaban mein.",
       notDrap:"DRAP ya government ka hissa nahi",updated:"Data update",
@@ -27,7 +29,7 @@ const DC=(()=>{
       toast:"Website ab Roman Urdu mein hai",back:"← Tool par wapas jayein"},
     en:{cardH:"Spotted a wrong price or a missing alert?",cardP:"Send the medicine name, pack size and a screenshot. We check it against DRAP's original source and fix it.",
       xBtn:"Message us on X",mailBtn:"Email us",
-      colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",
+      colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",complain:"How to complain",missing:"Report a missing medicine",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"How we verify",cset:"Cookie settings",
       about:"Made for Pakistan. We don't sell medicines and we take no commission. Just DRAP's public data, in plain language.",
       notDrap:"Not affiliated with DRAP or any government body",updated:"Data updated",
@@ -63,6 +65,19 @@ const DC=(()=>{
     });
   }
   function setConsent(v){store.set("dc-consent",v);v==="granted"?loadGA():stopGA();hideBanner()}
+  /* forms: POST JSON to formsubmit.co (or SITE.formEndpoint). Resolves true only when the service accepted it. */
+  async function send(subject,fields){
+    const ep=SITE.formEndpoint||(SITE.formEmail?"https://formsubmit.co/ajax/"+encodeURIComponent(SITE.formEmail):"");
+    if(!ep)return false;
+    const body={_subject:subject,_template:"table",_captcha:"false",...fields,page:location.href};
+    if(fields.email)body._replyto=fields.email;
+    try{
+      const r=await fetch(ep,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)});
+      if(!r.ok)return false;
+      const j=await r.json().catch(()=>({}));
+      return j.success===undefined||j.success===true||j.success==="true";
+    }catch(e){return false}
+  }
   function track(name,params){if(gaOn&&window.gtag)try{gtag("event",name,params||{})}catch(e){}}
 
   /* footer */
@@ -79,8 +94,10 @@ const DC=(()=>{
       <div class="foot-grid">
         <div class="foot-about"><span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span><p>${t("about")}</p></div>
         <nav aria-label="${t("colTool")}"><h3>${t("colTool")}</h3><ul>
-          <li><a href="${home}#tool">${t("price")}</a></li><li><a href="${home}#batch">${t("batch")}</a></li>
-          <li><a href="${home}#latest">${t("latest")}</a></li><li><a href="${home}#faq">${t("faq")}</a></li></ul></nav>
+          <li><a href="${home}#check">${t("price")}</a></li><li><a href="${home}#batch">${t("batch")}</a></li>
+          <li><a href="${home}#latest">${t("latest")}</a></li><li><a href="${home}#complain">${t("complain")}</a></li>
+          <li><a href="${home}#missing">${t("missing")}</a></li><li><a href="feedback.html">${t("feedback")}</a></li>
+          <li><a href="${home}#faq">${t("faq")}</a></li></ul></nav>
         <nav aria-label="${t("colPol")}"><h3>${t("colPol")}</h3><ul>
           <li><a href="privacy.html">${t("privacy")}</a></li><li><a href="terms.html">${t("terms")}</a></li>
           <li><a href="cookies.html">${t("cookies")}</a></li><li><a href="how-we-verify.html">${t("verify")}</a></li>
@@ -141,11 +158,11 @@ const DC=(()=>{
     clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove("on"),2200);
   }
   document.querySelectorAll(".lang[data-auto] button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
-  function setLang(l){const was=lang;lang=l==="en"?"en":"ru";store.set("dc-lang",lang);renderFooter();markLang();if(was!==lang)toast(t("toast"));const tb=document.querySelector(".totop");if(tb)tb.setAttribute("aria-label",t("top"));if(bar){hideBanner();showBanner()}}
+  function setLang(l){const was=lang;lang=l==="en"?"en":"ru";store.set("dc-lang",lang);renderFooter();markLang();if(was!==lang){toast(t("toast"));document.dispatchEvent(new CustomEvent("dc:lang",{detail:lang}))}const tb=document.querySelector(".totop");if(tb)tb.setAttribute("aria-label",t("top"));if(bar){hideBanner();showBanner()}}
 
   renderFooter();markLang();initTop();
   if(allowed())loadGA();
   if(SITE.gaId&&askFirst&&!choice())showBanner();
 
-  return{get lang(){return lang},setLang,track,openSettings,SITE};
+  return{get lang(){return lang},setLang,track,send,toast,openSettings,SITE};
 })();

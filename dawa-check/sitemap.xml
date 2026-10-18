@@ -2,6 +2,7 @@
 <!-- Replace YOUR-DOMAIN with the real domain before going live. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://YOUR-DOMAIN/</loc><lastmod>2026-10-18</lastmod><priority>1.0</priority></url>
+  <url><loc>https://YOUR-DOMAIN/feedback.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://YOUR-DOMAIN/how-we-verify.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://YOUR-DOMAIN/privacy.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://YOUR-DOMAIN/terms.html</loc><lastmod>2026-10-18</lastmod></url>
