@@ -29,7 +29,7 @@
 <div class="khulasa"><b>Asaan lafzon mein</b><p>Har qeemat aur har alert DRAP ke public documents se liya gaya hai. Har alert ke saath DRAP ka asal link hai, taake aap khud check kar sakein. Batch number mein space ya dash se farq nahi parta. Koi ghalti nazar aaye to footer se batayein, hum DRAP source se mila kar theek kar dete hain.</p></div>
 <h2>Two sources, both from DRAP</h2>
 <h3>Prices</h3>
-<p>Prices come from DRAP's published price list for registered medicines: 21,651 packs at the last update. For each pack we keep the brand name, the composition, the company, the pack size, the price in rupees, the date that price took effect and the DRAP registration number. The site shows the effective date and registration number with every price, so you can match it to the notification.</p>
+<p>Prices come from DRAP's published price list for registered medicines: 21,534 packs at the last update. For each pack we keep the brand name, the composition, the company, the pack size, the price in rupees, the date that price took effect and the DRAP registration number. The site shows the effective date and registration number with every price, so you can match it to the notification.</p>
 <h3>Alerts</h3>
 <p>Alerts come from DRAP's product recall and rapid alert notices on <a href="https://www.dra.gov.pk/" target="_blank" rel="noopener">dra.gov.pk</a>, from July 2021 to 29 July 2026: 756 entries. For each one we keep the product, the batch number, the company, the reason, the date and a link to the original notice. We sort each alert into one of four types using DRAP's own wording: fake (spurious), failed lab test (substandard), unregistered, or recall.</p>
 
@@ -38,6 +38,7 @@
   <li>We collect the latest price list and alert notices from DRAP's website.</li>
   <li>We copy each field as DRAP prints it. Prices aren't rounded or adjusted.</li>
   <li>When one notice lists several batch numbers, we split them so each batch can be matched on its own.</li>
+  <li>If the price list has the same pack twice with different start dates, we keep only the newest price. Packs listed with no price (Rs 0) are left out.</li>
   <li>We keep the link to the DRAP notice with every alert, so anyone can check our work in one tap.</li>
   <li>The date in the footer is the last time the data changed.</li>
 </ol>
