@@ -1,0 +1,16 @@
+{
+  "name": "Dawa Check",
+  "short_name": "Dawa Check",
+  "description": "DRAP ki sarkari dawa qeemat aur naqli dawa alerts, ek search mein.",
+  "lang": "ur-Latn",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F6F4FC",
+  "theme_color": "#4B2BB8",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

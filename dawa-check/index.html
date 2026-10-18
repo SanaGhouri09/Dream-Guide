@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dawa Check: sahi qeemat, asli dawa</title>
+<meta name="description" content="Dawa ki DRAP sarkari qeemat dekhein aur zyada dene se bachein. 21,651 packs ki qeemat aur naqli dawa ke alerts ek jagah.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dawa Check">
+<meta property="og:title" content="Dawa Check: sahi qeemat, asli dawa">
+<meta property="og:description" content="DRAP ki sarkari qeemat aur naqli dawa ke alerts, ek search mein. Pharmacy ne zyada liye? Foran pata karein.">
+<meta name="twitter:card" content="summary">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#4B2BB8">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dawa Check">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:20px 0 56px;position:relative}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,6.4vw,62px);line-height:1.06;letter-spacing:-.035em;margin:0 0 20px;text-transform:none}
+.hero h1 span{display:block}
+.hero p.lede{font-size:17.5px;line-height:1.6;color:var(--soft);max-width:44ch;margin:0 0 24px}
+.facts{display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px;color:var(--soft)}
+.facts b{display:block;font-family:var(--display);font-size:24px;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.float{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.float svg{position:absolute;opacity:.9}
+.hero>*:not(.float){position:relative;z-index:1}
+@media (prefers-reduced-motion:no-preference){
+  .float svg{animation:drift 9s ease-in-out infinite alternate}
+  .float svg:nth-child(2){animation-duration:11s;animation-delay:-3s}
+  .float svg:nth-child(3){animation-duration:13s;animation-delay:-6s}
+  @keyframes drift{from{transform:translateY(0) rotate(var(--r,0deg))}to{transform:translateY(-18px) rotate(calc(var(--r,0deg) + 14deg))}}
+}
+
+/* capsule switch */
+.capsule{display:grid;grid-template-columns:1fr 1fr;border-radius:999px;overflow:hidden;border:2px solid var(--ink);margin-bottom:18px;box-shadow:var(--shadow)}
+.capsule button{border:0;padding:13px 10px;font-family:var(--display);font-weight:750;font-size:17px;background:var(--panel);color:var(--soft);transition:background .2s,color .2s}
+.capsule button[aria-selected="true"]{background:var(--rx);color:#fff}
+:root[data-theme="dark"] .capsule button[aria-selected="true"]{color:#120B2A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .capsule button[aria-selected="true"]{color:#120B2A}}
+.capsule button+button{border-left:2px solid var(--ink)}
+
+/* carton */
+.carton{background:var(--panel);border-radius:4px 4px 18px 18px;box-shadow:var(--shadow);position:relative;overflow:visible}
+.carton::before{content:"";display:block;height:14px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,var(--rx) 0 62%,var(--or) 62% 100%)}
+.cbody{padding:20px 20px 22px}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
+.chead h2{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.2;letter-spacing:-.02em;margin:0}
+.chead small{display:block;font-size:13.5px;color:var(--soft);margin-top:4px;font-family:var(--sans)}
+.rx{font-family:var(--display);font-weight:800;font-size:22px;color:var(--rx);border:2px solid var(--rx);border-radius:8px;padding:0 7px;line-height:1.35}
+.perf{height:0;border-top:2px dashed var(--line);margin:0 -20px 16px}
+.strip{position:relative;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;background:repeating-linear-gradient(0deg,transparent 0 30px,rgba(35,48,143,.035) 30px 31px);overflow:hidden}
+.row{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:10px;padding:8px 0}
+.row+.row{border-top:1px dashed var(--line)}
+.row label{font-family:var(--sans);font-weight:600;color:var(--soft);font-size:14px}
+.row input{border:0;background:transparent;width:100%;min-width:0;padding:6px 0;outline:none}
+.row input.dot{font-family:var(--dot);font-size:24px;color:var(--ink-dot);letter-spacing:.08em;text-transform:uppercase}
+.row input.txt{font-size:18px}
+.row input::placeholder{color:var(--soft);opacity:.55}
+.strip:focus-within{border-color:var(--ink-dot)}
+.strip.scanning::after{content:"";position:absolute;left:0;right:0;height:46px;top:-46px;background:linear-gradient(180deg,transparent,rgba(106,79,214,.28),transparent);border-bottom:2px solid var(--rx2)}
+@media (prefers-reduced-motion:no-preference){.strip.scanning::after{animation:scan .75s ease-in-out}@keyframes scan{to{top:100%}}}
+.help{display:flex;gap:8px;align-items:center;margin:12px 0 4px;background:none;border:0;padding:0;color:var(--rx);font-size:15px;font-weight:700}
+.where{display:none;margin-top:10px;background:var(--rxbg);border-radius:12px;padding:12px;font-size:14.5px;color:var(--ink)}
+.where.on{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.cta{width:100%;margin-top:16px;border:0;border-radius:999px;padding:15px;background:var(--or);color:var(--on-or);box-shadow:0 8px 20px -10px rgba(42,22,112,.45);font-family:var(--display);font-weight:800;font-size:19px;display:flex;justify-content:center;align-items:center;gap:10px;transition:transform .12s}
+.cta:active{transform:scale(.98)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:14px;color:var(--soft);align-items:center}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 12px;font-size:14px}
+.chip:hover{border-color:var(--rx)}
+
+.vx{grid-column:1/-1}
+.acts{margin-top:4px;display:grid;gap:8px}
+.acts-h{margin:0;font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink)}
+.act{display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px;font-weight:700}
+.act.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-size:16px}
+.act .num{margin-left:auto;white-space:nowrap;font-family:var(--display);font-size:18px}
+.draft summary{cursor:pointer;color:var(--ink-dot);font-weight:700;font-size:15px;padding:4px 0}
+.draft textarea{width:100%;margin-top:8px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel);color:var(--ink);font:inherit;font-size:14.5px;resize:vertical}
+.draft .copy{margin-top:6px;border:0;border-radius:999px;padding:8px 14px;background:var(--rx);color:#fff;font-weight:700;font-size:14px}
+.keep{margin:2px 0 0;font-size:13.5px;color:var(--soft)}
+.wa{display:inline-flex;gap:6px;align-items:center;color:#1A8F49;font-weight:700;font-size:14px;text-decoration:none;justify-self:start}
+/* scan */
+.scanbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:2px dashed var(--rx);background:var(--rxbg);color:var(--rx);border-radius:14px;padding:14px;font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:12px}
+.scanbtn small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--soft);}
+.scanbtn .cam{width:40px;height:40px;border-radius:50%;background:var(--rx);display:grid;place-items:center;flex:none}
+.or{display:flex;align-items:center;gap:10px;color:var(--soft);font-size:13px;margin:0 0 12px}
+.or::before,.or::after{content:"";flex:1;border-top:1px dashed var(--line)}
+.scanstat{display:flex;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:12px;font-size:14.5px}
+.scanstat img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none}
+.scanstat .sp{width:18px;height:18px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--rx);flex:none}
+@media (prefers-reduced-motion:no-preference){.scanstat .sp{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
+
+/* stamp */
+.stamp{position:absolute;right:14px;top:26px;transform:rotate(-9deg) scale(1);font-family:var(--display);font-weight:800;font-size:22px;line-height:1;padding:8px 12px;border:3px double currentColor;border-radius:8px;letter-spacing:.02em;background:var(--panel);opacity:0;pointer-events:none;max-width:60%;text-align:center}
+.stamp.show{opacity:.95}
+@media (prefers-reduced-motion:no-preference){.stamp.show{animation:thud .38s cubic-bezier(.2,1.6,.4,1)}@keyframes thud{from{opacity:0;transform:rotate(-9deg) scale(1.9)}}}
+.stamp.red{color:var(--red)} .stamp.amber{color:var(--amber)} .stamp.green{color:var(--rx)}
+
+/* autocomplete */
+.ac{position:relative}
+.list{position:absolute;left:-14px;right:-14px;top:calc(100% + 8px);background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);z-index:20;padding:6px;display:none;max-height:300px;overflow:auto}
+.list.on{display:block}
+.list button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:8px;font-size:16px}
+.list button small{color:var(--soft);font-size:13px;display:block}
+.list button[aria-selected="true"],.list button:hover{background:var(--rxbg)}
+
+/* results */
+.results{display:grid;gap:12px;margin-top:18px}
+.verdict{border-radius:16px;padding:18px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.verdict .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;font-family:var(--display)}
+.verdict h3{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.15;margin:2px 0 6px}
+.verdict p{margin:0;font-size:15.5px}
+.v-red{background:var(--redbg)} .v-red .ic{background:var(--red)} .v-red h3{color:var(--red)}
+.v-amber{background:var(--amberbg)} .v-amber .ic{background:var(--amber)} .v-amber h3{color:var(--amber)}
+.v-green{background:var(--rxbg)} .v-green .ic{background:var(--rx)} .v-green h3{color:var(--rx)}
+.item{background:var(--panel);border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.item .t{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.item b{font-size:16.5px}
+.tag{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.t-fake{background:var(--redbg);color:var(--red)} .t-sub{background:var(--amberbg);color:var(--amber)} .t-other{background:var(--foil1);color:var(--soft)}
+.meta{font-size:14.5px;color:var(--soft);margin-top:5px}
+.meta a{color:var(--ink-dot)}
+.bn{font-family:var(--dot);color:var(--ink-dot)}
+
+/* blister / price */
+.blister{display:grid;gap:10px}
+.pack{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:linear-gradient(135deg,var(--foil1),var(--panel) 60%);border-radius:14px;padding:12px}
+.pack .cell{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--foil2));box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);display:grid;place-items:center}
+.pack .cell i{width:28px;height:13px;border-radius:7px;background:linear-gradient(90deg,var(--rx) 50%,var(--or) 50%);display:block;transform:rotate(-30deg);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.pack .nm b{display:block;font-size:16px;line-height:1.25}
+.pack .nm small{color:var(--soft);font-size:13.5px}
+.sticker{font-family:var(--display);font-weight:800;font-size:18px;background:var(--or);color:var(--on-or);padding:6px 10px;border-radius:6px;transform:rotate(2deg);white-space:nowrap}
+.pack[aria-pressed="true"]{border-color:var(--rx);box-shadow:0 0 0 2px var(--rx)}
+.paybox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:-2px}
+.payrow{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.payrow span{font-family:var(--display);font-weight:800;font-size:26px;color:var(--soft)}
+.payrow input{border:0;background:transparent;font-family:var(--display);font-weight:800;font-size:34px;width:100%;outline:none}
+.meter{position:relative;height:14px;border-radius:999px;background:linear-gradient(90deg,var(--rx) 0 var(--lim),var(--red) var(--lim) 100%);margin:22px 0 8px;opacity:.9}
+.meter .pin{position:absolute;top:50%;width:24px;height:24px;border-radius:50%;background:var(--panel);border:4px solid var(--ink);transform:translate(-50%,-50%);left:var(--pos);transition:left .25s}
+.meter-l{display:flex;justify-content:space-between;font-size:13px;color:var(--soft)}
+
+/* latest */
+section.latest{padding:40px 0 10px}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.sh h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.1;letter-spacing:-.03em;margin:0}
+.sh p{margin:0;color:var(--soft);font-size:15px;max-width:36ch}
+.shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,250px);gap:14px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory}
+.box{scroll-snap-align:start;position:relative;background:var(--panel);border-radius:4px 4px 14px 14px;box-shadow:var(--shadow);padding:16px 16px 14px;text-align:left;border:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;min-height:200px}
+.box::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--rx) 0 60%,var(--or) 60%)}
+.box .tape{position:absolute;right:-38px;top:26px;transform:rotate(35deg);background:var(--tape);color:#fff;font-family:var(--display);font-weight:800;font-size:13px;padding:4px 44px;letter-spacing:.04em}
+.box b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.1;margin-top:12px;padding-right:40px}
+.box .bn{font-size:17px}
+.box small{color:var(--soft);font-size:13.5px;margin-top:auto}
+.box .go{color:var(--rx);font-weight:700;font-size:14px}
+
+/* grouped price results */
+.groups{display:grid;gap:12px}
+.grp{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:12px}
+.g-head{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center}
+.g-ic{width:44px;height:44px;border-radius:12px;background:var(--rxbg);display:grid;place-items:center}
+.g-nm b{display:block;font-size:17px;line-height:1.25}
+.g-nm small{color:var(--soft);font-size:13px}
+.g-ct{font-size:12.5px;font-weight:700;color:var(--rx);background:var(--rxbg);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.vchips{display:flex;flex-wrap:wrap;gap:8px}
+.vchip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;font-weight:600;color:var(--ink);min-height:40px}
+.vchip[aria-pressed="true"]{border-color:var(--rx);background:var(--rxbg);color:var(--rx)}
+.packs{display:grid;gap:8px}
+.comp{margin:0;font-size:13px;color:var(--soft)}
+.pack .cell{background:var(--rxbg)!important;box-shadow:none!important}
+/* install */
+.install{display:grid;grid-template-columns:44px 1fr auto auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px 10px 10px 12px;box-shadow:var(--shadow);margin:0 0 14px}
+.install img{border-radius:11px}
+.itxt b{display:block;font-family:var(--display);font-size:17px;line-height:1.2}
+.itxt span{font-size:13.5px;color:var(--soft)}
+.ibtn{border:0;border-radius:999px;background:var(--or);color:var(--on-or);font-weight:700;padding:9px 14px;font-size:15px}
+.ix{border:0;background:transparent;color:var(--soft);font-size:24px;line-height:1;padding:4px 6px}
+.ios{grid-column:1/-1;background:var(--rxbg);border-radius:10px;padding:10px 12px;font-size:14.5px}
+@media (prefers-reduced-motion:no-preference){.install:not(.hidden){animation:rise .35s ease-out both}}
+/* demos */
+section.demos{padding:28px 0 6px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.demo{margin:0;background:linear-gradient(160deg,var(--rxbg),var(--orbg));border-radius:22px;padding:22px}
+.demo figcaption{margin-top:14px;font-size:15px;color:var(--ink);font-weight:700}
+.screen{background:var(--panel);border-radius:16px;box-shadow:var(--shadow);padding:16px;min-height:228px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.dm-pack{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px;background:linear-gradient(135deg,var(--foil1),var(--panel) 60%)}
+.dm-pack .cell{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--foil2));display:grid;place-items:center}
+.dm-pack .cell i{width:24px;height:11px;border-radius:6px;background:linear-gradient(90deg,var(--rx) 50%,var(--or) 50%);transform:rotate(-30deg);display:block}
+.dm-pack .nm b{display:block;font-size:15px}.dm-pack .nm small{color:var(--soft);font-size:13px}
+.dm-pack .sticker{font-size:16px}
+.dm-pay{display:flex;align-items:baseline;gap:8px;border-bottom:2px solid var(--ink);padding-bottom:4px;font-family:var(--display);font-weight:800}
+.dm-pay .rs{font-size:22px;color:var(--soft)}
+.dm-pay .typed{font-size:30px;display:inline-block;overflow:hidden;white-space:nowrap;width:3.2ch;font-variant-numeric:tabular-nums}
+.caret{width:2px;height:26px;background:var(--rx);align-self:center}
+.dm-meter{margin:6px 0 0}
+.dm-v{display:flex;align-items:center;gap:10px;border-radius:12px;padding:10px 12px;font-family:var(--display);font-weight:800;font-size:18px}
+.dm-v.red{background:var(--redbg);color:var(--red)}
+.dm-v .ic{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;flex:none}
+.dm-box{position:relative;border-radius:4px 4px 14px 14px;border:1px solid var(--line);padding:22px 14px 14px;display:grid;gap:10px}
+.dm-box::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:linear-gradient(90deg,var(--rx) 0 62%,var(--or) 62%);border-radius:4px 4px 0 0}
+.dm-strip{position:relative;display:flex;gap:12px;align-items:center;border:1.5px dashed var(--line);border-radius:8px;padding:10px 12px;overflow:hidden}
+.dm-strip .lbl{font-family:var(--sans);font-weight:600;color:var(--soft);font-size:13px;width:52px}
+.typed2{font-family:var(--dot);color:var(--ink-dot);font-size:22px;letter-spacing:.08em;display:inline-block;overflow:hidden;white-space:nowrap;width:7.6ch}
+.nmtxt{font-size:16px}
+.beam{position:absolute;left:0;right:0;top:-40px;height:40px;background:linear-gradient(180deg,transparent,rgba(255,210,63,.5),transparent);border-bottom:2px solid var(--or);opacity:0}
+.dm-stamp{position:absolute;right:12px;bottom:-6px;transform:rotate(-9deg);font-family:var(--display);font-weight:800;font-size:22px;color:var(--red);border:3px double var(--red);border-radius:8px;padding:6px 10px;background:var(--panel)}
+@media (prefers-reduced-motion:no-preference){
+  .dm-pay .typed{animation:typ 6s steps(3,end) infinite}
+  @keyframes typ{0%,12%{width:0}30%,88%{width:3.2ch}100%{width:0}}
+  .caret{animation:blink .8s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+  .dm-meter .pin{animation:pin 6s ease-in-out infinite}
+  @keyframes pin{0%,30%{left:0%}45%,88%{left:82%}100%{left:0%}}
+  .dm-v{animation:pop 6s ease-out infinite}
+  @keyframes pop{0%,46%{opacity:0;transform:translateY(8px) scale(.96)}52%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+  .typed2{animation:typ2 6s steps(7,end) infinite}
+  @keyframes typ2{0%,8%{width:0}34%,88%{width:7.6ch}100%{width:0}}
+  .beam{animation:beam 6s ease-in-out infinite}
+  @keyframes beam{0%,38%{top:-40px;opacity:0}40%{opacity:1}52%{top:100%;opacity:1}53%,100%{opacity:0;top:100%}}
+  .dm-stamp{animation:stamp 6s cubic-bezier(.2,1.6,.4,1) infinite}
+  @keyframes stamp{0%,54%{opacity:0;transform:rotate(-9deg) scale(1.9)}60%,88%{opacity:1;transform:rotate(-9deg) scale(1)}96%,100%{opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){.dm-meter .pin{left:82%}}
+@media (max-width:860px){.demo-grid{grid-template-columns:1fr}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:36px 0}
+.step{background:var(--panel);border-radius:16px;padding:18px;border:1px solid var(--line)}
+.step .n{font-family:var(--display);font-weight:800;font-size:44px;color:var(--rx);line-height:1}
+.step h3{font-family:var(--display);font-size:20px;margin:6px 0 4px}
+.step p{margin:0;font-size:15px;color:var(--soft)}
+@media (max-width:860px){
+  .float svg:nth-child(1),.float svg:nth-child(3){display:none}
+  .stamp{font-size:17px;padding:6px 9px}
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:6px}
+  .steps{grid-template-columns:1fr}
+  .where.on{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){.results>*{animation:rise .3s ease-out both}.results>*:nth-child(2){animation-delay:.05s}.results>*:nth-child(3){animation-delay:.1s}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
+/* faq */
+section.faq{padding:20px 0 0}
+.faq-list{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px;gap:12px;align-items:center;padding:16px 18px;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";width:28px;height:28px;border-radius:50%;background:var(--rxbg);color:var(--rx);display:grid;place-items:center;font-size:20px;font-weight:700;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details>div{padding:0 18px 18px;color:var(--soft);font-size:15.5px;max-width:68ch}
+.faq details>div p{margin:0}
+.faq details>div a{font-weight:700}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool" data-i="skip"></a>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Dawa Check home">
+    <svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) rotate(-35) translate(-50 -50)"><path d="M50 33 H73 A17 17 0 0 1 73 67 H50 Z" fill="#FFD23F"/><path d="M27 33 H50 V67 H27 A17 17 0 0 1 27 33 Z" fill="var(--rx)"/></g><path d="M56 52 L63 59 L77 42" fill="none" stroke="#2A1670" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span>
+  </a>
+  <nav class="nav" aria-label="Main"><a href="#tool" data-i="navPrice"></a><a href="#batch" data-i="navBatch"></a><a href="#latest" data-i="navLatest"></a><a href="#faq" data-i="navFaq"></a></nav>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true">Roman</button><button data-lang="en" aria-pressed="false">EN</button></div>
+</header>
+<div class="install hidden" id="install" role="region" aria-label="Install">
+  <img src="icons/icon-192.png" alt="" width="44" height="44">
+  <div class="itxt"><b data-i="instH"></b><span data-i="instP"></span></div>
+  <button class="ibtn" id="instBtn" data-i="instBtn"></button>
+  <button class="ix" id="instX" aria-label="Close">×</button>
+  <div class="ios hidden" id="iosHelp"><span data-i="iosHelp"></span></div>
+</div>
+
+<section class="hero">
+  <div class="float" aria-hidden="true">
+    <svg style="right:-14px;top:52%;--r:-25deg" width="70" height="30" viewBox="0 0 70 30"><rect x="1" y="1" width="68" height="28" rx="14" fill="var(--or)"/><rect x="35" y="1" width="34" height="28" rx="14" fill="var(--rx)"/><rect x="35" y="1" width="14" height="28" fill="var(--rx)"/></svg>
+    <svg style="left:44%;bottom:6%;--r:20deg" width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M8 22h28" stroke="var(--line)" stroke-width="2"/></svg>
+    <svg style="left:46%;top:2%;--r:40deg" width="54" height="24" viewBox="0 0 54 24"><rect x="1" y="1" width="52" height="22" rx="11" fill="var(--rx2)"/><rect x="27" y="1" width="26" height="22" rx="11" fill="var(--panel)"/><rect x="27" y="1" width="10" height="22" fill="var(--panel)"/></svg>
+  </div>
+  <div>
+    <h1 id="h1"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
+    <p class="lede" data-i="lede"></p>
+    <div class="facts"><div><b id="fP"></b><span data-i="fP"></span></div><div><b id="fA"></b><span data-i="fA"></span></div><div><b id="fU"></b><span data-i="fU"></span></div></div>
+  </div>
+
+  <div id="tool">
+    <div class="capsule" role="tablist">
+      <button role="tab" id="tab-p" aria-selected="true" aria-controls="pane-p" data-i="tabPrice"></button>
+      <button role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b" data-i="tabBatch"></button>
+    </div>
+
+    <div id="pane-p" role="tabpanel" aria-labelledby="tab-p" class="carton">
+      <div class="cbody">
+        <div class="chead"><div><h2 data-i="cpTitle"></h2><small data-i="cpSub"></small></div><span class="rx" aria-hidden="true">Rs</span></div>
+        <div class="perf"></div>
+        <div class="strip"><div class="row ac"><label for="qp" data-i="nameLbl"></label><input id="qp" class="txt" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="acP" aria-autocomplete="list"><div class="list" id="acP" role="listbox"></div></div></div>
+        <button class="cta" id="goP"><span data-i="findBtn"></span></button>
+        <div class="chips"><span data-i="try"></span><button class="chip" data-px="Panadol Extend">Panadol Extend</button><button class="chip" data-px="Brufen DS">Brufen DS</button><button class="chip" data-px="Risek">Risek</button></div>
+      </div>
+    </div>
+
+    <div id="pane-b" role="tabpanel" aria-labelledby="tab-b" class="carton hidden">
+      <div class="cbody">
+        <div class="chead"><div><h2 data-i="cbTitle"></h2><small data-i="cbSub"></small></div><span class="rx" aria-hidden="true">Rx</span></div>
+        <div class="perf"></div>
+        <div class="strip" id="stripB">
+          <div class="row"><label for="qb">B. No.</label><input id="qb" class="dot" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="139N086"></div>
+          <div class="row ac"><label for="qn" data-i="nameLbl"></label><input id="qn" class="txt" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="acB" aria-autocomplete="list"><div class="list" id="acB" role="listbox"></div></div>
+        </div>
+        <button class="help" id="helpBtn" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 13v-1M7 7a2 2 0 1 1 3 1.7c-.7.4-1 .8-1 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i="where"></span></button>
+        <div class="where" id="where">
+          <svg viewBox="0 0 150 96" width="150" aria-hidden="true"><rect x="2" y="10" width="146" height="70" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="2" y="10" width="146" height="10" fill="var(--rx)"/><rect x="12" y="30" width="60" height="8" rx="2" fill="var(--line)"/><rect x="12" y="44" width="40" height="6" rx="2" fill="var(--line)"/><rect x="84" y="46" width="56" height="28" rx="3" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="3 2"/><text x="89" y="57" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">B.No 139N086</text><text x="89" y="68" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">Exp 06-2027</text><path d="M112 92 l0 -14 m-5 5 l5 -5 l5 5" stroke="var(--red)" stroke-width="2" fill="none"/></svg>
+          <span data-i="whereTxt"></span>
+        </div>
+        <button class="cta" id="goB"><span data-i="checkBtn"></span><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+        <div class="chips"><span data-i="try"></span><button class="chip" data-ex="Novidat|139N086">Novidat 139N086</button><button class="chip" data-ex="Panadol|ZZZ999">Panadol ZZZ999</button></div>
+      </div>
+      <div class="stamp" id="stamp" aria-hidden="true"></div>
+    </div>
+
+    <div class="results" id="res" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="demos">
+  <div class="sh"><h2 data-i="demoH"></h2><p data-i="demoP"></p></div>
+  <div class="demo-grid">
+    <figure class="demo">
+      <div class="screen" aria-hidden="true">
+        <div class="dm-pack"><span class="cell"><i></i></span><span class="nm"><b>Panadol Extend</b><small>20's</small></span><span class="sticker">Rs 160.57</span></div>
+        <div class="dm-pay"><span class="rs">Rs</span><span class="typed">200</span><span class="caret"></span></div>
+        <div class="meter dm-meter" style="--lim:64%;--pos:0%"><span class="pin"></span></div>
+        <div class="dm-v red"><span class="ic">!</span><span data-i="dOver"></span></div>
+      </div>
+      <figcaption data-i="dPriceCap"></figcaption>
+    </figure>
+    <figure class="demo">
+      <div class="screen" aria-hidden="true">
+        <div class="dm-box"><div class="dm-strip"><span class="lbl">B. No.</span><span class="typed2">139N086</span><span class="beam"></span></div><div class="dm-strip"><span class="lbl">Dawa</span><span class="nmtxt">Novidat 500mg</span></div><span class="dm-stamp" data-i="dAlert"></span></div>
+      </div>
+      <figcaption data-i="dBatchCap"></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="latest" id="latest">
+  <div class="sh"><h2 data-i="latestH"></h2><p data-i="latestP"></p></div>
+  <div class="shelf" id="shelf"></div>
+</section>
+
+<section class="steps">
+  <div class="step"><div class="n">1</div><h3 data-i="s1h"></h3><p data-i="s1p"></p></div>
+  <div class="step"><div class="n">2</div><h3 data-i="s2h"></h3><p data-i="s2p"></p></div>
+  <div class="step"><div class="n">3</div><h3 data-i="s3h"></h3><p data-i="s3p"></p></div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="sh"><h2 data-i="faqH"></h2><p data-i="faqP"></p></div>
+  <div class="faq-list">
+    <details><summary data-i="q1"></summary><div><p data-i="a1"></p></div></details>
+    <details><summary data-i="q2"></summary><div><p data-i="a2"></p></div></details>
+    <details><summary data-i="q3"></summary><div><p data-i="a3"></p></div></details>
+    <details><summary data-i="q4"></summary><div><p data-ih="a4"></p></div></details>
+    <details><summary data-i="q5"></summary><div><p data-ih="a5"></p></div></details>
+  </div>
+</section>
+
+<section class="disc" aria-labelledby="disc-h">
+  <h2 class="disc-h" id="disc-h"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/></svg><span data-i="discH"></span></h2>
+  <ul>
+    <li><span data-i="d1"></span></li>
+    <li><span data-i="d2"></span></li>
+    <li><span data-i="d3"></span></li>
+    <li><span data-i="d4"></span></li>
+    <li><span data-ih="d5"></span></li>
+  </ul>
+  <p class="stamp-line" data-i="foot2"></p>
+</section>
+</div>
+
+<footer class="site-foot" id="site-foot"></footer>
+
+<script src="data/alerts.js"></script>
+<script src="data/prices.js"></script>
+<script src="assets/site.js"></script>
+<script>
+const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
+const T={
+ru:{h1a:"Dawa ki sarkari qeemat dekhein,",h1b:"zyada dene se bachein.",
+ lede:"Drug Regulatory Authority of Pakistan (DRAP) ki tay ki hui qeemat, 21,651 dawaon ke packs ke liye, ek search mein. Naam likhein, apna pack chunein, aur jo diya woh daalein. Saath mein batch number se check karein ke dawa naqli ya kharab to nahi.",
+ fA:"naqli aur kharab dawa alerts",fP:"packs ki sarkari qeemat",fU:"data update hua",
+ tabBatch:"Batch check",tabPrice:"Qeemat check",
+ cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail batches ki list se",
+ cpTitle:"Dawa ki qeemat check karein",cpSub:"Naam likhein, phir apna pack chunein",
+ nameLbl:"Dawa",where:"Batch number kahan milega?",
+ whereTxt:"Dibbe ki side ya neeche, ya goliyon ke patte ki pusht par. “B.No.”, “Batch” ya “Lot” ke saath likha hota hai, aksar expiry date ke paas.",
+ checkBtn:"Batch check karein",findBtn:"Qeemat dekhein",try:"Misaal:",
+ needInput:"Dawa ka naam ya batch number likhein",needInputP:"Shuru karne ke liye ek cheez kaafi hai.",
+ stampHit:"DRAP ALERT",stampClose:"DOBARA DEKHEIN",stampClear:"KOI ALERT NAHI",
+ hitTitle:"Is batch par DRAP ka alert hai",
+ hitBody:"DRAP ya provincial lab ne is batch ko naqli ya test mein fail qarar diya hai. Dawa band karne se pehle doctor ya pharmacist se baat karein, khaas taur par agar yeh roz ki dawa hai. Dawa aur rasid pharmacy wapas le jaayein.",
+ closeTitle:"Milta julta batch alert mein hai",closeBody:"Number bilkul same nahi, lekin qareeb hai. Dibbe par number dobara dhyan se parhein aur neeche wala alert dekhein.",
+ nameTitle:"Is dawa ke kuch batches par alert hain",nameBody:"Aap ka batch number in mein nahi mila. Neeche list se apna batch match kar ke dekhein.",
+ nameOnlyTitle:"Is naam se milte alerts",nameOnlyBody:"Apne dibbe ka batch number bhi daalein taake pakka pata chale.",
+ clearTitle:"Is batch par koi alert nahi mila",clearBody:"DRAP ke alerts (__RANGE__) mein yeh batch nahi hai. Iska matlab hai ke abhi tak is par alert nahi aaya; yeh lab test ki guarantee nahi.",
+ kind:{fake:"Naqli",substandard:"Test mein fail",unregistered:"Ghair registered",recall:"Recall"},
+ maker:"Company",date:"Alert",reason:"Wajah",readAlert:"DRAP ka poora alert",
+ share:"WhatsApp par bhejein",
+ priceNone:"Is dawa ki qeemat DRAP tay nahi karta",priceNoneBody:"DRAP sirf zaroori aur sasti dawaon ki qeemat tay karta hai. Baqi dawaon ke liye dibbe par chhapi qeemat (MRP) hi hadd hai, aur pharmacy is se zyada nahi le sakti.",
+ notListed:"Mera pack list mein nahi",mrpLbl:"Dibbe par chhapi qeemat (MRP)",mrpOver:"Aap se Rs __X__ zyada liye gaye",mrpOverBody:"Dibbe par chhapi qeemat Rs __M__ hai. Pharmacy is se zyada nahi le sakti. Pharmacist se baat karein aur dibba aur rasid sambhal kar rakhein.",mrpOk:"Aap ne dibbe ki qeemat ke andar diya",mrpOkBody:"Dibbe par chhapi qeemat Rs __M__ hai.",
+ variants:"variants",variant:"variant",chooseVar:"Strength chunein",regNo:"Reg. No.",since:"lagu",standard:"Standard",
+ instH:"Home screen par lagayein",instP:"Agli baar ek tap mein khulega, internet ke baghair bhi.",instBtn:"Lagayein",iosHelp:"Safari mein neeche Share button (⬆︎) dabayein, phir “Add to Home Screen” chunein.",
+ whoHelps:"Shikayat kahan karein",callDrap:"DRAP helpline (muft)",reportQuality:"DRAP ko naqli ya kharab dawa report karein",reportSide:"Agar dawa le li aur side effect hua to report karein",fileComplaint:"DRAP complaint page (Citizen's Portal ka link bhi yahin hai)",
+ draftH:"Shikayat ka tayyar text",copy:"Text copy karein",copied:"Copy ho gaya",copyManual:"Text select ho gaya, ab copy karein",keepProof:"Dawa ka dibba, rasid aur pharmacy ka naam/pata sambhal kar rakhein. Shikayat mein yehi saboot kaam aata hai.",waFamily:"Ghar walon ko batayein",printedOnBox:"dibbe par chhapi qeemat",
+ draftPrice:"Tareekh: __T__\nPharmacy ka naam aur pata: [yahan likhein]\nDawa: __N__\nMujh se Rs __V__ liye gaye, jab ke jaiz qeemat Rs __M__ hai (__S__).\nRasid mere paas mehfooz hai. Baraye meharbani karwai karein.",
+ draftBatch:"Tareekh: __T__\nPharmacy ka naam aur pata: [yahan likhein]\nDawa: __N__, Batch __B__\nYeh batch DRAP alert (__D__) mein __K__ qarar diya gaya hai, lekin ab bhi bik raha hai.\nDibba aur rasid mere paas mehfooz hain.",
+ scanBtn:"Dibbe ki photo se scan karein",scanSub:"Naya 2D barcode ya chhapa hua batch number",scanBtnP:"Dibbe ki photo se qeemat parhein",scanSubP:"Dawa ka naam aur chhapi qeemat",orType:"ya khud likhein",
+ scanBar:"Barcode dhoond rahe hain…",scanAI:"Dibba parh rahe hain… is mein kuch second lag sakte hain",
+ scanGotBar:"2D barcode se mila: batch __B__. Neeche result dekhein.",scanGotAI:"Photo se parha: __W__. Ek baar dibbe se zaroor mila lein, phir result dekhein.",
+ scanNone:"Photo se number nahi mil saka. Barcode ya batch number saaf roshni mein, qareeb se photo lein, ya khud likh dein.",
+ scanNoAI:"Is box par 2D barcode nahi mila. Purane dibbon ke liye batch number khud likh dein.",scanDenied:"Photo parhne ki ijazat nahi mili. Batch number khud likh dein.",
+ pickPack:"Apni dawa ki strength chunein, phir pack size",paidLbl:"Aap ne kitne diye?",limit:"Hadd",
+ over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki sarkari qeemat Rs __M__ hai (__D__ se lagu). Pehle pharmacist ko yeh screen dikhayein. Wapas na karein to neeche diye tareeqon se shikayat karein.",
+ ok:"Aap ne sahi qeemat di",okBody:"DRAP ki sarkari qeemat Rs __M__ hai (__D__ se lagu).",
+ latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke taaza alerts. Kisi dibbe par tap karein aur uska batch check ho jayega.",
+ tapCheck:"Batch check karein",
+ s1h:"Naam likhein",s1p:"Likhna shuru karte hi dawaon ki list aa jati hai.",
+ s2h:"Jo diya woh daalein",s2p:"Apna pack chunein aur rasid wali qeemat likhein. Meter foran batata hai ke qeemat hadd ke andar hai ya bahar.",
+ s3h:"Zyada liya? Shikayat karein",s3p:"DRAP helpline ek tap par, aur shikayat ka text pehle se likha hua.",
+ demoH:"Kaise kaam karta hai",demoP:"Har check 10 second se kam mein.",dPriceCap:"Qeemat check: pack chunein, jo diya woh likhein",dBatchCap:"Batch check: dibbe ka batch number likhein",dOver:"Rs 39.43 zyada liye gaye",dAlert:"DRAP ALERT",
+ foot1:"Yeh medical mashwara nahi hai. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
+ foot2:"Data: DRAP recall aur rapid alerts (__RANGE__, __N__ entries) aur DRAP PharmaPrice Index (__P__ packs). Aakhri update: __U__.",
+ skip:"Seedha tool par jayein",navPrice:"Qeemat",navBatch:"Batch",navLatest:"Alerts",navFaq:"Sawal jawab",
+ faqH:"Aksar pooche gaye sawal",faqP:"Pharmacy counter par yahi baatein sab se zyada hoti hain.",
+ q1:"Pharmacist keh raha hai ke nayi qeemat aa gayi hai. Kya karun?",
+ a1:"Ho sakta hai. DRAP waqt waqt par qeemat badalta hai, aur har pack ke saath likha hai ke qeemat kis tareekh se lagu hai. Pharmacist se nayi notification dikhane ko kahein aur dibbe par chhapi qeemat (MRP) dekhein. Pharmacy us se zyada nahi le sakti.",
+ q2:"Meri dawa list mein nahi mil rahi.",
+ a2:"Naam ka sirf pehla hissa likh kar dekhein, jaise \"Augmentin\" ke bajaye \"Augm\". Phir bhi na mile to \"Mera pack list mein nahi\" dabayein aur dibbe par chhapi qeemat se mila lein.",
+ q3:"Batch par koi alert nahi aaya. Kya dawa pakka asli hai?",
+ a3:"Yeh guarantee nahi. Hum sirf woh batches dikhate hain jin par DRAP alert jaari kar chuka hai. Packing ajeeb lage, seal tooti ho ya qeemat shak ki had tak kam ho, to dawa na lein aur pharmacist se poochein.",
+ q4:"Kya aap meri searches ya qeemat save karte hain?",
+ a4:"Nahi. Search aap ke phone par hi chalti hai. Analytics on ho to sirf itna gina jata hai ke kaun si dawa search hui, aap ka naam ya number kabhi nahi. Tafseel <a href=\"privacy.html\">Privacy</a> page par hai.",
+ q5:"Yeh data kahan se aata hai?",
+ a5:"Qeematein DRAP ki price list se aur alerts DRAP ke recall aur rapid alert pages se. Har alert ke neeche asal DRAP link hai. Poora tareeqa <a href=\"how-we-verify.html\">yahan</a> likha hai.",
+ discH:"Zaroori baat",
+ d1:"Dawa Check sirf maloomat ke liye hai, medical mashwara nahi. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
+ d2:"DRAP qeematein badalta rehta hai. Hamara data aakhri update ki tareekh tak ka hai, is liye bara faisla karne se pehle DRAP ki website par bhi dekh lein.",
+ d3:"Alert na milna is baat ki guarantee nahi ke dawa asli hai. Hum sirf DRAP ke jaari kiye hue alerts dikhate hain.",
+ d4:"Hum DRAP, kisi sarkari idare, pharmacy ya dawa company se mutaliq nahi, aur koi dawa nahi bechte.",
+ d5:"Na account, na login. Search aap ke phone par rehti hai. Google Analytics cookies sirf page ginti ke liye hain, aur Europe ke visitors se pehle poocha jata hai. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ foot3:"Alert na milna is baat ki guarantee nahi ke dawa asli ya theek hai. Shak ho to dibba, batch aur rasid sambhal kar rakhein."},
+en:{h1a:"See the official medicine price,",h1b:"and stop overpaying.",
+ lede:"Official prices set by the Drug Regulatory Authority of Pakistan (DRAP) for 21,651 medicine packs, in one search. Type the name, pick your pack, and enter what you paid. You can also check the batch number against DRAP's fake and failed medicine alerts.",
+ fA:"fake and failed medicine alerts",fP:"packs with official prices",fU:"data last updated",
+ tabBatch:"Batch check",tabPrice:"Price check",
+ cbTitle:"Check a batch number",cbSub:"Against DRAP's list of fake and failed batches",
+ cpTitle:"Check a medicine price",cpSub:"Type the name, then pick your pack",
+ nameLbl:"Medicine",where:"Where do I find the batch number?",
+ whereTxt:"On the side or bottom of the box, or the back of the tablet strip. It's printed after “B.No.”, “Batch” or “Lot”, usually near the expiry date.",
+ checkBtn:"Check the batch",findBtn:"See the price",try:"Try:",
+ needInput:"Type a medicine name or batch number",needInputP:"Either one is enough to start.",
+ stampHit:"DRAP ALERT",stampClose:"CHECK AGAIN",stampClear:"NO ALERT",
+ hitTitle:"DRAP has an alert on this batch",
+ hitBody:"DRAP or a provincial lab found this batch fake or failing lab tests. Talk to your doctor or pharmacist before stopping it, especially if you take it daily. Take the medicine and receipt back to the pharmacy.",
+ closeTitle:"A similar batch is in an alert",closeBody:"The number isn't an exact match, but it's close. Re-read the number on the box and check the alert below.",
+ nameTitle:"Some batches of this medicine have alerts",nameBody:"Your batch number isn't among them. Compare your batch with the list below.",
+ nameOnlyTitle:"Alerts matching this name",nameOnlyBody:"Add your box's batch number for a definite answer.",
+ clearTitle:"No alert on this batch",clearBody:"This batch isn't in DRAP's alerts (__RANGE__). That means no alert has been issued for it so far; it isn't a lab-test guarantee.",
+ kind:{fake:"Fake",substandard:"Failed lab test",unregistered:"Unregistered",recall:"Recall"},
+ maker:"Company",date:"Alert",reason:"Reason",readAlert:"Full DRAP alert",
+ share:"Send on WhatsApp",
+ priceNone:"DRAP doesn't set the price for this medicine",priceNoneBody:"DRAP sets prices only for essential and low-price medicines. For everything else, the price printed on the box (MRP) is the limit, and a pharmacy can't charge more.",
+ notListed:"My pack isn't listed",mrpLbl:"Price printed on the box (MRP)",mrpOver:"You paid Rs __X__ over the printed price",mrpOverBody:"The printed price is Rs __M__. A pharmacy can't charge more than that. Talk to the pharmacist and keep the box and receipt.",mrpOk:"You paid within the printed price",mrpOkBody:"The printed price is Rs __M__.",
+ variants:"variants",variant:"variant",chooseVar:"Pick a strength",regNo:"Reg. No.",since:"since",standard:"Standard",
+ instH:"Add to your home screen",instP:"Opens in one tap next time, even offline.",instBtn:"Add",iosHelp:"In Safari, tap the Share button (⬆︎) at the bottom, then choose “Add to Home Screen”.",
+ whoHelps:"Who can act on this",callDrap:"DRAP helpline (toll-free)",reportQuality:"Report a fake or defective medicine to DRAP",reportSide:"Took it and had a side effect? Report it",fileComplaint:"DRAP complaints page (links to the Citizen's Portal too)",
+ draftH:"Ready-made complaint text",copy:"Copy text",copied:"Copied",copyManual:"Text selected, copy it now",keepProof:"Keep the box, receipt, and the pharmacy's name and address. That's the evidence a complaint needs.",waFamily:"Warn family",printedOnBox:"printed on the box",
+ draftPrice:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__\nI was charged Rs __V__, while the legal price is Rs __M__ (__S__).\nI have kept the receipt. Please take action.",
+ draftBatch:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__, Batch __B__\nDRAP declared this batch __K__ in an alert (__D__), but it is still being sold.\nI have kept the box and receipt.",
+ scanBtn:"Scan a photo of the box",scanSub:"New 2D barcode or the printed batch number",scanBtnP:"Read the price from a photo",scanSubP:"Medicine name and printed price",orType:"or type it",
+ scanBar:"Looking for a barcode…",scanAI:"Reading the box… this can take a few seconds",
+ scanGotBar:"Found in the 2D barcode: batch __B__. See the result below.",scanGotAI:"Read from the photo: __W__. Double-check it against the box, then see the result.",
+ scanNone:"Couldn't read a number from this photo. Take a closer, well-lit photo of the barcode or batch number, or type it.",
+ scanNoAI:"No 2D barcode found on this box. For older boxes, type the batch number.",scanDenied:"Permission to read the photo wasn't given. Type the batch number instead.",
+ pickPack:"Pick your medicine's strength, then the pack size",paidLbl:"What did you pay?",limit:"Legal limit",
+ over:"You paid Rs __X__ over the legal price",overBody:"DRAP's official price is Rs __M__ (in effect since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
+ ok:"You paid within the legal price",okBody:"DRAP's official price is Rs __M__ (in effect since __D__).",
+ latestH:"Fake medicines caught recently",latestP:"DRAP's latest alerts. Tap a box to check its batch.",
+ tapCheck:"Check this batch",
+ s1h:"Type the name",s1p:"Matching medicines appear as you type.",
+ s2h:"Enter what you paid",s2p:"Pick your pack and type the price on your receipt. The meter shows right away whether it's within the limit.",
+ s3h:"Overcharged? Complain",s3p:"DRAP's helpline is one tap away, with the complaint text already written.",
+ demoH:"How it works",demoP:"Each check takes under 10 seconds.",dPriceCap:"Price check: pick your pack, type what you paid",dBatchCap:"Batch check: type the batch number from the box",dOver:"Rs 39.43 overcharged",dAlert:"DRAP ALERT",
+ foot1:"This isn't medical advice. Ask a doctor or pharmacist before stopping or switching any medicine.",
+ foot2:"Data: DRAP recall and rapid alerts (__RANGE__, __N__ entries) and the DRAP PharmaPrice Index (__P__ packs). Last updated: __U__.",
+ skip:"Skip to the tool",navPrice:"Price",navBatch:"Batch",navLatest:"Alerts",navFaq:"FAQ",
+ faqH:"Questions people ask",faqP:"The arguments that happen at the pharmacy counter.",
+ q1:"The pharmacist says a new price came out. What now?",
+ a1:"It's possible. DRAP revises prices from time to time, and each pack here shows the date its price took effect. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that.",
+ q2:"I can't find my medicine.",
+ a2:"Type only the start of the name, like \"Augm\" instead of \"Augmentin\". Still nothing? Tap \"My pack isn't listed\" and compare with the price printed on the box.",
+ q3:"No alert came up. Does that mean the medicine is genuine?",
+ a3:"No guarantee. We only show batches DRAP has already issued an alert for. If the packing looks off, the seal is broken or the price is suspiciously low, don't take it and ask a pharmacist.",
+ q4:"Do you save my searches or what I paid?",
+ a4:"No. The search runs on your phone. If analytics is on, it counts which medicine names get searched, never your name or number. Details are on the <a href=\"privacy.html\">Privacy</a> page.",
+ q5:"Where does the data come from?",
+ a5:"Prices come from DRAP's price list and alerts from DRAP's recall and rapid alert pages. Every alert links to the original DRAP notice. The full method is <a href=\"how-we-verify.html\">here</a>.",
+ discH:"Disclaimer",
+ d1:"Dawa Check is an information tool, not medical advice. Ask a doctor or pharmacist before stopping or switching any medicine.",
+ d2:"DRAP revises prices often. Our data is current up to the last update date, so check DRAP's own website before acting on anything big.",
+ d3:"No alert doesn't prove a medicine is genuine. We only show alerts DRAP has published.",
+ d4:"We aren't affiliated with DRAP, any government body, pharmacy or drug company, and we sell nothing.",
+ d5:"No account, no login. Your searches stay on your phone. Optional Google Analytics cookies count page visits, and visitors in Europe are asked first. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ foot3:"No alert is no guarantee a medicine is genuine. If in doubt, keep the box, batch number, and receipt."}};
+let L=DC.lang;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fill=s=>s.replace("__RANGE__",META.range).replace("__N__",ALERTS.length.toLocaleString("en")).replace("__P__",PRICES.length.toLocaleString("en")).replace("__U__",META.updated);
+const norm=s=>(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"");
+const low=s=>(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const rs=n=>n.toLocaleString("en-PK",{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtDate=d=>{const x=new Date(d+"T00:00:00");return isNaN(x)?d:x.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})};
+
+ALERTS.forEach(a=>{a._b=(a.b||"").split(/[,;&\/]|\band\b|\s{2,}/i).map(norm).filter(x=>x.length>=2);if(!a._b.length&&a.b)a._b=[norm(a.b)];a._n=low(a.p+" "+a.t)});
+PRICES.forEach(r=>{r._n=low(r[0]+" "+r[1])});
+const short=p=>p.replace(/\s*\(.*$/,"").replace(/[®™]/g,"").trim();
+const alertNames=[...new Set(ALERTS.map(a=>short(a.p)).filter(x=>x.length>2&&x.length<60))];
+const priceNames=[...new Set(PRICES.map(r=>r[0].trim()))];
+
+$("fA").textContent=ALERTS.length.toLocaleString("en");
+$("fP").textContent=PRICES.length.toLocaleString("en");
+$("fU").textContent=META.updated;
+
+function applyLang(){
+  document.documentElement.lang=L==="en"?"en":"ur-Latn";
+  document.querySelectorAll("[data-i]").forEach(el=>el.textContent=fill(T[L][el.dataset.i]));
+  document.querySelectorAll("[data-ih]").forEach(el=>el.innerHTML=T[L][el.dataset.ih]);
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===L));
+  renderShelf();
+  if(state==="b")runBatch(true); else if(state==="p")runPrice(true);
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.lang;DC.setLang(L);applyLang();DC.track("lang_switch",{lang:L})});
+
+let state=null;
+function setTab(which){
+  const b=which==="b";
+  $("tab-b").setAttribute("aria-selected",b);$("tab-p").setAttribute("aria-selected",!b);
+  $("pane-b").classList.toggle("hidden",!b);$("pane-p").classList.toggle("hidden",b);
+  $("res").innerHTML="";state=null;hideStamp();
+}
+$("tab-b").onclick=()=>setTab("b");$("tab-p").onclick=()=>setTab("p");
+function fromHash(){if(location.hash==="#batch"){setTab("b");$("tool").scrollIntoView({block:"start"})}}
+addEventListener("hashchange",fromHash);
+$("helpBtn").onclick=()=>{const w=$("where");w.classList.toggle("on");$("helpBtn").setAttribute("aria-expanded",w.classList.contains("on"))};
+
+/* autocomplete */
+function autocomplete(input,list,source,onPick){
+  let idx=-1,items=[];
+  const close=()=>{list.classList.remove("on");input.setAttribute("aria-expanded","false");idx=-1};
+  input.addEventListener("input",()=>{
+    const q=low(input.value);if(q.length<2){close();return}
+    const st=[],ct=[];
+    for(const n of source){const l=low(n);if(l.startsWith(q))st.push(n);else if(ct.length<20&&l.includes(q))ct.push(n);if(st.length>=8)break}
+    items=[...st,...ct].slice(0,7);
+    if(!items.length){close();return}
+    list.innerHTML=items.map((n,i)=>`<button type="button" role="option" id="${list.id}-${i}" aria-selected="false">${esc(n)}</button>`).join("");
+    list.classList.add("on");input.setAttribute("aria-expanded","true");
+    list.querySelectorAll("button").forEach((b,i)=>b.onmousedown=e=>{e.preventDefault();input.value=items[i];close();onPick&&onPick()});
+  });
+  input.addEventListener("keydown",e=>{
+    if(!list.classList.contains("on"))return;
+    const bs=list.querySelectorAll("button");
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();idx=(idx+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length;bs.forEach((b,i)=>b.setAttribute("aria-selected",i===idx));input.setAttribute("aria-activedescendant",bs[idx].id)}
+    else if(e.key==="Enter"&&idx>=0){e.preventDefault();e.stopImmediatePropagation();input.value=items[idx];close();onPick&&onPick()}
+    else if(e.key==="Escape")close();
+  });
+  input.addEventListener("blur",()=>setTimeout(close,120));
+}
+autocomplete($("qn"),$("acB"),alertNames.concat(priceNames));
+autocomplete($("qp"),$("acP"),priceNames,()=>runPrice());
+
+/* stamp */
+function hideStamp(){const s=$("stamp");s.className="stamp";s.textContent=""}
+function showStamp(kind,text){const s=$("stamp");s.className="stamp";void s.offsetWidth;s.textContent=text;s.className="stamp show "+kind}
+
+const kindTag=k=>`<span class="tag ${k==="fake"?"t-fake":k==="substandard"?"t-sub":"t-other"}">${esc(T[L].kind[k]||k)}</span>`;
+const alertCard=a=>`<article class="item"><div class="t"><b>${esc(a.p)}</b>${kindTag(a.k)}</div>
+ <div class="meta">${a.b?`Batch <span class="bn">${esc(a.b)}</span> · `:""}${T[L].date}: ${fmtDate(a.d)}</div>
+ ${a.m?`<div class="meta">${T[L].maker}: ${esc(a.m)}</div>`:""}${a.r?`<div class="meta">${T[L].reason}: ${esc(a.r)}</div>`:""}
+ <div class="meta"><a href="${esc(a.l)}" target="_blank" rel="noopener">${T[L].readAlert} ↗</a></div></article>`;
+const verdict=(cls,ic,h,p,extra)=>`<div class="verdict ${cls}"><div class="ic" aria-hidden="true">${ic}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>${extra?`<div class="vx">${extra}</div>`:""}</div>`;
+const WA_ICON='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.1z"/></svg>';
+const PHONE='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>';
+const waLink=t=>`<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t+"\n"+location.href)}">${WA_ICON}${T[L].waFamily}</a>`;
+const DRAP_TEL="080003727";
+function actions(kind,complaint,share){
+  const call=`<a class="act primary" href="tel:${DRAP_TEL}">${PHONE}${T[L].callDrap} <span class="num">0800-03727</span></a>`;
+  let h=`<div class="acts"><p class="acts-h">${T[L].whoHelps}</p>${call}`;
+  if(kind==="batch"){
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://www.dra.gov.pk/safety-information/safety-communication/safety-reporting/product-quality-defects/">${T[L].reportQuality} ↗</a>`;
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://vigiflow-eforms.who-umc.org/pk/adr">${T[L].reportSide} ↗</a>`;
+  }else{
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://www.dra.gov.pk/complaints/">${T[L].fileComplaint} ↗</a>`;
+  }
+  h+=`<details class="draft"><summary>${T[L].draftH}</summary><textarea rows="5" aria-label="${T[L].draftH}">${esc(complaint)}</textarea><button type="button" class="copy">${T[L].copy}</button></details>`;
+  h+=`<p class="keep">${T[L].keepProof}</p>${waLink(share)}</div>`;
+  return h;
+}
+document.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;if(a.matches(".act.primary"))DC.track("call_helpline");else if(a.matches(".wa"))DC.track("whatsapp_share");else if(a.closest(".item"))DC.track("open_drap_alert");else if(a.matches(".act"))DC.track("open_drap_report")});
+document.addEventListener("click",async e=>{const b=e.target.closest(".copy");if(!b)return;DC.track("complaint_copy");const ta=b.parentElement.querySelector("textarea");ta.select();let ok=false;try{await navigator.clipboard.writeText(ta.value);ok=true}catch(_){try{ok=document.execCommand("copy")}catch(__){}}b.textContent=ok?T[L].copied:T[L].copyManual;setTimeout(()=>b.textContent=T[L].copy,2500)});
+const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+
+function runBatch(silent){
+  state="b";
+  const qbRaw=$("qb").value.trim(),qb=norm(qbRaw),qnRaw=$("qn").value.trim(),qn=low(qnRaw),out=$("res");
+  if(!qb&&qn.length<3){out.innerHTML=verdict("v-amber","!",T[L].needInput,T[L].needInputP);hideStamp();return}
+  const words=qn?qn.split(" "):[];
+  const nameHit=a=>words.every(w=>a._n.includes(w));
+  let exact=[],close=[];
+  if(qb){ALERTS.forEach(a=>{if(a._b.some(x=>x===qb))exact.push(a);else if(qb.length>=5&&a._b.some(x=>x.length>=5&&(x.includes(qb)||qb.includes(x))))close.push(a)});
+    if(qn){const e2=exact.filter(nameHit);if(e2.length)exact=e2;close=close.filter(nameHit)}}
+  const byName=qn.length>=3?ALERTS.filter(nameHit):[];
+  const label=[qnRaw,qbRaw&&("batch "+qbRaw)].filter(Boolean).join(", ");
+  const render=()=>{
+    let h,st;
+    if(exact.length){h=verdict("v-red","!",T[L].hitTitle,T[L].hitBody,actions("batch",T[L].draftBatch.replace("__N__",exact[0].p).replace("__B__",exact[0].b||qbRaw).replace("__K__",T[L].kind[exact[0].k]).replace("__D__",fmtDate(exact[0].d)).replace("__T__",today()),`⚠️ ${label}: ${T[L].hitTitle}. ${T[L].kind[exact[0].k]} (${fmtDate(exact[0].d)})`))+exact.map(alertCard).join("");st=["red",T[L].stampHit]}
+    else if(close.length){h=verdict("v-amber","?",T[L].closeTitle,T[L].closeBody)+close.slice(0,10).map(alertCard).join("");st=["amber",T[L].stampClose]}
+    else if(qb&&byName.length){h=verdict("v-amber","?",T[L].nameTitle,T[L].nameBody)+byName.slice(0,15).map(alertCard).join("");st=["green",T[L].stampClear]}
+    else if(!qb&&byName.length){h=verdict("v-amber","i",T[L].nameOnlyTitle,T[L].nameOnlyBody)+byName.slice(0,15).map(alertCard).join("");st=null}
+    else{h=verdict("v-green","✓",T[L].clearTitle,fill(T[L].clearBody));st=qb?["green",T[L].stampClear]:null}
+    out.innerHTML=h; st?showStamp(st[0],st[1]):hideStamp();
+    if(!silent)DC.track("batch_check",{result:exact.length?"alert":close.length?"close_match":byName.length?"name_only":"clear",medicine:qnRaw.slice(0,80)});
+  };
+  if(silent){render();return}
+  const strip=$("stripB");strip.classList.remove("scanning");void strip.offsetWidth;strip.classList.add("scanning");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(()=>{strip.classList.remove("scanning");render();if(innerWidth<860)out.scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"})},reduce?0:650);
+}
+$("goB").onclick=()=>runBatch();
+["qb","qn"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")runBatch()}));
+$("qb").addEventListener("input",e=>{const p=e.target.selectionStart;e.target.value=e.target.value.toUpperCase();e.target.setSelectionRange(p,p)});
+document.querySelectorAll("[data-ex]").forEach(c=>c.onclick=()=>{const[n,b]=c.dataset.ex.split("|");$("qn").value=n;$("qb").value=b;runBatch()});
+
+let hits=[],groups=[];
+const ICON={
+ tablet:'<circle cx="12" cy="12" r="8.5" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.8"/><path d="M7 12h10" stroke="var(--rx)" stroke-width="1.8" stroke-linecap="round"/>',
+ capsule:'<g transform="rotate(-40 12 12)"><rect x="3" y="8" width="18" height="8" rx="4" fill="#fff" stroke="var(--rx)" stroke-width="1.6"/><path d="M12 8h5a4 4 0 0 1 0 8h-5z" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/></g>',
+ syrup:'<path d="M9 3h6v3l1.5 2.2c.3.5.5 1 .5 1.6V20a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 20V9.8c0-.6.2-1.1.5-1.6L9 6z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.2 13h9.6v5.5H7.2z" fill="var(--or)"/><path d="M9 6h6" stroke="var(--rx)" stroke-width="1.6"/>',
+ inj:'<g transform="rotate(45 12 12)"><rect x="9" y="4" width="6" height="12" rx="1" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6"/><rect x="9.8" y="10" width="4.4" height="5.2" fill="var(--or)"/><path d="M12 16v5M12 1v3M9.5 1.5h5" stroke="var(--rx)" stroke-width="1.6" stroke-linecap="round"/></g>',
+ cream:'<path d="M5 9.5 15.5 6l3 9L8 18.5z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="m18.5 15 2.5-.8-1.6-5-2.4.8" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/>',
+ drops:'<path d="M12 3.5c3 4 5 6.6 5 9.3a5 5 0 0 1-10 0c0-2.7 2-5.3 5-9.3z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.7 13.5a2.4 2.4 0 0 0 2.3 2.3" stroke="var(--or)" stroke-width="2" stroke-linecap="round" fill="none"/>',
+ inhaler:'<path d="M8 3h5l1 9h-7z" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 12h9v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM15 15h4v4h-4" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/>',
+ sachet:'<path d="M6 4h12v16H6z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 7h12M6 17h12" stroke="var(--rx)" stroke-width="1.4" stroke-dasharray="1.5 1.5"/><circle cx="12" cy="12" r="2.6" fill="var(--or)"/>',
+ other:'<rect x="6.5" y="7" width="11" height="14" rx="2" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6"/><rect x="5.5" y="3.5" width="13" height="4" rx="1" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/><path d="M12 11v6M9 14h6" stroke="var(--rx)" stroke-width="1.6" stroke-linecap="round"/>'
+};
+const ficon=(f,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="true">${ICON[f]||ICON.other}</svg>`;
+function formOf(r){
+  const t=(r[0]+" "+r[1]+" "+r[3]).toLowerCase();
+  if(/inhal|respule|rotacap|evohaler|accuhaler|nebul/.test(t))return"inhaler";
+  if(/inj|vial|ampoul|infusion|\bi\.?v\b|prefilled|pre-filled|syringe/.test(t))return"inj";
+  if(/drop/.test(t))return"drops";
+  if(/syrup|susp|elixir|linctus|liquid|oral sol|solution|dry powder for|\bml\b/.test(t))return"syrup";
+  if(/cream|ointment|\boint\b|\bgel\b|lotion|paste|\bspray\b/.test(t))return"cream";
+  if(/sachet|granule|powder/.test(t))return"sachet";
+  if(/caps|capsule|\bcap\b/.test(t))return"capsule";
+  if(/tab|caplet|\bdt\b/.test(t))return"tablet";
+  return"other";
+}
+const STR=/\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)(?:\s*\/\s*\d*\s*(?:ml|g))?/i;
+function baseOf(b){
+  let s=b.replace(/[®™]/g,"").replace(/\(.*?\)/g," ");
+  s=s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)\b.*$/i,"");
+  s=s.replace(/\s(?:tablets?|tabs?|caplets?|capsules?|caps?|syrup|suspension|susp|elixir|drops?|injection|inj|infusion|cream|ointment|gel|lotion|sachets?|granules|powder|ds|forte|plus|xr|sr|er|mr|cr|dt|extra|extend|max|kids?|junior|pediatric|paediatric|liquid|retard|i\.?v\.?|\d+)(?:\b|\s|$).*$/i,"");
+  s=s.replace(/[-.,]+$/,"").trim();
+  return s||b.split(/\s+/)[0];
+}
+const tcase=s=>s.toLowerCase().replace(/(^|\s|-)([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+function variantLabel(r,base){
+  let rest=r[0].replace(/[®™]/g,"");
+  const i=rest.toLowerCase().indexOf(base.toLowerCase());
+  if(i>=0)rest=rest.slice(i+base.length);
+  rest=rest.replace(/^[\s\-–,.]+/,"").trim();
+  rest=rest&&rest===rest.toUpperCase()?tcase(rest):rest;
+  if(!STR.test(rest)){const all=(r[1]||"").match(new RegExp(STR.source,"gi"))||[];const m=all.find(x=>!/ml$/i.test(x.trim()))||all[0];if(m)rest=(rest?rest+" ":"")+m.replace(/\s+/g,"")}
+  rest=rest.charAt(0).toUpperCase()+rest.slice(1);
+  rest=rest.replace(/\b(ds|xr|sr|cr|mr|er|dt|iv|i\.v\.)\b/gi,x=>x.toUpperCase());
+  return rest||T[L].standard;
+}
+function runPrice(silent){
+  state="p";hideStamp();
+  const q=low($("qp").value),out=$("res");
+  if(q.length<3){out.innerHTML=verdict("v-amber","!",T[L].needInput,"");return}
+  const w=q.split(" ");
+  const rows=PRICES.filter(r=>w.every(x=>r._n.includes(x)));
+  if(!silent)DC.track("price_search",{term:q.slice(0,80),results:rows.length});
+  if(!rows.length){out.innerHTML=verdict("v-amber","i",T[L].priceNone,T[L].priceNoneBody)+mrpBox();wireMrp();return}
+  const gm=new Map();
+  for(const r of rows){
+    const base=baseOf(r[0]),key=low(base)+"|"+low(r[2]).replace(/\b(pvt|private|ltd|limited|pakistan|pak)\b/g,"").replace(/\s+/g," ").trim();
+    if(!gm.has(key))gm.set(key,{base,maker:r[2],vars:new Map()});
+    const g=gm.get(key),vk=low(r[0])+"|"+low(r[1]);
+    if(!g.vars.has(vk))g.vars.set(vk,{label:variantLabel(r,base),form:formOf(r),comp:r[1],rows:[]});
+    g.vars.get(vk).rows.push(r);
+  }
+  groups=[...gm.values()].map(g=>{
+    const vars=[...g.vars.values()];
+    vars.forEach(v=>v.rows.sort((a,b)=>a[4]-b[4]));
+    vars.sort((a,b)=>a.label.localeCompare(b.label,undefined,{numeric:true}));
+    const forms=[...new Set(vars.map(v=>v.form))];
+    return{base:g.base,maker:g.maker,vars,form:forms[0],sel:0};
+  });
+  groups.sort((a,b)=>(low(a.base).startsWith(w[0])?0:1)-(low(b.base).startsWith(w[0])?0:1)||b.vars.length-a.vars.length||a.base.localeCompare(b.base));
+  groups=groups.slice(0,15);
+  hits=[];
+  out.innerHTML=`<p class="meta" style="margin:0">${T[L].pickPack}</p><div class="groups">${groups.map((g,gi)=>`
+   <article class="grp"><div class="g-head"><span class="g-ic">${ficon(g.form,30)}</span><span class="g-nm"><b>${esc(tcase(g.base))}</b><small>${esc(g.maker)}</small></span><span class="g-ct">${g.vars.length} ${g.vars.length>1?T[L].variants:T[L].variant}</span></div>
+   <div class="vchips" role="group" aria-label="${T[L].chooseVar}">${g.vars.map((v,vi)=>`<button class="vchip" data-g="${gi}" data-v="${vi}" aria-pressed="${vi===0}">${ficon(v.form,18)}<span>${esc(v.label)}</span></button>`).join("")}</div>
+   <div class="packs" id="packs${gi}"></div></article>`).join("")}</div>`;
+  groups.forEach((g,gi)=>renderPacks(gi,0));
+  out.querySelectorAll(".vchip").forEach(b=>b.onclick=()=>{const gi=+b.dataset.g,vi=+b.dataset.v;out.querySelectorAll(`.vchip[data-g="${gi}"]`).forEach(x=>x.setAttribute("aria-pressed",x===b));renderPacks(gi,vi)});
+  out.insertAdjacentHTML("beforeend",`<button class="chip" id="notListed" style="justify-self:start">${T[L].notListed}</button><div id="mrpWrap"></div>`);
+  $("notListed").onclick=()=>{out.querySelectorAll(".pay").forEach(x=>{x.classList.add("hidden");x.innerHTML=""});out.querySelectorAll(".pack").forEach(x=>x.setAttribute("aria-pressed","false"));$("mrpWrap").innerHTML=verdict("v-amber","i",T[L].priceNone,T[L].priceNoneBody)+mrpBox();wireMrp();$("mrp").focus()};
+}
+function renderPacks(gi,vi){
+  const v=groups[gi].vars[vi],box=$("packs"+gi);
+  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||"Pack")}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since} ${esc(r[5])}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
+  box.querySelectorAll(".pack").forEach(b=>b.onclick=()=>openPay(+b.dataset.i));
+}
+function mrpBox(){return `<div class="paybox"><label for="mrp" class="meta" style="display:block;margin:0 0 6px">${T[L].mrpLbl}</label><div class="payrow"><span>Rs</span><input id="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div><label for="mpaid" class="meta" style="display:block;margin:16px 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="mpaid" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="mmeter"></div><div id="mout"></div></div>`}
+function wireMrp(){
+  const go=()=>{const m=parseFloat($("mrp").value.replace(/[^0-9.]/g,"")),v=parseFloat($("mpaid").value.replace(/[^0-9.]/g,"")),o=$("mout"),mt=$("mmeter");
+    if(!(m>0)||!(v>0)){o.innerHTML="";mt.innerHTML="";return}
+    const max=Math.max(v,m)*1.25;
+    mt.innerHTML=`<div class="meter" style="--lim:${m/max*100}%;--pos:${Math.min(v/max*100,100)}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(m)}</span></div>`;
+    o.innerHTML=v>m+0.5?`<div style="margin-top:14px">${verdict("v-red","!",T[L].mrpOver.replace("__X__",rs(v-m)),T[L].mrpOverBody.replace("__M__",rs(m)),actions("price",T[L].draftPrice.replace("__N__",$("qp").value).replace("__V__",rs(v)).replace("__M__",rs(m)).replace("__S__",T[L].printedOnBox).replace("__T__",today()),`${$("qp").value}: printed MRP Rs ${rs(m)}, charged Rs ${rs(v)}`))}</div>`:`<div style="margin-top:14px">${verdict("v-green","✓",T[L].mrpOk,T[L].mrpOkBody.replace("__M__",rs(m)))}</div>`};
+  $("mrp").addEventListener("input",go);$("mpaid").addEventListener("input",go);
+}
+function openPay(i){
+  const out=$("res");
+  out.querySelectorAll(".pack").forEach(x=>x.setAttribute("aria-pressed",x.dataset.i==i));
+  out.querySelectorAll(".pay").forEach(x=>{x.classList.add("hidden");x.innerHTML=""});
+  const r=hits[i],box=$("pay"+i);box.classList.remove("hidden");
+  box.innerHTML=`<div class="paybox"><label for="pv" class="meta" style="display:block;margin:0 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="pv" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="pmeter"></div><div id="pv-out"></div></div>`;
+  const inp=$("pv");inp.focus();
+  inp.addEventListener("change",()=>{const v=parseFloat(inp.value.replace(/[^0-9.]/g,""));if(v>0)DC.track("price_compare",{medicine:r[0].slice(0,80),pack:r[3],overcharged:v>r[4]+0.5,over_by:Math.max(0,Math.round(v-r[4]))})});
+  inp.addEventListener("input",()=>{
+    const v=parseFloat(inp.value.replace(/[^0-9.]/g,"")),o=$("pv-out"),m=$("pmeter");
+    if(isNaN(v)||v<=0){o.innerHTML="";m.innerHTML="";return}
+    const max=Math.max(v,r[4])*1.25,lim=r[4]/max*100,pos=Math.min(v/max*100,100);
+    m.innerHTML=`<div class="meter" style="--lim:${lim}%;--pos:${pos}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(r[4])}</span></div>`;
+    const md=r[5];
+    o.innerHTML=v>r[4]+0.5
+      ?`<div style="margin-top:14px">${verdict("v-red","!",T[L].over.replace("__X__",rs(v-r[4])),T[L].overBody.replace("__M__",rs(r[4])).replace("__D__",md),actions("price",T[L].draftPrice.replace("__N__",r[0]+" ("+r[3]+")").replace("__V__",rs(v)).replace("__M__",rs(r[4])).replace("__S__","DRAP ("+md+")").replace("__T__",today()),`${r[0]} (${r[3]}): DRAP price Rs ${rs(r[4])}, charged Rs ${rs(v)}`))}</div>`
+      :`<div style="margin-top:14px">${verdict("v-green","✓",T[L].ok,T[L].okBody.replace("__M__",rs(r[4])).replace("__D__",md))}</div>`;
+  });
+}
+$("goP").onclick=()=>runPrice();
+$("qp").addEventListener("keydown",e=>{if(e.key==="Enter")runPrice()});
+document.querySelectorAll("[data-px]").forEach(c=>c.onclick=()=>{$("qp").value=c.dataset.px;runPrice()});
+
+/* shelf of latest fakes */
+function renderShelf(){
+  const seen=new Set(),pick=[];
+  for(const a of ALERTS){if(a.k!=="fake"||!a.b)continue;const k=short(a.p);if(seen.has(k))continue;seen.add(k);pick.push(a);if(pick.length>=10)break}
+  $("shelf").innerHTML=pick.map((a,i)=>`<button class="box" data-s="${i}"><span class="tape">${esc(T[L].kind.fake.toUpperCase())}</span><b>${esc(short(a.p))}</b><span class="bn">B.No ${esc(a.b)}</span><small>${fmtDate(a.d)}</small><span class="go">${T[L].tapCheck} →</span></button>`).join("");
+  $("shelf").querySelectorAll(".box").forEach(b=>b.onclick=()=>{const a=pick[+b.dataset.s];setTab("b");$("qn").value=short(a.p);$("qb").value=a.b;$("tool").scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>runBatch(),350)});
+}
+/* ---------- home screen install ---------- */
+(()=>{
+  const bar=$("install"),btn=$("instBtn"),ios=$("iosHelp");
+  const inFrame=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  if(!inFrame&&"serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))navigator.serviceWorker.register("sw.js").catch(()=>{});
+  if(inFrame||standalone)return;
+  let snoozed=false;try{snoozed=Date.now()<+(localStorage.getItem("dc-install-snooze")||0)}catch(e){}
+  if(snoozed)return;
+  let deferred=null;
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const show=()=>bar.classList.remove("hidden");
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;show()});
+  if(isIOS)setTimeout(show,1500);
+  btn.onclick=async()=>{
+    if(deferred){deferred.prompt();try{await deferred.userChoice}catch(e){}deferred=null;bar.classList.add("hidden")}
+    else ios.classList.toggle("hidden");
+  };
+  $("instX").onclick=()=>{bar.classList.add("hidden");try{localStorage.setItem("dc-install-snooze",String(Date.now()+14*864e5))}catch(e){}};
+  window.addEventListener("appinstalled",()=>bar.classList.add("hidden"));
+})();
+applyLang();
+fromHash();
+</script>
+</body>
+</html>
