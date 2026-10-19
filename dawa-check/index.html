@@ -55,16 +55,6 @@
 .src{margin-top:auto;display:inline-flex;align-items:center;gap:5px;color:var(--band-soft);font-size:13px;font-weight:700;text-decoration:none}
 .src:hover{color:var(--band-ink);text-decoration:underline}
 
-/* why: when the printed MRP isn't enough */
-.uses{padding-block:60px 8px}
-.use-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.use{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;align-content:start;gap:8px}
-.use-ic{width:52px;height:52px;border-radius:16px;background:var(--rxbg);display:grid;place-items:center;margin-bottom:4px}
-.use h3{margin:0;font-family:var(--display);font-weight:800;font-size:18px;line-height:1.25}
-.use p{margin:0;color:var(--soft);font-size:15px;line-height:1.55}
-@media (max-width:980px){.use-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.use-grid{grid-template-columns:minmax(0,1fr)}}
-
 /* check: visual steps left, tool right */
 .check{padding-block:64px 24px}
 .check-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1fr);gap:56px;align-items:start}
@@ -464,16 +454,6 @@ section.faq{padding:20px 0 0}
   </div>
 </section>
 
-<section class="wrap uses" id="why">
-  <div class="sh"><div><p class="eyebrow" data-i="useEy"></p><h2 data-i="useH"></h2></div><p data-i="useP"></p></div>
-  <div class="use-grid">
-      <article class="use"><span class="use-ic"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="9" width="26" height="14" rx="4" fill="var(--foil1)" stroke="var(--rx)" stroke-width="2"/><circle cx="10" cy="16" r="3.2" fill="var(--or)"/><circle cx="18" cy="16" r="3.2" fill="var(--or)"/><path d="M23 6v20" stroke="var(--red)" stroke-width="2" stroke-dasharray="3 2.5"/></svg></span><h3 data-i="u1h"></h3><p data-i="u1p"></p></article>
-      <article class="use"><span class="use-ic"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 6h12l10 10-11 11L5 16z" fill="var(--or)" stroke="var(--rx)" stroke-width="2" stroke-linejoin="round"/><circle cx="11" cy="12" r="2.2" fill="var(--rx)"/></svg></span><h3 data-i="u2h"></h3><p data-i="u2p"></p></article>
-      <article class="use"><span class="use-ic"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="17" r="11" fill="var(--panel)" stroke="var(--rx)" stroke-width="2"/><path d="M16 10v7l4 3" stroke="var(--red)" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M12 3h8" stroke="var(--rx)" stroke-width="2.4" stroke-linecap="round"/></svg></span><h3 data-i="u3h"></h3><p data-i="u3p"></p></article>
-      <article class="use"><span class="use-ic"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 5v7c0 7-4.7 12-11 14C9.7 27 5 22 5 15V8z" fill="var(--redbg)" stroke="var(--red)" stroke-width="2" stroke-linejoin="round"/><path d="M12 12l8 8M20 12l-8 8" stroke="var(--red)" stroke-width="2.4" stroke-linecap="round"/></svg></span><h3 data-i="u4h"></h3><p data-i="u4p"></p></article>
-  </div>
-</section>
-
 <section class="check" id="check">
   <div class="wrap check-grid">
     <div class="proc" id="proc">
@@ -630,20 +610,9 @@ const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
 const T={
 ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. Hum un mauqon ke liye hain jab aisa nahi hota: khuli goliyan, MRP par chipka sticker, mita hua print, qeemat badalne ke baad purana stock, aur naqli dawa jis par MRP bhi naqli chhapi hoti hai.",
  q0:"Dibbe par MRP to likhi hoti hai. Phir Dawa Check kyun?",
- u4p:"Naqli dawa banane wale qeemat bhi bilkul sahi chhaapte hain. Yeh sirf batch number batata hai ke DRAP ne isay pakra hai ya nahi.",
- u4h:"Naqli dibbe par bhi MRP hoti hai",
- u3p:"Injection chahiye, bahas ka waqt nahi. Paise de dein, baad mein 10 second mein check karein. Zyada liye hon to complaint ka text tayyar hai.",
- u3h:"Raat 2 baje, emergency",
- u2p:"Chhapi hui qeemat ke upar naya sticker chipka hai, ya foil ki chhapai mit chuki hai. DRAP ki list sticker se nahi badalti.",
- u2h:"MRP par sticker",
- u1p:"Pharmacist ne patte se 4 goliyan kaat kar Rs 120 maange. Dibba aap ne dekha hi nahi. Yahan pack ki qeemat dekhein aur ek goli ka hisaab khud lagayein.",
- u1h:"Khuli goliyan",
- useP:"Dibba haath mein ho aur MRP saaf parhi ja rahi ho, to wahi kaafi hai. Dawa Check un mauqon ke liye hai jab aisa nahi hota.",
- useH:"Haan. Lekin har baar kaam nahi aati.",
- useEy:"Dibbe par MRP to hoti hai na?",
  titleT:"Dawa Check: sahi qeemat, asli dawa",
- h1a:"Pharmacist ne Rs 250 bole.",h1b:"Asal qeemat kya thi?",
- lede:"Dawa ka naam likhein aur 10 second mein DRAP ki fix ki hui qeemat saamne hogi. Batch number daalein to yeh bhi pata chal jayega ke DRAP is dawa ko naqli to nahi keh chuka.",
+ h1a:"Dawa ki asli qeemat check karein,",h1b:"zyada paise na dein.",
+ lede:"Pharmacy jo qeemat bataye, woh hamesha sahi nahi hoti. Dawa ka naam likhein, apna pack chunein aur dekhein ke DRAP ne us ki kitni qeemat fix ki hai. Batch number se yeh bhi check karein ke dawa naqli to nahi.",
  fA:"naqli ya kharab dawa ke alerts",fP:"packs ki government qeemat",fU:"last data update",
  tabBatch:"Batch check",tabPrice:"Qeemat check",
  cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail dawaon ki list se",
@@ -673,7 +642,7 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  pickPack:"Pehle strength chunein, phir pack size",paidLbl:"Aap ne kitne paise diye?",limit:"Limit",
  over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki qeemat Rs __M__ hai (__D__ se). Pehle pharmacist ko yeh screen dikhayein. Paise wapas na karein to neeche diye tareeqon se complaint karein.",
  ok:"Aap ne sahi qeemat di",okBody:"DRAP ki qeemat Rs __M__ hai (__D__ se).",
- latestH:"Yeh dawaein naqli pakri gayin",latestP:"Inme se koi ghar ki almari mein para hai? Dibbe par tap karein aur batch mila lein.",
+ latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke naye alerts. Kisi dibbe par tap karein, uska batch check ho jayega.",
  tapCheck:"Batch check karein",
  s1h:"Naam likhein",s1p:"Likhna shuru karte hi dawaon ki list aa jati hai.",
  s2h:"Jitne diye, woh likhein",s2p:"Apna pack chunein aur receipt wali qeemat likhein. Meter foran batata hai ke qeemat limit ke andar hai ya bahar.",
@@ -681,7 +650,7 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  demoH:"Kaise kaam karta hai",demoP:"Har check 10 second se kam mein.",dPriceCap:"Qeemat check: pack chunein, jitne diye woh likhein",dBatchCap:"Batch check: dibbe se batch number likhein",dOver:"Rs 39.43 zyada liye gaye",dAlert:"DRAP ALERT",
  foot2:"Data: DRAP recall aur rapid alerts (__RANGE__, __N__ entries) aur DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
  skip:"Seedha tool par jayein",navPrice:"Qeemat check",navBatch:"Batch check",navLatest:"Alerts",navFaq:"Sawal jawab",
- faqH:"Log yeh poochte hain",faqP:"Aur jo nahi poochte, woh bhi shayad sochte hain.",
+ faqH:"Aap ke sawal",faqP:"Pharmacy counter par yahi sawal sab se zyada aate hain.",
  q1:"Pharmacist kehta hai nayi qeemat aa gayi hai. Ab kya karun?",
  a1:"Ho sakta hai. DRAP kabhi kabhi qeemat badalta hai, aur har pack ke saath likha hai ke yeh qeemat kis date se hai. Pharmacist se nayi notification dikhane ko kahein, aur dibbe par chhapi qeemat (MRP) dekhein. Pharmacy is se zyada nahi le sakti.",
  q2:"Meri dawa list mein nahi mil rahi.",
@@ -698,29 +667,29 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  d3:"Alert na aane ka matlab yeh nahi ke dawa pakka asli hai. Hum sirf woh alerts dikhate hain jo DRAP ne jaari kiye hain.",
  d4:"Hum DRAP, government, kisi pharmacy ya dawa company ka hissa nahi. Hum koi dawa nahi bechte.",
  d5:"Na account, na login. Aap ki search aap ke phone par hi rehti hai. Google Analytics cookies sirf visitors ginne ke liye hain, aur Europe ke visitors se pehle poocha jata hai. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
- navComplain:"Complaint",navFeedback:"Feedback",ctaP:"Abhi qeemat dekhein",ctaB:"Naqli to nahi? Batch check",
- stH:"Yeh sirf aap ke saath nahi hota",
- st1:"Pakistan jaise mulkon mein har 10 mein se 1 medical product ghatiya ya naqli hota hai, WHO ke andaze ke mutabiq.",st1s:"WHO, Nov 2017",
+ navComplain:"Complaint",navFeedback:"Feedback",ctaP:"Qeemat check karein",ctaB:"Batch check karein",
+ stH:"Yeh masla kitna bara hai",
+ st1:"Pakistan jaise mulkon mein itne medical products ghatiya ya naqli hote hain, WHO ke andaze ke mutabiq.",st1s:"WHO, Nov 2017",
  st2:"zyada qeemat: Karachi mein Rs 800 wala heparin injection Rs 3,500 mein bik raha tha. DRAP ke chhapon mein pakra gaya.",st2s:"Dawn, Nov 2023",
- st3:"DRAP ke survey mein 771 bari brands mein se 424 apni pehle wali approved qeemat se zyada par bik rahi thin.",st3s:"The News, May 2026",
- st4:"batches ko DRAP ne July 2021 se naqli declare kiya. __S__ aur lab test mein fail huin.",st4s:"DRAP alerts, Dawa Check ki ginti",
- procEy:"10 second ka kaam",procH:"Bas itna sa kaam hai",
+ st3:"DRAP ke survey mein 771 bari brands mein se 424 apni pehle wali approved qeemat se mehngi bik rahi thin.",st3s:"The News, May 2026",
+ st4:"batches DRAP ne July 2021 se naqli declare kiye. __S__ aur lab test mein fail hue.",st4s:"DRAP alerts, Dawa Check ki ginti",
+ procEy:"10 second ka kaam",procH:"Kaise check karein",
  pp1:"Naam likhein",pp2:"Pack chunein",pp3:"Jitne diye, likhein",pp4:"Sahi ya zyada? Foran pata",
  pb1:"Dibbe par B.No. dhoondein",pb2:"Batch number likhein",pb3:"DRAP alert check",pb4:"Alert ho to report karein",
- procHint:"Tool mein try kar ke dekhein, aap jitna aage barhenge, yeh steps saath saath light hote jayenge.",
- rfEy:"Pharmacist nahi maana?",rfH:"Bahas na karein. Yeh karein.",rfP:"Zyada tar maamla pehle step par hi khatam ho jata hai. Na ho to agla step. Receipt har haal mein sambhal kar rakhein.",
+ procHint:"Tool mein try karein. Jaise jaise aap aage barhenge, har step yahan light hota jayega.",
+ rfEy:"Qeemat par behas?",rfH:"Pharmacist nahi maan raha? Yeh karein.",rfP:"Pehle aasaan tareeqa try karein. Baat na bane to agla step.",
  r1t:"Usi waqt",r1h:"Screen dikhayein",r1p:"Dawa Check ka result aur dibbe par chhapi MRP dono dikhayein. Aksar baat yahin khatam ho jati hai.",
  r2t:"5 minute",r2h:"DRAP helpline par call karein",r2p:"Free call hai. Pharmacy ka naam, area aur dawa ka naam batayein.",
  r3t:"Online",r3h:"DRAP ko online complaint",r3p:"DRAP ki website par complaint form bharein aur receipt ki photo saath lagayein.",r3b:"DRAP complaint page",
  r4t:"Agar jawab na aaye",r4h:"Pakistan Citizen's Portal",r4p:"Government ka complaint app. Complaint seedha related department ko jati hai, aur aap uska status dekh sakte hain.",
  pfH:"Yeh saboot sambhal kar rakhein",pf1:"Receipt (cash memo)",pf2:"Dawa ka dibba, jis par MRP aur batch number ho",pf3:"Pharmacy ka naam aur address",pf4:"Date aur time",pf5:"Dawa Check result ka screenshot",
  pfFake:"Naqli dawa ka shak hai?",pfFine:"Dawa Check aap ki taraf se complaint file nahi karta. Complaint aap khud karte hain, hum sirf rasta batate hain.",
- msEy:"List mein nahi mili?",msH:"Humein batayein, hum add kar denge",msP:"Dawa ka naam aur dibbe se do teen cheezein bhej dein. Hum DRAP ke record se mila kar list mein daal dete hain, taake agle bande ko dhoondna na pare.",
+ msEy:"List mein nahi mili?",msH:"Dawa batayein, hum add kar denge",msP:"Dawa ka naam aur dibbe ki details bhejein. Hum DRAP ke record se check kar ke list mein daal dete hain.",
  msPt1:"Sirf 1 minute",msPt2:"Account ki zaroorat nahi",msPt3:"Email sirf jawab ke liye",
  fName:"Dawa ka naam *",fNamePh:"Jaise: Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"Jaise: 6 tablets",fMrp:"Dibbe par qeemat (MRP)",fCo:"Company",fCity:"Shehar",fEmail:"Email (optional)",fNote:"Kuch aur batana hai?",
  fSend:"Bhej dein",fSending:"Bhej rahe hain…",okH:"Shukriya! Humein mil gaya.",okP:"Hum DRAP record se check kar ke jald list mein add kar denge.",
  errName:"Pehle dawa ka naam likhein.",errSend:"Abhi bhej nahi sake. Neeche wala text copy kar ke humein __E__ par email kar dein.",
- fbEy:"Aap ki raye",fbH:"Agla feature aap chunein",fbP:"Urdu script? Sasti alternative dawa? Qeemat badle to WhatsApp par message? Jo sab se zyada maanga jayega, woh pehle banega.",fbBtn:"Feedback dein →",
+ fbEy:"Aap ki raye",fbH:"Agla feature aap chunein",fbP:"Urdu mode, sasti alternative dawa ya WhatsApp alerts? Batayein kya chahiye. Sirf 30 second lagenge.",fbBtn:"Feedback dein →",
  fbc1:"اردو mode",fbc2:"Sasti alternative",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy rating",
  sceneLbl:"Kahani: pharmacy par zyada paise, phir Dawa Check se paise wapas",
  sc1:"Pharmacist ne kaha \"Rs 250\". Humne bina check kiye de diye.",
@@ -730,20 +699,9 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  scPause:"Rokein",scPlay:"Chalayein"},
 en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We're for the times it isn't: loose tablets, a sticker over the MRP, worn-off print, old stock after a price change, and fakes, which come with a fake MRP too.",
  q0:"The box already has an MRP printed on it. Why do I need this?",
- u4p:"Counterfeiters print a perfectly normal price. Only the batch number tells you whether DRAP has caught it.",
- u4h:"Fakes have an MRP too",
- u3p:"You need an injection and there's no time to argue. Pay, then check in 10 seconds afterwards. If you were overcharged, the complaint text is ready.",
- u3h:"2am, emergency",
- u2p:"A new price sticker covers the printed one, or the print on the foil has rubbed off. DRAP's list doesn't change because of a sticker.",
- u2h:"A sticker over the MRP",
- u1p:"The pharmacist cuts 4 tablets off a strip and asks for Rs 120. You never saw the box. Check the pack price here and work out the per-tablet cost yourself.",
- u1h:"Loose tablets",
- useP:"If the box is in your hand and the MRP is easy to read, that's enough. Dawa Check is for all the times it isn't.",
- useH:"It does. It just doesn't always help.",
- useEy:"But the box has an MRP, right?",
  titleT:"Dawa Check: real prices, genuine medicine",
- h1a:"The pharmacist said Rs 250.",h1b:"What's the real price?",
- lede:"Type the medicine name and DRAP's official price shows up in 10 seconds. Add the batch number and you'll also know if DRAP has already called it fake.",
+ h1a:"Check the real medicine price,",h1b:"and stop overpaying.",
+ lede:"The price a pharmacy asks for isn't always the legal one. Type the medicine name, pick your pack and see the price set by DRAP, Pakistan's drug regulator. Add the batch number to check if it's been reported fake.",
  fA:"fake or failed medicine alerts",fP:"packs with official prices",fU:"last data update",
  tabBatch:"Batch check",tabPrice:"Price check",
  cbTitle:"Check a batch number",cbSub:"Against DRAP's list of fake and failed batches",
@@ -773,7 +731,7 @@ en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We
  pickPack:"Pick the strength first, then the pack size",paidLbl:"How much did you pay?",limit:"Limit",
  over:"You paid Rs __X__ over the legal price",overBody:"DRAP's price is Rs __M__ (since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
  ok:"You paid the right price",okBody:"DRAP's price is Rs __M__ (since __D__).",
- latestH:"Caught being fake",latestP:"Is one of these sitting in your medicine cupboard? Tap the box and match the batch number.",
+ latestH:"Fake medicines caught recently",latestP:"DRAP's latest alerts. Tap a box to check its batch.",
  tapCheck:"Check this batch",
  s1h:"Type the name",s1p:"Matching medicines show up as you type.",
  s2h:"Enter what you paid",s2p:"Pick your pack and type the price on your receipt. The meter shows right away if it's within the limit.",
@@ -781,7 +739,7 @@ en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We
  demoH:"How it works",demoP:"Each check takes under 10 seconds.",dPriceCap:"Price check: pick your pack, type what you paid",dBatchCap:"Batch check: type the batch number from the box",dOver:"Rs 39.43 overcharged",dAlert:"DRAP ALERT",
  foot2:"Data: DRAP recall and rapid alerts (__RANGE__, __N__ entries) and the DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
  skip:"Skip to the tool",navPrice:"Price check",navBatch:"Batch check",navLatest:"Latest alerts",navFaq:"FAQ",
- faqH:"What people ask",faqP:"And a few things they wonder about but don't ask.",
+ faqH:"Your questions",faqP:"The questions that come up most at the pharmacy counter.",
  q1:"The pharmacist says there's a new price. What should I do?",
  a1:"It's possible. DRAP changes prices from time to time, and each pack here shows the date its price started. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that.",
  q2:"I can't find my medicine.",
@@ -798,29 +756,29 @@ en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We
  d3:"No alert doesn't prove a medicine is genuine. We only show alerts that DRAP has published.",
  d4:"We aren't part of DRAP, the government, any pharmacy or any drug company. We don't sell medicines.",
  d5:"No account, no login. Your searches stay on your phone. Optional Google Analytics cookies count visitors, and visitors in Europe are asked first. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
- navComplain:"Complain",navFeedback:"Feedback",ctaP:"See the price now",ctaB:"Is it fake? Check the batch",
- stH:"It's not just you",
+ navComplain:"Complain",navFeedback:"Feedback",ctaP:"Check a price",ctaB:"Check a batch",
+ stH:"How big the problem is",
  st1:"medical products in low- and middle-income countries like Pakistan is substandard or falsified, WHO estimates.",st1s:"WHO, Nov 2017",
  st2:"the approved price: a Rs 800 heparin injection was being sold for Rs 3,500 in Karachi, DRAP raids found.",st2s:"Dawn, Nov 2023",
- st3:"of 771 big medicine brands in a DRAP survey were selling above their earlier approved price (424 brands).",st3s:"The News, May 2026",
+ st3:"of 771 big medicine brands in a DRAP survey, 424 in all, were selling above their earlier approved price.",st3s:"The News, May 2026",
  st4:"batches declared fake by DRAP since July 2021. Another __S__ failed lab tests.",st4s:"DRAP alerts, counted by Dawa Check",
- procEy:"Takes 10 seconds",procH:"That's the whole thing",
+ procEy:"Takes 10 seconds",procH:"How to check",
  pp1:"Type the name",pp2:"Pick your pack",pp3:"Enter what you paid",pp4:"See if you overpaid",
  pb1:"Find B.No. on the box",pb2:"Type the batch number",pb3:"Check DRAP alerts",pb4:"Report it if flagged",
- procHint:"Try the tool. The steps light up as you go.",
- rfEy:"Pharmacist won't budge?",rfH:"Don't argue. Do this.",rfP:"Most cases end at step one. If yours doesn't, go to the next step. Whatever happens, keep the receipt.",
+ procHint:"Try it in the tool. Each step lights up as you go.",
+ rfEy:"Price dispute?",rfH:"Pharmacist won't agree? Here's what to do.",rfP:"Start with the easiest step. If that doesn't work, move to the next one.",
  r1t:"Right away",r1h:"Show the screen",r1p:"Show the Dawa Check result and the MRP printed on the box. This often settles it.",
  r2t:"5 minutes",r2h:"Call the DRAP helpline",r2p:"It's a free call. Give the pharmacy's name, the area and the medicine name.",
  r3t:"Online",r3h:"Complain to DRAP online",r3p:"Fill in the complaint form on DRAP's website and attach a photo of the receipt.",r3b:"DRAP complaints page",
  r4t:"If nothing happens",r4h:"Pakistan Citizen's Portal",r4p:"The government's complaint app. Your complaint goes straight to the right department, and you can track its status.",
  pfH:"Keep this proof",pf1:"The receipt (cash memo)",pf2:"The box, showing the MRP and batch number",pf3:"The pharmacy's name and address",pf4:"Date and time",pf5:"A screenshot of the Dawa Check result",
  pfFake:"Think a medicine is fake?",pfFine:"Dawa Check doesn't file complaints for you. You file them yourself; we just show you where.",
- msEy:"Not in our list?",msH:"Tell us and we'll add it",msP:"Send the name and two or three details from the box. We match it against DRAP's records and add it, so the next person doesn't have to hunt for it.",
+ msEy:"Not in our list?",msH:"Tell us and we'll add it",msP:"Send the medicine name and the details from the box. We check it against DRAP's records and add it to the list.",
  msPt1:"Takes 1 minute",msPt2:"No account needed",msPt3:"Email only for a reply",
  fName:"Medicine name *",fNamePh:"e.g. Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"e.g. 6 tablets",fMrp:"Price on the box (MRP)",fCo:"Company",fCity:"City",fEmail:"Email (optional)",fNote:"Anything else?",
  fSend:"Send",fSending:"Sending…",okH:"Thanks, we got it.",okP:"We'll check it against DRAP's records and add it to the list soon.",
  errName:"Add the medicine name first.",errSend:"We couldn't send it right now. Copy the text below and email it to __E__.",
- fbEy:"Your call",fbH:"You pick what we build next",fbP:"Urdu script? Cheaper alternatives? A WhatsApp message when a price changes? Whatever gets asked for most gets built first.",fbBtn:"Give feedback →",
+ fbEy:"Your ideas",fbH:"Pick our next feature",fbP:"Urdu mode, cheaper alternatives or WhatsApp alerts? Tell us what you need. It takes 30 seconds.",fbBtn:"Give feedback →",
  fbc1:"اردو mode",fbc2:"Cheaper alternatives",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy ratings",
  sceneLbl:"Story: overcharged at a pharmacy, then money back with Dawa Check",
  sc1:"The pharmacist says \"Rs 250\". We pay without checking.",
