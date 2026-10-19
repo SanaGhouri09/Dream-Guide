@@ -685,7 +685,7 @@ ru:{titleT:"Dawa Check: sahi qeemat, asli dawa",
  msPt1:"Sirf 1 minute",msPt2:"Account ki zaroorat nahi",msPt3:"Email sirf jawab ke liye",
  fName:"Dawa ka naam *",fNamePh:"Jaise: Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"Jaise: 6 tablets",fMrp:"Dibbe par qeemat (MRP)",fCo:"Company",fCity:"Shehar",fEmail:"Email (optional)",fNote:"Kuch aur batana hai?",
  fSend:"Bhej dein",fSending:"Bhej rahe hain…",okH:"Shukriya! Humein mil gaya.",okP:"Hum DRAP record se check kar ke jald list mein add kar denge.",
- errName:"Pehle dawa ka naam likhein.",errSend:"Abhi bhej nahi sake. Neeche wala text copy kar ke humein X par bhej dein.",
+ errName:"Pehle dawa ka naam likhein.",errSend:"Abhi bhej nahi sake. Neeche wala text copy kar ke humein __E__ par email kar dein.",
  fbEy:"Aap ki raye",fbH:"Agla feature aap chunein",fbP:"Urdu mode, sasti alternative dawa, WhatsApp alerts? Batayein kya chahiye. Sirf 30 second lagenge.",fbBtn:"Feedback dein →",
  fbc1:"اردو mode",fbc2:"Sasti alternative",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy rating",
  sceneLbl:"Kahani: pharmacy par zyada paise, phir Dawa Check se paise wapas",
@@ -772,7 +772,7 @@ en:{titleT:"Dawa Check: real prices, genuine medicine",
  msPt1:"Takes 1 minute",msPt2:"No account needed",msPt3:"Email only for a reply",
  fName:"Medicine name *",fNamePh:"e.g. Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"e.g. 6 tablets",fMrp:"Price on the box (MRP)",fCo:"Company",fCity:"City",fEmail:"Email (optional)",fNote:"Anything else?",
  fSend:"Send",fSending:"Sending…",okH:"Thanks, we got it.",okP:"We'll check it against DRAP's records and add it to the list soon.",
- errName:"Add the medicine name first.",errSend:"We couldn't send it right now. Copy the text below and send it to us on X.",
+ errName:"Add the medicine name first.",errSend:"We couldn't send it right now. Copy the text below and email it to __E__.",
  fbEy:"Your ideas",fbH:"Pick our next feature",fbP:"Urdu mode, cheaper alternatives, WhatsApp alerts? Tell us what you need. It takes 30 seconds.",fbBtn:"Give feedback →",
  fbc1:"اردو mode",fbc2:"Cheaper alternatives",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy ratings",
  sceneLbl:"Story: overcharged at a pharmacy, then money back with Dawa Check",
@@ -1087,7 +1087,7 @@ $("msForm").addEventListener("submit",async e=>{
     f.reset();DC.track("missing_medicine_submit",{medicine:data.medicine.slice(0,80)});
   }else{
     const txt=Object.entries(data).filter(([k,x])=>x).map(([k,x])=>k+": "+x).join("\n");
-    out.innerHTML=verdict("v-amber","!",T[L].errSend,"",`<div class="draft"><textarea rows="5" aria-label="${esc(T[L].copy)}">${esc(txt)}</textarea><button type="button" class="copy">${esc(T[L].copy)}</button></div>`);
+    out.innerHTML=verdict("v-amber","!",T[L].errSend.replace("__E__",DC.SITE.email||"us"),"",`<div class="draft"><textarea rows="5" aria-label="${esc(T[L].copy)}">${esc(txt)}</textarea><button type="button" class="copy">${esc(T[L].copy)}</button></div>`);
   }
 });
 

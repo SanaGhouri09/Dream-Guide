@@ -2,9 +2,8 @@
    analytics loader and the back-to-top button. Edit SITE before going live. */
 const SITE={
   gaId:"",              // Google Analytics 4 measurement ID, e.g. "G-ABC123XYZ". Empty = no analytics at all.
-  x:"emeraldofhope",    // X (Twitter) handle for the contact card, without @. Empty hides the button.
-  email:"",             // Contact email shown in the footer. Empty hides it.
-  formEmail:"",         // Inbox that receives the "missing medicine" and feedback forms (sent via formsubmit.co). Empty = forms can't send.
+  email:"hello@dawacheck.pk",     // Contact email shown in the footer card and in form error messages.
+  formEmail:"hello@dawacheck.pk", //         // Inbox that receives the "missing medicine" and feedback forms (sent via formsubmit.co). Empty = forms can't send.
   formEndpoint:"",      // Optional: your own form endpoint (Formspree, Web3Forms...). Overrides formEmail.
   updated:"18 Oct 2026" // Last data update, shown in the footer.
 };
@@ -16,7 +15,7 @@ const DC=(()=>{
   };
   const S={
     ru:{cardH:"Galat qeemat ya missing alert dekha?",cardP:"Dawa ka naam, pack aur screenshot bhejein. Hum DRAP ke asal source se mila kar theek kar dete hain.",
-      xBtn:"X par message karein",mailBtn:"Email karein",
+      mailBtn:"Email karein",copyMail:"Email copy karein",copiedMail:"Copy ho gaya",
       colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",complain:"Complaint kaise karein",missing:"Missing dawa batayein",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"Hum data kaise check karte hain",cset:"Cookie settings",
       about:"Pakistan ke liye banaya gaya. Hum dawa nahi bechte aur koi commission nahi lete. Sirf DRAP ka public data, asaan zaban mein.",
@@ -28,7 +27,7 @@ const DC=(()=>{
       anaOff:"Abhi site par analytics laga hua nahi.",save:"Save karein",close:"Band karein",top:"Upar jayein",
       toast:"Website ab Roman Urdu mein hai",back:"← Tool par wapas jayein"},
     en:{cardH:"Spotted a wrong price or a missing alert?",cardP:"Send the medicine name, pack size and a screenshot. We check it against DRAP's original source and fix it.",
-      xBtn:"Message us on X",mailBtn:"Email us",
+      mailBtn:"Email us",copyMail:"Copy email",copiedMail:"Copied",
       colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",complain:"How to complain",missing:"Report a missing medicine",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"How we verify",cset:"Cookie settings",
       about:"Made for Pakistan. We don't sell medicines and we take no commission. Just DRAP's public data, in plain language.",
@@ -82,13 +81,11 @@ const DC=(()=>{
 
   /* footer */
   const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const X_ICON='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7 8 10.3h-6.3l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>';
+  const MAIL_ICON='<svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function renderFooter(){
     const f=document.getElementById("site-foot");if(!f)return;
-    const btns=[
-      SITE.x?`<a class="fbtn primary" href="https://x.com/${esc(SITE.x)}" target="_blank" rel="noopener">${X_ICON}${t("xBtn")} @${esc(SITE.x)}</a>`:"",
-      SITE.email?`<a class="fbtn" href="mailto:${esc(SITE.email)}">${t("mailBtn")}: ${esc(SITE.email)}</a>`:""
-    ].join("");
+    const subj=encodeURIComponent(lang==="en"?"Dawa Check: price or alert correction":"Dawa Check: qeemat ya alert ki correction");
+    const btns=SITE.email?`<a class="fbtn primary" href="mailto:${esc(SITE.email)}?subject=${subj}">${MAIL_ICON}${esc(SITE.email)}</a><button type="button" class="fbtn" data-copymail>${t("copyMail")}</button>`:"";
     f.innerHTML=`<div class="wrap">
       ${btns?`<div class="foot-card"><div><h2>${t("cardH")}</h2><p>${t("cardP")}</p></div><div class="foot-btns">${btns}</div></div>`:""}
       <div class="foot-grid">
@@ -135,6 +132,7 @@ const DC=(()=>{
     d.querySelector("#sw-ana").focus();
   }
   document.addEventListener("click",e=>{if(e.target.closest("[data-cset]")){e.preventDefault();openSettings()}});
+  document.addEventListener("click",async e=>{const b=e.target.closest("[data-copymail]");if(!b)return;let ok=false;try{await navigator.clipboard.writeText(SITE.email);ok=true}catch(_){}b.textContent=ok?t("copiedMail"):SITE.email;track("copy_email");setTimeout(()=>b.textContent=t("copyMail"),2500)});
 
   /* back to top */
   function initTop(){

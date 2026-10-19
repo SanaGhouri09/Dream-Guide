@@ -18,8 +18,8 @@ Static website that shows DRAP's official medicine prices (21,534 packs) and DRA
 ## Before going live
 
 1. Set `SITE.gaId` in `assets/site.js` to your GA4 measurement ID (blank = analytics off). In GA, set data retention to 14 months to match the privacy page.
-2. Set `SITE.x` / `SITE.email` for the contact card.
-3. Set `SITE.formEmail` to the inbox for the "missing medicine" form and the feedback page. Forms post to formsubmit.co; the first submission sends an activation email to that inbox, and nothing arrives until you click it. To use Formspree or Web3Forms instead, set `SITE.formEndpoint`. Until one is set, both forms show a copy-this-text fallback.
+2. `SITE.email` and `SITE.formEmail` are set to hello@dawacheck.pk. That address must exist (see Deploy, step 6) before the contact card and forms work.
+3. `SITE.formEmail` is the inbox for the "missing medicine" form and the feedback page. Forms post to formsubmit.co; the first submission sends an activation email to that inbox, and nothing arrives until you click it. To use Formspree or Web3Forms instead, set `SITE.formEndpoint`. Until one is set, both forms show a copy-this-text fallback.
 4. Domain: dawacheck.pk is already set in canonical links, social tags, `robots.txt` and `sitemap.xml`. Update `lastmod` in `sitemap.xml` when pages change.
 5. When the data changes: replace `data/*.js`, run `node scripts/clean-prices.js` (keeps the newest price per pack, drops Rs 0 rows), update `META.updated` in `index.html` and `SITE.updated` in `assets/site.js`, and bump `VERSION` in `sw.js`.
 

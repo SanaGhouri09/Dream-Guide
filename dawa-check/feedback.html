@@ -171,7 +171,7 @@ ru:{ey:"Feedback",h1:"Dawa Check ko behtar banane mein madad karein",lede:"Teen 
  msgL:"Aap ka message",emailL:"Email (optional, agar jawab chahiye)",
  okH:"Shukriya!",okP:"Aap ki feedback mil gayi. Hum har message parhte hain.",share:"Doston ko bhejein",toTool:"Tool par wapas",
  shareTxt:"Dawa Check: dawa ki asli DRAP qeemat aur naqli dawa alerts, free.",
- err:"Abhi bhej nahi sake. Yeh text copy kar ke humein X par bhej dein.",copy:"Text copy karein",copied:"Copy ho gaya",
+ err:"Abhi bhej nahi sake. Yeh text copy kar ke humein __E__ par email kar dein.",copy:"Text copy karein",copied:"Copy ho gaya",
  logH:"Haal hi mein add hua",log1:"Roman Urdu aur English mode",log2:"Pharmacy wali kahani, hero mein",log3:"Missing dawa batane ka form",log4:"Complaint ke 4 tareeqe, ek jagah",
  flowH:"Aap ki feedback ka kya hota hai",flow1:"Hum har message khud parhte hain.",flow2:"Jo cheez sab se zyada maangi jaye, woh pehle banti hai.",flow3:"Naya feature yahan \"Haal hi mein add hua\" mein dikhega."},
 en:{ey:"Feedback",h1:"Help us make Dawa Check better",lede:"Three quick questions, 30 seconds. What people ask for most gets built first.",
@@ -185,7 +185,7 @@ en:{ey:"Feedback",h1:"Help us make Dawa Check better",lede:"Three quick question
  msgL:"Your message",emailL:"Email (optional, if you'd like a reply)",
  okH:"Thank you!",okP:"We got your feedback. We read every message.",share:"Share with friends",toTool:"Back to the tool",
  shareTxt:"Dawa Check: official DRAP medicine prices and fake medicine alerts, free.",
- err:"We couldn't send it right now. Copy this text and send it to us on X.",copy:"Copy text",copied:"Copied",
+ err:"We couldn't send it right now. Copy this text and email it to __E__.",copy:"Copy text",copied:"Copied",
  logH:"Recently added",log1:"Roman Urdu and English modes",log2:"The pharmacy story in the hero",log3:"A form to report missing medicines",log4:"4 ways to complain, in one place",
  flowH:"What happens to your feedback",flow1:"We read every message ourselves.",flow2:"Whatever people ask for most gets built first.",flow3:"New features show up here under \"Recently added\"."}};
 const $=id=>document.getElementById(id);
@@ -238,7 +238,7 @@ $("fbSend").onclick=async()=>{
     document.querySelector(".prog").classList.add("hidden");$("stepno").classList.add("hidden");$("done").classList.add("on");return;
   }
   const txt=Object.entries(data).filter(([k,v])=>v).map(([k,v])=>k+": "+v).join("\n");
-  $("fbErr").innerHTML=`<div class="err"><p>${esc(tf("err"))}</p><textarea rows="5" aria-label="${esc(tf("copy"))}">${esc(txt)}</textarea><button type="button" id="fbCopy">${esc(tf("copy"))}</button></div>`;
+  $("fbErr").innerHTML=`<div class="err"><p>${esc(tf("err").replace("__E__",DC.SITE.email||"us"))}</p><textarea rows="5" aria-label="${esc(tf("copy"))}">${esc(txt)}</textarea><button type="button" id="fbCopy">${esc(tf("copy"))}</button></div>`;
   $("fbCopy").onclick=async()=>{const ta=document.querySelector("#fbErr textarea");ta.select();let c=false;try{await navigator.clipboard.writeText(ta.value);c=true}catch(e){try{c=document.execCommand("copy")}catch(_){}}$("fbCopy").textContent=c?tf("copied"):tf("copy")};
 };
 document.addEventListener("dc:lang",e=>{L=e.detail;paint()});
