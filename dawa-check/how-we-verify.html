@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How Dawa Check Verifies</title>
+<meta name="description" content="Where Dawa Check's prices and alerts come from, how matching works, and what it can't tell you.">
+<link rel="canonical" href="https://dawacheck.pk/how-we-verify.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dawa Check">
+<meta property="og:title" content="How Dawa Check Verifies">
+<meta property="og:description" content="Where Dawa Check's prices and alerts come from, how matching works, and what it can't tell you.">
+<meta property="og:url" content="https://dawacheck.pk/how-we-verify.html">
+<meta property="og:image" content="https://dawacheck.pk/icons/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4B2BB8">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="doc">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Dawa Check home"><svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) rotate(-35) translate(-50 -50)"><path d="M50 33 H73 A17 17 0 0 1 73 67 H50 Z" fill="#FFD23F"/><path d="M27 33 H50 V67 H27 A17 17 0 0 1 27 33 Z" fill="var(--rx)"/></g><path d="M56 52 L63 59 L77 42" fill="none" stroke="#2A1670" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span></a>
+  <div class="lang" data-auto role="group" aria-label="Language"><button data-lang="ru" aria-pressed="false">Roman</button><button data-lang="en" aria-pressed="true">English</button></div>
+</header>
+<main id="main" class="doc">
+<a class="back" href="index.html" data-t="back">← Back to the tool</a>
+<p class="eyebrow">Data and method</p>
+<h1>How we verify</h1>
+<p class="updated">Last updated 18 October 2026</p>
+<div class="khulasa"><b>Asaan lafzon mein</b><p>Har qeemat aur har alert DRAP ke public documents se liya gaya hai. Har alert ke saath DRAP ka asal link hai, taake aap khud check kar sakein. Batch number mein space ya dash se farq nahi parta. Koi ghalti nazar aaye to footer se batayein, hum DRAP source se mila kar theek kar dete hain.</p></div>
+<h2>Two sources, both from DRAP</h2>
+<h3>Prices</h3>
+<p>Prices come from DRAP's published price list for registered medicines: 21,534 packs at the last update. For each pack we keep the brand name, the composition, the company, the pack size, the price in rupees, the date that price took effect and the DRAP registration number. The site shows the effective date and registration number with every price, so you can match it to the notification.</p>
+<h3>Alerts</h3>
+<p>Alerts come from DRAP's product recall and rapid alert notices on <a href="https://www.dra.gov.pk/" target="_blank" rel="noopener">dra.gov.pk</a>, from July 2021 to 29 July 2026: 756 entries. For each one we keep the product, the batch number, the company, the reason, the date and a link to the original notice. We sort each alert into one of four types using DRAP's own wording: fake (spurious), failed lab test (substandard), unregistered, or recall.</p>
+
+<h2>How the data gets onto the site</h2>
+<ol class="steps-v">
+  <li>We collect the latest price list and alert notices from DRAP's website.</li>
+  <li>We copy each field as DRAP prints it. Prices aren't rounded or adjusted.</li>
+  <li>When one notice lists several batch numbers, we split them so each batch can be matched on its own.</li>
+  <li>If the price list has the same pack twice with different start dates, we keep only the newest price. Packs listed with no price (Rs 0) are left out.</li>
+  <li>We keep the link to the DRAP notice with every alert, so anyone can check our work in one tap.</li>
+  <li>The date in the footer is the last time the data changed.</li>
+</ol>
+
+<h2>How matching works</h2>
+<h3>Batch check</h3>
+<p>Batch numbers are printed in many styles, so we compare them in capital letters and ignore spaces, dashes, dots and slashes. "139-n 086" and "139N086" count as the same batch.</p>
+<ul>
+  <li><b>Red, DRAP ALERT:</b> your batch exactly matches a batch in a DRAP alert.</li>
+  <li><b>Amber, check again:</b> it's a close match. At least five characters line up, so re-read the box carefully.</li>
+  <li><b>No alert:</b> DRAP hasn't issued an alert for that batch in the period we cover.</li>
+</ul>
+<h3>Price check</h3>
+<p>You can search by any part of a brand name. Results are grouped by brand and company, then you pick the strength and pack size. We compare what you paid with DRAP's price and ignore differences under Rs 0.50, which usually come from rounding at the till.</p>
+
+<h2>What we can't tell you</h2>
+<ul>
+  <li>Whether a batch with no alert is genuine. We don't test medicines; we only report DRAP's findings.</li>
+  <li>Whether DRAP issued a new price or alert after the date in the footer.</li>
+  <li>The legal price of a medicine that isn't in DRAP's list. For those, the price printed on the box is the limit.</li>
+</ul>
+
+<h2>Corrections</h2>
+<p>Found a wrong price, a missing alert or a typo? Send the medicine name, pack size and a screenshot to <a href="mailto:hello@dawacheck.pk">hello@dawacheck.pk</a>. We compare it with the DRAP source and fix it in the next update.</p>
+
+<h2>Independence</h2>
+<p>Dawa Check takes no money from drug companies, distributors or pharmacies. If we ever accept a sponsor, it'll be named on the page, and it will never change a price, an alert or the order of results.</p>
+
+</main>
+</div>
+<footer class="site-foot" id="site-foot"></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

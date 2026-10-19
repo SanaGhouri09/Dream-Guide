@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dawa Check: sahi qeemat, asli dawa</title>
+<meta name="description" content="Dawa ki DRAP sarkari qeemat dekhein aur zyada dene se bachein. 21,534 packs ki qeemat aur naqli dawa ke alerts ek jagah.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dawa Check">
+<meta property="og:title" content="Dawa Check: sahi qeemat, asli dawa">
+<meta property="og:description" content="DRAP ki sarkari qeemat aur naqli dawa ke alerts, ek search mein. Pharmacy ne zyada liye? Foran pata karein.">
+<meta property="og:url" content="https://dawacheck.pk/">
+<meta property="og:image" content="https://dawacheck.pk/icons/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ur_PK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dawacheck.pk/icons/og.png">
+<link rel="canonical" href="https://dawacheck.pk/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Dawa Check","alternateName":"dawacheck.pk","url":"https://dawacheck.pk/","inLanguage":["ur-Latn","en"],"description":"Official DRAP medicine prices and fake medicine alerts for Pakistan, in Roman Urdu and English."}</script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#4B2BB8">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dawa Check">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=DotGothic16&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* hero: copy left, scene right */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:24px 64px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.4vw,50px);line-height:1.06;letter-spacing:-.035em;margin:0 0 18px}
+.hero h1 span{display:block}
+.hero p.lede{font-size:17.5px;line-height:1.6;color:var(--soft);max-width:46ch;margin:0}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 22px;font-family:var(--display);font-weight:800;font-size:16.5px;text-decoration:none;color:var(--ink);background:var(--panel);border:2px solid var(--ink);transition:transform .12s}
+.btn.primary{background:var(--or);border-color:var(--or);color:var(--on-or);box-shadow:0 8px 20px -10px rgba(42,22,112,.45)}
+.btn:active{transform:scale(.97)}
+.trust{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;font-size:13.5px;color:var(--soft)}
+.trust>span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.trust b{color:var(--ink);font-variant-numeric:tabular-nums}
+.eyebrow{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--rx);font-weight:800}
+
+/* stats band */
+.stats{background:var(--band);color:var(--band-ink);padding-block:44px}
+.st-h{margin:0 0 22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--band-soft);font-weight:800}
+.st-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.stat{display:flex;flex-direction:column;gap:8px;padding-left:16px;border-left:2px solid var(--band-line)}
+.stn{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,48px);line-height:1;letter-spacing:-.03em;color:var(--band-hi);font-variant-numeric:tabular-nums}
+.stat p{margin:0;font-size:15px;line-height:1.5;color:var(--band-ink)}
+.src{margin-top:auto;display:inline-flex;align-items:center;gap:5px;color:var(--band-soft);font-size:13px;font-weight:700;text-decoration:none}
+.src:hover{color:var(--band-ink);text-decoration:underline}
+
+/* check: visual steps left, tool right */
+.check{padding-block:64px 24px}
+.check-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1fr);gap:56px;align-items:start}
+.proc{position:sticky;top:20px}
+.proc h2,.sh h2,.ms-intro h2,.fbt h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.1;letter-spacing:-.03em;margin:0}
+.psteps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:18px;counter-reset:ps}
+.psteps li{display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:center;position:relative}
+.psteps li:not(:last-child)::after{content:"";position:absolute;left:37px;top:80px;height:14px;border-left:2px dashed var(--line)}
+.pic{counter-increment:ps;width:76px;height:76px;border-radius:22px;background:var(--panel);border:2px solid var(--line);display:grid;place-items:center;position:relative;transition:border-color .25s,background .25s,transform .25s,box-shadow .25s}
+.pic::before{content:counter(ps);position:absolute;top:-9px;left:-9px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:13px;font-weight:800;display:grid;place-items:center;transition:background .25s}
+.pl{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.2;color:var(--soft);transition:color .25s}
+.psteps li.done .pic::before{content:"✓";background:var(--rx);color:#fff}
+.psteps li.on .pic{border-color:var(--rx);background:var(--rxbg);transform:scale(1.07);box-shadow:0 10px 24px -12px rgba(75,43,184,.6)}
+.psteps li.on .pl,.psteps li.done .pl{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.psteps li.on .pic{animation:ping 1.6s ease-out infinite}@keyframes ping{0%{box-shadow:0 0 0 0 rgba(106,79,214,.45)}70%,100%{box-shadow:0 0 0 14px rgba(106,79,214,0)}}}
+.phint{margin:22px 0 0;font-size:14.5px;color:var(--soft);max-width:34ch}
+
+/* complaint ladder */
+.refuse{background:var(--panel);border-block:1px solid var(--line);padding-block:60px;margin-top:40px}
+.rf-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:start}
+.ladder{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:ld}
+.ladder li{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px;position:relative}
+.lic{width:52px;height:52px;border-radius:16px;background:var(--rxbg);color:var(--rx);display:grid;place-items:center}
+.ladder li:nth-child(1) .lic{background:var(--orbg);color:var(--amber)}
+.lbody h3{margin:2px 0 4px;font-family:var(--display);font-size:19px;font-weight:800}
+.lbody p{margin:0;color:var(--soft);font-size:15px;max-width:52ch}
+.lvl{float:right;margin-left:10px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--rx);background:var(--rxbg);border-radius:999px;padding:3px 10px}
+.lbtn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;border-radius:999px;padding:9px 16px;font-weight:800;font-size:15px;text-decoration:none;border:1.5px solid var(--line);color:var(--ink);background:var(--panel)}
+.lbtn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-family:var(--display);font-size:17px;letter-spacing:.01em}
+.proof{background:var(--bg);border:2px dashed var(--line);border-radius:20px;padding:22px;display:grid;gap:14px;position:sticky;top:20px}
+.proof h3{margin:0;font-family:var(--display);font-size:20px;font-weight:800}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chk li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start;font-size:15px}
+.chk svg{margin-top:2px}
+.fake-q{background:var(--redbg);border-radius:14px;padding:12px 14px;display:grid;gap:4px;font-size:14.5px}
+.fake-q b{color:var(--red)}
+.fake-q a{font-weight:700;display:inline-flex;gap:5px;align-items:center}
+.fine{margin:0;font-size:13px;color:var(--soft)}
+
+/* missing medicine form */
+.missing{padding-block:64px 24px}
+.ms-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:48px;align-items:start}
+.ms-intro>p:not(.eyebrow){color:var(--soft);font-size:16.5px;max-width:42ch;margin:12px 0 0}
+.ms-art{width:200px;max-width:60%;margin:22px 0 6px;display:block}
+.ms-pts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ms-pts li{font-size:13.5px;font-weight:700;color:var(--rx);background:var(--rxbg);border-radius:999px;padding:5px 12px}
+.ms-form{background:var(--panel);border-radius:4px 4px 20px 20px;box-shadow:var(--shadow);padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.ms-form::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,var(--rx) 0 62%,var(--or) 62% 100%)}
+.ms-form .full{grid-column:1/-1}
+.ms-form .fld:first-child{margin-top:8px}
+.fld{display:grid;gap:5px;min-width:0}
+.fld label{font-size:13.5px;font-weight:700;color:var(--soft)}
+.fld input,.fld textarea{width:100%;min-width:0;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px;font-size:16px;color:var(--ink);outline:none;resize:vertical}
+.fld input:focus,.fld textarea:focus{border-color:var(--rx)}
+.fld input[aria-invalid="true"]{border-color:var(--red)}
+.rsin{display:flex;align-items:center;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding-left:12px}
+.rsin:focus-within{border-color:var(--rx)}
+.rsin span{font-weight:800;color:var(--soft)}
+.rsin input{border:0;background:transparent}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ms-form .cta{margin-top:4px}
+.ms-form .cta[disabled]{opacity:.6;cursor:wait}
+.sent{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:var(--rxbg);border-radius:14px;padding:14px}
+.sent .ic{width:44px;height:44px;border-radius:50%;background:var(--rx);color:#fff;display:grid;place-items:center;font-weight:800;font-size:20px}
+.sent b{display:block;font-family:var(--display);font-size:17px}
+.sent p{margin:0;font-size:14.5px;color:var(--soft)}
+
+/* feedback teaser */
+.fbt{padding-block:40px}
+.fbt-in{background:var(--band);color:var(--band-ink);border-radius:24px;padding:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;overflow:hidden}
+.fbt-in .eyebrow{color:var(--band-hi)}
+.fbt-in p:not(.eyebrow){color:var(--band-soft);margin:10px 0 20px;max-width:42ch}
+.fbt-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.fbt-chips span{border:1.5px solid var(--band-line);border-radius:999px;padding:9px 14px;font-weight:700;font-size:14.5px;color:var(--band-ink)}
+.fbt-chips span.on{background:var(--band-hi);border-color:var(--band-hi);color:#2A1670}
+@media (prefers-reduced-motion:no-preference){.fbt-chips span.on{animation:bob 3s ease-in-out infinite}.fbt-chips span.on+span+span.on{animation-delay:-1.5s}@keyframes bob{50%{transform:translateY(-4px)}}}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:6px}
+  .st-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .check{padding-top:48px}
+  .check-grid,.rf-grid,.ms-grid,.fbt-in{grid-template-columns:minmax(0,1fr);gap:28px}
+  .proc,.proof{position:static}
+  .psteps{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}
+  .psteps li{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px}
+  .psteps li:not(:last-child)::after{left:calc(50% + 34px);top:30px;height:0;width:calc(100% - 60px);border-left:0;border-top:2px dashed var(--line)}
+  .pic{width:58px;height:58px;border-radius:18px}
+  .pic svg{width:36px;height:36px}
+  .pl{font-size:12.5px}
+  .phint{display:none}
+  .ms-form{grid-template-columns:minmax(0,1fr)}
+  .fbt-chips{justify-content:flex-start}
+  .fbt-in{padding:24px}
+}
+@media (max-width:420px){.st-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* hero scene: 12s loop of a pharmacy counter. Story: overcharged, check, refund. */
+.scene{margin:0;position:relative}
+.stage{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:20px;overflow:hidden;border:2px solid var(--ink);box-shadow:var(--shadow);container-type:inline-size;background:var(--rxbg)}
+.stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .ani{--d:12s;animation-duration:var(--d);animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+.cust{animation-name:sc-walk}
+.m-flat{animation-name:sc-flat}.m-smile{animation-name:sc-smile;opacity:0}
+.cash1{animation-name:sc-cash1;opacity:0}.cash2{animation-name:sc-cash2;opacity:0}
+.hphone{animation-name:sc-hphone;opacity:0}.okb{animation-name:sc-ok;opacity:0;transform-box:fill-box;transform-origin:center}
+.bub{position:absolute;background:var(--panel);color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:.35em .7em;font-family:var(--display);font-weight:800;font-size:15px;font-size:clamp(11px,3.4cqw,17px);line-height:1.2;opacity:0;transform-origin:85% 100%;box-shadow:0 6px 14px -8px rgba(20,10,60,.5)}
+.bub::after{content:"";position:absolute;right:22%;bottom:-8px;width:12px;height:12px;background:var(--panel);border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+.b1{left:56%;top:13%;font-size:clamp(14px,4.6cqw,24px);animation-name:sc-b1}
+.b3{right:3%;top:7%;max-width:46%;animation-name:sc-b3}
+.dim{position:absolute;inset:0;background:#120B2A;opacity:0;animation-name:sc-dim}
+.sphone{position:absolute;left:50%;top:5%;width:46%;background:var(--panel);color:var(--ink);border:3px solid var(--ink);border-radius:16px;padding:6% 5% 5%;padding:3cqw 2.6cqw 2.6cqw;display:grid;gap:1.4cqw;opacity:0;animation-name:sc-phone;font-size:12px;font-size:clamp(9px,2.8cqw,14px)}
+.sphone::before{content:"";position:absolute;top:1.1cqw;left:50%;width:18%;height:.9cqw;min-height:3px;border-radius:9px;background:var(--line);transform:translateX(-50%)}
+.sp-wm{font-family:var(--mark);font-weight:800;letter-spacing:-.04em;font-size:1.25em}
+.sp-name{font-weight:700;border-bottom:1px dashed var(--line);padding-bottom:1cqw}
+.sp-row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;color:var(--soft)}
+.sp-row b{font-family:var(--display);font-weight:800;color:var(--ink);font-size:1.35em;white-space:nowrap}
+.sp-row.good b{color:var(--rx)}
+.sp-row.bad b{color:var(--red)}
+.sp-stamp{justify-self:center;margin-top:.6cqw;font-family:var(--display);font-weight:800;color:var(--red);border:3px double var(--red);border-radius:8px;padding:.25em .6em;font-size:1.15em;white-space:nowrap;opacity:0;animation-name:sc-stamp}
+.sc-cap{position:absolute;left:0;right:0;bottom:0;height:29%;display:grid;align-items:center;padding:0 16% 0 4%;pointer-events:none}
+.sc-cap>span{grid-area:1/1;display:flex;gap:.6em;align-items:center;font-weight:700;font-size:13px;font-size:clamp(12px,3.3cqw,16.5px);line-height:1.3;color:var(--ink);opacity:0}
+.sc-cap>span>b{flex:none;width:1.7em;height:1.7em;border-radius:50%;display:grid;place-items:center;background:var(--rx);color:#fff;font-size:.85em}
+.c1{animation-name:sc-c1}.c2{animation-name:sc-c2}.c3{animation-name:sc-c3}
+.sc-bar{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--or);transform-origin:0 50%;animation:sc-bar var(--d,12s) linear infinite}
+.sc-pp{position:absolute;right:10px;bottom:10px;width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);background:var(--panel);color:var(--ink);display:grid;place-items:center;padding:0;z-index:3}
+.scene.paused .ani,.scene.paused .sc-bar{animation-play-state:paused}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes sc-walk{0%{transform:translateX(-170px);opacity:0}3%{opacity:1}9%,96%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:0}}
+@keyframes sc-flat{0%,84%{opacity:1}86%,100%{opacity:0}}
+@keyframes sc-smile{0%,84%{opacity:0}86%,96%{opacity:1}100%{opacity:0}}
+@keyframes sc-b1{0%,10%{opacity:0;transform:scale(.6)}13%,36%{opacity:1;transform:scale(1)}40%,100%{opacity:0;transform:scale(.6)}}
+@keyframes sc-cash1{0%,20%{opacity:0;transform:translate(0,0)}23%{opacity:1;transform:translate(0,0)}35%{opacity:1;transform:translate(150px,-4px)}39%,100%{opacity:0;transform:translate(150px,-4px)}}
+@keyframes sc-dim{0%,41%{opacity:0}46%,68%{opacity:.4}72%,100%{opacity:0}}
+@keyframes sc-phone{0%,41%{opacity:0;transform:translate(-50%,12%) scale(.7)}46%,68%{opacity:1;transform:translate(-50%,0) scale(1)}72%,100%{opacity:0;transform:translate(-120%,40%) scale(.3)}}
+@keyframes sc-stamp{0%,51%{opacity:0;transform:rotate(-8deg) scale(1.9)}55%,68%{opacity:1;transform:rotate(-8deg) scale(1)}72%,100%{opacity:0;transform:rotate(-8deg)}}
+@keyframes sc-hphone{0%,70%{opacity:0}73%,96%{opacity:1}100%{opacity:0}}
+@keyframes sc-b3{0%,75%{opacity:0;transform:scale(.6)}78%,96%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes sc-cash2{0%,79%{opacity:0;transform:translate(0,0)}81%{opacity:1;transform:translate(0,0)}90%{opacity:1;transform:translate(-150px,-4px)}94%,100%{opacity:0;transform:translate(-150px,-4px)}}
+@keyframes sc-ok{0%,88%{opacity:0;transform:scale(.3)}91%,97%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes sc-c1{0%,1%{opacity:0}4%,38%{opacity:1}41%,100%{opacity:0}}
+@keyframes sc-c2{0%,41%{opacity:0}44%,69%{opacity:1}72%,100%{opacity:0}}
+@keyframes sc-c3{0%,72%{opacity:0}75%,97%{opacity:1}100%{opacity:0}}
+@keyframes sc-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .stage .ani,.sc-bar{animation:none!important}
+  .sc-pp{display:none}
+  .sphone{opacity:1;transform:translate(-50%,0)}
+  .sp-stamp{opacity:1;transform:rotate(-8deg)}
+  .dim{opacity:.4}
+  .c2{opacity:1}
+}
+/* capsule switch */
+.capsule{display:grid;grid-template-columns:1fr 1fr;border-radius:999px;overflow:hidden;border:2px solid var(--ink);margin-bottom:18px;box-shadow:var(--shadow)}
+.capsule button{border:0;padding:13px 10px;font-family:var(--display);font-weight:750;font-size:17px;background:var(--panel);color:var(--soft);transition:background .2s,color .2s}
+.capsule button[aria-selected="true"]{background:var(--rx);color:#fff}
+:root[data-theme="dark"] .capsule button[aria-selected="true"]{color:#120B2A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .capsule button[aria-selected="true"]{color:#120B2A}}
+.capsule button+button{border-left:2px solid var(--ink)}
+
+/* carton */
+.carton{background:var(--panel);border-radius:4px 4px 18px 18px;box-shadow:var(--shadow);position:relative;overflow:visible}
+.carton::before{content:"";display:block;height:14px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,var(--rx) 0 62%,var(--or) 62% 100%)}
+.cbody{padding:20px 20px 22px}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
+.chead h2{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.2;letter-spacing:-.02em;margin:0}
+.chead small{display:block;font-size:13.5px;color:var(--soft);margin-top:4px;font-family:var(--sans)}
+.rx{font-family:var(--display);font-weight:800;font-size:22px;color:var(--rx);border:2px solid var(--rx);border-radius:8px;padding:0 7px;line-height:1.35}
+.perf{height:0;border-top:2px dashed var(--line);margin:0 -20px 16px}
+.strip{position:relative;border:1.5px solid var(--line);border-radius:10px;padding:6px 14px;background:repeating-linear-gradient(0deg,transparent 0 30px,rgba(35,48,143,.035) 30px 31px);overflow:hidden}
+.row{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:10px;padding:8px 0}
+.row+.row{border-top:1px dashed var(--line)}
+.row label{font-family:var(--sans);font-weight:600;color:var(--soft);font-size:14px}
+.row input{border:0;background:transparent;width:100%;min-width:0;padding:6px 0;outline:none}
+.row input.dot{font-family:var(--dot);font-size:24px;color:var(--ink-dot);letter-spacing:.08em;text-transform:uppercase}
+.row input.txt{font-size:18px}
+.row input::placeholder{color:var(--soft);opacity:.55}
+.strip:focus-within{border-color:var(--ink-dot)}
+.strip.scanning::after{content:"";position:absolute;left:0;right:0;height:46px;top:-46px;background:linear-gradient(180deg,transparent,rgba(106,79,214,.28),transparent);border-bottom:2px solid var(--rx2)}
+@media (prefers-reduced-motion:no-preference){.strip.scanning::after{animation:scan .75s ease-in-out}@keyframes scan{to{top:100%}}}
+.help{display:flex;gap:8px;align-items:center;margin:12px 0 4px;background:none;border:0;padding:0;color:var(--rx);font-size:15px;font-weight:700}
+.where{display:none;margin-top:10px;background:var(--rxbg);border-radius:12px;padding:12px;font-size:14.5px;color:var(--ink)}
+.where.on{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.cta{width:100%;margin-top:16px;border:0;border-radius:999px;padding:15px;background:var(--or);color:var(--on-or);box-shadow:0 8px 20px -10px rgba(42,22,112,.45);font-family:var(--display);font-weight:800;font-size:19px;display:flex;justify-content:center;align-items:center;gap:10px;transition:transform .12s}
+.cta:active{transform:scale(.98)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:14px;color:var(--soft);align-items:center}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 12px;font-size:14px}
+.chip:hover{border-color:var(--rx)}
+
+.vx{grid-column:1/-1}
+.acts{margin-top:4px;display:grid;gap:8px}
+.acts-h{margin:0;font-family:var(--display);font-weight:800;font-size:16px;color:var(--ink)}
+.act{display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px;font-weight:700}
+.act.primary{background:var(--ink);color:var(--bg);border-color:var(--ink);font-size:16px}
+.act .num{margin-left:auto;white-space:nowrap;font-family:var(--display);font-size:18px}
+.draft summary{cursor:pointer;color:var(--ink-dot);font-weight:700;font-size:15px;padding:4px 0}
+.draft textarea{width:100%;margin-top:8px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel);color:var(--ink);font:inherit;font-size:14.5px;resize:vertical}
+.draft .copy{margin-top:6px;border:0;border-radius:999px;padding:8px 14px;background:var(--rx);color:#fff;font-weight:700;font-size:14px}
+.keep{margin:2px 0 0;font-size:13.5px;color:var(--soft)}
+.wa{display:inline-flex;gap:6px;align-items:center;color:#1A8F49;font-weight:700;font-size:14px;text-decoration:none;justify-self:start}
+/* scan */
+.scanbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:2px dashed var(--rx);background:var(--rxbg);color:var(--rx);border-radius:14px;padding:14px;font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:12px}
+.scanbtn small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--soft);}
+.scanbtn .cam{width:40px;height:40px;border-radius:50%;background:var(--rx);display:grid;place-items:center;flex:none}
+.or{display:flex;align-items:center;gap:10px;color:var(--soft);font-size:13px;margin:0 0 12px}
+.or::before,.or::after{content:"";flex:1;border-top:1px dashed var(--line)}
+.scanstat{display:flex;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:12px;font-size:14.5px}
+.scanstat img{width:56px;height:56px;object-fit:cover;border-radius:8px;flex:none}
+.scanstat .sp{width:18px;height:18px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--rx);flex:none}
+@media (prefers-reduced-motion:no-preference){.scanstat .sp{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
+
+/* stamp */
+.stamp{position:absolute;right:14px;top:26px;transform:rotate(-9deg) scale(1);font-family:var(--display);font-weight:800;font-size:22px;line-height:1;padding:8px 12px;border:3px double currentColor;border-radius:8px;letter-spacing:.02em;background:var(--panel);opacity:0;pointer-events:none;max-width:60%;text-align:center}
+.stamp.show{opacity:.95}
+@media (prefers-reduced-motion:no-preference){.stamp.show{animation:thud .38s cubic-bezier(.2,1.6,.4,1)}@keyframes thud{from{opacity:0;transform:rotate(-9deg) scale(1.9)}}}
+.stamp.red{color:var(--red)} .stamp.amber{color:var(--amber)} .stamp.green{color:var(--rx)}
+
+/* autocomplete */
+.ac{position:relative}
+.list{position:absolute;left:-14px;right:-14px;top:calc(100% + 8px);background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);z-index:20;padding:6px;display:none;max-height:300px;overflow:auto}
+.list.on{display:block}
+.list button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:8px;font-size:16px}
+.list button small{color:var(--soft);font-size:13px;display:block}
+.list button[aria-selected="true"],.list button:hover{background:var(--rxbg)}
+
+/* results */
+.results{display:grid;gap:12px;margin-top:18px}
+.verdict{border-radius:16px;padding:18px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.verdict .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;font-family:var(--display)}
+.verdict h3{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.15;margin:2px 0 6px}
+.verdict p{margin:0;font-size:15.5px}
+.v-red{background:var(--redbg)} .v-red .ic{background:var(--red)} .v-red h3{color:var(--red)}
+.v-amber{background:var(--amberbg)} .v-amber .ic{background:var(--amber)} .v-amber h3{color:var(--amber)}
+.v-green{background:var(--rxbg)} .v-green .ic{background:var(--rx)} .v-green h3{color:var(--rx)}
+.item{background:var(--panel);border-radius:14px;padding:14px 16px;border:1px solid var(--line)}
+.item .t{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.item b{font-size:16.5px}
+.tag{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.t-fake{background:var(--redbg);color:var(--red)} .t-sub{background:var(--amberbg);color:var(--amber)} .t-other{background:var(--foil1);color:var(--soft)}
+.meta{font-size:14.5px;color:var(--soft);margin-top:5px}
+.meta a{color:var(--ink-dot)}
+.bn{font-family:var(--dot);color:var(--ink-dot)}
+
+/* blister / price */
+.blister{display:grid;gap:10px}
+.pack{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:linear-gradient(135deg,var(--foil1),var(--panel) 60%);border-radius:14px;padding:12px}
+.pack .cell{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--foil2));box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);display:grid;place-items:center}
+.pack .cell i{width:28px;height:13px;border-radius:7px;background:linear-gradient(90deg,var(--rx) 50%,var(--or) 50%);display:block;transform:rotate(-30deg);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.pack .nm b{display:block;font-size:16px;line-height:1.25}
+.pack .nm small{color:var(--soft);font-size:13.5px}
+.sticker{font-family:var(--display);font-weight:800;font-size:18px;background:var(--or);color:var(--on-or);padding:6px 10px;border-radius:6px;transform:rotate(2deg);white-space:nowrap}
+.pack[aria-pressed="true"]{border-color:var(--rx);box-shadow:0 0 0 2px var(--rx)}
+.paybox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:-2px}
+.payrow{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.payrow span{font-family:var(--display);font-weight:800;font-size:26px;color:var(--soft)}
+.payrow input{border:0;background:transparent;font-family:var(--display);font-weight:800;font-size:34px;width:100%;outline:none}
+.meter{position:relative;height:14px;border-radius:999px;background:linear-gradient(90deg,var(--rx) 0 var(--lim),var(--red) var(--lim) 100%);margin:22px 0 8px;opacity:.9}
+.meter .pin{position:absolute;top:50%;width:24px;height:24px;border-radius:50%;background:var(--panel);border:4px solid var(--ink);transform:translate(-50%,-50%);left:var(--pos);transition:left .25s}
+.meter-l{display:flex;justify-content:space-between;font-size:13px;color:var(--soft)}
+
+/* latest */
+section.latest{padding:56px 0 10px}
+.sh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 24px;margin-bottom:22px}
+.sh h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.1;letter-spacing:-.03em;margin:0}
+.sh p{margin:0;color:var(--soft);font-size:15px;max-width:36ch}
+.sh .eyebrow{color:var(--rx);margin:0 0 8px;max-width:none;font-size:13px}
+.shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,250px);gap:14px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory}
+.box{scroll-snap-align:start;position:relative;background:var(--panel);border-radius:4px 4px 14px 14px;box-shadow:var(--shadow);padding:16px 16px 14px;text-align:left;border:0;overflow:hidden;display:flex;flex-direction:column;gap:6px;min-height:200px}
+.box::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--rx) 0 60%,var(--or) 60%)}
+.box .tape{position:absolute;right:-38px;top:26px;transform:rotate(35deg);background:var(--tape);color:#fff;font-family:var(--display);font-weight:800;font-size:13px;padding:4px 44px;letter-spacing:.04em}
+.box b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.1;margin-top:12px;padding-right:40px}
+.box .bn{font-size:17px}
+.box small{color:var(--soft);font-size:13.5px;margin-top:auto}
+.box .go{color:var(--rx);font-weight:700;font-size:14px}
+
+/* grouped price results */
+.groups{display:grid;gap:12px}
+.grp{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:12px}
+.g-head{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center}
+.g-ic{width:44px;height:44px;border-radius:12px;background:var(--rxbg);display:grid;place-items:center}
+.g-nm b{display:block;font-size:17px;line-height:1.25}
+.g-nm small{color:var(--soft);font-size:13px}
+.g-ct{font-size:12.5px;font-weight:700;color:var(--rx);background:var(--rxbg);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.vchips{display:flex;flex-wrap:wrap;gap:8px}
+.vchip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;font-weight:600;color:var(--ink);min-height:40px}
+.vchip[aria-pressed="true"]{border-color:var(--rx);background:var(--rxbg);color:var(--rx)}
+.packs{display:grid;gap:8px}
+.comp{margin:0;font-size:13px;color:var(--soft)}
+.pack .cell{background:var(--rxbg)!important;box-shadow:none!important}
+/* install */
+.install{display:grid;grid-template-columns:44px 1fr auto auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px 10px 10px 12px;box-shadow:var(--shadow);margin:0 0 14px}
+.install img{border-radius:11px}
+.itxt b{display:block;font-family:var(--display);font-size:17px;line-height:1.2}
+.itxt span{font-size:13.5px;color:var(--soft)}
+.ibtn{border:0;border-radius:999px;background:var(--or);color:var(--on-or);font-weight:700;padding:9px 14px;font-size:15px}
+.ix{border:0;background:transparent;color:var(--soft);font-size:24px;line-height:1;padding:4px 6px}
+.ios{grid-column:1/-1;background:var(--rxbg);border-radius:10px;padding:10px 12px;font-size:14.5px}
+@media (prefers-reduced-motion:no-preference){.install:not(.hidden){animation:rise .35s ease-out both}}
+@media (max-width:860px){
+  .stamp{font-size:17px;padding:6px 9px}
+  .where.on{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){.results>*{animation:rise .3s ease-out both}.results>*:nth-child(2){animation-delay:.05s}.results>*:nth-child(3){animation-delay:.1s}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
+/* faq */
+section.faq{padding:20px 0 0}
+.faq-list{display:grid;gap:10px;max-width:820px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px;gap:12px;align-items:center;padding:16px 18px;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";width:28px;height:28px;border-radius:50%;background:var(--rxbg);color:var(--rx);display:grid;place-items:center;font-size:20px;font-weight:700;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details>div{padding:0 18px 18px;color:var(--soft);font-size:15.5px;max-width:68ch}
+.faq details>div p{margin:0}
+.faq details>div a{font-weight:700}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool" data-i="skip"></a>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Dawa Check home">
+    <svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) rotate(-35) translate(-50 -50)"><path d="M50 33 H73 A17 17 0 0 1 73 67 H50 Z" fill="#FFD23F"/><path d="M27 33 H50 V67 H27 A17 17 0 0 1 27 33 Z" fill="var(--rx)"/></g><path d="M56 52 L63 59 L77 42" fill="none" stroke="#2A1670" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span>
+  </a>
+  <nav class="nav" aria-label="Main"><a href="#check" data-i="navPrice"></a><a href="#batch" data-i="navBatch"></a><a href="#latest" data-i="navLatest"></a><a href="#complain" data-i="navComplain"></a><a href="feedback.html" data-i="navFeedback"></a></nav>
+  <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true">Roman</button><button data-lang="en" aria-pressed="false">English</button></div>
+</header>
+<div class="install hidden" id="install" role="region" aria-label="Install">
+  <img src="icons/icon-192.png" alt="" width="44" height="44">
+  <div class="itxt"><b data-i="instH"></b><span data-i="instP"></span></div>
+  <button class="ibtn" id="instBtn" data-i="instBtn"></button>
+  <button class="ix" id="instX" aria-label="Close">×</button>
+  <div class="ios hidden" id="iosHelp"><span data-i="iosHelp"></span></div>
+</div>
+</div>
+
+<section class="wrap hero">
+  <div class="h-text">
+    <h1 id="h1"><span data-i="h1a"></span><span data-i="h1b"></span></h1>
+    <p class="lede" data-i="lede"></p>
+    <div class="ctas"><a class="btn primary" href="#check" data-i="ctaP"></a><a class="btn" href="#batch" data-i="ctaB"></a></div>
+    <p class="trust"><span><b id="fP"></b> <span data-i="fP"></span></span><span><b id="fA"></b> <span data-i="fA"></span></span><span><span data-i="fU"></span> <b id="fU"></b></span></p>
+  </div>
+  <figure class="scene" id="scene">
+    <div class="stage">
+      <svg viewBox="0 0 480 300" aria-hidden="true">
+        <rect x="0" y="0" width="480" height="300" fill="var(--rxbg)"/>
+        <g><rect x="150" y="12" width="180" height="32" rx="7" fill="#4B2BB8"/><circle cx="170" cy="28" r="10" fill="#FFFFFF"/><rect x="167.5" y="21" width="5" height="14" fill="#1FA45B"/><rect x="163" y="25.5" width="14" height="5" fill="#1FA45B"/><text x="254" y="33" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="13" letter-spacing="2" fill="#FFFFFF" data-i="scStore">MEDICAL STORE</text></g>
+        <g><circle cx="58" cy="62" r="17" fill="var(--panel)" stroke="var(--foil2)" stroke-width="3"/><path d="M58 62V52M58 62l7 4" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+        <g><rect x="22" y="98" width="58" height="46" rx="4" fill="var(--panel)" stroke="var(--foil2)" stroke-width="2"/><rect x="30" y="107" width="42" height="5" rx="2" fill="var(--rx2)"/><rect x="30" y="117" width="30" height="4" rx="2" fill="var(--foil2)"/><rect x="30" y="125" width="36" height="4" rx="2" fill="var(--foil2)"/><rect x="30" y="133" width="24" height="4" rx="2" fill="var(--foil2)"/></g>
+        <g><rect x="250" y="92" width="222" height="6" fill="var(--foil2)"/><rect x="250" y="150" width="222" height="6" fill="var(--foil2)"/>
+          <rect x="256" y="64" width="20" height="28" rx="2" fill="var(--or)"/><rect x="280" y="72" width="16" height="20" rx="2" fill="#F27468"/><rect x="300" y="60" width="22" height="32" rx="2" fill="var(--panel)" stroke="var(--foil2)"/><rect x="398" y="68" width="20" height="24" rx="2" fill="#6CC3A0"/><rect x="422" y="58" width="24" height="34" rx="2" fill="var(--rx2)"/><rect x="450" y="70" width="16" height="22" rx="2" fill="var(--or)"/>
+          <rect x="256" y="124" width="24" height="26" rx="2" fill="var(--rx2)"/><rect x="284" y="130" width="18" height="20" rx="2" fill="#6CC3A0"/><rect x="404" y="126" width="22" height="24" rx="2" fill="#F27468"/><rect x="430" y="118" width="18" height="32" rx="2" fill="var(--panel)" stroke="var(--foil2)"/><rect x="452" y="128" width="16" height="22" rx="2" fill="var(--or)"/></g>
+        <g><rect x="322" y="150" width="76" height="72" rx="26" fill="#FFFFFF" stroke="var(--foil2)" stroke-width="2"/><path d="M347 152 L360 174 L373 152 Z" fill="var(--rx)"/><rect x="353" y="136" width="14" height="16" fill="#C68B59"/><circle cx="360" cy="120" r="21" fill="#C68B59"/><path d="M339 120 C339 94 381 94 381 120 C376 106 344 106 339 120 Z" fill="#2B1D14"/><circle cx="352" cy="122" r="2.2" fill="#2B1D14"/><circle cx="366" cy="122" r="2.2" fill="#2B1D14"/><path d="M352 130 q8 5 16 0" stroke="#2B1D14" stroke-width="3" stroke-linecap="round" fill="none"/></g>
+        <g class="cust ani">
+          <rect x="84" y="150" width="72" height="72" rx="26" fill="#2E8B7A"/><path d="M110 152 L120 166 L130 152 Z" fill="#23705F"/><rect x="113" y="136" width="14" height="16" fill="#B97A4E"/><circle cx="120" cy="120" r="21" fill="#B97A4E"/><path d="M99 118 C99 92 141 92 141 118 C136 104 104 104 99 118 Z" fill="#1E1410"/><circle cx="126" cy="121" r="2.2" fill="#1E1410"/><circle cx="136" cy="121" r="2.2" fill="#1E1410"/>
+          <path class="m-flat ani" d="M126 131 h10" stroke="#1E1410" stroke-width="2.5" stroke-linecap="round" fill="none"/><path class="m-smile ani" d="M124 129 q7 7 14 0" stroke="#1E1410" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <rect x="144" y="164" width="40" height="13" rx="6.5" fill="#2E8B7A"/><circle cx="187" cy="170" r="7" fill="#B97A4E"/>
+          <g class="hphone ani"><rect x="181" y="140" width="18" height="30" rx="4" fill="var(--ink)"/><rect x="183.5" y="144" width="13" height="20" rx="2" fill="var(--or)"/></g>
+        </g>
+        <g><rect x="0" y="198" width="480" height="11" fill="var(--rx)"/><rect x="0" y="209" width="480" height="91" fill="var(--panel)"/><rect x="0" y="209" width="480" height="4" fill="var(--or)"/></g>
+        <g><rect x="272" y="176" width="40" height="22" rx="2" fill="#FFFFFF" stroke="var(--foil2)" stroke-width="1.5"/><rect x="272" y="176" width="40" height="6" fill="var(--rx)"/><rect x="298" y="176" width="14" height="6" fill="var(--or)"/><rect x="278" y="187" width="20" height="3" rx="1.5" fill="var(--foil2)"/></g>
+        <g class="cash1 ani"><rect x="168" y="176" width="40" height="20" rx="3" fill="#7BC08A" stroke="#2F7A44" stroke-width="2"/><text x="188" y="190.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="11" fill="#1F4F2C">250</text></g>
+        <g class="cash2 ani"><rect x="318" y="176" width="44" height="20" rx="3" fill="#7BC08A" stroke="#2F7A44" stroke-width="2"/><text x="340" y="190.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="10" fill="#1F4F2C">89.43</text></g>
+        <g class="okb ani"><circle cx="160" cy="92" r="13" fill="#1FA45B"/><path d="M153 92 l5 5 l9 -10" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+      </svg>
+      <div class="bub b1 ani" aria-hidden="true">Rs 250</div>
+      <div class="dim ani"></div>
+      <div class="sphone ani" aria-hidden="true">
+        <span class="sp-wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span>
+        <span class="sp-name">Panadol Extend 20's</span>
+        <span class="sp-row good"><span data-i="scDrap"></span><b>Rs 160.57</b></span>
+        <span class="sp-row bad"><span data-i="scPaid"></span><b>Rs 250</b></span>
+        <span class="sp-stamp ani" data-i="scOver"></span>
+      </div>
+      <div class="bub b3 ani" aria-hidden="true" data-i="scReply"></div>
+      <div class="sc-cap" aria-hidden="true">
+        <span class="c1 ani"><b>1</b><span data-i="sc1"></span></span>
+        <span class="c2 ani"><b>2</b><span data-i="sc2"></span></span>
+        <span class="c3 ani"><b>3</b><span data-i="sc3"></span></span>
+      </div>
+      <div class="sc-bar"></div>
+      <button type="button" class="sc-pp" id="scPP" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><g class="i-pause"><rect x="2" y="1" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="3.5" height="12" rx="1" fill="currentColor"/></g><path class="i-play hidden" d="M3 1.5v11l9.5-5.5z" fill="currentColor"/></svg></button>
+    </div>
+    <figcaption class="sr-only"><span data-i="sceneLbl"></span>. <span data-i="sc1"></span> <span data-i="sc2"></span> <span data-i="sc3"></span></figcaption>
+  </figure>
+</section>
+
+<section class="stats" aria-labelledby="st-h">
+  <div class="wrap">
+    <h2 class="st-h" id="st-h" data-i="stH"></h2>
+    <div class="st-grid">
+      <div class="stat"><b class="stn">1 in 10</b><p data-i="st1"></p><a class="src" href="https://www.who.int/news/item/28-11-2017-1-in-10-medical-products-in-developing-countries-is-substandard-or-falsified" target="_blank" rel="noopener"><span data-i="st1s"></span> <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="stat"><b class="stn">4×</b><p data-i="st2"></p><a class="src" href="https://www.dawn.com/news/1790807" target="_blank" rel="noopener"><span data-i="st2s"></span> <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="stat"><b class="stn">55%</b><p data-i="st3"></p><a class="src" href="https://www.thenews.pk/print/1414399-55pc-drugs-prices-went-up-after-deregulation-in-2024-drap" target="_blank" rel="noopener"><span data-i="st3s"></span> <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="stat"><b class="stn"><span id="stFake">248</span></b><p data-i="st4"></p><a class="src" href="how-we-verify.html"><span data-i="st4s"></span> →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="check" id="check">
+  <div class="wrap check-grid">
+    <div class="proc" id="proc">
+      <p class="eyebrow" data-i="procEy"></p>
+      <h2 data-i="procH"></h2>
+      <ol class="psteps" data-flow="p">
+        <li data-s="1"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><rect x="5" y="17" width="46" height="22" rx="11" fill="var(--panel)" stroke="var(--rx)" stroke-width="2.5"/><rect x="13" y="26" width="16" height="4" rx="2" fill="var(--foil2)"/><circle cx="38" cy="27" r="5" fill="none" stroke="var(--rx)" stroke-width="2.5"/><path d="M41.5 30.5l4 4" stroke="var(--rx)" stroke-width="2.5" stroke-linecap="round"/></svg></span><span class="pl" data-i="pp1"></span></li>
+        <li data-s="2"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><rect x="10" y="11" width="36" height="34" rx="7" fill="var(--foil1)" stroke="var(--rx)" stroke-width="2.5"/><circle cx="21" cy="22" r="5" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/><circle cx="35" cy="22" r="5" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/><circle cx="21" cy="35" r="5" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/><circle cx="35" cy="35" r="5" fill="var(--foil2)" stroke="var(--rx)" stroke-width="1.6"/></svg></span><span class="pl" data-i="pp2"></span></li>
+        <li data-s="3"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><rect x="7" y="15" width="42" height="26" rx="4" fill="#7BC08A" stroke="#2F7A44" stroke-width="2.5"/><circle cx="28" cy="28" r="7" fill="none" stroke="#2F7A44" stroke-width="2"/><text x="28" y="31.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="9" fill="#1F4F2C">Rs</text></svg></span><span class="pl" data-i="pp3"></span></li>
+        <li data-s="4"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><path d="M9 39 A19 19 0 0 1 47 39" stroke="var(--rx)" stroke-width="6" fill="none"/><path d="M41.4 25.6 A19 19 0 0 1 47 39" stroke="var(--red)" stroke-width="6" fill="none"/><path d="M28 39 L41 27" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="39" r="4" fill="var(--ink)"/></svg></span><span class="pl" data-i="pp4"></span></li>
+      </ol>
+      <ol class="psteps hidden" data-flow="b">
+        <li data-s="1"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><rect x="7" y="13" width="42" height="30" rx="3" fill="var(--panel)" stroke="var(--rx)" stroke-width="2.5"/><rect x="7" y="13" width="42" height="7" fill="var(--rx)"/><rect x="12" y="25" width="12" height="3" rx="1.5" fill="var(--foil2)"/><rect x="25" y="27" width="20" height="12" rx="2" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="3 2"/></svg></span><span class="pl" data-i="pb1"></span></li>
+        <li data-s="2"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><rect x="5" y="17" width="46" height="22" rx="6" fill="var(--panel)" stroke="var(--rx)" stroke-width="2.5"/><text x="10" y="32.5" font-family="DotGothic16, monospace" font-size="12" fill="var(--ink-dot)">139N</text><rect x="42" y="21" width="2.5" height="14" fill="var(--rx)"/></svg></span><span class="pl" data-i="pb2"></span></li>
+        <li data-s="3"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><g transform="rotate(-10 28 28)"><rect x="6" y="17" width="44" height="22" rx="4" fill="var(--panel)" stroke="var(--red)" stroke-width="2.5"/><text x="28" y="32" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="10" fill="var(--red)">ALERT</text></g></svg></span><span class="pl" data-i="pb3"></span></li>
+        <li data-s="4"><span class="pic"><svg width="44" height="44" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="19" fill="var(--rxbg)"/><path transform="translate(16 16)" fill="var(--rx)" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><span class="pl" data-i="pb4"></span></li>
+      </ol>
+      <p class="phint" data-i="procHint"></p>
+    </div>
+  <div id="tool">
+    <div class="capsule" role="tablist">
+      <button role="tab" id="tab-p" aria-selected="true" aria-controls="pane-p" data-i="tabPrice"></button>
+      <button role="tab" id="tab-b" aria-selected="false" aria-controls="pane-b" data-i="tabBatch"></button>
+    </div>
+
+    <div id="pane-p" role="tabpanel" aria-labelledby="tab-p" class="carton">
+      <div class="cbody">
+        <div class="chead"><div><h2 data-i="cpTitle"></h2><small data-i="cpSub"></small></div><span class="rx" aria-hidden="true">Rs</span></div>
+        <div class="perf"></div>
+        <div class="strip"><div class="row ac"><label for="qp" data-i="nameLbl"></label><input id="qp" class="txt" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="acP" aria-autocomplete="list"><div class="list" id="acP" role="listbox"></div></div></div>
+        <button class="cta" id="goP"><span data-i="findBtn"></span></button>
+        <div class="chips"><span data-i="try"></span><button class="chip" data-px="Panadol Extend">Panadol Extend</button><button class="chip" data-px="Brufen DS">Brufen DS</button><button class="chip" data-px="Risek">Risek</button></div>
+      </div>
+    </div>
+
+    <div id="pane-b" role="tabpanel" aria-labelledby="tab-b" class="carton hidden">
+      <div class="cbody">
+        <div class="chead"><div><h2 data-i="cbTitle"></h2><small data-i="cbSub"></small></div><span class="rx" aria-hidden="true">Rx</span></div>
+        <div class="perf"></div>
+        <div class="strip" id="stripB">
+          <div class="row"><label for="qb">B. No.</label><input id="qb" class="dot" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="139N086"></div>
+          <div class="row ac"><label for="qn" data-i="nameLbl"></label><input id="qn" class="txt" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="acB" aria-autocomplete="list"><div class="list" id="acB" role="listbox"></div></div>
+        </div>
+        <button class="help" id="helpBtn" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 13v-1M7 7a2 2 0 1 1 3 1.7c-.7.4-1 .8-1 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i="where"></span></button>
+        <div class="where" id="where">
+          <svg viewBox="0 0 150 96" width="150" aria-hidden="true"><rect x="2" y="10" width="146" height="70" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="2" y="10" width="146" height="10" fill="var(--rx)"/><rect x="12" y="30" width="60" height="8" rx="2" fill="var(--line)"/><rect x="12" y="44" width="40" height="6" rx="2" fill="var(--line)"/><rect x="84" y="46" width="56" height="28" rx="3" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="3 2"/><text x="89" y="57" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">B.No 139N086</text><text x="89" y="68" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">Exp 06-2027</text><path d="M112 92 l0 -14 m-5 5 l5 -5 l5 5" stroke="var(--red)" stroke-width="2" fill="none"/></svg>
+          <span data-i="whereTxt"></span>
+        </div>
+        <button class="cta" id="goB"><span data-i="checkBtn"></span><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+        <div class="chips"><span data-i="try"></span><button class="chip" data-ex="Novidat|139N086">Novidat 139N086</button><button class="chip" data-ex="Panadol|ZZZ999">Panadol ZZZ999</button></div>
+      </div>
+      <div class="stamp" id="stamp" aria-hidden="true"></div>
+    </div>
+
+    <div class="results" id="res" aria-live="polite"></div>
+  </div>
+  </div>
+</section>
+
+<div class="wrap">
+<section class="latest" id="latest">
+  <div class="sh"><h2 data-i="latestH"></h2><p data-i="latestP"></p></div>
+  <div class="shelf" id="shelf"></div>
+</section>
+</div>
+
+<section class="refuse" id="complain">
+  <div class="wrap">
+    <div class="sh"><div><p class="eyebrow" data-i="rfEy"></p><h2 data-i="rfH"></h2></div><p data-i="rfP"></p></div>
+    <div class="rf-grid">
+      <ol class="ladder">
+        <li><span class="lic"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 18.5h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div class="lbody"><span class="lvl" data-i="r1t"></span><h3 data-i="r1h"></h3><p data-i="r1p"></p></div></li>
+        <li><span class="lic"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span><div class="lbody"><span class="lvl" data-i="r2t"></span><h3 data-i="r2h"></h3><p data-i="r2p"></p><a class="lbtn primary" href="tel:080003727" data-call>0800-03727</a></div></li>
+        <li><span class="lic"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div class="lbody"><span class="lvl" data-i="r3t"></span><h3 data-i="r3h"></h3><p data-i="r3p"></p><a class="lbtn" href="https://www.dra.gov.pk/complaints/" target="_blank" rel="noopener"><span data-i="r3b"></span> <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></li>
+        <li><span class="lic"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="lbody"><span class="lvl" data-i="r4t"></span><h3 data-i="r4h"></h3><p data-i="r4p"></p><a class="lbtn" href="https://citizenportal.gov.pk/" target="_blank" rel="noopener">citizenportal.gov.pk <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></li>
+      </ol>
+      <aside class="proof">
+        <h3 data-i="pfH"></h3>
+        <ul class="chk">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="var(--rx)"/><path d="M5.5 9.2l2.3 2.3 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="pf1"></span></li><li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="var(--rx)"/><path d="M5.5 9.2l2.3 2.3 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="pf2"></span></li><li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="var(--rx)"/><path d="M5.5 9.2l2.3 2.3 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="pf3"></span></li><li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="var(--rx)"/><path d="M5.5 9.2l2.3 2.3 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="pf4"></span></li><li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="var(--rx)"/><path d="M5.5 9.2l2.3 2.3 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i="pf5"></span></li>
+        </ul>
+        <div class="fake-q"><b data-i="pfFake"></b><a href="https://www.dra.gov.pk/safety-information/safety-communication/safety-reporting/product-quality-defects/" target="_blank" rel="noopener"><span data-i="reportQuality"></span> <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <p class="fine" data-i="pfFine"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="missing" id="missing">
+  <div class="wrap ms-grid">
+    <div class="ms-intro">
+      <p class="eyebrow" data-i="msEy"></p>
+      <h2 data-i="msH"></h2>
+      <p data-i="msP"></p>
+      <svg class="ms-art" viewBox="0 0 200 140" aria-hidden="true"><rect x="40" y="34" width="120" height="86" rx="6" fill="var(--panel)" stroke="var(--rx)" stroke-width="3"/><rect x="40" y="34" width="120" height="18" fill="var(--rx)"/><rect x="118" y="34" width="42" height="18" fill="var(--or)"/><rect x="54" y="66" width="56" height="8" rx="4" fill="var(--foil2)"/><rect x="54" y="82" width="36" height="8" rx="4" fill="var(--foil2)"/><circle cx="148" cy="38" r="26" fill="var(--or)" stroke="var(--ink)" stroke-width="3"/><text x="148" y="49" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-weight="800" font-size="32" fill="#2A1670">?</text></svg>
+      <ul class="ms-pts"><li data-i="msPt1"></li><li data-i="msPt2"></li><li data-i="msPt3"></li></ul>
+    </div>
+    <form class="ms-form" id="msForm" novalidate>
+      <div class="fld full"><label for="f-name" data-i="fName"></label><input id="f-name" name="medicine" required autocomplete="off" data-ph="fNamePh"></div>
+      <div class="fld"><label for="f-str" data-i="fStr"></label><input id="f-str" name="strength" autocomplete="off" placeholder="625mg"></div>
+      <div class="fld"><label for="f-pack" data-i="fPack"></label><input id="f-pack" name="pack" autocomplete="off" data-ph="fPackPh"></div>
+      <div class="fld"><label for="f-mrp" data-i="fMrp"></label><div class="rsin"><span>Rs</span><input id="f-mrp" name="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div></div>
+      <div class="fld"><label for="f-co" data-i="fCo"></label><input id="f-co" name="company" autocomplete="off" placeholder="GSK"></div>
+      <div class="fld"><label for="f-city" data-i="fCity"></label><input id="f-city" name="city" autocomplete="address-level2" placeholder="Lahore"></div>
+      <div class="fld"><label for="f-email" data-i="fEmail"></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="fld full"><label for="f-note" data-i="fNote"></label><textarea id="f-note" name="note" rows="2"></textarea></div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="cta full" type="submit" id="msSend" data-i="fSend"></button>
+      <div class="full" id="msOut" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<section class="wrap fbt">
+  <div class="fbt-in">
+    <div><p class="eyebrow" data-i="fbEy"></p><h2 data-i="fbH"></h2><p data-i="fbP"></p><a class="btn primary" href="feedback.html" data-i="fbBtn"></a></div>
+    <div class="fbt-chips" aria-hidden="true"><span data-i="fbc1"></span><span class="on" data-i="fbc2"></span><span data-i="fbc3"></span><span class="on" data-i="fbc4"></span><span data-i="fbc5"></span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<section class="faq" id="faq">
+  <div class="sh"><h2 data-i="faqH"></h2><p data-i="faqP"></p></div>
+  <div class="faq-list">
+    <details><summary data-i="q0"></summary><div><p data-i="a0"></p></div></details>
+    <details><summary data-i="q1"></summary><div><p data-i="a1"></p></div></details>
+    <details><summary data-i="q2"></summary><div><p data-i="a2"></p></div></details>
+    <details><summary data-i="q3"></summary><div><p data-i="a3"></p></div></details>
+    <details><summary data-i="q4"></summary><div><p data-ih="a4"></p></div></details>
+    <details><summary data-i="q5"></summary><div><p data-ih="a5"></p></div></details>
+  </div>
+</section>
+
+<section class="disc" aria-labelledby="disc-h">
+  <h2 class="disc-h" id="disc-h"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.3" fill="currentColor"/></svg><span data-i="discH"></span></h2>
+  <ul>
+    <li><span data-i="d1"></span></li>
+    <li><span data-i="d2"></span></li>
+    <li><span data-i="d3"></span></li>
+    <li><span data-i="d4"></span></li>
+    <li><span data-ih="d5"></span></li>
+  </ul>
+  <p class="stamp-line" data-i="foot2"></p>
+</section>
+</div>
+
+<footer class="site-foot" id="site-foot"></footer>
+
+<script src="data/alerts.js"></script>
+<script src="data/prices.js"></script>
+<script src="assets/site.js"></script>
+<script>
+const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
+const T={
+ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. Hum un mauqon ke liye hain jab aisa nahi hota: khuli goliyan, MRP par chipka sticker, mita hua print, qeemat badalne ke baad purana stock, aur naqli dawa jis par MRP bhi naqli chhapi hoti hai.",
+ q0:"Dibbe par MRP to likhi hoti hai. Phir Dawa Check kyun?",
+ titleT:"Dawa Check: sahi qeemat, asli dawa",
+ h1a:"Dawa ki asli qeemat check karein,",h1b:"zyada paise na dein.",
+ lede:"Pharmacy jo qeemat bataye, woh hamesha sahi nahi hoti. Dawa ka naam likhein, apna pack chunein aur dekhein ke DRAP ne us ki kitni qeemat fix ki hai. Batch number se yeh bhi check karein ke dawa naqli to nahi.",
+ fA:"naqli ya kharab dawa ke alerts",fP:"packs ki government qeemat",fU:"last data update",
+ tabBatch:"Batch check",tabPrice:"Qeemat check",
+ cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail dawaon ki list se",
+ cpTitle:"Dawa ki qeemat check karein",cpSub:"Naam likhein, phir apna pack chunein",
+ nameLbl:"Dawa",where:"Batch number kahan likha hota hai?",
+ whereTxt:"Dibbe ki side ya neeche, ya goliyon ke patte ki peechli taraf. \"B.No.\", \"Batch\" ya \"Lot\" ke saath likha hota hai, aksar expiry date ke paas.",
+ checkBtn:"Batch check karein",findBtn:"Qeemat dekhein",try:"Try karein:",
+ needInput:"Dawa ka naam ya batch number likhein",needInputP:"Shuru karne ke liye ek cheez kaafi hai.",
+ stampHit:"DRAP ALERT",stampClose:"DOBARA CHECK KAREIN",stampClear:"KOI ALERT NAHI",
+ hitTitle:"Is batch par DRAP ka alert hai",
+ hitBody:"DRAP ya government lab ne is batch ko naqli ya test mein fail paya hai. Dawa band karne se pehle doctor ya pharmacist se baat karein, khaas kar agar yeh roz ki dawa hai. Dawa aur receipt pharmacy wapas le jayein.",
+ closeTitle:"Milta julta batch alert mein hai",closeBody:"Number bilkul same nahi, lekin bohat qareeb hai. Dibbe par number dobara dhyan se parhein aur neeche wala alert dekhein.",
+ nameTitle:"Is dawa ke kuch batches par alert hai",nameBody:"Aap ka batch number in mein nahi mila. Neeche wali list se apna batch mila kar dekhein.",
+ nameOnlyTitle:"Is naam ke alerts",nameOnlyBody:"Pakka pata karne ke liye dibbe ka batch number bhi likhein.",
+ clearTitle:"Is batch par koi alert nahi mila",clearBody:"DRAP ke alerts (__RANGE__) mein yeh batch nahi hai. Matlab abhi tak is par koi alert nahi aaya. Yeh lab test ki guarantee nahi hai.",
+ kind:{fake:"Naqli",substandard:"Test mein fail",unregistered:"Registered nahi",recall:"Recall"},
+ batch:"Batch",maker:"Company",date:"Alert date",reason:"Wajah",readAlert:"DRAP ka poora alert parhein",
+ priceNone:"Yeh dawa hamari price list mein nahi",priceNoneBody:"Aisi dawa ke liye dibbe par chhapi qeemat (MRP) hi limit hai. Pharmacy is se zyada nahi le sakti.",
+ notListed:"Mera pack list mein nahi",mrpLbl:"Dibbe par chhapi qeemat (MRP)",mrpOver:"Aap se Rs __X__ zyada liye gaye",mrpOverBody:"Dibbe par chhapi qeemat Rs __M__ hai. Pharmacy is se zyada nahi le sakti. Pharmacist se baat karein aur dibba aur receipt sambhal kar rakhein.",mrpOk:"Aap ne dibbe ki qeemat ke andar pay kiya",mrpOkBody:"Dibbe par chhapi qeemat Rs __M__ hai.",
+ variants:"options",variant:"option",chooseVar:"Strength chunein",regNo:"Reg. No.",since:"__D__ se",standard:"Standard",pack:"Pack",
+ instH:"Phone ki home screen par add karein",instP:"Agli baar ek tap mein khulega, internet ke baghair bhi.",instBtn:"Add karein",iosHelp:"Safari mein neeche Share button (⬆︎) dabayein, phir \"Add to Home Screen\" chunein.",close:"Band karein",
+ whoHelps:"Complaint kahan karein",callDrap:"DRAP helpline (free call)",reportQuality:"Naqli ya kharab dawa DRAP ko report karein",reportSide:"Dawa khane ke baad side effect hua? Report karein",fileComplaint:"DRAP complaint page (Citizen's Portal ka link bhi yahin hai)",
+ draftH:"Complaint ka ready text",copy:"Text copy karein",copied:"Copy ho gaya",copyManual:"Text select ho gaya, ab copy karein",keepProof:"Dawa ka dibba, receipt aur pharmacy ka naam aur address sambhal kar rakhein. Complaint mein yehi saboot kaam aata hai.",waFamily:"Ghar walon ko batayein",printedOnBox:"dibbe par chhapi qeemat",
+ draftPrice:"Date: __T__\nPharmacy ka naam aur address: [yahan likhein]\nDawa: __N__\nMujh se Rs __V__ liye gaye, jab ke sahi qeemat Rs __M__ hai (__S__).\nReceipt mere paas hai. Meharbani kar ke action lein.",
+ draftBatch:"Date: __T__\nPharmacy ka naam aur address: [yahan likhein]\nDawa: __N__, Batch __B__\nDRAP ke alert (__D__) mein yeh batch \"__K__\" hai, lekin ab bhi bik raha hai.\nDibba aur receipt mere paas hain.",
+ shareP:"__N__: DRAP qeemat Rs __M__, mujh se Rs __V__ liye gaye",shareM:"__N__: dibbe par Rs __M__ likha hai, mujh se Rs __V__ liye gaye",
+ pickPack:"Pehle strength chunein, phir pack size",paidLbl:"Aap ne kitne paise diye?",limit:"Limit",
+ over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki qeemat Rs __M__ hai (__D__ se). Pehle pharmacist ko yeh screen dikhayein. Paise wapas na karein to neeche diye tareeqon se complaint karein.",
+ ok:"Aap ne sahi qeemat di",okBody:"DRAP ki qeemat Rs __M__ hai (__D__ se).",
+ latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke naye alerts. Kisi dibbe par tap karein, uska batch check ho jayega.",
+ tapCheck:"Batch check karein",
+ s1h:"Naam likhein",s1p:"Likhna shuru karte hi dawaon ki list aa jati hai.",
+ s2h:"Jitne diye, woh likhein",s2p:"Apna pack chunein aur receipt wali qeemat likhein. Meter foran batata hai ke qeemat limit ke andar hai ya bahar.",
+ s3h:"Zyada liye? Complaint karein",s3p:"DRAP helpline ek tap par, aur complaint ka text pehle se likha hua.",
+ demoH:"Kaise kaam karta hai",demoP:"Har check 10 second se kam mein.",dPriceCap:"Qeemat check: pack chunein, jitne diye woh likhein",dBatchCap:"Batch check: dibbe se batch number likhein",dOver:"Rs 39.43 zyada liye gaye",dAlert:"DRAP ALERT",
+ foot2:"Data: DRAP recall aur rapid alerts (__RANGE__, __N__ entries) aur DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
+ skip:"Seedha tool par jayein",navPrice:"Qeemat check",navBatch:"Batch check",navLatest:"Alerts",navFaq:"Sawal jawab",
+ faqH:"Aap ke sawal",faqP:"Pharmacy counter par yahi sawal sab se zyada aate hain.",
+ q1:"Pharmacist kehta hai nayi qeemat aa gayi hai. Ab kya karun?",
+ a1:"Ho sakta hai. DRAP kabhi kabhi qeemat badalta hai, aur har pack ke saath likha hai ke yeh qeemat kis date se hai. Pharmacist se nayi notification dikhane ko kahein, aur dibbe par chhapi qeemat (MRP) dekhein. Pharmacy is se zyada nahi le sakti.",
+ q2:"Meri dawa list mein nahi mil rahi.",
+ a2:"Naam ka sirf pehla hissa likh kar dekhein, jaise \"Augmentin\" ki jagah \"Augm\". Phir bhi na mile to \"Mera pack list mein nahi\" dabayein aur dibbe par chhapi qeemat se mila lein.",
+ q3:"Batch par koi alert nahi aaya. Kya dawa pakka asli hai?",
+ a3:"Pakka nahi keh sakte. Hum sirf woh batches dikhate hain jin par DRAP alert de chuka hai. Packing ajeeb lage, seal tooti ho ya qeemat bohat hi kam ho, to dawa na lein aur pharmacist se poochein.",
+ q4:"Kya aap meri searches save karte hain?",
+ a4:"Nahi. Search aap ke phone par hi hoti hai. Analytics on ho to sirf yeh count hota hai ke kaun si dawa search hui. Aap ka naam ya number kabhi nahi. Poori detail <a href=\"privacy.html\">Privacy</a> page par hai.",
+ q5:"Yeh data kahan se aata hai?",
+ a5:"Qeematein DRAP ki price list se aati hain aur alerts DRAP ke recall aur rapid alert pages se. Har alert ke neeche DRAP ka asal link hai. Hum data kaise check karte hain, woh <a href=\"how-we-verify.html\">yahan</a> parhein.",
+ discH:"Disclaimer",
+ d1:"Dawa Check sirf information ke liye hai, yeh medical advice nahi. Koi dawa band karne ya badalne se pehle doctor ya pharmacist se poochein.",
+ d2:"DRAP qeematein badalta rehta hai. Hamara data last update ki date tak ka hai, is liye koi bara faisla lene se pehle DRAP ki website bhi dekh lein.",
+ d3:"Alert na aane ka matlab yeh nahi ke dawa pakka asli hai. Hum sirf woh alerts dikhate hain jo DRAP ne jaari kiye hain.",
+ d4:"Hum DRAP, government, kisi pharmacy ya dawa company ka hissa nahi. Hum koi dawa nahi bechte.",
+ d5:"Na account, na login. Aap ki search aap ke phone par hi rehti hai. Google Analytics cookies sirf visitors ginne ke liye hain, aur Europe ke visitors se pehle poocha jata hai. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ navComplain:"Complaint",navFeedback:"Feedback",ctaP:"Qeemat check karein",ctaB:"Batch check karein",
+ stH:"Yeh masla kitna bara hai",
+ st1:"Pakistan jaise mulkon mein itne medical products ghatiya ya naqli hote hain, WHO ke andaze ke mutabiq.",st1s:"WHO, Nov 2017",
+ st2:"zyada qeemat: Karachi mein Rs 800 wala heparin injection Rs 3,500 mein bik raha tha. DRAP ke chhapon mein pakra gaya.",st2s:"Dawn, Nov 2023",
+ st3:"DRAP ke survey mein 771 bari brands mein se 424 apni pehle wali approved qeemat se mehngi bik rahi thin.",st3s:"The News, May 2026",
+ st4:"batches DRAP ne July 2021 se naqli declare kiye. __S__ aur lab test mein fail hue.",st4s:"DRAP alerts, Dawa Check ki ginti",
+ procEy:"10 second ka kaam",procH:"Kaise check karein",
+ pp1:"Naam likhein",pp2:"Pack chunein",pp3:"Jitne diye, likhein",pp4:"Sahi ya zyada? Foran pata",
+ pb1:"Dibbe par B.No. dhoondein",pb2:"Batch number likhein",pb3:"DRAP alert check",pb4:"Alert ho to report karein",
+ procHint:"Tool mein try karein. Jaise jaise aap aage barhenge, har step yahan light hota jayega.",
+ rfEy:"Qeemat par behas?",rfH:"Pharmacist nahi maan raha? Yeh karein.",rfP:"Pehle aasaan tareeqa try karein. Baat na bane to agla step.",
+ r1t:"Usi waqt",r1h:"Screen dikhayein",r1p:"Dawa Check ka result aur dibbe par chhapi MRP dono dikhayein. Aksar baat yahin khatam ho jati hai.",
+ r2t:"5 minute",r2h:"DRAP helpline par call karein",r2p:"Free call hai. Pharmacy ka naam, area aur dawa ka naam batayein.",
+ r3t:"Online",r3h:"DRAP ko online complaint",r3p:"DRAP ki website par complaint form bharein aur receipt ki photo saath lagayein.",r3b:"DRAP complaint page",
+ r4t:"Agar jawab na aaye",r4h:"Pakistan Citizen's Portal",r4p:"Government ka complaint app. Complaint seedha related department ko jati hai, aur aap uska status dekh sakte hain.",
+ pfH:"Yeh saboot sambhal kar rakhein",pf1:"Receipt (cash memo)",pf2:"Dawa ka dibba, jis par MRP aur batch number ho",pf3:"Pharmacy ka naam aur address",pf4:"Date aur time",pf5:"Dawa Check result ka screenshot",
+ pfFake:"Naqli dawa ka shak hai?",pfFine:"Dawa Check aap ki taraf se complaint file nahi karta. Complaint aap khud karte hain, hum sirf rasta batate hain.",
+ msEy:"List mein nahi mili?",msH:"Dawa batayein, hum add kar denge",msP:"Dawa ka naam aur dibbe ki details bhejein. Hum DRAP ke record se check kar ke list mein daal dete hain.",
+ msPt1:"Sirf 1 minute",msPt2:"Account ki zaroorat nahi",msPt3:"Email sirf jawab ke liye",
+ fName:"Dawa ka naam *",fNamePh:"Jaise: Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"Jaise: 6 tablets",fMrp:"Dibbe par qeemat (MRP)",fCo:"Company",fCity:"Shehar",fEmail:"Email (optional)",fNote:"Kuch aur batana hai?",
+ fSend:"Bhej dein",fSending:"Bhej rahe hain…",okH:"Shukriya! Humein mil gaya.",okP:"Hum DRAP record se check kar ke jald list mein add kar denge.",
+ errName:"Pehle dawa ka naam likhein.",errSend:"Abhi bhej nahi sake. Neeche wala text copy kar ke humein __E__ par email kar dein.",
+ fbEy:"Aap ki raye",fbH:"Agla feature aap chunein",fbP:"Urdu mode, sasti alternative dawa ya WhatsApp alerts? Batayein kya chahiye. Sirf 30 second lagenge.",fbBtn:"Feedback dein →",
+ fbc1:"اردو mode",fbc2:"Sasti alternative",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy rating",
+ sceneLbl:"Kahani: pharmacy par zyada paise, phir Dawa Check se paise wapas",
+ sc1:"Pharmacist ne kaha \"Rs 250\". Humne bina check kiye de diye.",
+ sc2:"Dawa Check ne asli qeemat batayi: sirf Rs 160.57.",
+ sc3:"Screen dikhayi, aur Rs 89.43 wapas mil gaye.",
+ scDrap:"DRAP qeemat",scPaid:"Aap ne diye",scOver:"Rs 89.43 zyada!",scReply:"Sorry ji, yeh lein Rs 89.43 wapas",scStore:"MEDICAL STORE",
+ scPause:"Rokein",scPlay:"Chalayein"},
+en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We're for the times it isn't: loose tablets, a sticker over the MRP, worn-off print, old stock after a price change, and fakes, which come with a fake MRP too.",
+ q0:"The box already has an MRP printed on it. Why do I need this?",
+ titleT:"Dawa Check: real prices, genuine medicine",
+ h1a:"Check the real medicine price,",h1b:"and stop overpaying.",
+ lede:"The price a pharmacy asks for isn't always the legal one. Type the medicine name, pick your pack and see the price set by DRAP, Pakistan's drug regulator. Add the batch number to check if it's been reported fake.",
+ fA:"fake or failed medicine alerts",fP:"packs with official prices",fU:"last data update",
+ tabBatch:"Batch check",tabPrice:"Price check",
+ cbTitle:"Check a batch number",cbSub:"Against DRAP's list of fake and failed batches",
+ cpTitle:"Check a medicine price",cpSub:"Type the name, then pick your pack",
+ nameLbl:"Medicine",where:"Where do I find the batch number?",
+ whereTxt:"On the side or bottom of the box, or the back of the tablet strip. It's printed after \"B.No.\", \"Batch\" or \"Lot\", usually near the expiry date.",
+ checkBtn:"Check the batch",findBtn:"See the price",try:"Try:",
+ needInput:"Type a medicine name or batch number",needInputP:"Either one is enough to start.",
+ stampHit:"DRAP ALERT",stampClose:"CHECK AGAIN",stampClear:"NO ALERT",
+ hitTitle:"DRAP has an alert on this batch",
+ hitBody:"DRAP or a government lab found this batch fake or failing lab tests. Talk to your doctor or pharmacist before stopping it, especially if you take it every day. Take the medicine and receipt back to the pharmacy.",
+ closeTitle:"A similar batch has an alert",closeBody:"The number isn't an exact match, but it's very close. Read the number on the box again carefully and check the alert below.",
+ nameTitle:"Some batches of this medicine have alerts",nameBody:"Your batch number isn't one of them. Compare your batch with the list below.",
+ nameOnlyTitle:"Alerts for this name",nameOnlyBody:"Add the batch number from your box for a definite answer.",
+ clearTitle:"No alert on this batch",clearBody:"This batch isn't in DRAP's alerts (__RANGE__). That means no alert has been issued for it so far. It isn't a lab-test guarantee.",
+ kind:{fake:"Fake",substandard:"Failed lab test",unregistered:"Unregistered",recall:"Recall"},
+ batch:"Batch",maker:"Company",date:"Alert date",reason:"Reason",readAlert:"Read the full DRAP alert",
+ priceNone:"This medicine isn't in our price list",priceNoneBody:"For medicines like this, the price printed on the box (MRP) is the limit. A pharmacy can't charge more than that.",
+ notListed:"My pack isn't listed",mrpLbl:"Price printed on the box (MRP)",mrpOver:"You paid Rs __X__ over the printed price",mrpOverBody:"The printed price is Rs __M__. A pharmacy can't charge more than that. Talk to the pharmacist and keep the box and receipt.",mrpOk:"You paid within the printed price",mrpOkBody:"The printed price is Rs __M__.",
+ variants:"options",variant:"option",chooseVar:"Pick a strength",regNo:"Reg. No.",since:"since __D__",standard:"Standard",pack:"Pack",
+ instH:"Add to your home screen",instP:"Opens in one tap next time, even without internet.",instBtn:"Add",iosHelp:"In Safari, tap the Share button (⬆︎) at the bottom, then choose \"Add to Home Screen\".",close:"Close",
+ whoHelps:"Where to complain",callDrap:"DRAP helpline (free call)",reportQuality:"Report a fake or defective medicine to DRAP",reportSide:"Took it and had a side effect? Report it",fileComplaint:"DRAP complaints page (links to the Citizen's Portal too)",
+ draftH:"Ready-made complaint text",copy:"Copy text",copied:"Copied",copyManual:"Text selected, copy it now",keepProof:"Keep the box, the receipt, and the pharmacy's name and address. That's the proof a complaint needs.",waFamily:"Tell your family",printedOnBox:"printed on the box",
+ draftPrice:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__\nI was charged Rs __V__, but the legal price is Rs __M__ (__S__).\nI have kept the receipt. Please take action.",
+ draftBatch:"Date: __T__\nPharmacy name and address: [add here]\nMedicine: __N__, Batch __B__\nA DRAP alert (__D__) lists this batch as \"__K__\", but it is still being sold.\nI have kept the box and receipt.",
+ shareP:"__N__: DRAP price Rs __M__, I was charged Rs __V__",shareM:"__N__: Rs __M__ printed on the box, I was charged Rs __V__",
+ pickPack:"Pick the strength first, then the pack size",paidLbl:"How much did you pay?",limit:"Limit",
+ over:"You paid Rs __X__ over the legal price",overBody:"DRAP's price is Rs __M__ (since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
+ ok:"You paid the right price",okBody:"DRAP's price is Rs __M__ (since __D__).",
+ latestH:"Fake medicines caught recently",latestP:"DRAP's latest alerts. Tap a box to check its batch.",
+ tapCheck:"Check this batch",
+ s1h:"Type the name",s1p:"Matching medicines show up as you type.",
+ s2h:"Enter what you paid",s2p:"Pick your pack and type the price on your receipt. The meter shows right away if it's within the limit.",
+ s3h:"Overcharged? Complain",s3p:"DRAP's helpline is one tap away, and the complaint text is already written.",
+ demoH:"How it works",demoP:"Each check takes under 10 seconds.",dPriceCap:"Price check: pick your pack, type what you paid",dBatchCap:"Batch check: type the batch number from the box",dOver:"Rs 39.43 overcharged",dAlert:"DRAP ALERT",
+ foot2:"Data: DRAP recall and rapid alerts (__RANGE__, __N__ entries) and the DRAP PharmaPrice Index (__P__ packs). Last update: __U__.",
+ skip:"Skip to the tool",navPrice:"Price check",navBatch:"Batch check",navLatest:"Latest alerts",navFaq:"FAQ",
+ faqH:"Your questions",faqP:"The questions that come up most at the pharmacy counter.",
+ q1:"The pharmacist says there's a new price. What should I do?",
+ a1:"It's possible. DRAP changes prices from time to time, and each pack here shows the date its price started. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that.",
+ q2:"I can't find my medicine.",
+ a2:"Type only the start of the name, like \"Augm\" instead of \"Augmentin\". Still nothing? Tap \"My pack isn't listed\" and compare with the price printed on the box.",
+ q3:"No alert came up. Is the medicine definitely genuine?",
+ a3:"We can't promise that. We only show batches DRAP has already issued an alert for. If the packing looks strange, the seal is broken or the price is very low, don't take it and ask a pharmacist.",
+ q4:"Do you save my searches?",
+ a4:"No. The search happens on your phone. If analytics is on, it only counts which medicine names get searched, never your name or number. Full details are on the <a href=\"privacy.html\">Privacy</a> page.",
+ q5:"Where does the data come from?",
+ a5:"Prices come from DRAP's price list, and alerts come from DRAP's recall and rapid alert pages. Every alert links to the original DRAP notice. Read how we check the data <a href=\"how-we-verify.html\">here</a>.",
+ discH:"Disclaimer",
+ d1:"Dawa Check is for information only. It isn't medical advice. Ask a doctor or pharmacist before stopping or changing any medicine.",
+ d2:"DRAP changes prices often. Our data is correct up to the last update date, so check DRAP's website too before any big decision.",
+ d3:"No alert doesn't prove a medicine is genuine. We only show alerts that DRAP has published.",
+ d4:"We aren't part of DRAP, the government, any pharmacy or any drug company. We don't sell medicines.",
+ d5:"No account, no login. Your searches stay on your phone. Optional Google Analytics cookies count visitors, and visitors in Europe are asked first. <a href=\"privacy.html\">Privacy</a> · <a href=\"cookies.html\">Cookies</a> · <a href=\"terms.html\">Terms</a>",
+ navComplain:"Complain",navFeedback:"Feedback",ctaP:"Check a price",ctaB:"Check a batch",
+ stH:"How big the problem is",
+ st1:"medical products in low- and middle-income countries like Pakistan is substandard or falsified, WHO estimates.",st1s:"WHO, Nov 2017",
+ st2:"the approved price: a Rs 800 heparin injection was being sold for Rs 3,500 in Karachi, DRAP raids found.",st2s:"Dawn, Nov 2023",
+ st3:"of 771 big medicine brands in a DRAP survey, 424 in all, were selling above their earlier approved price.",st3s:"The News, May 2026",
+ st4:"batches declared fake by DRAP since July 2021. Another __S__ failed lab tests.",st4s:"DRAP alerts, counted by Dawa Check",
+ procEy:"Takes 10 seconds",procH:"How to check",
+ pp1:"Type the name",pp2:"Pick your pack",pp3:"Enter what you paid",pp4:"See if you overpaid",
+ pb1:"Find B.No. on the box",pb2:"Type the batch number",pb3:"Check DRAP alerts",pb4:"Report it if flagged",
+ procHint:"Try it in the tool. Each step lights up as you go.",
+ rfEy:"Price dispute?",rfH:"Pharmacist won't agree? Here's what to do.",rfP:"Start with the easiest step. If that doesn't work, move to the next one.",
+ r1t:"Right away",r1h:"Show the screen",r1p:"Show the Dawa Check result and the MRP printed on the box. This often settles it.",
+ r2t:"5 minutes",r2h:"Call the DRAP helpline",r2p:"It's a free call. Give the pharmacy's name, the area and the medicine name.",
+ r3t:"Online",r3h:"Complain to DRAP online",r3p:"Fill in the complaint form on DRAP's website and attach a photo of the receipt.",r3b:"DRAP complaints page",
+ r4t:"If nothing happens",r4h:"Pakistan Citizen's Portal",r4p:"The government's complaint app. Your complaint goes straight to the right department, and you can track its status.",
+ pfH:"Keep this proof",pf1:"The receipt (cash memo)",pf2:"The box, showing the MRP and batch number",pf3:"The pharmacy's name and address",pf4:"Date and time",pf5:"A screenshot of the Dawa Check result",
+ pfFake:"Think a medicine is fake?",pfFine:"Dawa Check doesn't file complaints for you. You file them yourself; we just show you where.",
+ msEy:"Not in our list?",msH:"Tell us and we'll add it",msP:"Send the medicine name and the details from the box. We check it against DRAP's records and add it to the list.",
+ msPt1:"Takes 1 minute",msPt2:"No account needed",msPt3:"Email only for a reply",
+ fName:"Medicine name *",fNamePh:"e.g. Augmentin",fStr:"Strength",fPack:"Pack size",fPackPh:"e.g. 6 tablets",fMrp:"Price on the box (MRP)",fCo:"Company",fCity:"City",fEmail:"Email (optional)",fNote:"Anything else?",
+ fSend:"Send",fSending:"Sending…",okH:"Thanks, we got it.",okP:"We'll check it against DRAP's records and add it to the list soon.",
+ errName:"Add the medicine name first.",errSend:"We couldn't send it right now. Copy the text below and email it to __E__.",
+ fbEy:"Your ideas",fbH:"Pick our next feature",fbP:"Urdu mode, cheaper alternatives or WhatsApp alerts? Tell us what you need. It takes 30 seconds.",fbBtn:"Give feedback →",
+ fbc1:"اردو mode",fbc2:"Cheaper alternatives",fbc3:"Barcode scan",fbc4:"WhatsApp alerts",fbc5:"Pharmacy ratings",
+ sceneLbl:"Story: overcharged at a pharmacy, then money back with Dawa Check",
+ sc1:"The pharmacist says \"Rs 250\". We pay without checking.",
+ sc2:"Dawa Check shows the real price: only Rs 160.57.",
+ sc3:"Show the screen and get Rs 89.43 back.",
+ scDrap:"DRAP price",scPaid:"You paid",scOver:"Rs 89.43 too much!",scReply:"Sorry, here's Rs 89.43 back",scStore:"MEDICAL STORE",
+ scPause:"Pause",scPlay:"Play"}};
+let L=DC.lang;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fill=s=>s.replace("__RANGE__",META.range).replace("__N__",ALERTS.length.toLocaleString("en")).replace("__P__",PRICES.length.toLocaleString("en")).replace("__U__",META.updated).replace("__S__",ALERTS.filter(a=>a.k==="substandard").length.toLocaleString("en"));
+const norm=s=>(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"");
+const low=s=>(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const rs=n=>n.toLocaleString("en-PK",{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtDate=d=>{const x=new Date(d+"T00:00:00");return isNaN(x)?d:x.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})};
+
+ALERTS.forEach(a=>{a._b=(a.b||"").split(/[,;&\/]|\band\b|\s{2,}/i).map(norm).filter(x=>x.length>=2);if(!a._b.length&&a.b)a._b=[norm(a.b)];a._n=low(a.p+" "+a.t)});
+PRICES.forEach(r=>{r._n=low(r[0]+" "+r[1])});
+const short=p=>p.replace(/\s*\(.*$/,"").replace(/[®™]/g,"").trim();
+const alertNames=[...new Set(ALERTS.map(a=>short(a.p)).filter(x=>x.length>2&&x.length<60))];
+const priceNames=[...new Set(PRICES.map(r=>r[0].trim()))];
+
+$("fA").textContent=ALERTS.length.toLocaleString("en");
+$("fP").textContent=PRICES.length.toLocaleString("en");
+$("fU").textContent=META.updated;
+$("stFake").textContent=ALERTS.filter(a=>a.k==="fake").length.toLocaleString("en");
+
+function applyLang(){
+  document.documentElement.lang=L==="en"?"en":"ur-Latn";document.documentElement.dataset.lang=L;document.title=T[L].titleT;
+  $("instX").setAttribute("aria-label",T[L].close);
+  document.querySelectorAll("[data-i]").forEach(el=>el.textContent=fill(T[L][el.dataset.i]));
+  document.querySelectorAll("[data-ih]").forEach(el=>el.innerHTML=T[L][el.dataset.ih]);
+  document.querySelectorAll("[data-ph]").forEach(el=>el.placeholder=T[L][el.dataset.ph]);
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===L));
+  renderShelf();
+  window.sceneLabel&&sceneLabel();
+  if(state==="b")runBatch(true); else if(state==="p")runPrice(true);
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{L=b.dataset.lang;DC.setLang(L);applyLang();DC.track("lang_switch",{lang:L})});
+
+let state=null;
+function setTab(which){
+  const b=which==="b";
+  $("tab-b").setAttribute("aria-selected",b);$("tab-p").setAttribute("aria-selected",!b);
+  $("pane-b").classList.toggle("hidden",!b);$("pane-p").classList.toggle("hidden",b);
+  $("res").innerHTML="";state=null;hideStamp();
+  document.querySelector('.psteps[data-flow="p"]').classList.toggle("hidden",b);document.querySelector('.psteps[data-flow="b"]').classList.toggle("hidden",!b);
+  step("p",1);step("b",$("qb").value.trim()?2:1);
+}
+$("tab-b").onclick=()=>setTab("b");$("tab-p").onclick=()=>setTab("p");
+function fromHash(){if(location.hash==="#batch"){setTab("b");$("check").scrollIntoView({block:"start"})}}
+/* visual steps beside the tool */
+function step(flow,n){document.querySelectorAll(`.psteps[data-flow="${flow}"] li`).forEach(li=>{const k=+li.dataset.s;li.classList.toggle("done",k<n);li.classList.toggle("on",k===n)})}
+step("p",1);step("b",1);
+addEventListener("hashchange",fromHash);
+$("helpBtn").onclick=()=>{const w=$("where");w.classList.toggle("on");$("helpBtn").setAttribute("aria-expanded",w.classList.contains("on"))};
+
+/* autocomplete */
+function autocomplete(input,list,source,onPick){
+  let idx=-1,items=[];
+  const close=()=>{list.classList.remove("on");input.setAttribute("aria-expanded","false");idx=-1};
+  input.addEventListener("input",()=>{
+    const q=low(input.value);if(q.length<2){close();return}
+    const st=[],ct=[];
+    for(const n of source){const l=low(n);if(l.startsWith(q))st.push(n);else if(ct.length<20&&l.includes(q))ct.push(n);if(st.length>=8)break}
+    items=[...st,...ct].slice(0,7);
+    if(!items.length){close();return}
+    list.innerHTML=items.map((n,i)=>`<button type="button" role="option" id="${list.id}-${i}" aria-selected="false">${esc(n)}</button>`).join("");
+    list.classList.add("on");input.setAttribute("aria-expanded","true");
+    list.querySelectorAll("button").forEach((b,i)=>b.onmousedown=e=>{e.preventDefault();input.value=items[i];close();onPick&&onPick()});
+  });
+  input.addEventListener("keydown",e=>{
+    if(!list.classList.contains("on"))return;
+    const bs=list.querySelectorAll("button");
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();idx=(idx+(e.key==="ArrowDown"?1:-1)+bs.length)%bs.length;bs.forEach((b,i)=>b.setAttribute("aria-selected",i===idx));input.setAttribute("aria-activedescendant",bs[idx].id)}
+    else if(e.key==="Enter"&&idx>=0){e.preventDefault();e.stopImmediatePropagation();input.value=items[idx];close();onPick&&onPick()}
+    else if(e.key==="Escape")close();
+  });
+  input.addEventListener("blur",()=>setTimeout(close,120));
+}
+autocomplete($("qn"),$("acB"),alertNames.concat(priceNames));
+autocomplete($("qp"),$("acP"),priceNames,()=>runPrice());
+
+/* stamp */
+function hideStamp(){const s=$("stamp");s.className="stamp";s.textContent=""}
+function showStamp(kind,text){const s=$("stamp");s.className="stamp";void s.offsetWidth;s.textContent=text;s.className="stamp show "+kind}
+
+const kindTag=k=>`<span class="tag ${k==="fake"?"t-fake":k==="substandard"?"t-sub":"t-other"}">${esc(T[L].kind[k]||k)}</span>`;
+const alertCard=a=>`<article class="item"><div class="t"><b>${esc(a.p)}</b>${kindTag(a.k)}</div>
+ <div class="meta">${a.b?`${T[L].batch} <span class="bn">${esc(a.b)}</span> · `:""}${T[L].date}: ${fmtDate(a.d)}</div>
+ ${a.m?`<div class="meta">${T[L].maker}: ${esc(a.m)}</div>`:""}${a.r?`<div class="meta">${T[L].reason}: ${esc(a.r)}</div>`:""}
+ <div class="meta"><a href="${esc(a.l)}" target="_blank" rel="noopener">${T[L].readAlert} ↗</a></div></article>`;
+const verdict=(cls,ic,h,p,extra)=>`<div class="verdict ${cls}"><div class="ic" aria-hidden="true">${ic}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>${extra?`<div class="vx">${extra}</div>`:""}</div>`;
+const WA_ICON='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.1z"/></svg>';
+const PHONE='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>';
+const waLink=t=>`<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t+"\n"+location.href)}">${WA_ICON}${T[L].waFamily}</a>`;
+const DRAP_TEL="080003727";
+function actions(kind,complaint,share){
+  const call=`<a class="act primary" href="tel:${DRAP_TEL}">${PHONE}${T[L].callDrap} <span class="num">0800-03727</span></a>`;
+  let h=`<div class="acts"><p class="acts-h">${T[L].whoHelps}</p>${call}`;
+  if(kind==="batch"){
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://www.dra.gov.pk/safety-information/safety-communication/safety-reporting/product-quality-defects/">${T[L].reportQuality} ↗</a>`;
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://vigiflow-eforms.who-umc.org/pk/adr">${T[L].reportSide} ↗</a>`;
+  }else{
+    h+=`<a class="act" target="_blank" rel="noopener" href="https://www.dra.gov.pk/complaints/">${T[L].fileComplaint} ↗</a>`;
+  }
+  h+=`<details class="draft"><summary>${T[L].draftH}</summary><textarea rows="5" aria-label="${T[L].draftH}">${esc(complaint)}</textarea><button type="button" class="copy">${T[L].copy}</button></details>`;
+  h+=`<p class="keep">${T[L].keepProof}</p>${waLink(share)}</div>`;
+  return h;
+}
+document.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;if(a.matches(".act.primary"))DC.track("call_helpline");else if(a.matches(".wa"))DC.track("whatsapp_share");else if(a.closest(".item"))DC.track("open_drap_alert");else if(a.matches(".act"))DC.track("open_drap_report")});
+document.addEventListener("click",async e=>{const b=e.target.closest(".copy");if(!b)return;DC.track("complaint_copy");const ta=b.parentElement.querySelector("textarea");ta.select();let ok=false;try{await navigator.clipboard.writeText(ta.value);ok=true}catch(_){try{ok=document.execCommand("copy")}catch(__){}}b.textContent=ok?T[L].copied:T[L].copyManual;setTimeout(()=>b.textContent=T[L].copy,2500)});
+const today=()=>new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+
+function runBatch(silent){
+  state="b";
+  const qbRaw=$("qb").value.trim(),qb=norm(qbRaw),qnRaw=$("qn").value.trim(),qn=low(qnRaw),out=$("res");
+  if(!qb&&qn.length<3){out.innerHTML=verdict("v-amber","!",T[L].needInput,T[L].needInputP);hideStamp();return}
+  const words=qn?qn.split(" "):[];
+  const nameHit=a=>words.every(w=>a._n.includes(w));
+  let exact=[],close=[];
+  if(qb){ALERTS.forEach(a=>{if(a._b.some(x=>x===qb))exact.push(a);else if(qb.length>=5&&a._b.some(x=>x.length>=5&&(x.includes(qb)||qb.includes(x))))close.push(a)});
+    if(qn){const e2=exact.filter(nameHit);if(e2.length)exact=e2;close=close.filter(nameHit)}}
+  const byName=qn.length>=3?ALERTS.filter(nameHit):[];
+  const label=[qnRaw,qbRaw&&("batch "+qbRaw)].filter(Boolean).join(", ");
+  const render=()=>{
+    let h,st;
+    if(exact.length){h=verdict("v-red","!",T[L].hitTitle,T[L].hitBody,actions("batch",T[L].draftBatch.replace("__N__",exact[0].p).replace("__B__",exact[0].b||qbRaw).replace("__K__",T[L].kind[exact[0].k]).replace("__D__",fmtDate(exact[0].d)).replace("__T__",today()),`⚠️ ${label}: ${T[L].hitTitle}. ${T[L].kind[exact[0].k]} (${fmtDate(exact[0].d)})`))+exact.map(alertCard).join("");st=["red",T[L].stampHit]}
+    else if(close.length){h=verdict("v-amber","?",T[L].closeTitle,T[L].closeBody)+close.slice(0,10).map(alertCard).join("");st=["amber",T[L].stampClose]}
+    else if(qb&&byName.length){h=verdict("v-amber","?",T[L].nameTitle,T[L].nameBody)+byName.slice(0,15).map(alertCard).join("");st=["green",T[L].stampClear]}
+    else if(!qb&&byName.length){h=verdict("v-amber","i",T[L].nameOnlyTitle,T[L].nameOnlyBody)+byName.slice(0,15).map(alertCard).join("");st=null}
+    else{h=verdict("v-green","✓",T[L].clearTitle,fill(T[L].clearBody));st=qb?["green",T[L].stampClear]:null}
+    out.innerHTML=h; st?showStamp(st[0],st[1]):hideStamp();
+    step("b",exact.length?4:3);
+    if(!silent)DC.track("batch_check",{result:exact.length?"alert":close.length?"close_match":byName.length?"name_only":"clear",medicine:qnRaw.slice(0,80)});
+  };
+  if(silent){render();return}
+  const strip=$("stripB");strip.classList.remove("scanning");void strip.offsetWidth;strip.classList.add("scanning");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(()=>{strip.classList.remove("scanning");render();if(innerWidth<860)out.scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"})},reduce?0:650);
+}
+$("goB").onclick=()=>runBatch();
+["qb","qn"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")runBatch()}));
+$("qb").addEventListener("input",e=>{step("b",e.target.value.trim()?2:1);const p=e.target.selectionStart;e.target.value=e.target.value.toUpperCase();e.target.setSelectionRange(p,p)});
+document.querySelectorAll("[data-ex]").forEach(c=>c.onclick=()=>{const[n,b]=c.dataset.ex.split("|");$("qn").value=n;$("qb").value=b;runBatch()});
+
+let hits=[],groups=[];
+const ICON={
+ tablet:'<circle cx="12" cy="12" r="8.5" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.8"/><path d="M7 12h10" stroke="var(--rx)" stroke-width="1.8" stroke-linecap="round"/>',
+ capsule:'<g transform="rotate(-40 12 12)"><rect x="3" y="8" width="18" height="8" rx="4" fill="#fff" stroke="var(--rx)" stroke-width="1.6"/><path d="M12 8h5a4 4 0 0 1 0 8h-5z" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/></g>',
+ syrup:'<path d="M9 3h6v3l1.5 2.2c.3.5.5 1 .5 1.6V20a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 20V9.8c0-.6.2-1.1.5-1.6L9 6z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.2 13h9.6v5.5H7.2z" fill="var(--or)"/><path d="M9 6h6" stroke="var(--rx)" stroke-width="1.6"/>',
+ inj:'<g transform="rotate(45 12 12)"><rect x="9" y="4" width="6" height="12" rx="1" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6"/><rect x="9.8" y="10" width="4.4" height="5.2" fill="var(--or)"/><path d="M12 16v5M12 1v3M9.5 1.5h5" stroke="var(--rx)" stroke-width="1.6" stroke-linecap="round"/></g>',
+ cream:'<path d="M5 9.5 15.5 6l3 9L8 18.5z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="m18.5 15 2.5-.8-1.6-5-2.4.8" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/>',
+ drops:'<path d="M12 3.5c3 4 5 6.6 5 9.3a5 5 0 0 1-10 0c0-2.7 2-5.3 5-9.3z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.7 13.5a2.4 2.4 0 0 0 2.3 2.3" stroke="var(--or)" stroke-width="2" stroke-linecap="round" fill="none"/>',
+ inhaler:'<path d="M8 3h5l1 9h-7z" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 12h9v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM15 15h4v4h-4" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/>',
+ sachet:'<path d="M6 4h12v16H6z" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 7h12M6 17h12" stroke="var(--rx)" stroke-width="1.4" stroke-dasharray="1.5 1.5"/><circle cx="12" cy="12" r="2.6" fill="var(--or)"/>',
+ other:'<rect x="6.5" y="7" width="11" height="14" rx="2" fill="var(--rxbg)" stroke="var(--rx)" stroke-width="1.6"/><rect x="5.5" y="3.5" width="13" height="4" rx="1" fill="var(--or)" stroke="var(--rx)" stroke-width="1.6"/><path d="M12 11v6M9 14h6" stroke="var(--rx)" stroke-width="1.6" stroke-linecap="round"/>'
+};
+const ficon=(f,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="true">${ICON[f]||ICON.other}</svg>`;
+function formOf(r){
+  const t=(r[0]+" "+r[1]+" "+r[3]).toLowerCase();
+  if(/inhal|respule|rotacap|evohaler|accuhaler|nebul/.test(t))return"inhaler";
+  if(/inj|vial|ampoul|infusion|\bi\.?v\b|prefilled|pre-filled|syringe/.test(t))return"inj";
+  if(/drop/.test(t))return"drops";
+  if(/syrup|susp|elixir|linctus|liquid|oral sol|solution|dry powder for|\bml\b/.test(t))return"syrup";
+  if(/cream|ointment|\boint\b|\bgel\b|lotion|paste|\bspray\b/.test(t))return"cream";
+  if(/sachet|granule|powder/.test(t))return"sachet";
+  if(/caps|capsule|\bcap\b/.test(t))return"capsule";
+  if(/tab|caplet|\bdt\b/.test(t))return"tablet";
+  return"other";
+}
+const STR=/\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)(?:\s*\/\s*\d*\s*(?:ml|g))?/i;
+function baseOf(b){
+  let s=b.replace(/[®™]/g,"").replace(/\(.*?\)/g," ");
+  s=s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)\b.*$/i,"");
+  s=s.replace(/\s(?:tablets?|tabs?|caplets?|capsules?|caps?|syrup|suspension|susp|elixir|drops?|injection|inj|infusion|cream|ointment|gel|lotion|sachets?|granules|powder|ds|forte|plus|xr|sr|er|mr|cr|dt|extra|extend|max|kids?|junior|pediatric|paediatric|liquid|retard|i\.?v\.?|\d+)(?:\b|\s|$).*$/i,"");
+  s=s.replace(/[-.,]+$/,"").trim();
+  return s||b.split(/\s+/)[0];
+}
+const tcase=s=>s.toLowerCase().replace(/(^|\s|-)([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+function variantLabel(r,base){
+  let rest=r[0].replace(/[®™]/g,"");
+  const i=rest.toLowerCase().indexOf(base.toLowerCase());
+  if(i>=0)rest=rest.slice(i+base.length);
+  rest=rest.replace(/^[\s\-–,.]+/,"").trim();
+  rest=rest&&rest===rest.toUpperCase()?tcase(rest):rest;
+  if(!STR.test(rest)){const all=(r[1]||"").match(new RegExp(STR.source,"gi"))||[];const m=all.find(x=>!/ml$/i.test(x.trim()))||all[0];if(m)rest=(rest?rest+" ":"")+m.replace(/\s+/g,"")}
+  rest=rest.charAt(0).toUpperCase()+rest.slice(1);
+  rest=rest.replace(/\b(ds|xr|sr|cr|mr|er|dt|iv|i\.v\.)\b/gi,x=>x.toUpperCase());
+  return rest||T[L].standard;
+}
+function runPrice(silent){
+  state="p";hideStamp();
+  const q=low($("qp").value),out=$("res");
+  if(q.length<3){out.innerHTML=verdict("v-amber","!",T[L].needInput,"");return}
+  const w=q.split(" ");
+  const rows=PRICES.filter(r=>w.every(x=>r._n.includes(x)));
+  if(!silent)DC.track("price_search",{term:q.slice(0,80),results:rows.length});
+  if(!rows.length){out.innerHTML=verdict("v-amber","i",T[L].priceNone,T[L].priceNoneBody)+mrpBox();wireMrp();step("p",3);return}
+  step("p",2);
+  const gm=new Map();
+  for(const r of rows){
+    const base=baseOf(r[0]),key=low(base)+"|"+low(r[2]).replace(/\b(pvt|private|ltd|limited|pakistan|pak)\b/g,"").replace(/\s+/g," ").trim();
+    if(!gm.has(key))gm.set(key,{base,maker:r[2],vars:new Map()});
+    const g=gm.get(key),vk=low(r[0])+"|"+low(r[1]);
+    if(!g.vars.has(vk))g.vars.set(vk,{label:variantLabel(r,base),form:formOf(r),comp:r[1],rows:[]});
+    g.vars.get(vk).rows.push(r);
+  }
+  groups=[...gm.values()].map(g=>{
+    const vars=[...g.vars.values()];
+    vars.forEach(v=>v.rows.sort((a,b)=>a[4]-b[4]));
+    vars.sort((a,b)=>a.label.localeCompare(b.label,undefined,{numeric:true}));
+    const forms=[...new Set(vars.map(v=>v.form))];
+    return{base:g.base,maker:g.maker,vars,form:forms[0],sel:0};
+  });
+  groups.sort((a,b)=>(low(a.base).startsWith(w[0])?0:1)-(low(b.base).startsWith(w[0])?0:1)||b.vars.length-a.vars.length||a.base.localeCompare(b.base));
+  groups=groups.slice(0,15);
+  hits=[];
+  out.innerHTML=`<p class="meta" style="margin:0">${T[L].pickPack}</p><div class="groups">${groups.map((g,gi)=>`
+   <article class="grp"><div class="g-head"><span class="g-ic">${ficon(g.form,30)}</span><span class="g-nm"><b>${esc(tcase(g.base))}</b><small>${esc(g.maker)}</small></span><span class="g-ct">${g.vars.length} ${g.vars.length>1?T[L].variants:T[L].variant}</span></div>
+   <div class="vchips" role="group" aria-label="${T[L].chooseVar}">${g.vars.map((v,vi)=>`<button class="vchip" data-g="${gi}" data-v="${vi}" aria-pressed="${vi===0}">${ficon(v.form,18)}<span>${esc(v.label)}</span></button>`).join("")}</div>
+   <div class="packs" id="packs${gi}"></div></article>`).join("")}</div>`;
+  groups.forEach((g,gi)=>renderPacks(gi,0));
+  out.querySelectorAll(".vchip").forEach(b=>b.onclick=()=>{const gi=+b.dataset.g,vi=+b.dataset.v;out.querySelectorAll(`.vchip[data-g="${gi}"]`).forEach(x=>x.setAttribute("aria-pressed",x===b));renderPacks(gi,vi)});
+  out.insertAdjacentHTML("beforeend",`<button class="chip" id="notListed" style="justify-self:start">${T[L].notListed}</button><div id="mrpWrap"></div>`);
+  $("notListed").onclick=()=>{out.querySelectorAll(".pay").forEach(x=>{x.classList.add("hidden");x.innerHTML=""});out.querySelectorAll(".pack").forEach(x=>x.setAttribute("aria-pressed","false"));$("mrpWrap").innerHTML=verdict("v-amber","i",T[L].priceNone,T[L].priceNoneBody)+mrpBox();wireMrp();$("mrp").focus()};
+}
+function renderPacks(gi,vi){
+  const v=groups[gi].vars[vi],box=$("packs"+gi);
+  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||T[L].pack)}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since.replace("__D__",esc(r[5]))}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
+  box.querySelectorAll(".pack").forEach(b=>b.onclick=()=>openPay(+b.dataset.i));
+}
+function mrpBox(){return `<div class="paybox"><label for="mrp" class="meta" style="display:block;margin:0 0 6px">${T[L].mrpLbl}</label><div class="payrow"><span>Rs</span><input id="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div><label for="mpaid" class="meta" style="display:block;margin:16px 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="mpaid" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="mmeter"></div><div id="mout"></div></div>`}
+function wireMrp(){
+  const go=()=>{const m=parseFloat($("mrp").value.replace(/[^0-9.]/g,"")),v=parseFloat($("mpaid").value.replace(/[^0-9.]/g,"")),o=$("mout"),mt=$("mmeter");
+    if(!(m>0)||!(v>0)){o.innerHTML="";mt.innerHTML="";return}
+    step("p",4);
+    const max=Math.max(v,m)*1.25;
+    mt.innerHTML=`<div class="meter" style="--lim:${m/max*100}%;--pos:${Math.min(v/max*100,100)}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(m)}</span></div>`;
+    o.innerHTML=v>m+0.5?`<div style="margin-top:14px">${verdict("v-red","!",T[L].mrpOver.replace("__X__",rs(v-m)),T[L].mrpOverBody.replace("__M__",rs(m)),actions("price",T[L].draftPrice.replace("__N__",$("qp").value).replace("__V__",rs(v)).replace("__M__",rs(m)).replace("__S__",T[L].printedOnBox).replace("__T__",today()),T[L].shareM.replace("__N__",$("qp").value).replace("__M__",rs(m)).replace("__V__",rs(v))))}</div>`:`<div style="margin-top:14px">${verdict("v-green","✓",T[L].mrpOk,T[L].mrpOkBody.replace("__M__",rs(m)))}</div>`};
+  $("mrp").addEventListener("input",go);$("mpaid").addEventListener("input",go);
+}
+function openPay(i){
+  const out=$("res");
+  out.querySelectorAll(".pack").forEach(x=>x.setAttribute("aria-pressed",x.dataset.i==i));
+  out.querySelectorAll(".pay").forEach(x=>{x.classList.add("hidden");x.innerHTML=""});
+  const r=hits[i],box=$("pay"+i);box.classList.remove("hidden");step("p",3);
+  box.innerHTML=`<div class="paybox"><label for="pv" class="meta" style="display:block;margin:0 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="pv" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="pmeter"></div><div id="pv-out"></div></div>`;
+  const inp=$("pv");inp.focus();
+  inp.addEventListener("change",()=>{const v=parseFloat(inp.value.replace(/[^0-9.]/g,""));if(v>0)DC.track("price_compare",{medicine:r[0].slice(0,80),pack:r[3],overcharged:v>r[4]+0.5,over_by:Math.max(0,Math.round(v-r[4]))})});
+  inp.addEventListener("input",()=>{
+    const v=parseFloat(inp.value.replace(/[^0-9.]/g,"")),o=$("pv-out"),m=$("pmeter");
+    if(isNaN(v)||v<=0){o.innerHTML="";m.innerHTML="";step("p",3);return}
+    step("p",4);
+    const max=Math.max(v,r[4])*1.25,lim=r[4]/max*100,pos=Math.min(v/max*100,100);
+    m.innerHTML=`<div class="meter" style="--lim:${lim}%;--pos:${pos}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(r[4])}</span></div>`;
+    const md=r[5];
+    o.innerHTML=v>r[4]+0.5
+      ?`<div style="margin-top:14px">${verdict("v-red","!",T[L].over.replace("__X__",rs(v-r[4])),T[L].overBody.replace("__M__",rs(r[4])).replace("__D__",md),actions("price",T[L].draftPrice.replace("__N__",r[0]+" ("+r[3]+")").replace("__V__",rs(v)).replace("__M__",rs(r[4])).replace("__S__","DRAP ("+md+")").replace("__T__",today()),T[L].shareP.replace("__N__",r[0]+" ("+r[3]+")").replace("__M__",rs(r[4])).replace("__V__",rs(v))))}</div>`
+      :`<div style="margin-top:14px">${verdict("v-green","✓",T[L].ok,T[L].okBody.replace("__M__",rs(r[4])).replace("__D__",md))}</div>`;
+  });
+}
+$("goP").onclick=()=>runPrice();
+$("qp").addEventListener("keydown",e=>{if(e.key==="Enter")runPrice()});
+$("qp").addEventListener("input",()=>{if(state!=="p")step("p",1)});
+document.querySelectorAll("[data-px]").forEach(c=>c.onclick=()=>{$("qp").value=c.dataset.px;runPrice()});
+
+/* shelf of latest fakes */
+function renderShelf(){
+  const seen=new Set(),pick=[];
+  for(const a of ALERTS){if(a.k!=="fake"||!a.b)continue;const k=short(a.p);if(seen.has(k))continue;seen.add(k);pick.push(a);if(pick.length>=10)break}
+  $("shelf").innerHTML=pick.map((a,i)=>`<button class="box" data-s="${i}"><span class="tape">${esc(T[L].kind.fake.toUpperCase())}</span><b>${esc(short(a.p))}</b><span class="bn">B.No ${esc(a.b)}</span><small>${fmtDate(a.d)}</small><span class="go">${T[L].tapCheck} →</span></button>`).join("");
+  $("shelf").querySelectorAll(".box").forEach(b=>b.onclick=()=>{const a=pick[+b.dataset.s];setTab("b");$("qn").value=short(a.p);$("qb").value=a.b;$("tool").scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>runBatch(),350)});
+}
+/* ---------- home screen install ---------- */
+(()=>{
+  const bar=$("install"),btn=$("instBtn"),ios=$("iosHelp");
+  const inFrame=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  if(!inFrame&&"serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))navigator.serviceWorker.register("sw.js").catch(()=>{});
+  if(inFrame||standalone)return;
+  let snoozed=false;try{snoozed=Date.now()<+(localStorage.getItem("dc-install-snooze")||0)}catch(e){}
+  if(snoozed)return;
+  let deferred=null;
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const show=()=>bar.classList.remove("hidden");
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;show()});
+  if(isIOS)setTimeout(show,1500);
+  btn.onclick=async()=>{
+    if(deferred){deferred.prompt();try{await deferred.userChoice}catch(e){}deferred=null;bar.classList.add("hidden")}
+    else ios.classList.toggle("hidden");
+  };
+  $("instX").onclick=()=>{bar.classList.add("hidden");try{localStorage.setItem("dc-install-snooze",String(Date.now()+14*864e5))}catch(e){}};
+  window.addEventListener("appinstalled",()=>bar.classList.add("hidden"));
+})();
+
+/* missing medicine form */
+$("msForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=e.target,out=$("msOut"),btn=$("msSend"),name=$("f-name");
+  if(f._honey.value)return;
+  if(!name.value.trim()){name.setAttribute("aria-invalid","true");name.focus();out.innerHTML=`<p class="meta" style="color:var(--red);margin:0">${esc(T[L].errName)}</p>`;return}
+  name.removeAttribute("aria-invalid");
+  const v=id=>$(id).value.trim();
+  const data={medicine:v("f-name"),strength:v("f-str"),pack:v("f-pack"),mrp:v("f-mrp"),company:v("f-co"),city:v("f-city"),email:v("f-email"),note:v("f-note"),language:L==="en"?"English":"Roman Urdu"};
+  btn.disabled=true;btn.textContent=T[L].fSending;
+  const ok=await DC.send("Missing medicine: "+data.medicine,data);
+  btn.disabled=false;btn.textContent=T[L].fSend;
+  if(ok){
+    out.innerHTML=`<div class="sent"><span class="ic" aria-hidden="true">✓</span><div><b>${esc(T[L].okH)}</b><p>${esc(T[L].okP)}</p></div></div>`;
+    f.reset();DC.track("missing_medicine_submit",{medicine:data.medicine.slice(0,80)});
+  }else{
+    const txt=Object.entries(data).filter(([k,x])=>x).map(([k,x])=>k+": "+x).join("\n");
+    out.innerHTML=verdict("v-amber","!",T[L].errSend.replace("__E__",DC.SITE.email||"us"),"",`<div class="draft"><textarea rows="5" aria-label="${esc(T[L].copy)}">${esc(txt)}</textarea><button type="button" class="copy">${esc(T[L].copy)}</button></div>`);
+  }
+});
+
+/* hero scene: pause button, and pause while off screen */
+(()=>{
+  const sc=$("scene"),pp=$("scPP");let manual=false;
+  const label=()=>{const p=sc.classList.contains("paused");pp.setAttribute("aria-label",p?T[L].scPlay:T[L].scPause);pp.setAttribute("aria-pressed",p);pp.querySelector(".i-play").classList.toggle("hidden",!p);pp.querySelector(".i-pause").classList.toggle("hidden",p)};
+  pp.onclick=()=>{manual=!sc.classList.contains("paused");sc.classList.toggle("paused",manual);label();DC.track("scene_toggle",{paused:manual})};
+  if("IntersectionObserver" in window)new IntersectionObserver(es=>{if(!manual)sc.classList.toggle("paused",!es[0].isIntersecting);label()}).observe(sc);
+  window.sceneLabel=label;label();
+})();
+applyLang();
+fromHash();
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dawa Check Feedback</title>
+<meta name="description" content="Tell us what to build next for Dawa Check: rate the site, pick features, share ideas.">
+<link rel="canonical" href="https://dawacheck.pk/feedback.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dawa Check">
+<meta property="og:title" content="Dawa Check Feedback">
+<meta property="og:description" content="Tell us what to build next for Dawa Check: rate the site, pick features, share ideas.">
+<meta property="og:url" content="https://dawacheck.pk/feedback.html">
+<meta property="og:image" content="https://dawacheck.pk/icons/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#4B2BB8">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* feedback: three-step card left, "recently added" right */
+.fb{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start;padding-block:12px 20px}
+.fb-head{grid-column:1/-1;max-width:640px}
+.fb-head .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--rx);font-weight:800;margin:14px 0 8px}
+.fb-head h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,5.4vw,48px);line-height:1.08;letter-spacing:-.03em;margin:0 0 12px}
+.fb-head p{margin:0;color:var(--soft);font-size:17px}
+.wiz{background:var(--panel);border-radius:4px 4px 22px 22px;box-shadow:var(--shadow);position:relative;padding:28px 24px 22px;min-height:440px;display:flex;flex-direction:column}
+.wiz::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,var(--rx) 0 62%,var(--or) 62% 100%)}
+.prog{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 6px}
+.prog i{height:6px;border-radius:9px;background:var(--line);transition:background .3s}
+.prog i.on{background:var(--rx)}
+.stepno{font-size:13px;font-weight:700;color:var(--soft);margin:0 0 16px}
+.pane{display:none;flex:1;flex-direction:column}
+.pane.on{display:flex}
+@media (prefers-reduced-motion:no-preference){.pane.on{animation:slidein .3s ease-out}@keyframes slidein{from{opacity:0;transform:translateX(14px)}}}
+.pane h2{font-family:var(--display);font-weight:800;font-size:clamp(21px,3.4vw,27px);line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.pane .sub{margin:0 0 20px;color:var(--soft);font-size:15px}
+.faces{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.face{border:2px solid var(--line);background:var(--bg);border-radius:18px;padding:14px 4px 10px;display:grid;justify-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--soft);transition:transform .15s,border-color .2s,background .2s}
+.face svg{width:52px;height:52px;max-width:100%}
+.face:hover{transform:translateY(-3px);border-color:var(--rx2)}
+.face[aria-checked="true"]{border-color:var(--rx);background:var(--rxbg);color:var(--ink);transform:translateY(-3px) scale(1.04)}
+.feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fcard{position:relative;text-align:left;border:2px solid var(--line);background:var(--bg);border-radius:16px;padding:14px 36px 12px 62px;min-height:76px;display:grid;align-content:center;gap:2px;color:var(--ink);transition:border-color .2s,background .2s}
+.fcard:hover{border-color:var(--rx2)}
+.fcard .fi{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:12px;background:var(--panel);display:grid;place-items:center;color:var(--rx);transition:background .2s,color .2s}
+.fcard b{font-size:15.5px;line-height:1.25}
+.fcard small{font-size:13px;color:var(--soft);line-height:1.35}
+.fcard::after{content:"";position:absolute;right:10px;top:10px;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);background:var(--panel)}
+.fcard[aria-pressed="true"]{border-color:var(--rx);background:var(--rxbg)}
+.fcard[aria-pressed="true"] .fi{background:var(--rx);color:#fff}
+.fcard[aria-pressed="true"]::after{background:var(--rx) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.2l3 3 6-6.4' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--rx)}
+.fcard[aria-disabled="true"]{opacity:.45}
+.count{margin:12px 0 0;font-size:13.5px;font-weight:700;color:var(--rx)}
+.qchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.qchip{border:1.5px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--ink)}
+.qchip:hover{border-color:var(--rx)}
+.qchip[aria-pressed="true"]{background:var(--rx);border-color:var(--rx);color:#fff}
+.fb-f{display:grid;gap:6px;margin-bottom:12px}
+.fb-f label{font-size:13.5px;font-weight:700;color:var(--soft)}
+.fb-f textarea,.fb-f input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:14px;padding:12px;font-size:16px;color:var(--ink);outline:none;resize:vertical}
+.fb-f textarea:focus,.fb-f input:focus{border-color:var(--rx)}
+.wnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:20px}
+.wbtn{display:inline-flex;align-items:center;border-radius:999px;padding:12px 22px;font-family:var(--display);font-weight:800;font-size:16px;border:2px solid var(--ink);background:var(--panel);color:var(--ink);text-decoration:none}
+.wbtn.go{background:var(--or);border-color:var(--or);color:var(--on-or);margin-left:auto}
+.wbtn[disabled]{opacity:.55;cursor:wait}
+.wbtn.ghost{border-color:transparent;background:transparent;color:var(--soft);padding-inline:6px}
+.wbtn.wa{color:#fff;background:#1A8F49;border-color:#1A8F49}
+.done{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:20px 0}
+.done.on{display:flex}
+.done .big{width:84px;height:84px;border-radius:50%;background:var(--rx);display:grid;place-items:center}
+@media (prefers-reduced-motion:no-preference){.done.on .big{animation:popin .45s cubic-bezier(.2,1.6,.4,1)}@keyframes popin{from{transform:scale(.3);opacity:0}}}
+.done h2{font-family:var(--display);font-weight:800;font-size:28px;margin:6px 0 0}
+.done p{margin:0;color:var(--soft);max-width:38ch}
+.done .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+.err{margin-top:12px}
+.err p{margin:0 0 8px;color:var(--red);font-weight:700;font-size:14.5px}
+.err textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
+.err button{margin-top:6px;border:0;border-radius:999px;padding:8px 14px;background:var(--rx);color:#fff;font-weight:700}
+.side{display:grid;gap:16px;position:sticky;top:20px}
+.scard{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}
+.scard h3{margin:0 0 12px;font-family:var(--display);font-size:18px;font-weight:800}
+.log{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.log li{display:grid;grid-template-columns:12px 1fr;gap:12px;font-size:15px}
+.log li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--or);border:2px solid var(--rx);margin-top:6px}
+.log small{display:block;color:var(--soft);font-size:12.5px}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:f}
+.flow li{counter-increment:f;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px}
+.flow li::before{content:counter(f);width:28px;height:28px;border-radius:50%;background:var(--rxbg);color:var(--rx);font-weight:800;display:grid;place-items:center;font-size:13px}
+@media (max-width:860px){.fb{grid-template-columns:minmax(0,1fr)}.side{position:static}}
+@media (max-width:520px){
+  .feat{grid-template-columns:minmax(0,1fr)}
+  .faces{gap:6px}
+  .face{padding:10px 2px 8px;font-size:11px;border-radius:14px}
+  .face svg{width:38px;height:38px}
+  .wiz{padding:24px 16px 18px}
+}
+.fcard[data-k="own"]{grid-column:1/-1}
+</style>
+</head>
+<body data-page="doc">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Dawa Check home"><svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 50) rotate(-35) translate(-50 -50)"><path d="M50 33 H73 A17 17 0 0 1 73 67 H50 Z" fill="#FFD23F"/><path d="M27 33 H50 V67 H27 A17 17 0 0 1 27 33 Z" fill="var(--rx)"/></g><path d="M56 52 L63 59 L77 42" fill="none" stroke="#2A1670" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="wm"><span class="w-dawa">dawa</span><span class="w-check">check</span></span></a>
+  <div class="lang" data-auto role="group" aria-label="Language"><button data-lang="ru" aria-pressed="false">Roman</button><button data-lang="en" aria-pressed="true">English</button></div>
+</header>
+<main id="main" class="fb">
+  <div class="fb-head">
+    <a class="back" href="index.html" data-t="back">← Back to the tool</a>
+    <p class="eyebrow" data-f="ey"></p>
+    <h1 data-f="h1"></h1>
+    <p data-f="lede"></p>
+  </div>
+
+  <section class="wiz" id="wiz">
+    <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <p class="stepno" id="stepno" aria-live="polite"></p>
+
+    <div class="pane on" data-p="1">
+      <h2 data-f="p1h"></h2><p class="sub" data-f="p1s"></p>
+      <div class="faces" role="radiogroup" data-fl="p1h"><button type="button" class="face" role="radio" aria-checked="false" data-r="1"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="var(--or)" stroke="#2A1670" stroke-width="2.5"/><circle cx="18" cy="22" r="3" fill="#2A1670"/><circle cx="34" cy="22" r="3" fill="#2A1670"/><path d="M13 15l8 3M39 15l-8 3" stroke="#2A1670" stroke-width="2.5" stroke-linecap="round"/><path d="M16 38 q10 -9 20 0" stroke="#2A1670" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-f="r1"></span></button><button type="button" class="face" role="radio" aria-checked="false" data-r="2"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="var(--or)" stroke="#2A1670" stroke-width="2.5"/><circle cx="18" cy="22" r="3" fill="#2A1670"/><circle cx="34" cy="22" r="3" fill="#2A1670"/><path d="M17 37 q9 -5 18 0" stroke="#2A1670" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-f="r2"></span></button><button type="button" class="face" role="radio" aria-checked="false" data-r="3"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="var(--or)" stroke="#2A1670" stroke-width="2.5"/><circle cx="18" cy="22" r="3" fill="#2A1670"/><circle cx="34" cy="22" r="3" fill="#2A1670"/><path d="M17 35 h18" stroke="#2A1670" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-f="r3"></span></button><button type="button" class="face" role="radio" aria-checked="false" data-r="4"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="var(--or)" stroke="#2A1670" stroke-width="2.5"/><circle cx="18" cy="22" r="3" fill="#2A1670"/><circle cx="34" cy="22" r="3" fill="#2A1670"/><path d="M16 33 q10 8 20 0" stroke="#2A1670" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-f="r4"></span></button><button type="button" class="face" role="radio" aria-checked="false" data-r="5"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="var(--or)" stroke="#2A1670" stroke-width="2.5"/><circle cx="18" cy="22" r="3" fill="#2A1670"/><circle cx="34" cy="22" r="3" fill="#2A1670"/><path d="M14 31 q12 13 24 0 z" stroke="#2A1670" stroke-width="3" fill="#2A1670" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-f="r5"></span></button></div>
+      <div class="wnav"><button type="button" class="wbtn go" data-next data-f="next"></button></div>
+    </div>
+
+    <div class="pane" data-p="2">
+      <h2 data-f="p2h"></h2><p class="sub" data-f="p2s"></p>
+      <div class="feat"><button type="button" class="fcard" aria-pressed="false" data-k="urdu"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-9l-5 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><text x="12" y="14.5" text-anchor="middle" font-size="9" font-weight="800" fill="currentColor">ع</text></svg></span><b data-f="urdu"></b><small data-f="urduD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="alt"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h12M11 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><b data-f="alt"></b><small data-f="altD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="scan"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 9v6M11 9v6M14 9v6M16.5 9v6" stroke="currentColor" stroke-width="1.8"/></svg></span><b data-f="scan"></b><small data-f="scanD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="wa"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 0 1 12 4z"/></svg></span><b data-f="wa"></b><small data-f="waD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="rate"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.2 9.4l6.1-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><b data-f="rate"></b><small data-f="rateD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="hist"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18l5-6 4 3 7-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4v16h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b data-f="hist"></b><small data-f="histD"></small></button><button type="button" class="fcard" aria-pressed="false" data-k="own"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3zM9.5 19h5M10.5 21.5h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b data-f="own"></b><small data-f="ownD"></small></button></div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="wnav"><button type="button" class="wbtn ghost" data-back data-f="back"></button><button type="button" class="wbtn go" data-next data-f="next"></button></div>
+    </div>
+
+    <div class="pane" data-p="3">
+      <h2 data-f="p3h"></h2><p class="sub" data-f="p3s"></p>
+      <div class="qchips"><button type="button" class="qchip" aria-pressed="false" data-q="q1" data-f="q1"></button><button type="button" class="qchip" aria-pressed="false" data-q="q2" data-f="q2"></button><button type="button" class="qchip" aria-pressed="false" data-q="q3" data-f="q3"></button><button type="button" class="qchip" aria-pressed="false" data-q="q4" data-f="q4"></button><button type="button" class="qchip" aria-pressed="false" data-q="q5" data-f="q5"></button></div>
+      <div class="fb-f"><label for="fbMsg" data-f="msgL"></label><textarea id="fbMsg" rows="4"></textarea></div>
+      <div class="fb-f"><label for="fbEmail" data-f="emailL"></label><input id="fbEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <input type="text" id="fbHoney" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div id="fbErr" aria-live="polite"></div>
+      <div class="wnav"><button type="button" class="wbtn ghost" data-back data-f="back"></button><button type="button" class="wbtn go" id="fbSend" data-f="send"></button></div>
+    </div>
+
+    <div class="done" id="done" aria-live="polite">
+      <span class="big"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <h2 data-f="okH"></h2><p data-f="okP"></p>
+      <div class="row"><a class="wbtn wa" id="waShare" target="_blank" rel="noopener" data-f="share"></a><a class="wbtn" href="index.html" data-f="toTool"></a></div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="scard"><h3 data-f="logH"></h3><ul class="log"><li><div><span data-f="log1"></span><small>18 Oct 2026</small></div></li><li><div><span data-f="log2"></span><small>18 Oct 2026</small></div></li><li><div><span data-f="log3"></span><small>18 Oct 2026</small></div></li><li><div><span data-f="log4"></span><small>18 Oct 2026</small></div></li></ul></div>
+    <div class="scard"><h3 data-f="flowH"></h3><ol class="flow"><li data-f="flow1"></li><li data-f="flow2"></li><li data-f="flow3"></li></ol></div>
+  </aside>
+</main>
+</div>
+<footer class="site-foot" id="site-foot"></footer>
+<script src="assets/site.js"></script>
+<script>
+const F={
+ru:{ey:"Feedback",h1:"Dawa Check ko behtar banane mein madad karein",lede:"Teen chhote sawal, 30 second. Aap jo sab se zyada maangenge, woh pehle banega.",
+ step:"Step __N__ / 3",next:"Aage",back:"Peeche",send:"Bhej dein",sending:"Bhej rahe hain…",
+ p1h:"Dawa Check kitna kaam ka laga?",p1s:"Ek chehra chunein.",r1:"Bekaar",r2:"Theek nahi",r3:"Theek hai",r4:"Acha",r5:"Zabardast",
+ p2h:"Agla feature kaun sa banayein?",p2s:"3 tak chunein. Chahein to skip kar dein.",count:"__N__ / 3 chune",
+ urdu:"اردو mode",urduD:"Poori website Urdu script mein",alt:"Sasti alternative",altD:"Same formula, kam qeemat wali brand",scan:"Barcode scan",scanD:"Dibbe ki photo se seedha check",
+ wa:"WhatsApp alerts",waD:"Qeemat badle ya naqli dawa pakri jaye to message",rate:"Pharmacy rating",rateD:"Log batayein kis pharmacy ne sahi qeemat li",hist:"Qeemat ki history",histD:"Dekhein qeemat kab aur kitni badli",own:"Apna idea",ownD:"Agle step mein likhein",
+ p3h:"Kuch aur batana hai?",p3s:"Jo baat sahi lage us par tap karein, ya khud likhein. Yeh step optional hai.",
+ q1:"Meri dawa nahi mili",q2:"Search slow hai",q3:"Design acha hai",q4:"Samajhna mushkil laga",q5:"Data galat laga",
+ msgL:"Aap ka message",emailL:"Email (optional, agar jawab chahiye)",
+ okH:"Shukriya!",okP:"Aap ki feedback mil gayi. Hum har message parhte hain.",share:"Doston ko bhejein",toTool:"Tool par wapas",
+ shareTxt:"Dawa Check: dawa ki asli DRAP qeemat aur naqli dawa alerts, free.",
+ err:"Abhi bhej nahi sake. Yeh text copy kar ke humein __E__ par email kar dein.",copy:"Text copy karein",copied:"Copy ho gaya",
+ logH:"Haal hi mein add hua",log1:"Roman Urdu aur English mode",log2:"Pharmacy wali kahani, hero mein",log3:"Missing dawa batane ka form",log4:"Complaint ke 4 tareeqe, ek jagah",
+ flowH:"Aap ki feedback ka kya hota hai",flow1:"Hum har message khud parhte hain.",flow2:"Jo cheez sab se zyada maangi jaye, woh pehle banti hai.",flow3:"Naya feature yahan \"Haal hi mein add hua\" mein dikhega."},
+en:{ey:"Feedback",h1:"Help us make Dawa Check better",lede:"Three quick questions, 30 seconds. What people ask for most gets built first.",
+ step:"Step __N__ of 3",next:"Next",back:"Back",send:"Send",sending:"Sending…",
+ p1h:"How useful was Dawa Check?",p1s:"Pick a face.",r1:"Useless",r2:"Not great",r3:"Okay",r4:"Good",r5:"Love it",
+ p2h:"What should we build next?",p2s:"Pick up to 3. You can skip this.",count:"__N__ of 3 picked",
+ urdu:"اردو mode",urduD:"The whole site in Urdu script",alt:"Cheaper alternatives",altD:"Same formula, lower-priced brand",scan:"Barcode scan",scanD:"Check straight from a photo of the box",
+ wa:"WhatsApp alerts",waD:"A message when a price changes or a fake is found",rate:"Pharmacy ratings",rateD:"People report which pharmacies charge fairly",hist:"Price history",histD:"See when and how much a price changed",own:"Your own idea",ownD:"Write it on the next step",
+ p3h:"Anything else to tell us?",p3s:"Tap whatever fits, or write your own. This step is optional.",
+ q1:"Couldn't find my medicine",q2:"Search is slow",q3:"Love the design",q4:"Hard to understand",q5:"Data looked wrong",
+ msgL:"Your message",emailL:"Email (optional, if you'd like a reply)",
+ okH:"Thank you!",okP:"We got your feedback. We read every message.",share:"Share with friends",toTool:"Back to the tool",
+ shareTxt:"Dawa Check: official DRAP medicine prices and fake medicine alerts, free.",
+ err:"We couldn't send it right now. Copy this text and email it to __E__.",copy:"Copy text",copied:"Copied",
+ logH:"Recently added",log1:"Roman Urdu and English modes",log2:"The pharmacy story in the hero",log3:"A form to report missing medicines",log4:"4 ways to complain, in one place",
+ flowH:"What happens to your feedback",flow1:"We read every message ourselves.",flow2:"Whatever people ask for most gets built first.",flow3:"New features show up here under \"Recently added\"."}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let L=DC.lang,cur=1,rating=0;const picked=new Set(),quick=new Set();
+const tf=k=>F[L][k];
+function paint(){
+  document.querySelectorAll("[data-f]").forEach(el=>el.textContent=tf(el.dataset.f));
+  document.querySelectorAll("[data-fl]").forEach(el=>el.setAttribute("aria-label",tf(el.dataset.fl)));
+  $("stepno").textContent=tf("step").replace("__N__",cur);
+  $("count").textContent=tf("count").replace("__N__",picked.size);
+  $("waShare").href="https://wa.me/?text="+encodeURIComponent(tf("shareTxt")+" "+location.href.replace(/feedback\.html.*$/,""));
+}
+function go(n){
+  cur=n;
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",+p.dataset.p===n));
+  document.querySelectorAll(".prog i").forEach((i,k)=>i.classList.toggle("on",k<n));
+  $("stepno").textContent=tf("step").replace("__N__",n);
+}
+document.querySelectorAll(".face").forEach(b=>b.onclick=()=>{
+  rating=+b.dataset.r;
+  document.querySelectorAll(".face").forEach(x=>x.setAttribute("aria-checked",x===b));
+  DC.track("feedback_rating",{rating});
+  setTimeout(()=>{if(cur===1)go(2)},380);
+});
+document.querySelectorAll(".fcard").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.k;
+  if(picked.has(k))picked.delete(k);else if(picked.size<3)picked.add(k);else return;
+  document.querySelectorAll(".fcard").forEach(x=>{const on=picked.has(x.dataset.k);x.setAttribute("aria-pressed",on);x.setAttribute("aria-disabled",!on&&picked.size>=3)});
+  $("count").textContent=tf("count").replace("__N__",picked.size);
+});
+document.querySelectorAll(".qchip").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.q;quick.has(k)?quick.delete(k):quick.add(k);b.setAttribute("aria-pressed",quick.has(k));
+});
+document.querySelectorAll("[data-next]").forEach(b=>b.onclick=()=>{go(cur+1);if(cur===3&&picked.has("own"))$("fbMsg").focus()});
+document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>go(cur-1));
+$("fbSend").onclick=async()=>{
+  if($("fbHoney").value)return;
+  const btn=$("fbSend"),data={
+    rating:rating?rating+" / 5 ("+F.en["r"+rating]+")":"skipped",
+    features:[...picked].map(k=>F.en[k]).join(", ")||"none",
+    quick:[...quick].map(k=>F.en[k]).join(", "),
+    message:$("fbMsg").value.trim(),email:$("fbEmail").value.trim(),language:L==="en"?"English":"Roman Urdu"};
+  btn.disabled=true;btn.textContent=tf("sending");
+  const ok=await DC.send("Dawa Check feedback: "+data.rating,data);
+  btn.disabled=false;btn.textContent=tf("send");
+  DC.track("feedback_submit",{rating,features:data.features,sent:ok});
+  if(ok){
+    document.querySelectorAll(".pane").forEach(p=>p.classList.remove("on"));
+    document.querySelector(".prog").classList.add("hidden");$("stepno").classList.add("hidden");$("done").classList.add("on");return;
+  }
+  const txt=Object.entries(data).filter(([k,v])=>v).map(([k,v])=>k+": "+v).join("\n");
+  $("fbErr").innerHTML=`<div class="err"><p>${esc(tf("err").replace("__E__",DC.SITE.email||"us"))}</p><textarea rows="5" aria-label="${esc(tf("copy"))}">${esc(txt)}</textarea><button type="button" id="fbCopy">${esc(tf("copy"))}</button></div>`;
+  $("fbCopy").onclick=async()=>{const ta=document.querySelector("#fbErr textarea");ta.select();let c=false;try{await navigator.clipboard.writeText(ta.value);c=true}catch(e){try{c=document.execCommand("copy")}catch(_){}}$("fbCopy").textContent=c?tf("copied"):tf("copy")};
+};
+document.addEventListener("dc:lang",e=>{L=e.detail;paint()});
+paint();
+</script>
+</body>
+</html>
