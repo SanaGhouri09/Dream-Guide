@@ -1,0 +1,9 @@
+// Cloudflare Workers static site: publishes the dawa-check/ folder as dawacheck.pk
+{
+  "name": "dawa-check",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dawa-check",
+    "not_found_handling": "404-page"
+  }
+}
