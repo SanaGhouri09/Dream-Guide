@@ -2,12 +2,15 @@
 /* Cleans data/prices.js in place:
    - keeps only the newest price when the same pack (name + pack size + reg. no.) appears more than once
    - drops rows with no usable price (0 or missing)
+   - flattens line breaks and double spaces inside names, packs and makers
    Run after replacing data/prices.js with a fresh DRAP export:  node scripts/clean-prices.js */
 const fs = require("fs"), path = require("path");
 const file = path.join(__dirname, "..", "data", "prices.js");
 const src = fs.readFileSync(file, "utf8");
 const header = src.slice(0, src.indexOf("const PRICES"));
 const PRICES = new Function(src.slice(src.indexOf("const PRICES")) + ";return PRICES")();
+// flatten line breaks and repeated spaces inside text fields (they split brands in the search pages)
+for (const r of PRICES) for (let i = 0; i < r.length; i++) if (typeof r[i] === "string") r[i] = r[i].replace(/\s+/g, " ").trim();
 const when = s => { const d = new Date(String(s).replace(",", "")); return isNaN(d) ? 0 : +d; };
 const key = r => [r[0], r[3], r[6]].map(x => String(x).toLowerCase().replace(/\s+/g, " ").trim()).join("|");
 

@@ -31,7 +31,7 @@ const nice = s => { s = s.replace(/^[*\s]+/, "").replace(/\s+/g, " ").trim(); re
 const rs = n => "Rs " + n.toLocaleString("en-PK", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 function baseOf(b) {
   let s = b.replace(/^[*\s]+/, "").replace(/[®™]/g, "").replace(/\(.*?\)/g, " ");
-  s = s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)\b.*$/i, "");
+  s = s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|gm|g|ml|iu|%)\b.*$/i, "");
   s = s.replace(/\s(?:tablets?|tabs?|caplets?|capsules?|caps?|syrup|suspension|susp|elixir|drops?|injection|inj|infusion|cream|ointment|gel|lotion|sachets?|granules|powder|ds|forte|plus|xr|sr|er|mr|cr|dt|extra|extend|max|kids?|junior|pediatric|paediatric|liquid|retard|i\.?v\.?|\d+)(?:\b|\s|$).*$/i, "");
   s = s.replace(/\s+(?:for|of|and|with|in|&)$/i, "").replace(/[-.,]+$/, "").trim();
   return s || b.split(/\s+/)[0];
