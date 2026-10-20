@@ -68,20 +68,28 @@ function riseLine(ctx, segs, x, y, size, u, u0, { weight = 800, fam = D, align =
 function txt(ctx, str, x, y, ft, color, align = 'left') { ctx.font = ft; ctx.fillStyle = color; ctx.textAlign = align; ctx.fillText(str, x, y); }
 
 // ---------------------------------------------------------------- brand art
-// Capsule-with-check logo from the site's SVG (viewBox 100). check: 0..1 draw-on.
+// Capsule logo: tilted capsule, the seam between the halves is an upright tick cut out
+// of it (viewBox 100, same as the site SVG). check: 0..1 draws the tick cut on.
+const CAP = new Path2D('M28 30H72A20 20 0 0 1 72 70H28A20 20 0 0 1 28 30Z');
+let logoBuf = null;
 function logo(ctx, cx, cy, size, check = 1, rot = 0) {
-  ctx.save();
-  ctx.translate(cx, cy); ctx.rotate(rot); ctx.scale(size / 100, size / 100); ctx.translate(-50, -50);
-  ctx.save(); ctx.translate(50, 50); ctx.rotate((-35 * Math.PI) / 180); ctx.translate(-50, -50);
-  ctx.fillStyle = C.or; ctx.fill(new Path2D('M50 33 H73 A17 17 0 0 1 73 67 H50 Z'));
-  ctx.fillStyle = C.rx; ctx.fill(new Path2D('M27 33 H50 V67 H27 A17 17 0 0 1 27 33 Z'));
-  ctx.restore();
+  const R = 400;
+  if (!logoBuf) logoBuf = document.createElement('canvas'), logoBuf.width = logoBuf.height = R;
+  const g = logoBuf.getContext('2d');
+  g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, R, R); g.scale(R / 100, R / 100);
+  const capsule = (fill) => { g.save(); g.translate(50, 50); g.rotate((-30 * Math.PI) / 180); g.translate(-50, -50); g.fillStyle = fill; g.fill(CAP); g.restore(); };
+  capsule(C.or);
+  g.save(); g.clip(new Path2D('M0 0H75L50 64L37 51V100H0Z')); capsule(C.rx); g.restore();
   if (check > 0) {
-    ctx.strokeStyle = C.band; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    ctx.setLineDash([32 * check, 100]);
-    ctx.stroke(new Path2D('M56 52 L63 59 L77 42'));
-    ctx.setLineDash([]);
+    g.globalCompositeOperation = 'destination-out';
+    g.lineWidth = 6; g.lineCap = 'round'; g.lineJoin = 'round';
+    g.setLineDash([88 * check, 200]);
+    g.stroke(new Path2D('M37 51 L50 64 L75 0'));
+    g.setLineDash([]); g.globalCompositeOperation = 'source-over';
   }
+  ctx.save();
+  ctx.translate(cx, cy); ctx.rotate(rot);
+  ctx.drawImage(logoBuf, -size / 2, -size / 2, size, size);
   ctx.restore();
 }
 // "dawacheck" wordmark, optionally with ".pk" attached on the same baseline.
