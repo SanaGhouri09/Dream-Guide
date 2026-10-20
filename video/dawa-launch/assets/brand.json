@@ -1,0 +1,178 @@
+{
+ "url": "http://localhost:8765/index.html",
+ "title": "Dawa Check: sahi qeemat, asli dawa",
+ "description": "Dawa ki DRAP sarkari qeemat dekhein aur zyada dene se bachein. 21,534 packs ki qeemat aur naqli dawa ke alerts ek jagah.",
+ "themeColor": [
+  "#4B2BB8"
+ ],
+ "text_colors": [
+  [
+   "#5e5880",
+   74
+  ],
+  [
+   "#21134f",
+   67
+  ],
+  [
+   "#4b2bb8",
+   42
+  ],
+  [
+   "#ffffff",
+   15
+  ],
+  [
+   "#e9e4ff",
+   14
+  ],
+  [
+   "#2a1670",
+   11
+  ],
+  [
+   "#f3f0ff",
+   8
+  ],
+  [
+   "#bdb3ee",
+   7
+  ],
+  [
+   "#a79fc9",
+   7
+  ],
+  [
+   "#ffd23f",
+   6
+  ]
+ ],
+ "background_colors": [
+  [
+   "#ffffff",
+   168
+  ],
+  [
+   "#f6f4fc",
+   69
+  ],
+  [
+   "#2a1670",
+   40
+  ],
+  [
+   "#1b1240",
+   20
+  ],
+  [
+   "#eeeafe",
+   19
+  ],
+  [
+   "#120b2a",
+   15
+  ],
+  [
+   "#241a52",
+   14
+  ],
+  [
+   "#c42b1c",
+   12
+  ],
+  [
+   "#ffd23f",
+   11
+  ],
+  [
+   "#fde8e6",
+   3
+  ]
+ ],
+ "font_families": [
+  [
+   "Plus Jakarta Sans",
+   238
+  ],
+  [
+   "DotGothic16",
+   13
+  ],
+  [
+   "Bricolage Grotesque",
+   6
+  ]
+ ],
+ "font_weights": [
+  [
+   "Plus Jakarta Sans 400",
+   86
+  ],
+  [
+   "Plus Jakarta Sans 800",
+   82
+  ],
+  [
+   "Plus Jakarta Sans 700",
+   56
+  ],
+  [
+   "DotGothic16 400",
+   13
+  ],
+  [
+   "Plus Jakarta Sans 600",
+   9
+  ],
+  [
+   "Bricolage Grotesque 800",
+   6
+  ],
+  [
+   "Plus Jakarta Sans 900",
+   3
+  ],
+  [
+   "Plus Jakarta Sans 750",
+   2
+  ]
+ ],
+ "css_vars": {
+  "--bg": "#F6F4FC",
+  "--panel": "#FFFFFF",
+  "--ink": "#21134F",
+  "--soft": "#5E5880",
+  "--line": "#E0DCF0",
+  "--rx": "#4B2BB8",
+  "--rx2": "#6A4FD6",
+  "--rxbg": "#EEEAFE",
+  "--mint": "#FFE9A8",
+  "--or": "#FFD23F",
+  "--orbg": "#FFF6D6",
+  "--on-or": "#2A1670",
+  "--red": "#C42B1C",
+  "--redbg": "#FDE8E6",
+  "--amber": "#8A5A00",
+  "--amberbg": "#FFF4D1",
+  "--ink-dot": "#4B2BB8",
+  "--foil1": "#ECE9F6",
+  "--foil2": "#C9C3E0",
+  "--tape": "#C42B1C",
+  "--band": "#2A1670",
+  "--band-ink": "#F3F0FF",
+  "--band-soft": "#BDB3EE",
+  "--band-line": "#4A3A96",
+  "--band-hi": "#FFD23F",
+  "--foot": "#1B1240",
+  "--foot-ink": "#E9E4FF",
+  "--foot-soft": "#A79FC9",
+  "--foot-line": "#33296A",
+  "--foot-card": "#241A52",
+  "--shadow": "0 1px 0 rgba(42,22,112,.06), 0 12px 28px -14px rgba(42,22,112,.28)",
+  "--display": "\"Plus Jakarta Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+  "--sans": "\"Plus Jakarta Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+  "--mark": "\"Bricolage Grotesque\", \"Plus Jakarta Sans\", system-ui, sans-serif",
+  "--dot": "\"DotGothic16\", ui-monospace, \"Courier New\", monospace"
+ },
+ "wordmark": null
+}
