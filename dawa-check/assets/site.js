@@ -6,7 +6,7 @@ const SITE={
   formEmail:"hello@dawacheck.pk", //         // Inbox that receives the "missing medicine" and feedback forms (sent via formsubmit.co). Empty = forms can't send.
   formEndpoint:"",      // Optional: your own form endpoint (Formspree, Web3Forms...). Overrides formEmail.
   updated:"18 Oct 2026", // Last data update, shown in the footer.
-  linkedin:""           // LinkedIn page URL, shown as a "Follow" link in the footer. Empty = hidden.
+  linkedin:"https://www.linkedin.com/company/dawacheckpk/" // LinkedIn page URL, shown as a "Follow" link in the footer. Empty = hidden.
 };
 
 const DC=(()=>{
