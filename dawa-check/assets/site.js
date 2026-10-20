@@ -16,7 +16,7 @@ const DC=(()=>{
   const S={
     ru:{cardH:"Galat qeemat ya missing alert dekha?",cardP:"Dawa ka naam, pack aur screenshot bhejein. Hum DRAP ke asal source se mila kar theek kar dete hain.",
       mailBtn:"Email karein",copyMail:"Email copy karein",copiedMail:"Copy ho gaya",
-      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",complain:"Complaint kaise karein",missing:"Missing dawa batayein",feedback:"Feedback",
+      colTool:"Tool",colPol:"Policies",price:"Qeemat check",batch:"Batch check",latest:"Naye alerts",faq:"Sawal jawab",allMeds:"Sab dawaon ki qeemat (A-Z)",fakeList:"Naqli dawaon ki list",complain:"Complaint kaise karein",missing:"Missing dawa batayein",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"Hum data kaise check karte hain",cset:"Cookie settings",
       about:"Pakistan ke liye banaya gaya. Hum dawa nahi bechte aur koi commission nahi lete. Sirf DRAP ka public data, asaan zaban mein.",
       notDrap:"DRAP ya government ka hissa nahi",updated:"Data update",
@@ -28,7 +28,7 @@ const DC=(()=>{
       toast:"Website ab Roman Urdu mein hai",back:"← Tool par wapas jayein"},
     en:{cardH:"Spotted a wrong price or a missing alert?",cardP:"Send the medicine name, pack size and a screenshot. We check it against DRAP's original source and fix it.",
       mailBtn:"Email us",copyMail:"Copy email",copiedMail:"Copied",
-      colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",complain:"How to complain",missing:"Report a missing medicine",feedback:"Feedback",
+      colTool:"Tool",colPol:"Policies",price:"Price check",batch:"Batch check",latest:"Latest alerts",faq:"FAQ",allMeds:"All medicine prices (A-Z)",fakeList:"Fake medicine list",complain:"How to complain",missing:"Report a missing medicine",feedback:"Feedback",
       privacy:"Privacy",terms:"Terms",cookies:"Cookies",verify:"How we verify",cset:"Cookie settings",
       about:"Made for Pakistan. We don't sell medicines and we take no commission. Just DRAP's public data, in plain language.",
       notDrap:"Not affiliated with DRAP or any government body",updated:"Data updated",
@@ -41,7 +41,8 @@ const DC=(()=>{
   };
   let lang=store.get("dc-lang")==="en"?"en":"ru";
   const t=k=>S[lang][k];
-  const home=document.body.dataset.home||"index.html";
+  const base=document.body.dataset.base||"";
+  const home=document.body.dataset.home||base+"index.html";
 
   /* consent: Pakistan and most countries default to on; EU/UK/Swiss time zones are asked first */
   const tz=(()=>{try{return Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){return""}})();
@@ -93,11 +94,12 @@ const DC=(()=>{
         <nav aria-label="${t("colTool")}"><h3>${t("colTool")}</h3><ul>
           <li><a href="${home}#check">${t("price")}</a></li><li><a href="${home}#batch">${t("batch")}</a></li>
           <li><a href="${home}#latest">${t("latest")}</a></li><li><a href="${home}#complain">${t("complain")}</a></li>
-          <li><a href="${home}#missing">${t("missing")}</a></li><li><a href="feedback.html">${t("feedback")}</a></li>
-          <li><a href="${home}#faq">${t("faq")}</a></li></ul></nav>
+          <li><a href="${home}#missing">${t("missing")}</a></li><li><a href="${base}feedback.html">${t("feedback")}</a></li>
+          <li><a href="${home}#faq">${t("faq")}</a></li>
+          <li><a href="${base}medicines/">${t("allMeds")}</a></li><li><a href="${base}fake-medicines">${t("fakeList")}</a></li></ul></nav>
         <nav aria-label="${t("colPol")}"><h3>${t("colPol")}</h3><ul>
-          <li><a href="privacy.html">${t("privacy")}</a></li><li><a href="terms.html">${t("terms")}</a></li>
-          <li><a href="cookies.html">${t("cookies")}</a></li><li><a href="how-we-verify.html">${t("verify")}</a></li>
+          <li><a href="${base}privacy.html">${t("privacy")}</a></li><li><a href="${base}terms.html">${t("terms")}</a></li>
+          <li><a href="${base}cookies.html">${t("cookies")}</a></li><li><a href="${base}how-we-verify.html">${t("verify")}</a></li>
           <li><button type="button" class="linkish" data-cset>${t("cset")}</button></li></ul></nav>
       </div>
       <div class="foot-base"><p>© 2026 Dawa Check · Made for Pakistan 🇵🇰</p><p>${t("notDrap")}</p><p>${t("updated")}: ${esc(SITE.updated)}</p></div>
