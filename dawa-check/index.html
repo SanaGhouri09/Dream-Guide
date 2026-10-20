@@ -288,6 +288,7 @@
 .verdict .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px;font-family:var(--display)}
 .verdict h3{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;line-height:1.15;margin:2px 0 6px}
 .verdict p{margin:0;font-size:15.5px}
+.verdict p.vsync{margin-top:8px;font-size:13px;opacity:.7}
 .v-red{background:var(--redbg)} .v-red .ic{background:var(--red)} .v-red h3{color:var(--red)}
 .v-amber{background:var(--amberbg)} .v-amber .ic{background:var(--amber)} .v-amber h3{color:var(--amber)}
 .v-green{background:var(--rxbg)} .v-green .ic{background:var(--rx)} .v-green h3{color:var(--rx)}
@@ -644,7 +645,7 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  shareP:"__N__: DRAP qeemat Rs __M__, mujh se Rs __V__ liye gaye",shareM:"__N__: dibbe par Rs __M__ likha hai, mujh se Rs __V__ liye gaye",
  pickPack:"Pehle strength chunein, phir pack size",paidLbl:"Aap ne kitne paise diye?",limit:"Limit",
  over:"Aap se Rs __X__ zyada liye gaye",overBody:"DRAP ki qeemat Rs __M__ hai (__D__ se). Pehle pharmacist ko yeh screen dikhayein. Paise wapas na karein to neeche diye tareeqon se complaint karein.",
- ok:"Aap ne sahi qeemat di",okBody:"DRAP ki qeemat Rs __M__ hai (__D__ se).",
+ ok:"Aap ne sahi qeemat di",okBody:"DRAP ki qeemat Rs __M__ hai (__D__ se).",synced:"DRAP list aakhri baar check ki: __U__",
  latestH:"Haal hi mein pakri gayi naqli dawaein",latestP:"DRAP ke naye alerts. Kisi dibbe par tap karein, uska batch check ho jayega.",
  tapCheck:"Batch check karein",
  s1h:"Naam likhein",s1p:"Likhna shuru karte hi dawaon ki list aa jati hai.",
@@ -733,7 +734,7 @@ en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We
  shareP:"__N__: DRAP price Rs __M__, I was charged Rs __V__",shareM:"__N__: Rs __M__ printed on the box, I was charged Rs __V__",
  pickPack:"Pick the strength first, then the pack size",paidLbl:"How much did you pay?",limit:"Limit",
  over:"You paid Rs __X__ over the legal price",overBody:"DRAP's price is Rs __M__ (since __D__). Show the pharmacist this screen first. If they won't refund you, complain using the options below.",
- ok:"You paid the right price",okBody:"DRAP's price is Rs __M__ (since __D__).",
+ ok:"You paid the right price",okBody:"DRAP's price is Rs __M__ (since __D__).",synced:"DRAP list last checked: __U__",
  latestH:"Fake medicines caught recently",latestP:"DRAP's latest alerts. Tap a box to check its batch.",
  tapCheck:"Check this batch",
  s1h:"Type the name",s1p:"Matching medicines show up as you type.",
@@ -874,7 +875,7 @@ const alertCard=a=>`<article class="item"><div class="t"><b>${esc(a.p)}</b>${kin
  <div class="meta">${a.b?`${T[L].batch} <span class="bn">${esc(a.b)}</span> · `:""}${T[L].date}: ${fmtDate(a.d)}</div>
  ${a.m?`<div class="meta">${T[L].maker}: ${esc(a.m)}</div>`:""}${a.r?`<div class="meta">${T[L].reason}: ${esc(a.r)}</div>`:""}
  <div class="meta"><a href="${esc(a.l)}" target="_blank" rel="noopener">${T[L].readAlert} ↗</a></div></article>`;
-const verdict=(cls,ic,h,p,extra)=>`<div class="verdict ${cls}"><div class="ic" aria-hidden="true">${ic}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>${extra?`<div class="vx">${extra}</div>`:""}</div>`;
+const verdict=(cls,ic,h,p,extra)=>`<div class="verdict ${cls}"><div class="ic" aria-hidden="true">${ic}</div><div><h3>${esc(h)}</h3><p>${esc(p)}</p><p class="vsync">${esc(T[L].synced.replace("__U__",META.updated))}</p></div>${extra?`<div class="vx">${extra}</div>`:""}</div>`;
 const WA_ICON='<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.1z"/></svg>';
 const PHONE='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>';
 const waLink=t=>`<a class="wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t+"\n"+location.href)}">${WA_ICON}${T[L].waFamily}</a>`;
