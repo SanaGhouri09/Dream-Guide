@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DawaCheck: dawa ki asli qeemat (DRAP medicine prices Pakistan) aur naqli dawa check</title>
-<meta name="description" content="DawaCheck (dawacheck.pk) par dawa ki DRAP official qeemat dekhein aur batch number se naqli dawa check karein. 21,534 packs, 756 DRAP alerts. Free, na login, na sign-up.">
+<meta name="description" content="DawaCheck (dawacheck.pk) par dawa ki DRAP official qeemat dekhein aur batch number se naqli dawa check karein. 21,551 packs, 756 DRAP alerts. Free, na login, na sign-up.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DawaCheck">
 <meta property="og:title" content="DawaCheck: dawa ki asli qeemat, naqli dawa check">
@@ -613,7 +613,7 @@ section.faq{padding:20px 0 0}
 <script src="data/prices.js"></script>
 <script src="assets/site.js"></script>
 <script>
-const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
+const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "20 Oct 2026"};
 const T={
 ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. Hum un mauqon ke liye hain jab aisa nahi hota: khuli goliyan, MRP par chipka sticker, mita hua print, qeemat badalne ke baad purana stock, aur naqli dawa jis par MRP bhi naqli chhapi hoti hai.",
  q0:"Dibbe par MRP to likhi hoti hai. Phir Dawa Check kyun?",
@@ -957,10 +957,10 @@ function formOf(r){
   if(/tab|caplet|\bdt\b/.test(t))return"tablet";
   return"other";
 }
-const STR=/\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)(?:\s*\/\s*\d*\s*(?:ml|g))?/i;
+const STR=/\d+(?:\.\d+)?\s*(?:mg|mcg|µg|gm|g|ml|iu|%)(?:\s*\/\s*\d*\s*(?:ml|g))?/i;
 function baseOf(b){
   let s=b.replace(/[®™]/g,"").replace(/\(.*?\)/g," ");
-  s=s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|g|ml|iu|%)\b.*$/i,"");
+  s=s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|gm|g|ml|iu|%)\b.*$/i,"");
   s=s.replace(/\s(?:tablets?|tabs?|caplets?|capsules?|caps?|syrup|suspension|susp|elixir|drops?|injection|inj|infusion|cream|ointment|gel|lotion|sachets?|granules|powder|ds|forte|plus|xr|sr|er|mr|cr|dt|extra|extend|max|kids?|junior|pediatric|paediatric|liquid|retard|i\.?v\.?|\d+)(?:\b|\s|$).*$/i,"");
   s=s.replace(/[-.,]+$/,"").trim();
   return s||b.split(/\s+/)[0];

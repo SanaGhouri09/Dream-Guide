@@ -1,6 +1,6 @@
 # Dawa Check
 
-Static website that shows DRAP's official medicine prices (21,534 packs) and DRAP drug alerts (756 entries), in Roman Urdu and English. No backend, no build step.
+Static website that shows DRAP's official medicine prices (21,551 packs) and DRAP drug alerts (756 entries), in Roman Urdu and English. No backend, no build step.
 
 ## Files
 
