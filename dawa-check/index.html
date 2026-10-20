@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DawaCheck (dawacheck.pk): dawa ki asli qeemat aur naqli dawa check</title>
+<title>DawaCheck: dawa ki asli qeemat (DRAP medicine prices Pakistan) aur naqli dawa check</title>
 <meta name="description" content="DawaCheck (dawacheck.pk) par dawa ki DRAP official qeemat dekhein aur batch number se naqli dawa check karein. 21,534 packs, 756 DRAP alerts. Free, na login, na sign-up.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DawaCheck">
@@ -363,6 +363,7 @@ section.latest{padding:56px 0 10px}
 @media (prefers-reduced-motion:no-preference){.results>*{animation:rise .3s ease-out both}.results>*:nth-child(2){animation-delay:.05s}.results>*:nth-child(3){animation-delay:.1s}@keyframes rise{from{opacity:0;transform:translateY(6px)}}}
 /* faq */
 section.faq{padding:20px 0 0}
+.faq-more{margin:16px 0 0;font-weight:700}
 .faq-list{display:grid;gap:10px;max-width:820px}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:16px}
 .faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px;gap:12px;align-items:center;padding:16px 18px;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.35}
@@ -373,6 +374,7 @@ section.faq{padding:20px 0 0}
 .faq details>div p{margin:0}
 .faq details>div a{font-weight:700}
 </style>
+<script type="application/ld+json" id="faq-ld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"The box already has an MRP printed on it. Why do I need this?","acceptedAnswer":{"@type":"Answer","text":"Honestly, if the box is in your hand and the MRP is clear, you don't. We're for the times it isn't: loose tablets, a sticker over the MRP, worn-off print, old stock after a price change, and fakes, which come with a fake MRP too."}},{"@type":"Question","name":"The pharmacist says there's a new price. What should I do?","acceptedAnswer":{"@type":"Answer","text":"It's possible. DRAP changes prices from time to time, and each pack here shows the date its price started. Ask to see the new notification, and check the price printed on the box (MRP). A pharmacy can't charge more than that."}},{"@type":"Question","name":"I can't find my medicine.","acceptedAnswer":{"@type":"Answer","text":"Type only the start of the name, like \"Augm\" instead of \"Augmentin\". Still nothing? Tap \"My pack isn't listed\" and compare with the price printed on the box."}},{"@type":"Question","name":"No alert came up. Is the medicine definitely genuine?","acceptedAnswer":{"@type":"Answer","text":"We can't promise that. We only show batches DRAP has already issued an alert for. If the packing looks strange, the seal is broken or the price is very low, don't take it and ask a pharmacist."}},{"@type":"Question","name":"Do you save my searches?","acceptedAnswer":{"@type":"Answer","text":"No. The search happens on your phone. If analytics is on, it only counts which medicine names get searched, never your name or number. Full details are on the Privacy page."}},{"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"Prices come from DRAP's price list, and alerts come from DRAP's recall and rapid alert pages. Every alert links to the original DRAP notice. Read how we check the data here."}}]}</script>
 </head>
 <body>
 <a class="skip" href="#tool" data-i="skip"></a>
@@ -589,6 +591,7 @@ section.faq{padding:20px 0 0}
     <details><summary data-i="q4"></summary><div><p data-ih="a4"></p></div></details>
     <details><summary data-i="q5"></summary><div><p data-ih="a5"></p></div></details>
   </div>
+  <p class="faq-more"><a href="medicines/" data-i="moreMeds">All medicine prices A-Z</a> · <a href="fake-medicines" data-i="moreFake">Fake medicine list</a></p>
 </section>
 
 <section class="disc" aria-labelledby="disc-h">
@@ -614,10 +617,10 @@ const META = {"range": "Jul 2021 to 29 Jul 2026", "updated": "18 Oct 2026"};
 const T={
 ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. Hum un mauqon ke liye hain jab aisa nahi hota: khuli goliyan, MRP par chipka sticker, mita hua print, qeemat badalne ke baad purana stock, aur naqli dawa jis par MRP bhi naqli chhapi hoti hai.",
  q0:"Dibbe par MRP to likhi hoti hai. Phir Dawa Check kyun?",
- titleT:"DawaCheck (dawacheck.pk): dawa ki asli qeemat aur naqli dawa check",
+ titleT:"DawaCheck: dawa ki asli qeemat (DRAP medicine prices Pakistan) aur naqli dawa check",moreMeds:"Sab dawaon ki qeemat A-Z",moreFake:"Naqli dawaon ki list",
  h1a:"Dawa ki asli qeemat check karein,",h1b:"zyada paise na dein.",
  lede:"Pharmacy jo qeemat bataye, woh hamesha sahi nahi hoti. Dawa ka naam likhein, apna pack chunein aur dekhein ke DRAP ne us ki kitni qeemat fix ki hai. Batch number se yeh bhi check karein ke dawa naqli to nahi.",
- fA:"naqli ya kharab dawa ke alerts",fP:"packs ki government qeemat",fU:"last data update",
+ fA:"naqli ya kharab dawa ke alerts",fP:"packs ki government qeemat",fU:"Data aakhri baar update hua",
  tabBatch:"Batch check",tabPrice:"Qeemat check",
  cbTitle:"Batch number check karein",cbSub:"DRAP ki naqli aur fail dawaon ki list se",
  cpTitle:"Dawa ki qeemat check karein",cpSub:"Naam likhein, phir apna pack chunein",
@@ -703,10 +706,10 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  scPause:"Rokein",scPlay:"Chalayein"},
 en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We're for the times it isn't: loose tablets, a sticker over the MRP, worn-off print, old stock after a price change, and fakes, which come with a fake MRP too.",
  q0:"The box already has an MRP printed on it. Why do I need this?",
- titleT:"DawaCheck (dawacheck.pk): real medicine prices and fake medicine check",
+ titleT:"DawaCheck: medicine prices in Pakistan (DRAP official) and fake medicine check",moreMeds:"All medicine prices A-Z",moreFake:"Fake medicine list",
  h1a:"Check the real medicine price,",h1b:"and stop overpaying.",
  lede:"The price a pharmacy asks for isn't always the legal one. Type the medicine name, pick your pack and see the price set by DRAP, Pakistan's drug regulator. Add the batch number to check if it's been reported fake.",
- fA:"fake or failed medicine alerts",fP:"packs with official prices",fU:"last data update",
+ fA:"fake or failed medicine alerts",fP:"packs with official prices",fU:"Last data update",
  tabBatch:"Batch check",tabPrice:"Price check",
  cbTitle:"Check a batch number",cbSub:"Against DRAP's list of fake and failed batches",
  cpTitle:"Check a medicine price",cpSub:"Type the name, then pick your pack",
@@ -1110,6 +1113,7 @@ $("msForm").addEventListener("submit",async e=>{
 })();
 applyLang();
 fromHash();
+{const q=new URLSearchParams(location.search).get("q");if(q){$("qp").value=q.slice(0,80);runPrice(true);$("check").scrollIntoView({block:"start"})}}
 </script>
 </body>
 </html>

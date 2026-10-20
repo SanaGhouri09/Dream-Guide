@@ -1,0 +1,15 @@
+# DawaCheck (dawacheck.pk)
+
+> Free website for Pakistan that shows the official DRAP (Drug Regulatory Authority of Pakistan) retail price of every registered medicine pack, and checks medicine batch numbers against DRAP's fake (spurious) and substandard alerts. No login. Roman Urdu and English.
+
+- Data: 21,534 DRAP price entries across 9,617 brands; 756 DRAP recall and rapid alerts (Jul 2021 to 29 Jul 2026). Last checked against DRAP on 18 Oct 2026.
+- Prices are DRAP's maximum retail prices. Charging more is a complaint to DRAP (helpline 0800-03727) or the Pakistan Citizen's Portal.
+- A batch that isn't in DRAP's alerts hasn't been flagged; that isn't proof it's genuine.
+- DawaCheck is independent and not part of DRAP or the government.
+
+## Pages
+
+- [Price and batch check](https://dawacheck.pk/): search a medicine, enter what you paid, see if you were overcharged; check a batch number.
+- [Medicine prices A-Z](https://dawacheck.pk/medicines/): one page per brand, e.g. https://dawacheck.pk/medicine/panadol
+- [Fake medicine list](https://dawacheck.pk/fake-medicines): every DRAP fake and substandard alert with batch numbers and source links.
+- [How we verify](https://dawacheck.pk/how-we-verify.html)

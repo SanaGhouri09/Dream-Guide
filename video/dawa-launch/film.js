@@ -1,6 +1,6 @@
 // Dawa Check launch (LinkedIn, 4:5, 63 s). Pure function of time: window.seek(t) paints frame t.
 // Timing is in beats (u) on the measured grid (80 bpm, 1 beat = 0.75 s); docs/shotlist.md is the plan.
-// Roman Urdu only. Reading rule: every line holds at least (words / 3 + 1) seconds.
+// Roman Urdu; the English cut (dawa-launch-en/) loads this same file with EN = true. Reading rule: every line holds at least (words / 3 + 1) seconds.
 import * as M from './lib/motion.js';
 
 const { W, H, E, prog, lerp, springU, springKeys, SPRING, wobble, font, fill, rrect, crop } = M;
@@ -11,6 +11,10 @@ const C = {
 };
 const D = 'Display', UI = 'UI', MARK = 'Mark';
 const X0 = 80;
+const EN = location.pathname.includes('dawa-launch-en');
+const tr = (ru, en) => (EN ? en : ru);
+// English captures are a little shorter than the Roman ones.
+const PH = EN ? 1125 : 1203, VH = EN ? 660 : 710;
 
 const HITS = [
   [0, 'hook', 'tick'], [3, 'customer asks', 'pop', { pitch: 'E5' }],
@@ -191,17 +195,26 @@ function sHook(ctx, u, IMG) {
   store(ctx, IMG, { custX, bob, boxX: -100 * hand, boxY: lerp(40, 0, Math.min(up, 1)), boxA, cash: slide * 150, cashA });
   const ka = springU(u, 3, SPRING.bouncy) * (1 - E.inBack(prog(u, 6.2, 6.6)));
   const [hx, hy] = pt(126, 98);
-  bubble(ctx, hx, hy, 'Bhai, Panadol Extend dena.', ka, { size: 48, side: 'left', weight: 700, fam: UI });
+  bubble(ctx, hx, hy, tr('Bhai, Panadol Extend dena.', 'Panadol Extend, please.'), ka, { size: 48, side: 'left', weight: 700, fam: UI });
   const kb = springU(u, 7, SPRING.bouncy) * (1 - E.inBack(prog(u, 10.4, 10.8)));
   const [px, py] = pt(352, 98);
   bubble(ctx, px, py, 'Rs 250.', kb, { size: 78, side: 'right' });
   // the hook line, Roman only, under the counter
   const y0 = SY + SH + 95, L = 80, S = 66;
-  riseLine(ctx, [['Kya aap bhi', C.ink]], X0, y0, S, u, -0.4);
-  riseLine(ctx, [['pharmacy jaa kar', C.ink]], X0, y0 + L, S, u, 0.4);
-  riseLine(ctx, [['bagair ', C.ink], ['price check', C.rx, { hl: 2.6 }], [' kiye', C.ink]], X0, y0 + 2 * L, S, u, 1.2);
-  riseLine(ctx, [['ya ', C.ink], ['verify', C.rx, { hl: 3.4 }], [' kiye', C.ink]], X0, y0 + 3 * L, S, u, 2);
-  riseLine(ctx, [['dawa khareed lete hain?', C.ink]], X0, y0 + 4 * L, S, u, 2.8);
+  const HK = tr([
+    [['Kya aap bhi', C.ink]],
+    [['pharmacy jaa kar', C.ink]],
+    [['bagair ', C.ink], ['price check', C.rx, { hl: 2.6 }], [' kiye', C.ink]],
+    [['ya ', C.ink], ['verify', C.rx, { hl: 3.4 }], [' kiye', C.ink]],
+    [['dawa khareed lete hain?', C.ink]],
+  ], [
+    [['Do you also buy', C.ink]],
+    [['medicine without', C.ink]],
+    [['checking the ', C.ink], ['price', C.rx, { hl: 2.6 }]],
+    [['or ', C.ink], ['verifying', C.rx, { hl: 3.4 }], [' it', C.ink]],
+    [['at the pharmacy?', C.ink]],
+  ]);
+  HK.forEach((segs, i) => riseLine(ctx, segs, X0, y0 + i * L, S, u, -0.4 + 0.8 * i));
 }
 
 // ---------------------------------------------------------------- 2 the price stat   (u 13.4..24.1)
@@ -211,7 +224,7 @@ function sPriceStat(ctx, u) {
   if (top > 0.5) return;
   const leave = E.inBack(prog(u, 23.2, 23.9), 1.1);
   ctx.save(); ctx.translate(-leave * 1200, 0);
-  riseLine(ctx, [['YEH SIRF AAP KE SAATH NAHI HOTA', C.bandSoft]], X0, 200, 34, u, 14.1, { weight: 700, fam: UI });
+  riseLine(ctx, [[tr('YEH SIRF AAP KE SAATH NAHI HOTA', "IT'S NOT JUST YOU"), C.bandSoft]], X0, 200, 34, u, 14.1, { weight: 700, fam: UI });
   // Rs 800 -> Rs 3,500, the real case
   const k1 = springU(u, 14.6, SPRING.snappy);
   if (k1 > 0) {
@@ -224,9 +237,9 @@ function sPriceStat(ctx, u) {
     const q = 0.12 * wobble(u - 15.4, 2.2, 5), sc = lerp(1.4, 1, Math.min(k2, 1));
     ctx.save(); ctx.translate(X0, 600); ctx.scale(sc * (1 + q), sc * (1 - q)); txt(ctx, 'Rs 3,500', 0, 0, f(170), C.or); ctx.restore();
   }
-  riseLine(ctx, [['Karachi mein Rs 800 ka heparin', C.white]], X0, 720, 50, u, 16.4, { weight: 600, fam: UI });
-  riseLine(ctx, [['injection Rs 3,500 mein bik raha tha.', C.white]], X0, 784, 50, u, 16.6, { weight: 600, fam: UI });
-  riseLine(ctx, [['DRAP ke chhapon mein pakra gaya.', C.white]], X0, 848, 50, u, 17.6, { weight: 600, fam: UI });
+  riseLine(ctx, [[tr('Karachi mein Rs 800 ka heparin', 'In Karachi, an Rs 800 heparin'), C.white]], X0, 720, 50, u, 16.4, { weight: 600, fam: UI });
+  riseLine(ctx, [[tr('injection Rs 3,500 mein bik raha tha.', 'injection was selling for Rs 3,500.'), C.white]], X0, 784, 50, u, 16.6, { weight: 600, fam: UI });
+  riseLine(ctx, [[tr('DRAP ke chhapon mein pakra gaya.', 'Caught in DRAP raids.'), C.white]], X0, 848, 50, u, 17.6, { weight: 600, fam: UI });
   riseLine(ctx, [['Source: Dawn, Nov 2023', C.bandSoft]], X0, 950, 32, u, 18.6, { weight: 700, fam: UI });
   ctx.restore();
 }
@@ -247,15 +260,15 @@ function sBuilt(ctx, u) {
   }
   if (u < 24) return;
   ctx.save(); ctx.globalAlpha = 1 - shrink; ctx.translate(0, -shrink * 200);
-  riseLine(ctx, [['Is liye maine banaya', C.soft]], 540, 250, 54, u, 24.1, { weight: 700, fam: UI, align: 'center' });
+  riseLine(ctx, [[tr('Is liye maine banaya', 'So I built'), C.soft]], 540, 250, 54, u, 24.1, { weight: 700, fam: UI, align: 'center' });
   const wk = springU(u, 24.5, SPRING.snappy);
   if (wk > 0) {
     ctx.save(); ctx.beginPath(); ctx.rect(0, 600, W, 220); ctx.clip(); ctx.translate(0, (1 - wk) * 200);
     wordmark(ctx, 540, 760, 150, { align: 'center', hlP: E.outCubic(prog(u, 25, 25.6)), pk: C.rx, pkP: E.outCubic(prog(u, 25.2, 25.8)) });
     ctx.restore();
   }
-  riseLine(ctx, [['Dawa ki asli qeemat,', C.ink]], 540, 930, 54, u, 25.6, { weight: 700, fam: UI, align: 'center' });
-  riseLine(ctx, [['sirf 10 second mein.', C.ink]], 540, 1000, 54, u, 25.8, { weight: 700, fam: UI, align: 'center' });
+  riseLine(ctx, [[tr('Dawa ki asli qeemat,', "Your medicine's real price,"), C.ink]], 540, 930, 54, u, 25.6, { weight: 700, fam: UI, align: 'center' });
+  riseLine(ctx, [[tr('sirf 10 second mein.', 'in just 10 seconds.'), C.ink]], 540, 1000, 54, u, 25.8, { weight: 700, fam: UI, align: 'center' });
   ctx.restore();
 }
 
@@ -263,8 +276,8 @@ function sBuilt(ctx, u) {
 function sPrice(ctx, u, IMG) {
   fill(ctx, C.paper);
   const cap1 = 1 - E.inCubic(prog(u, 32, 32.4));
-  if (cap1 > 0) { ctx.save(); ctx.translate(0, -(1 - cap1) * 60); riseLine(ctx, [['Dawa ka naam likhein.', C.ink]], X0, 250, 72, u, 29.1); ctx.restore(); }
-  if (u > 32.1) riseLine(ctx, [['Jitne diye, woh ', C.ink], ['likhein.', C.rx]], X0, 250, 72, u, 32.4);
+  if (cap1 > 0) { ctx.save(); ctx.translate(0, -(1 - cap1) * 60); riseLine(ctx, [[tr('Dawa ka naam likhein.', 'Type the medicine.'), C.ink]], X0, 250, 72, u, 29.1); ctx.restore(); }
+  if (u > 32.1) riseLine(ctx, tr([['Jitne diye, woh ', C.ink], ['likhein.', C.rx]], [['Enter what you ', C.ink], ['paid.', C.rx]]), X0, 250, 72, u, 32.4);
   const rise = springU(u, 28.9, SPRING.gentle);
   const zoom = E.inExpo(prog(u, 35.3, 36));
   const pw = 640, px = (W - pw) / 2, py = lerp(H + 40, 320, Math.min(rise, 1.05));
@@ -277,14 +290,14 @@ function sPrice(ctx, u, IMG) {
   ctx.save(); rrect(ctx, sx, sy, sw, 1300, 62); ctx.clip();
   ctx.fillStyle = C.paper; ctx.fillRect(sx, sy, sw, 1300);
   const k = sw / 1050;
-  const scroll = springKeys(u, [[29, 0], [31.2, 360], [32.4, 690]], SPRING.gentle);
+  const scroll = springKeys(u, [[29, 0], [31.2, 360 - (1203 - PH) * k], [32.4, 690 - (1203 - PH) * k]], SPRING.gentle);
   const top = sy + 30 - scroll;
-  ctx.drawImage(IMG.priceEmpty, sx, top, sw, 1203 * k);
+  ctx.drawImage(IMG.priceEmpty, sx, top, sw, PH * k);
   const tp = prog(u, 30, 30.9);
-  if (tp > 0) { ctx.save(); ctx.beginPath(); ctx.rect(sx, top, sw * (tp < 1 ? 0.25 + 0.6 * tp : 1), 1203 * k); ctx.clip(); ctx.drawImage(IMG.priceTyped, sx, top, sw, 1203 * k); ctx.restore(); }
+  if (tp > 0) { ctx.save(); ctx.beginPath(); ctx.rect(sx, top, sw * (tp < 1 ? 0.25 + 0.6 * tp : 1), PH * k); ctx.clip(); ctx.drawImage(IMG.priceTyped, sx, top, sw, PH * k); ctx.restore(); }
   const rk = springU(u, 31, SPRING.snappy);
-  if (rk > 0) { ctx.save(); ctx.translate(0, (1 - rk) * 60); ctx.drawImage(IMG.pack, sx, top + 1203 * k + 20, sw, 801 * k); ctx.restore(); }
-  const payY = top + 1203 * k + 20 + 801 * k - 6;
+  if (rk > 0) { ctx.save(); ctx.translate(0, (1 - rk) * 60); ctx.drawImage(IMG.pack, sx, top + PH * k + 20, sw, 801 * k); ctx.restore(); }
+  const payY = top + PH * k + 20 + 801 * k - 6;
   const pk = springU(u, 32.2, SPRING.snappy);
   if (pk > 0) {
     const im = u < 34 ? IMG.pay120 : u < 35 ? IMG.pay160 : IMG.pay250;
@@ -304,16 +317,16 @@ function sVerdict(ctx, u, IMG) {
   ctx.save(); ctx.translate(0, leave);
   const k = springU(u, 36, SPRING.bouncy);
   const q = 0.07 * wobble(u - 36, 2.4, 6);
-  const cw = 900, ch = cw * 710 / 858, cx = (W - cw) / 2, cy = 200;
+  const cw = 900, ch = cw * VH / 858, cx = (W - cw) / 2, cy = 200;
   const s = lerp(1.14, 1, Math.min(k, 1.1));
   ctx.save(); ctx.translate(W / 2, cy + ch / 2); ctx.scale(s * (1 + q), s * (1 - q)); ctx.translate(-W / 2, -(cy + ch / 2));
   ctx.save(); rrect(ctx, cx, cy, cw, ch, 34); ctx.clip();
-  crop(ctx, IMG.verdict, [0, 0, 858, 710], cx, cy, cw, ch);
+  crop(ctx, IMG.verdict, [0, 0, 858, VH], cx, cy, cw, ch);
   ctx.restore(); ctx.restore();
   const y = cy + ch + 120;
-  riseLine(ctx, [['Pharmacist ko yeh', C.ink]], X0, y, 72, u, 37);
-  riseLine(ctx, [['screen dikhayein.', C.rx]], X0, y + 86, 72, u, 37.4);
-  riseLine(ctx, [['Na maanein, to complaint ka rasta bhi yahin.', C.soft]], X0, y + 170, 38, u, 38.6, { weight: 600, fam: UI });
+  riseLine(ctx, [[tr('Pharmacist ko yeh', 'Show the pharmacist'), C.ink]], X0, y, 72, u, 37);
+  riseLine(ctx, [[tr('screen dikhayein.', 'this screen.'), C.rx]], X0, y + 86, 72, u, 37.4);
+  riseLine(ctx, [[tr('Na maanein, to complaint ka rasta bhi yahin.', 'Still no? How to complain is right here.'), C.soft]], X0, y + 170, 38, u, 38.6, { weight: 600, fam: UI });
   ctx.restore();
 }
 
@@ -329,10 +342,10 @@ function sRefund(ctx, u, IMG) {
   store(ctx, IMG, { phone: true, smile: u >= 44.8, boxA: 0, cash2: -150 * back, cash2A, ok: Math.min(ok, 1.2) });
   const kb = springU(u, 42.5, SPRING.bouncy) * (1 - E.inBack(prog(u, 46, 46.4)));
   const [px, py] = pt(352, 98);
-  bubble(ctx, px, py, 'Sorry ji, Rs 89.43 wapas.', kb, { size: 46, side: 'right', weight: 700, fam: UI });
+  bubble(ctx, px, py, tr('Sorry ji, Rs 89.43 wapas.', "Sorry, here's Rs 89.43 back."), kb, { size: 46, side: 'right', weight: 700, fam: UI });
   const cy = SY + SH + 150;
-  riseLine(ctx, [['Screen dikhayi.', C.ink]], X0, cy, 88, u, 42.8);
-  riseLine(ctx, [['Paise wapas.', C.rx]], X0, cy + 104, 88, u, 43.5);
+  riseLine(ctx, [[tr('Screen dikhayi.', 'Showed the screen.'), C.ink]], X0, cy, 88, u, 42.8);
+  riseLine(ctx, [[tr('Paise wapas.', 'Money back.'), C.rx]], X0, cy + 104, 88, u, 43.5);
   ctx.restore();
 }
 
@@ -341,13 +354,13 @@ function sHook2(ctx, u) {
   const enter = 1 - E.inOutCubic(prog(u, 46.4, 47));
   ctx.save(); ctx.translate(enter * W, 0);
   fill(ctx, C.paper);
-  riseLine(ctx, [['Aur masla sirf', C.ink]], X0, 400, 84, u, 47.2);
-  riseLine(ctx, [['qeemat ka nahi.', C.ink]], X0, 500, 84, u, 47.7);
-  riseLine(ctx, [['Kya aap ki dawa', C.ink]], X0, 720, 104, u, 49);
+  riseLine(ctx, [[tr('Aur masla sirf', "And price isn't"), C.ink]], X0, 400, 84, u, 47.2);
+  riseLine(ctx, [[tr('qeemat ka nahi.', 'the only problem.'), C.ink]], X0, 500, 84, u, 47.7);
+  riseLine(ctx, [[tr('Kya aap ki dawa', 'Is your medicine'), C.ink]], X0, 720, 104, u, 49);
   const k = springU(u, 49.4, SPRING.bouncy);
   if (k > 0) {
     const q = 0.1 * wobble(u - 49.4, 2.2, 5), sc = lerp(1.3, 1, Math.min(k, 1));
-    ctx.save(); ctx.translate(X0, 850); ctx.scale(sc * (1 + q), sc * (1 - q)); txt(ctx, 'asli bhi hai?', 0, 0, f(124), C.red); ctx.restore();
+    ctx.save(); ctx.translate(X0, 850); ctx.scale(sc * (1 + q), sc * (1 - q)); txt(ctx, tr('asli bhi hai?', 'even real?'), 0, 0, f(124), C.red); ctx.restore();
   }
   ctx.restore();
 }
@@ -359,19 +372,19 @@ function sFakeStat(ctx, u) {
   ctx.save(); ctx.translate(-leave * W, 0);
   ctx.fillStyle = C.band; ctx.fillRect(0, top, W, H - top + 2);
   if (top < 0.5) {
-    riseLine(ctx, [['DRAP KE APNE ALERTS', C.bandSoft]], X0, 200, 34, u, 55.1, { weight: 700, fam: UI });
+    riseLine(ctx, [[tr('DRAP KE APNE ALERTS', "DRAP'S OWN ALERTS"), C.bandSoft]], X0, 200, 34, u, 55.1, { weight: 700, fam: UI });
     const k = springU(u, 55.6, SPRING.bouncy);
     if (k > 0) {
       const n = Math.round(248 * E.outCubic(prog(u, 55.6, 56.8)));
       const q = 0.12 * wobble(u - 55.6, 2.2, 5), sc = lerp(1.4, 1, Math.min(k, 1));
       ctx.save(); ctx.translate(X0, 420); ctx.scale(sc * (1 + q), sc * (1 - q)); txt(ctx, String(n), 0, 0, f(190), C.or); ctx.restore();
     }
-    riseLine(ctx, [['batches July 2021 se', C.white]], X0, 510, 54, u, 56.1, { weight: 700, fam: UI });
-    riseLine(ctx, [['naqli declare hue.', C.white]], X0, 576, 54, u, 56.3, { weight: 700, fam: UI });
+    riseLine(ctx, [[tr('batches July 2021 se', 'batches since July 2021'), C.white]], X0, 510, 54, u, 56.1, { weight: 700, fam: UI });
+    riseLine(ctx, [[tr('naqli declare hue.', 'declared fake.'), C.white]], X0, 576, 54, u, 56.3, { weight: 700, fam: UI });
     const k2 = springU(u, 57.8, SPRING.bouncy);
     if (k2 > 0) { const sc = lerp(1.3, 1, Math.min(k2, 1)); ctx.save(); ctx.translate(X0, 780); ctx.scale(sc, sc); txt(ctx, '+ 417', 0, 0, f(130), C.or); ctx.restore(); }
-    riseLine(ctx, [['batches lab test mein fail.', C.white]], X0, 860, 54, u, 58.2, { weight: 700, fam: UI });
-    riseLine(ctx, [['Source: DRAP recall aur rapid alerts', C.bandSoft]], X0, 980, 32, u, 59.2, { weight: 700, fam: UI });
+    riseLine(ctx, [[tr('batches lab test mein fail.', 'batches failed lab tests.'), C.white]], X0, 860, 54, u, 58.2, { weight: 700, fam: UI });
+    riseLine(ctx, [[tr('Source: DRAP recall aur rapid alerts', 'Source: DRAP recalls and rapid alerts'), C.bandSoft]], X0, 980, 32, u, 59.2, { weight: 700, fam: UI });
   }
   ctx.restore();
 }
@@ -382,8 +395,8 @@ function sBatch(ctx, u, IMG) {
   const leave = E.inOutCubic(prog(u, 70.4, 71));
   ctx.save(); ctx.translate((enter - leave) * W, 0);
   fill(ctx, C.paper);
-  riseLine(ctx, [['Dibbe par likha ', C.ink], ['batch number', C.rx], [' daalein.', C.ink]], X0, 240, 54, u, 63.1);
-  riseLine(ctx, [['756 DRAP alerts se foran match.', C.soft]], X0, 302, 40, u, 67.2, { weight: 600, fam: UI });
+  riseLine(ctx, tr([['Dibbe par likha ', C.ink], ['batch number', C.rx], [' daalein.', C.ink]], [['Enter the ', C.ink], ['batch number', C.rx], [' on the box.', C.ink]]), X0, 240, 54, u, 63.1);
+  riseLine(ctx, [[tr('756 DRAP alerts se foran match.', 'Matched against 756 DRAP alerts, instantly.'), C.soft]], X0, 302, 40, u, 67.2, { weight: 600, fam: UI });
   const src = [0, 0, 1050, 1180];
   const cw = 860, ch = cw * 1180 / 1050, cx = (W - cw) / 2, cy = 350;
   const hit = u >= 66.5;
@@ -408,8 +421,8 @@ function sShelf(ctx, u, IMG) {
   const enter = 1 - E.inOutCubic(prog(u, 70.4, 71));
   ctx.save(); ctx.translate(enter * W, 0);
   fill(ctx, C.paper);
-  riseLine(ctx, [['Haal hi mein pakri gayi', C.ink]], X0, 300, 72, u, 70.9);
-  riseLine(ctx, [['naqli dawaein', C.red], [' bhi site par.', C.ink]], X0, 388, 72, u, 71.3);
+  riseLine(ctx, [[tr('Haal hi mein pakri gayi', 'Recently caught'), C.ink]], X0, 300, 72, u, 70.9);
+  riseLine(ctx, tr([['naqli dawaein', C.red], [' bhi site par.', C.ink]], [['fake medicines', C.red], [', too.', C.ink]]), X0, 388, 72, u, 71.3);
   // the site's own shelf of recent DRAP alerts (product names blurred: the alerts are about batches)
   const sh = 600, s = sh / 498, sw = 5348 * s;
   const pan = E.inOutSine(prog(u, 71.5, 76.6));
@@ -418,7 +431,7 @@ function sShelf(ctx, u, IMG) {
   ctx.save(); ctx.translate(0, (1 - Math.min(k, 1)) * 200);
   ctx.drawImage(IMG.shelf, x, 470, sw, sh);
   ctx.restore();
-  riseLine(ctx, [['Tap karein, batch check ho jayega.', C.soft]], X0, 1150, 44, u, 72.6, { weight: 600, fam: UI });
+  riseLine(ctx, [[tr('Tap karein, batch check ho jayega.', 'Tap one to check that batch.'), C.soft]], X0, 1150, 44, u, 72.6, { weight: 600, fam: UI });
   ctx.restore();
 }
 
@@ -442,8 +455,8 @@ function sEnd(ctx, u) {
     wordmark(ctx, 540, 760, 150, { align: 'center', dawa: C.white, check: C.or, hl: false, pk: C.lilac, pkP: E.outCubic(prog(u, 77.6, 78.2)) });
     ctx.restore();
   }
-  riseLine(ctx, [['Free. Na login, na sign-up.', C.white]], 540, 920, 54, u, 78.2, { weight: 700, fam: UI, align: 'center' });
-  riseLine(ctx, [['Pakistan ke liye bana.', C.or]], 540, 1000, 54, u, 79, { weight: 700, fam: UI, align: 'center' });
+  riseLine(ctx, [[tr('Free. Na login, na sign-up.', 'Free. No login, no sign-up.'), C.white]], 540, 920, 54, u, 78.2, { weight: 700, fam: UI, align: 'center' });
+  riseLine(ctx, [[tr('Pakistan ke liye bana.', 'Made for Pakistan.'), C.or]], 540, 1000, 54, u, 79, { weight: 700, fam: UI, align: 'center' });
 }
 
 // ---------------------------------------------------------------- film
@@ -454,11 +467,11 @@ M.film({
     back: 'assets/scene/back.svg', cust: 'assets/scene/cust.svg', custSmile: 'assets/scene/cust_smile.svg',
     hphone: 'assets/scene/hphone.svg', counter: 'assets/scene/counter.svg', box: 'assets/scene/box.svg',
     cash: 'assets/scene/cash.svg', cash2: 'assets/scene/cash2.svg', ok: 'assets/scene/ok.svg',
-    priceEmpty: 'assets/shots/v_price_empty.png', priceTyped: 'assets/shots/v_price_typed.png', pack: 'assets/shots/v_pack.png',
-    pay120: 'assets/shots/v_pay_120.png', pay160: 'assets/shots/v_pay_160.png', pay250: 'assets/shots/v_pay_250.png',
-    verdict: 'assets/shots/v_verdict.png',
-    batchEmpty: 'assets/shots/v_batch_empty.png', batchTyped: 'assets/shots/v_batch_typed.png', batchAlert: 'assets/shots/v_batch_alert.png',
-    shelf: 'assets/shots/v_shelf_blur.png',
+    priceEmpty: `assets/shots/v_${EN ? 'en_' : ''}price_empty.png`, priceTyped: `assets/shots/v_${EN ? 'en_' : ''}price_typed.png`, pack: `assets/shots/v_${EN ? 'en_' : ''}pack.png`,
+    pay120: `assets/shots/v_${EN ? 'en_' : ''}pay_120.png`, pay160: `assets/shots/v_${EN ? 'en_' : ''}pay_160.png`, pay250: `assets/shots/v_${EN ? 'en_' : ''}pay_250.png`,
+    verdict: `assets/shots/v_${EN ? 'en_' : ''}verdict.png`,
+    batchEmpty: `assets/shots/v_${EN ? 'en_' : ''}batch_empty.png`, batchTyped: `assets/shots/v_${EN ? 'en_' : ''}batch_typed.png`, batchAlert: `assets/shots/v_${EN ? 'en_' : ''}batch_alert.png`,
+    shelf: `assets/shots/v_${EN ? 'en_' : ''}shelf_blur.png`,
   },
   hits: HITS,
   draw(ctx, u, t, IMG) {

@@ -155,3 +155,5 @@ h1,h2,h3{text-wrap:balance}
 .steps-v li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--rx);color:#fff;font-weight:800;display:grid;place-items:center;font-size:15px}
 :root[data-theme="dark"] .steps-v li::before{color:#120B2A}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .steps-v li::before{color:#120B2A}}
+.foot-about .social{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#fff;font-weight:700;font-size:14.5px;text-decoration:none}
+.foot-about .social:hover{text-decoration:underline}
