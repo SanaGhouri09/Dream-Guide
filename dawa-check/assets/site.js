@@ -1,7 +1,7 @@
 /* Shared by every page: site settings, language memory, footer, cookie consent,
    analytics loader and the back-to-top button. Edit SITE before going live. */
 const SITE={
-  gaId:"",              // Google Analytics 4 measurement ID, e.g. "G-ABC123XYZ". Empty = no analytics at all.
+  gaId:"G-F15W4XSLPM",  // Google Analytics 4 measurement ID, e.g. "G-ABC123XYZ". Empty = no analytics at all.
   email:"hello@dawacheck.pk",     // Contact email shown in the footer card and in form error messages.
   formEmail:"hello@dawacheck.pk", //         // Inbox that receives the "missing medicine" and feedback forms (sent via formsubmit.co). Empty = forms can't send.
   formEndpoint:"",      // Optional: your own form endpoint (Formspree, Web3Forms...). Overrides formEmail.
