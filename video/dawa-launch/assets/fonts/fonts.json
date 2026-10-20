@@ -1,0 +1,65 @@
+[
+ {
+  "family": "Bricolage Grotesque",
+  "weight": "800",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "bricolage-grotesque-800-normal-all-0.ttf",
+  "src": "https://fonts.gstatic.com/s/bricolagegrotesque/v9/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpwUxJBOm_OJWiaaD30YfKfjZZoLvZvlyM0.ttf"
+ },
+ {
+  "family": "DotGothic16",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "dotgothic16-400-normal-all-1.ttf",
+  "src": "https://fonts.gstatic.com/s/dotgothic16/v22/v6-QGYjBJFKgyw5nSoDAGE7L.ttf"
+ },
+ {
+  "family": "Plus Jakarta Sans",
+  "weight": "400",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "plus-jakarta-sans-400-normal-all-2.ttf",
+  "src": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU7NSg.ttf"
+ },
+ {
+  "family": "Plus Jakarta Sans",
+  "weight": "500",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "plus-jakarta-sans-500-normal-all-3.ttf",
+  "src": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_m07NSg.ttf"
+ },
+ {
+  "family": "Plus Jakarta Sans",
+  "weight": "600",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "plus-jakarta-sans-600-normal-all-4.ttf",
+  "src": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_d0nNSg.ttf"
+ },
+ {
+  "family": "Plus Jakarta Sans",
+  "weight": "700",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "plus-jakarta-sans-700-normal-all-5.ttf",
+  "src": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNSg.ttf"
+ },
+ {
+  "family": "Plus Jakarta Sans",
+  "weight": "800",
+  "style": "normal",
+  "subset": "all",
+  "range": "",
+  "file": "plus-jakarta-sans-800-normal-all-6.ttf",
+  "src": "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNSg.ttf"
+ }
+]
