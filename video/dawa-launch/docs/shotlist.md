@@ -1,30 +1,24 @@
-# Dawa Check launch: shot list
-45 s · 96 bpm (1 beat = 0.625 s, 1 bar = 2.5 s) · 72 beats · format: 4x5 (1080×1350, LinkedIn feed)
-Music: synthesized, tabla flavour, D dorian. Quiet and tense for the story (bars 0-5), lifts at beat 24 when Dawa Check appears.
-VO: none. Every line is on-screen text, because LinkedIn autoplays muted.
+# Dawa Check launch: shot list (v2)
+75 s · 80 bpm (1 beat = 0.75 s) · 100 beats · format: 4x5 (1080×1350, LinkedIn feed)
+Music: synthesized lo-fi, F major, soft under the story (bars 0-12), lifts at beat 52 when Dawa Check appears.
+VO: none; every line is on screen (LinkedIn autoplays muted).
+Reading rule: each line holds at least (words ÷ 3 + 1) seconds.
 
-Characters: the customer and pharmacist from the site's hero animation, same drawing, same colours. No new character design.
-Product screens: real captures of the live site (`assets/shots/prod_*.png`), nothing mocked.
-
-| # | beats | time | shot | on screen (asset) | motion | out (transition) | sound (hits) |
-|---|-------|------|------|-------------------|--------|------------------|--------------|
-| 1 | 0-6 | 0.0-3.75 | **Hook question.** "Kya aap bhi pharmacy pe price check kiye baghair dawa khareed lete hain?" English line under: "Do you buy medicine without checking the price?" | type only, large Roman line, the words *price check* in purple with the yellow highlighter swipe; the counter scene sits soft and dim behind | words land on the beat in 3 groups (0, 1.5, 3); highlighter swipes on "price check" at beat 3 | type slides up and out as the counter scene comes into focus | tick on each word group, swipe @3 |
-| 2 | 6-10 | 3.75-6.25 | **"Rs 250," the pharmacist said.** Customer pays. Caption: "Main bhi. Har baar. (Me too. Every time.)" | pharmacy counter (hero scene art), speech bubble "Rs 250", green note | bubble springs out on beat 6; note slides across on beat 8 | camera drifts up off the counter to type | pop @6, swipe @8 |
-| 3 | 10-13 | 6.25-8.1 | "Then I looked up the official DRAP price." | type only, **DRAP** in purple | words land left to right | "price" underline becomes a divider | ticks |
-| 4 | 13-16 | 8.1-10.0 | "It was less. Public all along, just buried on a government portal." | type; "less" drops a size, "buried" sinks under a dashed line | weight shift, then the line sinks | dashed line wipes up into the stat cards | low thud @13 |
-| 5 | 16-24 | 10.0-15.0 | **Root cause: it's not just me.** Three stats, 2 beats + each | big numbers: **4×** (Rs 800 heparin sold for Rs 3,500, Dawn Nov 2023) · **1 in 10** (medical products substandard or falsified in countries like Pakistan, WHO) · **248** (batches DRAP declared fake since July 2021). Source line under each | each number counts/slams in on the beat, previous slides left (true whip, both on screen) | third card's number collapses into a capsule shape | slam @16, @18.5, @21, riser into 24 |
-| 6 | 24-28 | 15.0-17.5 | **Drop. "So I built Dawa Check."** | logo (`icons/icon-512.png`) + wordmark dawa**check** with the yellow highlighter | capsule from shot 5 lands as the logo, wordmark writes on, highlighter swipes | logo shrinks to top corner, becomes the brand bug | big hit @24, swipe @25 |
-| 7 | 28-36 | 17.5-22.5 | "Type the medicine. Enter what you paid." | phone frame with real screens: `prod_price_box.png` then `prod_paybox.png` (Panadol Extend 20's, Rs 160.57, paid Rs 250) | phone rises from the bottom; screen scrolls between the two captures; meter pin slides into red | pin's red fills the frame edge | ticks @28, @30; rising whoosh @33 |
-| 8 | 36-44 | 22.5-27.5 | **"Rs 89.43 zyada liye gaye."** (English line under: "You were overcharged Rs 89.43. In 10 seconds.") | real verdict card `prod_verdict_over.png`, cropped to the red block | card stamps in with squash-and-settle, number counts 0 → 89.43 | card slides up, batch card slides in under it | stamp @36, cash-register ding @38 |
-| 9 | 44-52 | 27.5-32.5 | "Not sure it's real? Check the batch number against 756 DRAP alerts." | real batch card `prod_batch_box.png`, cropped to B.No 512900 + the DRAP ALERT stamp (medicine name cropped out) | batch number types in DotGothic, stamp thuds on beat 48 | stamp's red ring expands into a wipe | typing ticks @44-46, stamp @48 |
-| 10 | 52-60 | 32.5-37.5 | "Pharmacist won't agree? Complaint is one tap away." | real `prod_helpline.png` (DRAP helpline 0800-03727) and `prod_ladder.png` | helpline card pops, the four ladder steps stack in on the beat | ladder collapses into three pills | pops @52, @54, @56, @58 |
-| 11 | 60-68 | 37.5-42.5 | "Free. No login. Roman Urdu + English. 21,534 official prices." | three pills in brand purple/yellow, then the stat line | pills drop in on the beat with spring, numbers tick up | pills fly into the end-card logo | hits @60, @62, @64 |
-| 12 | 68-72 | 42.5-45.0 | **End card.** | logo + dawacheck.pk big, "Sahi qeemat, asli dawa." under it, purple background | URL lands on 68, holds still for the full 2.5 s | (end) | resolve chord @68 |
-
-Format: 4x5 only. Type sits inside an 80 px side margin and 110 px bottom margin so the LinkedIn caption and buttons never cover it. Smallest on-screen text is 44 px, readable on a phone at arm's length.
-
-Facts used, all already on the site with sources: Rs 800 → Rs 3,500 heparin (Dawn, Nov 2023), 1 in 10 (WHO, Nov 2017), 248 fake batches and 756 alerts (DRAP alerts, counted by Dawa Check), 21,534 prices (DRAP price list), helpline 0800-03727.
-
-Your story: shots 2-4 say "I paid what the pharmacist asked, then checked". They don't name a medicine or amount from your own purchase. The Panadol numbers in shots 7-8 are shown as the product demo, not as your receipt.
-
-Longest gap without a new event: about 2.5 s (shot 12, on purpose, so the URL can be read).
+| # | beats | time | shot |
+|---|-------|------|------|
+| A | 0-6 | 0-4.5 | Customer walks into the medical store. "Ek aam din, ek medical store." / An ordinary day at the pharmacy. |
+| B | 6-11 | 4.5-8.3 | Customer: "Bhai, Panadol Extend dena." (translation under the counter) |
+| C | 11-15 | 8.3-11.3 | Box comes up on the counter. Pharmacist: "Rs 250." |
+| D | 15-19 | 11.3-14.3 | Cash slides across, box handed over. "Na price dekhi. Na poochha." / Didn't check. Didn't ask. |
+| E | 19-29 | 14.3-21.8 | Question card: "Kya aap bhi pharmacy jaa kar price check kiye baghair paise de dete hain?" + English. Holds ~6 s. |
+| F | 29-33 | 21.8-24.8 | "Main bhi. Har baar." / Me too. Every time. |
+| G | 33-39 | 24.8-29.3 | "So I looked up DRAP's official prices. Many were lower. All public. Just buried on a government portal." |
+| H | 39-52 | 29.3-39 | Stats (all stay on screen): 4× heparin (Dawn), 1 in 10 (WHO), 248 fake batches (DRAP). |
+| I | 52-56 | 39-42 | Drop: "So I built dawacheck". Official medicine prices and fake-medicine alerts, in 10 seconds. |
+| J | 56-63 | 42-47.3 | Phone with real captures: type the medicine, enter what you paid, meter into red. |
+| K | 63-69 | 47.3-51.8 | Real verdict card: "Aap se Rs 89.43 zyada liye gaye" / You were overcharged Rs 89.43. Show the pharmacist this screen. |
+| K2 | 69-75 | 51.8-56.3 | Back at the counter: customer shows the phone, pharmacist "Sorry ji, Rs 89.43 wapas." "Screen dikhayi. Paise wapas." |
+| L | 75-82 | 56.3-61.5 | Batch check, real capture: 512900 typed, DRAP ALERT on beat 79. Matched against 756 DRAP alerts. |
+| M | 82-89 | 61.5-66.8 | "Pharmacist won't agree?" The four real complaint steps stack in. |
+| N | 89-94 | 66.8-70.5 | Free · No login · Roman Urdu + English · 21,534 prices · + 756 alerts. |
+| O | 94-100 | 70.5-75 | End card lockup: logo, **dawacheck.pk** (dawacheck = brand, .pk on the same baseline), "Sahi qeemat, asli dawa." |
