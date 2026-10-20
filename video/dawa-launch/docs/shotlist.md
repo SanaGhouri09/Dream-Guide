@@ -8,10 +8,10 @@ Product screens: real captures of the live site (`assets/shots/prod_*.png`), not
 
 | # | beats | time | shot | on screen (asset) | motion | out (transition) | sound (hits) |
 |---|-------|------|------|-------------------|--------|------------------|--------------|
-| 1 | 0-4 | 0.0-2.5 | **Hook.** "Rs 250," the pharmacist said. | Pharmacy counter (hero scene art), speech bubble "Rs 250" fills a third of the frame | bubble springs out of the pharmacist on beat 0; slow push in | bubble shrinks back to the pharmacist | pop @0 |
-| 2 | 4-8 | 2.5-5.0 | "So I paid. Like everyone does." | same scene, green Rs 250 note | note slides across the counter, customer's hand follows | camera drifts up off the counter to type | swipe @4.5, coin @6 |
-| 3 | 8-12 | 5.0-7.5 | "Then I looked up the official DRAP price." | type only, the word **DRAP** in purple | words land one by one from the left | "price" underline draws and becomes a divider | ticks on each word |
-| 4 | 12-16 | 7.5-10.0 | "It was less. And it was public all along, buried on a government portal." | type; "less" drops a size, "buried" sinks under a dashed line | weight shift, then the line sinks | dashed line wipes up into the stat cards | low thud @12 |
+| 1 | 0-6 | 0.0-3.75 | **Hook question.** "Kya aap bhi pharmacy pe price check kiye baghair dawa khareed lete hain?" English line under: "Do you buy medicine without checking the price?" | type only, large Roman line, the words *price check* in purple with the yellow highlighter swipe; the counter scene sits soft and dim behind | words land on the beat in 3 groups (0, 1.5, 3); highlighter swipes on "price check" at beat 3 | type slides up and out as the counter scene comes into focus | tick on each word group, swipe @3 |
+| 2 | 6-10 | 3.75-6.25 | **"Rs 250," the pharmacist said.** Customer pays. Caption: "Main bhi. Har baar. (Me too. Every time.)" | pharmacy counter (hero scene art), speech bubble "Rs 250", green note | bubble springs out on beat 6; note slides across on beat 8 | camera drifts up off the counter to type | pop @6, swipe @8 |
+| 3 | 10-13 | 6.25-8.1 | "Then I looked up the official DRAP price." | type only, **DRAP** in purple | words land left to right | "price" underline becomes a divider | ticks |
+| 4 | 13-16 | 8.1-10.0 | "It was less. Public all along, just buried on a government portal." | type; "less" drops a size, "buried" sinks under a dashed line | weight shift, then the line sinks | dashed line wipes up into the stat cards | low thud @13 |
 | 5 | 16-24 | 10.0-15.0 | **Root cause: it's not just me.** Three stats, 2 beats + each | big numbers: **4×** (Rs 800 heparin sold for Rs 3,500, Dawn Nov 2023) · **1 in 10** (medical products substandard or falsified in countries like Pakistan, WHO) · **248** (batches DRAP declared fake since July 2021). Source line under each | each number counts/slams in on the beat, previous slides left (true whip, both on screen) | third card's number collapses into a capsule shape | slam @16, @18.5, @21, riser into 24 |
 | 6 | 24-28 | 15.0-17.5 | **Drop. "So I built Dawa Check."** | logo (`icons/icon-512.png`) + wordmark dawa**check** with the yellow highlighter | capsule from shot 5 lands as the logo, wordmark writes on, highlighter swipes | logo shrinks to top corner, becomes the brand bug | big hit @24, swipe @25 |
 | 7 | 28-36 | 17.5-22.5 | "Type the medicine. Enter what you paid." | phone frame with real screens: `prod_price_box.png` then `prod_paybox.png` (Panadol Extend 20's, Rs 160.57, paid Rs 250) | phone rises from the bottom; screen scrolls between the two captures; meter pin slides into red | pin's red fills the frame edge | ticks @28, @30; rising whoosh @33 |
@@ -25,6 +25,6 @@ Format: 4x5 only. Type sits inside an 80 px side margin and 110 px bottom margin
 
 Facts used, all already on the site with sources: Rs 800 → Rs 3,500 heparin (Dawn, Nov 2023), 1 in 10 (WHO, Nov 2017), 248 fake batches and 756 alerts (DRAP alerts, counted by Dawa Check), 21,534 prices (DRAP price list), helpline 0800-03727.
 
-Your story: shots 1-4 say "I paid what the pharmacist asked, then checked". They don't name a medicine or amount from your own purchase. The Panadol numbers in shots 7-8 are shown as the product demo, not as your receipt.
+Your story: shots 2-4 say "I paid what the pharmacist asked, then checked". They don't name a medicine or amount from your own purchase. The Panadol numbers in shots 7-8 are shown as the product demo, not as your receipt.
 
 Longest gap without a new event: about 2.5 s (shot 12, on purpose, so the URL can be read).
