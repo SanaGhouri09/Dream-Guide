@@ -21,6 +21,7 @@ Static website that shows DRAP's official medicine prices (21,551 packs) and DRA
 2. `SITE.email` and `SITE.formEmail` are set to hello@dawacheck.pk. That address must exist (see Deploy, step 6) before the contact card and forms work.
 3. `SITE.formEmail` is the inbox for the "missing medicine" form and the feedback page. Forms post to formsubmit.co; the first submission sends an activation email to that inbox, and nothing arrives until you click it. To use Formspree or Web3Forms instead, set `SITE.formEndpoint`. Until one is set, both forms show a copy-this-text fallback.
 4. Domain: dawacheck.pk is already set in canonical links, social tags, `robots.txt` and `sitemap.xml`. Update `lastmod` in `sitemap.xml` when pages change.
+5. To pull DRAP's latest prices: `bash dawa-check/scripts/drap-sync/sync.sh` downloads DRAP's whole price list (about 1,100 pages, an hour or so), merges it, cleans it, moves the data date and rebuilds the pages. A weekly routine runs it and opens a PR. Packs that drop off DRAP's list are kept, since DRAP's paging skips some rows.
 5. When the data changes: replace `data/*.js`, run `node scripts/clean-prices.js` (keeps the newest price per pack, drops Rs 0 rows), update `META.updated` in `index.html` and `SITE.updated` in `assets/site.js`, and bump `VERSION` in `sw.js`. Then run `node scripts/build-seo.js` to rebuild the medicine pages (`medicine/`, `medicines/`, `fake-medicines.html`), `sitemap.xml`, `llms.txt` and the homepage FAQ data.
 
 ## Run locally
