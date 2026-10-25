@@ -29,6 +29,14 @@ const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g
 const tcase = s => s.toLowerCase().replace(/(^|\s|-|\()([a-z])/g, (m, a, b) => a + b.toUpperCase());
 const nice = s => { s = s.replace(/^[*\s]+/, "").replace(/\s+/g, " ").trim(); return s === s.toUpperCase() || s === s.toLowerCase() ? tcase(s) : s; };
 const rs = n => "Rs " + n.toLocaleString("en-PK", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+/* "2 x 7's" -> "(14 tablets)", same rule as the price tool */
+function units(name, pack) {
+  const n0 = name.toLowerCase(), form = /caps|capsule|\bcap\b/.test(n0) ? "capsules" : /tab|caplet|\bdt\b/.test(n0) ? "tablets" : "";
+  if (!form || /\+|combo/i.test(pack)) return "";
+  const m = String(pack).match(/(\d+)\s*[x×*]\s*(\d+)(?!\s*(?:\.\d|ml|g|gm|mg|mcg))/i);
+  const n = m ? +m[1] * +m[2] : 0;
+  return n > 1 && n <= 5000 ? ` <small>(${n} ${form})</small>` : "";
+}
 function baseOf(b) {
   let s = b.replace(/^[*\s]+/, "").replace(/[®™]/g, "").replace(/\(.*?\)/g, " ");
   s = s.replace(/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|µg|gm|g|ml|iu|%)\b.*$/i, "");
@@ -154,7 +162,7 @@ for (const b of all) {
 <div class="ctas"><a href="../index.html?q=${encodeURIComponent(b.name)}#check">Check what you paid</a><a class="alt" href="../index.html#batch">Check a batch number</a></div>
 <h2>All ${esc(b.name)} packs and prices</h2>
 <div class="tw"><table class="ptbl"><thead><tr><th>Medicine</th><th>Pack</th><th>DRAP price</th><th>Since</th></tr></thead><tbody>
-${b.rows.map(r => `<tr><td>${esc(nice(r[0]))}<br><small>${esc(nice(r[2]))}${r[6] ? " · Reg. No. " + esc(r[6]) : ""}</small></td><td>${esc(r[3])}</td><td class="p">${rs(r[4])}</td><td>${esc(r[5])}</td></tr>`).join("\n")}
+${b.rows.map(r => `<tr><td>${esc(nice(r[0]))}<br><small>${esc(nice(r[2]))}${r[6] ? " · Reg. No. " + esc(r[6]) : ""}</small></td><td>${esc(r[3])}${units(r[0], r[3])}</td><td class="p">${rs(r[4])}</td><td>${esc(r[5])}</td></tr>`).join("\n")}
 </tbody></table></div>
 ${comp ? `<p class="note">Composition (as listed by DRAP): ${esc(comp.slice(0, 220))}</p>` : ""}
 <h2>DRAP fake and failed batch alerts for ${esc(b.name)}</h2>

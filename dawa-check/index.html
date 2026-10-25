@@ -310,6 +310,27 @@
 .pack .nm small{color:var(--soft);font-size:13.5px}
 .sticker{font-family:var(--display);font-weight:800;font-size:18px;background:var(--or);color:var(--on-or);padding:6px 10px;border-radius:6px;transform:rotate(2deg);white-space:nowrap}
 .pack[aria-pressed="true"]{border-color:var(--rx);box-shadow:0 0 0 2px var(--rx)}
+.scanbtn{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0;padding:10px 16px;border-radius:999px;border:2px solid var(--rx);background:var(--rx);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.scanbtn.sm{margin:0 0 10px;padding:7px 12px;font-size:13.5px}
+.scanbtn.ghost{background:transparent;color:var(--rx);margin:14px 0 0}
+.scaninfo{margin:10px 0 0;padding:10px 12px;border-radius:12px;background:var(--rxbg,#EEEAFE);font-size:14.5px;font-weight:600}
+.scaninfo.bad{background:var(--redbg);color:var(--red)}
+.units{font-weight:600;color:var(--soft)}
+.scanwrap{position:fixed;inset:0;z-index:200;background:rgba(10,6,30,.72);display:grid;place-items:center;padding:16px}
+.scanbox{background:var(--panel);color:var(--ink);width:min(480px,100%);border-radius:20px;padding:14px;max-height:100%;overflow:auto}
+.scanhead{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;font-size:17px}
+.scanx{border:0;background:none;font-size:28px;line-height:1;color:inherit;cursor:pointer;padding:0 6px}
+.scanview{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:4/3}
+.scanview video{width:100%;height:100%;object-fit:cover;display:block}
+.scanframe{position:absolute;left:7%;right:7%;top:29%;bottom:29%;border:3px solid #FFD23F;border-radius:12px;box-shadow:0 0 0 999px rgba(0,0,0,.35)}
+.scanwrap[data-mode="code"] .scanframe{left:25%;right:25%;top:15%;bottom:15%}
+.scanmsg{margin:12px 0 8px;font-size:15px}
+.scanres label{display:block;font-size:13px;color:var(--soft);margin:0 0 4px}
+.scanres input{width:100%;font:inherit;font-size:20px;font-weight:700;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:var(--bg,#fff);color:inherit}
+.scanbtns{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.sbtn{flex:1;min-width:120px;padding:12px;border-radius:999px;border:2px solid var(--rx);background:transparent;color:var(--rx);font:inherit;font-weight:700;cursor:pointer}
+.sbtn.primary{background:var(--rx);color:#fff}
+.scanpriv{margin:10px 0 0;font-size:12.5px;color:var(--soft);text-align:center}
 .paybox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:-2px}
 .payrow{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:6px}
 .payrow span{font-family:var(--display);font-weight:800;font-size:26px;color:var(--soft)}
@@ -503,6 +524,8 @@ section.faq{padding:20px 0 0}
           <div class="row"><label for="qb">B. No.</label><input id="qb" class="dot" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="139N086"></div>
           <div class="row ac"><label for="qn" data-i="nameLbl"></label><input id="qn" class="txt" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="acB" aria-autocomplete="list"><div class="list" id="acB" role="listbox"></div></div>
         </div>
+        <button type="button" class="scanbtn" id="scanB"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/></svg><span data-i="scanBox"></span></button>
+        <p class="scaninfo hidden" id="scanInfo" role="status"></p>
         <button class="help" id="helpBtn" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 13v-1M7 7a2 2 0 1 1 3 1.7c-.7.4-1 .8-1 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i="where"></span></button>
         <div class="where" id="where">
           <svg viewBox="0 0 150 96" width="150" aria-hidden="true"><rect x="2" y="10" width="146" height="70" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="2" y="10" width="146" height="10" fill="var(--rx)"/><rect x="12" y="30" width="60" height="8" rx="2" fill="var(--line)"/><rect x="12" y="44" width="40" height="6" rx="2" fill="var(--line)"/><rect x="84" y="46" width="56" height="28" rx="3" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="3 2"/><text x="89" y="57" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">B.No 139N086</text><text x="89" y="68" font-family="DotGothic16,monospace" font-size="8" fill="var(--ink-dot)">Exp 06-2027</text><path d="M112 92 l0 -14 m-5 5 l5 -5 l5 5" stroke="var(--red)" stroke-width="2" fill="none"/></svg>
@@ -637,7 +660,9 @@ ru:{a0:"Sach kahein to dibba haath mein ho aur MRP saaf ho, to wahi kaafi hai. H
  clearTitle:"Is batch par koi alert nahi mila",clearBody:"DRAP ke alerts (__RANGE__) mein yeh batch nahi hai. Matlab abhi tak is par koi alert nahi aaya. Yeh lab test ki guarantee nahi hai.",
  kind:{fake:"Naqli",substandard:"Test mein fail",unregistered:"Registered nahi",recall:"Recall"},
  batch:"Batch",maker:"Company",date:"Alert date",reason:"Wajah",readAlert:"DRAP ka poora alert parhein",
- priceNone:"Yeh dawa hamari price list mein nahi",priceNoneBody:"Aisi dawa ke liye dibbe par chhapi qeemat (MRP) hi limit hai. Pharmacy is se zyada nahi le sakti.",
+ priceNone:"Yeh dawa hamari price list mein nahi",priceNoneBody:"DRAP ne is dawa ki qeemat list nahi ki. Dibbe par MRP chhapi hai to wahi limit hai. Bahar se aayi (imported) dawa par aksar Pakistani MRP nahi hoti: pakki receipt aur batch number zaroor lein, aur Batch check bhi karein.",
+ scanBox:"Dibba scan karein",scanMrp:"MRP scan karein",scanMrp2:"Dibbe ki MRP scan kar ke milayein",tabsU:"__N__ goliyan",capsU:"__N__ capsules",expOk:"Expiry: __D__",expBad:"Yeh pack __D__ ko expire ho chuka hai. Mat lein, pharmacy ko wapas karein.",mrpVsHi:"Dibbe par Rs __B__ likha hai, magar DRAP ki qeemat Rs __M__ hai. Limit DRAP wali hai, dibbe wali nahi.",mrpVsOk:"Dibbe ki MRP (Rs __B__) DRAP ki qeemat ke andar hai.",
+ scan:{codeTitle:"Dibbe ka code scan karein",batchTitle:"Likha hua batch parhein",mrpTitle:"MRP parhein",codeHint:"Dibbe par chhota chaukor code (2D code) camera ke saamne layein.",codeNoBatch:"Code mil gaya, magar is mein batch number nahi. Neeche wala button dabayein.",textBtn:"Chaukor code nahi? Likha hua batch parhein",batchHint:"B. No. wali line frame ke andar layein, phir photo lein.",mrpHint:"MRP ya Rs wali line frame ke andar layein, phir photo lein.",capture:"Photo lein",reading:"Parh rahe hain... pehli dafa thoda waqt lagta hai.",check:"Dekh lein ke sahi parha gaya, zaroorat ho to theek kar dein.",foundBatch:"Batch number",foundMrp:"MRP (Rs)",use:"Theek hai",retry:"Dobara",none:"Saaf nazar nahi aaya. Roshni mein dibba seedha rakh kar dobara try karein.",failed:"Scanner load nahi hua. Internet check kar ke dobara try karein.",noCam:"Camera nahi khul saka. Browser mein camera ki ijazat dein, ya number khud likh dein.",close:"Band karein",privacy:"Photo aap ke phone se bahar nahi jaati."},
  notListed:"Mera pack list mein nahi",mrpLbl:"Dibbe par chhapi qeemat (MRP)",mrpOver:"Aap se Rs __X__ zyada liye gaye",mrpOverBody:"Dibbe par chhapi qeemat Rs __M__ hai. Pharmacy is se zyada nahi le sakti. Pharmacist se baat karein aur dibba aur receipt sambhal kar rakhein.",mrpOk:"Aap ne dibbe ki qeemat ke andar pay kiya",mrpOkBody:"Dibbe par chhapi qeemat Rs __M__ hai.",
  variants:"options",variant:"option",chooseVar:"Strength chunein",regNo:"Reg. No.",since:"__D__ se",standard:"Standard",pack:"Pack",
  instH:"Phone ki home screen par add karein",instP:"Agli baar ek tap mein khulega, internet ke baghair bhi.",instBtn:"Add karein",iosHelp:"Safari mein neeche Share button (⬆︎) dabayein, phir \"Add to Home Screen\" chunein.",close:"Band karein",
@@ -726,7 +751,9 @@ en:{a0:"Honestly, if the box is in your hand and the MRP is clear, you don't. We
  clearTitle:"No alert on this batch",clearBody:"This batch isn't in DRAP's alerts (__RANGE__). That means no alert has been issued for it so far. It isn't a lab-test guarantee.",
  kind:{fake:"Fake",substandard:"Failed lab test",unregistered:"Unregistered",recall:"Recall"},
  batch:"Batch",maker:"Company",date:"Alert date",reason:"Reason",readAlert:"Read the full DRAP alert",
- priceNone:"This medicine isn't in our price list",priceNoneBody:"For medicines like this, the price printed on the box (MRP) is the limit. A pharmacy can't charge more than that.",
+ priceNone:"This medicine isn't in our price list",priceNoneBody:"DRAP hasn't listed a price for this medicine. If the box has a printed MRP, that's the limit. Imported medicines often have no Pakistani MRP: ask for a proper bill with the batch number, and run a Batch check too.",
+ scanBox:"Scan the box",scanMrp:"Scan the MRP",scanMrp2:"Scan the box MRP to compare",tabsU:"__N__ tablets",capsU:"__N__ capsules",expOk:"Expiry: __D__",expBad:"This pack expired on __D__. Don't use it; return it to the pharmacy.",mrpVsHi:"The box says Rs __B__, but DRAP's price is Rs __M__. DRAP's price is the limit, not the box.",mrpVsOk:"The box MRP (Rs __B__) is within DRAP's price.",
+ scan:{codeTitle:"Scan the code on the box",batchTitle:"Read the printed batch",mrpTitle:"Read the MRP",codeHint:"Point the camera at the small square (2D) code on the box.",codeNoBatch:"Found a code, but it has no batch number. Use the button below.",textBtn:"No square code? Read the printed batch",batchHint:"Fit the B. No. line inside the frame, then take a photo.",mrpHint:"Fit the MRP or Rs line inside the frame, then take a photo.",capture:"Take photo",reading:"Reading... the first time takes a few seconds.",check:"Check it was read right and fix it if needed.",foundBatch:"Batch number",foundMrp:"MRP (Rs)",use:"Use this",retry:"Try again",none:"Couldn't read it clearly. Try again in good light, holding the box flat.",failed:"The scanner didn't load. Check your internet and try again.",noCam:"Couldn't open the camera. Allow camera access in your browser, or type it in.",close:"Close",privacy:"Nothing leaves your phone."},
  notListed:"My pack isn't listed",mrpLbl:"Price printed on the box (MRP)",mrpOver:"You paid Rs __X__ over the printed price",mrpOverBody:"The printed price is Rs __M__. A pharmacy can't charge more than that. Talk to the pharmacist and keep the box and receipt.",mrpOk:"You paid within the printed price",mrpOkBody:"The printed price is Rs __M__.",
  variants:"options",variant:"option",chooseVar:"Pick a strength",regNo:"Reg. No.",since:"since __D__",standard:"Standard",pack:"Pack",
  instH:"Add to your home screen",instP:"Opens in one tap next time, even without internet.",instBtn:"Add",iosHelp:"In Safari, tap the Share button (⬆︎) at the bottom, then choose \"Add to Home Screen\".",close:"Close",
@@ -928,6 +955,28 @@ function runBatch(silent){
   setTimeout(()=>{strip.classList.remove("scanning");render();if(innerWidth<860)out.scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"})},reduce?0:650);
 }
 $("goB").onclick=()=>runBatch();
+/* "2x7" -> "(14 tablets)" for tablet and capsule packs */
+function units(pack,form){
+  if(form!=="tablet"&&form!=="capsule"||/\+|combo/i.test(pack||""))return"";
+  const m=String(pack||"").match(/(\d+)\s*[x×*]\s*(\d+)(?!\s*(?:\.\d|ml|g|gm|mg|mcg))/i);
+  if(!m)return"";const n=+m[1]*+m[2];if(!(n>1)||n>5000)return"";
+  return ` <span class="units">(${(form==="capsule"?T[L].capsU:T[L].tabsU).replace("__N__",n)})</span>`;
+}
+/* camera scanner (assets/scan.js is loaded on first use) */
+let scanLoad=null;
+function openScan(mode,cb){
+  scanLoad=scanLoad||new Promise((ok,bad)=>{const s=document.createElement("script");s.src="assets/scan.js";s.onload=ok;s.onerror=()=>{scanLoad=null;bad()};document.head.appendChild(s)});
+  scanLoad.then(()=>DCScan.open({mode,text:T[L].scan,onResult:cb})).catch(()=>DC.toast&&DC.toast(T[L].scan.failed));
+}
+const fmtExp=d=>d.toLocaleDateString(L==="en"?"en-GB":"en-GB",{month:"short",year:"numeric",timeZone:"UTC"});
+$("scanB").onclick=()=>openScan("code",r=>{
+  $("qb").value=r.batch;step("b",2);
+  const info=$("scanInfo");
+  if(r.expiry){const bad=r.expiry<new Date();info.textContent=(bad?T[L].expBad:T[L].expOk).replace("__D__",fmtExp(r.expiry));info.classList.toggle("bad",bad);info.classList.remove("hidden")}
+  else info.classList.add("hidden");
+  DC.track("scan_batch",{source:r.kind,has_expiry:!!r.expiry});
+  runBatch();
+});
 ["qb","qn"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")runBatch()}));
 $("qb").addEventListener("input",e=>{step("b",e.target.value.trim()?2:1);const p=e.target.selectionStart;e.target.value=e.target.value.toUpperCase();e.target.setSelectionRange(p,p)});
 document.querySelectorAll("[data-ex]").forEach(c=>c.onclick=()=>{const[n,b]=c.dataset.ex.split("|");$("qn").value=n;$("qb").value=b;runBatch()});
@@ -1015,10 +1064,10 @@ function runPrice(silent){
 }
 function renderPacks(gi,vi){
   const v=groups[gi].vars[vi],box=$("packs"+gi);
-  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||T[L].pack)}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since.replace("__D__",esc(r[5]))}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
+  box.innerHTML=(v.comp?`<p class="comp">${esc(v.comp.slice(0,110))}</p>`:"")+v.rows.map(r=>{const i=hits.push(r)-1;return`<div><button class="pack" data-i="${i}" aria-pressed="false"><span class="cell">${ficon(v.form,26)}</span><span class="nm"><b>${esc(r[3]||T[L].pack)}${units(r[3],v.form)}</b><small>${T[L].regNo} ${esc(r[6])} · ${T[L].since.replace("__D__",esc(r[5]))}</small></span><span class="sticker">Rs ${rs(r[4])}</span></button><div class="pay hidden" id="pay${i}"></div></div>`}).join("");
   box.querySelectorAll(".pack").forEach(b=>b.onclick=()=>openPay(+b.dataset.i));
 }
-function mrpBox(){return `<div class="paybox"><label for="mrp" class="meta" style="display:block;margin:0 0 6px">${T[L].mrpLbl}</label><div class="payrow"><span>Rs</span><input id="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div><label for="mpaid" class="meta" style="display:block;margin:16px 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="mpaid" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="mmeter"></div><div id="mout"></div></div>`}
+function mrpBox(){return `<div class="paybox"><label for="mrp" class="meta" style="display:block;margin:0 0 6px">${T[L].mrpLbl}</label><button type="button" class="scanbtn sm" id="scanM"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/></svg>${T[L].scanMrp}</button><div class="payrow"><span>Rs</span><input id="mrp" inputmode="decimal" autocomplete="off" placeholder="0"></div><label for="mpaid" class="meta" style="display:block;margin:16px 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="mpaid" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="mmeter"></div><div id="mout"></div></div>`}
 function wireMrp(){
   const go=()=>{const m=parseFloat($("mrp").value.replace(/[^0-9.]/g,"")),v=parseFloat($("mpaid").value.replace(/[^0-9.]/g,"")),o=$("mout"),mt=$("mmeter");
     if(!(m>0)||!(v>0)){o.innerHTML="";mt.innerHTML="";return}
@@ -1027,14 +1076,16 @@ function wireMrp(){
     mt.innerHTML=`<div class="meter" style="--lim:${m/max*100}%;--pos:${Math.min(v/max*100,100)}%"><span class="pin"></span></div><div class="meter-l"><span>Rs 0</span><span>${T[L].limit}: Rs ${rs(m)}</span></div>`;
     o.innerHTML=v>m+0.5?`<div style="margin-top:14px">${verdict("v-red","!",T[L].mrpOver.replace("__X__",rs(v-m)),T[L].mrpOverBody.replace("__M__",rs(m)),actions("price",T[L].draftPrice.replace("__N__",$("qp").value).replace("__V__",rs(v)).replace("__M__",rs(m)).replace("__S__",T[L].printedOnBox).replace("__T__",today()),T[L].shareM.replace("__N__",$("qp").value).replace("__M__",rs(m)).replace("__V__",rs(v))))}</div>`:`<div style="margin-top:14px">${verdict("v-green","✓",T[L].mrpOk,T[L].mrpOkBody.replace("__M__",rs(m)))}</div>`};
   $("mrp").addEventListener("input",go);$("mpaid").addEventListener("input",go);
+  $("scanM").onclick=()=>openScan("mrp",r=>{$("mrp").value=r.mrp;go();$("mpaid").focus()});
 }
 function openPay(i){
   const out=$("res");
   out.querySelectorAll(".pack").forEach(x=>x.setAttribute("aria-pressed",x.dataset.i==i));
   out.querySelectorAll(".pay").forEach(x=>{x.classList.add("hidden");x.innerHTML=""});
   const r=hits[i],box=$("pay"+i);box.classList.remove("hidden");step("p",3);
-  box.innerHTML=`<div class="paybox"><label for="pv" class="meta" style="display:block;margin:0 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="pv" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="pmeter"></div><div id="pv-out"></div></div>`;
+  box.innerHTML=`<div class="paybox"><label for="pv" class="meta" style="display:block;margin:0 0 6px">${T[L].paidLbl}</label><div class="payrow"><span>Rs</span><input id="pv" inputmode="decimal" autocomplete="off" placeholder="0"></div><div id="pmeter"></div><div id="pv-out"></div><button type="button" class="scanbtn sm ghost" id="scanP"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.6" fill="none" stroke="currentColor" stroke-width="2"/></svg>${T[L].scanMrp2}</button><p class="scaninfo hidden" id="pv-mrp" role="status"></p></div>`;
   const inp=$("pv");inp.focus();
+  $("scanP").onclick=()=>openScan("mrp",x=>{const b=x.mrp,el=$("pv-mrp");if(!(b>0))return;el.classList.remove("hidden");el.classList.toggle("bad",b>r[4]+0.5);el.textContent=(b>r[4]+0.5?T[L].mrpVsHi:T[L].mrpVsOk).replace("__B__",rs(b)).replace("__M__",rs(r[4]));DC.track("scan_mrp",{above_drap:b>r[4]+0.5})});
   inp.addEventListener("change",()=>{const v=parseFloat(inp.value.replace(/[^0-9.]/g,""));if(v>0)DC.track("price_compare",{medicine:r[0].slice(0,80),pack:r[3],overcharged:v>r[4]+0.5,over_by:Math.max(0,Math.round(v-r[4]))})});
   inp.addEventListener("input",()=>{
     const v=parseFloat(inp.value.replace(/[^0-9.]/g,"")),o=$("pv-out"),m=$("pmeter");
