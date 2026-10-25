@@ -18,7 +18,7 @@ Product screens are real captures of dawacheck.pk in English (Roman cut uses the
 | F | 34–40 | 20.4–24 | **Reveal.** Logo lands (tick draws on), wordmark **dawacheck.pk** rises. Music lifts. | "Official medicine prices and fake-batch alerts. In seconds." |
 | G | 40–52 | 24–31.2 | Phone rises with real captures: type "Panadol Extend" → pick 20's pack → enter Rs 250 → meter runs into red → verdict card. | "1. Type the medicine." → "2. Enter what you paid." → "You paid Rs 89.43 over the legal price." |
 | H | 52–56 | 31.2–33.6 | Verdict slides up to the complaint options (real capture: DRAP helpline + ready complaint text). | "Overcharged? Call DRAP or send the ready complaint." |
-| I | 56–66 | 33.6–39.6 | Batch check tab. Tap **Scan the box**: real scanner screen reads the 2D code, batch fills in, **DRAP ALERT** stamp lands. | "Check the batch too. Type it, or scan the 2D code on the box." → "Matched against 756 DRAP alerts." |
+| I | 56–66 | 33.6–39.6 | Batch check tab (live site, no scanner): batch number 512900 types in, **DRAP ALERT** stamp lands. | "Check the batch too. Type the batch number from the box." → "Matched against 756 DRAP alerts." |
 | J | 66–70 | 39.6–42 | Four chips stack in. | "Free" · "No login" · "English + Roman Urdu" · "21,551 official prices" |
 | K | 70–75 | 42–45 | End card on purple: logo, **dawacheck.pk**, tagline. | "Check before you pay." / "Made for Pakistan." |
 
@@ -26,5 +26,5 @@ Roman Urdu cut: same film and timing, Roman copy (e.g. A: "Ek hi dawa. Do qeemat
 
 Notes
 - Every number is real: Rs 160.57 / Rs 89.43 (DRAP price for Panadol Extend 20's), heparin (Dawn), 248 / 417 / 756 (DRAP alerts in the site), 21,551 packs.
-- The scanner (shot I) is from PR #10. If that isn't merged before posting, swap shot I's scan for typing the batch number.
+- The box scanner (PR #10) is left out until it is live; every screen is captured from the live site.
 - Nothing claims a batch is "safe": shot I shows a flagged batch.

@@ -23,7 +23,7 @@ const HITS = [
   [34.4, 'logo', 'bell', { pitch: 'D6', gain: 0.16 }],
   [41, 'typing', 'type', { len: 0.9, n: 9, gain: 0.1 }], [42.4, 'pack', 'click', { gain: 0.12 }],
   [49, 'verdict', 'blip', { pitch: 'F#5', gain: 0.12 }],
-  [57.6, 'scan tap', 'click', { gain: 0.12 }], [61, 'code read', 'blip', { pitch: 'D6', gain: 0.12 }],
+  [57.6, 'typing batch', 'type', { len: 1.1, n: 6, gain: 0.1 }], [60, 'DRAP alert', 'blip', { pitch: 'D6', gain: 0.12 }],
   [70.8, 'end logo', 'bell', { pitch: 'D6', gain: 0.14 }],
 ];
 
@@ -78,7 +78,7 @@ const T = {
   cmp1: tr('Still overcharged? Call DRAP,', 'Phir bhi zyada? DRAP ko call karein,'),
   cmp2: tr('or send the ready complaint.', 'ya tayyar complaint bhejein.'),
   b1: tr('Check the batch too.', 'Batch bhi check karein.'),
-  b2: tr('Scan the 2D code on the box.', 'Dibbe ka 2D code scan karein.'),
+  b2: tr('Type the batch number from the box.', 'Dibbe par likha batch number daalein.'),
   b3: tr('Matched against 756 DRAP alerts.', '756 DRAP alerts se foran match.'),
   chipsEy: tr('DAWACHECK.PK IS', 'DAWACHECK.PK'),
   chips: tr(['Free', 'No login, no sign-up', 'English + Roman Urdu', '21,551 official prices'],
@@ -273,7 +273,7 @@ function sReveal(ctx, u) {
 }
 
 // ---------------------------------------------------------------- 5 price check on the phone   (u 40..49)
-const PH = 1125;
+const PH = RU ? 1203 : 1125; // the Roman price box is a little taller
 function sPrice(ctx, u, IMG) {
   fill(ctx, C.paper);
   const cap1 = 1 - E.inCubic(prog(u, 43.8, 44.2));
@@ -290,7 +290,7 @@ function sPrice(ctx, u, IMG) {
   ctx.save(); rrect(ctx, sx, sy, sw, 1300, 62); ctx.clip();
   ctx.fillStyle = C.paper; ctx.fillRect(sx, sy, sw, 1300);
   const k = sw / 1050;
-  const scroll = springKeys(u, [[40, 0], [42.6, 300], [44.2, 620]], SPRING.gentle);
+  const scroll = springKeys(u, [[40, 0], [42.6, 300 + (PH - 1125) * k], [44.2, 620 + (PH - 1125) * k]], SPRING.gentle);
   const top = sy + 30 - scroll;
   ctx.drawImage(IMG.priceEmpty, sx, top, sw, PH * k);
   const tp = prog(u, 41, 41.9);
@@ -331,41 +331,28 @@ function sVerdict(ctx, u, IMG) {
   ctx.restore();
 }
 
-// ---------------------------------------------------------------- 7 batch check with the scanner   (u 56..66)
+// ---------------------------------------------------------------- 7 batch check   (u 56..66)
 function sBatch(ctx, u, IMG) {
   const enter = 1 - E.inOutCubic(prog(u, 55.6, 56.2));
   const leave = E.inOutCubic(prog(u, 65.6, 66.2));
   ctx.save(); ctx.translate((enter - leave) * W, 0);
   fill(ctx, C.paper);
-  line(ctx, [[T.b1, C.ink]], X0, 230, 62, u, 56.3, { exitU: 60.9 });
-  line(ctx, [[T.b2, C.rx]], X0, 306, 50, u, 56.8, { weight: 700, fam: UI, exitU: 60.95 });
-  line(ctx, [[T.b3, C.ink]], X0, 270, 52, u, 61.4, { weight: 700, fam: UI });
-  const cw = 820, k = cw / 1050, src = [0, 0, 1050, 1160], ch = 1160 * k, cx = (W - cw) / 2, cy = 380;
-  const hit = u >= 61;
-  const pk = hit ? 1 + 0.05 * wobble(u - 61, 2.6, 6) : 1;
+  line(ctx, [[T.b1, C.ink]], X0, 230, 62, u, 56.3, { exitU: 60.1 });
+  line(ctx, [[T.b2, C.rx]], X0, 306, 50, u, 56.8, { weight: 700, fam: UI, exitU: 60.15 });
+  line(ctx, [[T.b3, C.ink]], X0, 270, 52, u, 60.6, { weight: 700, fam: UI });
+  const cw = 840, k = cw / 1050, src = [0, 0, 1050, 1180], ch = 1180 * k, cx = (W - cw) / 2, cy = 380;
+  const hit = u >= 60;
+  const pk = hit ? 1 + 0.05 * wobble(u - 60, 2.6, 6) : 1;
   ctx.save(); ctx.translate(W / 2, cy + ch / 2); ctx.scale(pk, pk); ctx.translate(-W / 2, -(cy + ch / 2));
   card(ctx, cx, cy, cw, ch, 30);
   ctx.save(); rrect(ctx, cx, cy, cw, ch, 30); ctx.clip();
-  crop(ctx, hit ? IMG.batchAlert : IMG.batchEmpty, src, cx, cy, cw, ch);
-  ctx.restore(); ctx.restore();
-  // the tap on "Scan the box": a ring grows from the button (its centre in the capture is at y ~ 532 / 600 css px x3)
-  const tap = prog(u, 57.5, 58.1);
-  if (tap > 0 && tap < 1) {
-    const bx = W / 2, by = cy + 532 * 1.75 * k;
-    ctx.save(); ctx.strokeStyle = C.or; ctx.lineWidth = 6 * (1 - tap); ctx.beginPath(); ctx.arc(bx, by, 30 + tap * 90, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+  if (hit) crop(ctx, IMG.batchAlert, src, cx, cy, cw, ch);
+  else {
+    crop(ctx, IMG.batchEmpty, src, cx, cy, cw, ch);
+    const tp = prog(u, 57.6, 58.8); // the batch number types in, left to right
+    if (tp > 0) { ctx.save(); ctx.beginPath(); ctx.rect(cx, cy, (tp < 1 ? 360 + 260 * tp : 1050) * k, ch); ctx.clip(); crop(ctx, IMG.batchTyped, src, cx, cy, cw, ch); ctx.restore(); }
   }
-  // the real scanner screen slides up over it, reads the code, slides away
-  const sIn = springU(u, 58, SPRING.gentle), sOut = E.inCubic(prog(u, 60.6, 61));
-  if (sIn > 0 && sOut < 1) {
-    ctx.fillStyle = `rgba(10,6,30,${0.55 * Math.min(sIn, 1) * (1 - sOut)})`; ctx.fillRect(0, 0, W, H);
-    const sw = 840, sh = sw * 1236 / 1074, sx = (W - sw) / 2, sy = lerp(H + 40, 300, Math.min(sIn, 1.03)) + sOut * (H - 260);
-    ctx.save(); rrect(ctx, sx, sy, sw, sh, 40); ctx.clip(); ctx.drawImage(IMG.scanner, sx, sy, sw, sh); ctx.restore();
-    // reading line across the yellow frame
-    const fr = { x: sx + sw * 0.27, y: sy + sh * 0.215, w: sw * 0.46, h: sh * 0.42 };
-    const ly = fr.y + fr.h * (0.5 + 0.42 * Math.sin((u - 58.6) * Math.PI * 1.1));
-    if (u > 58.6) { ctx.fillStyle = 'rgba(255,210,63,.85)'; ctx.fillRect(fr.x + 10, ly - 3, fr.w - 20, 6); }
-  }
-  ctx.restore();
+  ctx.restore(); ctx.restore(); ctx.restore();
 }
 
 // ---------------------------------------------------------------- 8 what it is   (u 66..70)
@@ -415,7 +402,7 @@ M.film({
     priceEmpty: `assets/shots/${P}price_empty.png`, priceTyped: `assets/shots/${P}price_typed.png`, pack: `assets/shots/${P}pack.png`,
     pay120: `assets/shots/${P}pay_120.png`, pay160: `assets/shots/${P}pay_160.png`, pay250: `assets/shots/${P}pay_250.png`,
     verdict: `assets/shots/${P}verdict.png`,
-    batchEmpty: `assets/shots/${P}batch_empty.png`, batchAlert: `assets/shots/${P}batch_alert.png`, scanner: `assets/shots/${P}scanner.png`,
+    batchEmpty: `assets/shots/${P}batch_empty.png`, batchTyped: `assets/shots/${P}batch_typed.png`, batchAlert: `assets/shots/${P}batch_alert.png`,
   },
   hits: HITS,
   draw(ctx, u, t, IMG) {
