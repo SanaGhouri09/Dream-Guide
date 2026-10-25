@@ -21,3 +21,11 @@ Fixed: box 1.45x, tags 1.15x -> 1.3x, question and habit line 74 / 56 px in ink,
 ## Round 3 (stills + sfx + sync.py)
 hook 8 · readability 8 · motion 8 · variety 8 · brand 9 · sync 9 (13/13 hits within 20 ms, median 2.5 ms)
 SFX kept quiet on purpose (peak -18.6 dBFS before mix): ticks, clicks, two chimes, no whooshes or impacts.
+
+## v2 (user feedback: hook should ask a question; music and SFX too much; make it minimal, sleek, clean)
+- Hook now opens on a direct question alone on the page ("Have you ever checked a medicine's price before paying?"),
+  then the box with "The pharmacy said Rs 250" (struck) beside "The legal price Rs 160.57 · Set by DRAP".
+- Score rewritten: soft sine pad + felt piano, one chord per two bars, no drums, plucks or shaker. Grid written exactly.
+- All sound effects removed (HITS empty).
+- Motion: no wobble or squash anywhere; bouncy springs replaced with gentle ones; tilted price tags removed.
+- Batch typing shot recaptured without the input placeholder (it read "51 9N086" mid-type).

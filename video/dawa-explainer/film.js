@@ -4,7 +4,8 @@
 // Reading rule: every line holds at least (words / 3 + 1) seconds.
 import * as M from './lib/motion.js';
 
-const { W, H, E, prog, lerp, springU, springKeys, SPRING, wobble, font, fill, rrect, crop } = M;
+const { W, H, E, prog, lerp, springU, springKeys, SPRING, font, fill, rrect, crop } = M;
+const wobble = () => 0; // v2: no squash or wobble anywhere, every move eases in and settles
 
 const RU = location.pathname.includes('dawa-explainer-ru');
 const tr = (en, ru) => (RU ? ru : en);
@@ -15,17 +16,8 @@ const C = {
 const D = 'Display', UI = 'UI', MARK = 'Mark';
 const X0 = 80;
 
-// Quiet accents only: ticks, clicks, one chime. No whooshes, impacts or risers.
-const HITS = [
-  [1.2, 'tag Rs 250', 'tick'], [1.8, 'tag Rs 160.57', 'tick'],
-  [9, 'ring on the legal price', 'blip', { pitch: 'A5', gain: 0.12 }],
-  [15.4, 'Rs 3,500', 'tick'], [23, '248', 'tick'], [25.4, '+417', 'tick'],
-  [34.4, 'logo', 'bell', { pitch: 'D6', gain: 0.16 }],
-  [41, 'typing', 'type', { len: 0.9, n: 9, gain: 0.1 }], [42.4, 'pack', 'click', { gain: 0.12 }],
-  [49, 'verdict', 'blip', { pitch: 'F#5', gain: 0.12 }],
-  [57.6, 'typing batch', 'type', { len: 1.1, n: 6, gain: 0.1 }], [60, 'DRAP alert', 'blip', { pitch: 'D6', gain: 0.12 }],
-  [70.8, 'end logo', 'bell', { pitch: 'D6', gain: 0.14 }],
-];
+// v2: no sound effects at all. The score carries the film.
+const HITS = [];
 
 // ---------------------------------------------------------------- type helpers
 const f = (size, weight = 800, fam = D) => font(size, weight, fam);
@@ -58,9 +50,8 @@ const card = (ctx, x, y, w, h, r, color = C.white) => {
 
 // ---------------------------------------------------------------- copy
 const T = {
-  hook1: tr('Same medicine.', 'Ek hi dawa.'), hook2: tr('Two prices.', 'Do qeematein.'),
-  hookQ: tr('Which one is legal?', 'Sahi kaunsi hai?'),
-  ans1: tr('Rs 160.57.', 'Rs 160.57.'), ans2: tr('The legal price.', 'Yahi legal qeemat hai.'),
+  Q: tr(['Have you ever checked', 'a medicine\'s price', 'before paying?'], ['Kya aap ne kabhi', 'paise dene se pehle', 'dawa ki qeemat', 'check ki?']),
+  said: tr('The pharmacy said', 'Pharmacy ne kaha'), legal: tr('The legal price', 'Legal qeemat'),
   drap: tr('Set by DRAP', 'DRAP ne tay ki'),
   told: tr('Most of us pay what we\'re told.', 'Hum aksar jo bola jaye, de dete hain.'),
   eyebrow1: tr('IT\'S NOT JUST ONE PHARMACY', 'YEH SIRF EK PHARMACY KA MASLA NAHI'),
@@ -159,39 +150,40 @@ function tag(ctx, x, y, label, rot, { color = C.ink, bg = C.white, scale = 1 } =
 }
 function sHook(ctx, u) {
   fill(ctx, C.paper);
-  const leave = E.inOutCubic(prog(u, 14, 14.6)); // the band covers it; nothing moves out
-  // headline: question, then the answer replaces it
-  line(ctx, [[T.hook1, C.ink]], X0, 210, 86, u, -0.5, { exitU: 8 });
-  line(ctx, [[T.hook2, C.rx]], X0, 310, 86, u, 0.2, { exitU: 8.05 });
-  line(ctx, [[T.ans1, C.rx]], X0, 210, 86, u, 8.5);
-  line(ctx, [[T.ans2, C.ink]], X0, 310, 86, u, 8.8);
-  // the box
-  const kb = springU(u, -0.6, SPRING.gentle);
-  box(ctx, W / 2, lerp(H + 200, 610, Math.min(kb, 1.04)), 1.45);
-  // tags: Rs 250 from the left, Rs 160.57 from the right
-  const k1 = springU(u, 1.0, SPRING.snappy), k2 = springU(u, 1.6, SPRING.snappy);
-  const drop = E.inBack(prog(u, 8, 8.9), 1.3);
-  if (drop < 1) tag(ctx, lerp(-400, 290, Math.min(k1, 1.05)), 960 + drop * 700, 'Rs 250', -0.08 - drop * 0.5, { scale: 1.15 });
-  const toC = E.inOutCubic(prog(u, 8.3, 9.1));
-  const tx = lerp(lerp(W + 400, 770, Math.min(k2, 1.05)), W / 2, toC), ty = lerp(1000, 975, toC);
-  const tw = tag(ctx, tx, ty, 'Rs 160.57', lerp(0.06, 0, toC), { scale: lerp(1.15, 1.3, toC) }) * lerp(1.15, 1.3, toC);
-  // the ring and the DRAP label on the legal price
-  const ring = E.outCubic(prog(u, 8.9, 9.7));
-  if (ring > 0) {
-    ctx.save(); ctx.lineWidth = 8; ctx.strokeStyle = C.rx; ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.ellipse(tx, ty, tw * 0.6, 112, -0.05, -Math.PI / 2, -Math.PI / 2 + ring * Math.PI * 2); ctx.stroke(); ctx.restore();
-    const kp = springU(u, 9.6, SPRING.bouncy);
+  // 1. the question, alone on a clean page (u 0..6.4)
+  const qOut = 6.2, n = T.Q.length;
+  const size = Math.min(88, ...T.Q.map(s => 88 * (W - 2 * X0) / widthOf(ctx, s, f(88)))), lh = size * 1.18;
+  const y0 = H / 2 - (n * lh) / 2 + size * 0.8;
+  T.Q.forEach((s, i) => line(ctx, [[s, i === n - 1 ? C.rx : C.ink]], X0, y0 + i * lh, size, u, -0.4 + i * 0.6, { cfg: SPRING.gentle, exitU: qOut + i * 0.05 }));
+  if (u < 6.6) return;
+  // 2. one box, the price you were told, then the legal one (u 6.6..14)
+  const kb = springU(u, 6.6, SPRING.gentle);
+  ctx.save(); ctx.globalAlpha = Math.min(1, kb * 1.4);
+  box(ctx, W / 2, lerp(580, 520, Math.min(kb, 1)), 1.45);
+  ctx.restore();
+  line(ctx, [[T.said, C.soft]], X0, 860, 48, u, 7.4, { weight: 600, fam: UI });
+  const k1 = springU(u, 7.6, SPRING.gentle);
+  if (k1 > 0) {
+    const strike = E.inOutCubic(prog(u, 10.2, 10.8));
+    ctx.save(); ctx.globalAlpha = Math.min(1, k1 * 1.4) * (1 - 0.45 * strike);
+    txt(ctx, 'Rs 250', X0, 950 + (1 - Math.min(k1, 1)) * 30, f(84), C.ink);
+    if (strike > 0) { ctx.fillStyle = C.red; ctx.fillRect(X0 - 4, 918, (widthOf(ctx, 'Rs 250', f(84)) + 8) * strike, 8); }
+    ctx.restore();
+  }
+  line(ctx, [[T.legal, C.soft]], 560, 860, 48, u, 9.2, { weight: 600, fam: UI });
+  const k2 = springU(u, 9.4, SPRING.gentle);
+  if (k2 > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, k2 * 1.4);
+    txt(ctx, 'Rs 160.57', 560, 950 + (1 - Math.min(k2, 1)) * 30, f(84), C.rx);
+    ctx.restore();
+    const kp = springU(u, 10.4, SPRING.gentle);
     if (kp > 0) {
-      ctx.save(); ctx.translate(tx, ty - 145); ctx.scale(Math.min(kp, 1.1), Math.min(kp, 1.1));
-      ctx.font = f(34, 700, UI); const pw = ctx.measureText(T.drap).width + 40;
-      rrect(ctx, -pw / 2, -30, pw, 56, 28); ctx.fillStyle = C.rx; ctx.fill();
-      txt(ctx, T.drap, 0, 10, f(34, 700, UI), C.white, 'center'); ctx.restore();
+      ctx.save(); ctx.globalAlpha = Math.min(1, kp * 1.4);
+      ctx.font = f(30, 700, UI); const pw = ctx.measureText(T.drap).width + 36;
+      rrect(ctx, 560, 990, pw, 50, 25); ctx.fillStyle = C.rxbg; ctx.fill();
+      txt(ctx, T.drap, 578, 1024, f(30, 700, UI), C.rx); ctx.restore();
     }
   }
-  // bottom line: the question, then the habit
-  line(ctx, [[T.hookQ, C.ink]], X0, 1225, 74, u, 3.2, { exitU: 8 });
-  line(ctx, [[T.told, C.ink]], X0, 1225, 56, u, 10.2, { weight: 700, fam: UI });
-  void leave;
 }
 
 // ---------------------------------------------------------------- 2 the problem   (u 14..29)
@@ -209,7 +201,7 @@ function sProblem(ctx, u) {
     line(ctx, [['Rs 800', C.bandSoft]], X0, 430, 110, u, 15);
     const st = E.outCubic(prog(u, 15.3, 15.8));
     if (st > 0) { ctx.fillStyle = C.red; ctx.fillRect(X0 - 6, 392, (widthOf(ctx, 'Rs 800', f(110)) + 12) * st, 12); }
-    const k2 = springU(u, 15.4, SPRING.bouncy);
+    const k2 = springU(u, 15.4, SPRING.gentle);
     if (k2 > 0) { const sc = lerp(1.25, 1, Math.min(k2, 1)); ctx.save(); ctx.translate(X0, 610); ctx.scale(sc, sc); txt(ctx, 'Rs 3,500', 0, 0, f(170), C.or); ctx.restore(); }
     line(ctx, [[T.hep1, C.white]], X0, 730, 50, u, 16.4, { weight: 600, fam: UI });
     line(ctx, [[T.hep2, C.white]], X0, 794, 50, u, 16.6, { weight: 600, fam: UI });
@@ -225,7 +217,7 @@ function sProblem(ctx, u) {
     txt(ctx, String(n), X0, 450, f(200), C.or);
     line(ctx, [[T.fake1, C.white]], X0, 540, 54, u, 23, { weight: 700, fam: UI });
     line(ctx, [[T.fake2, C.white]], X0, 606, 54, u, 23.2, { weight: 700, fam: UI });
-    const k = springU(u, 25.4, SPRING.bouncy);
+    const k = springU(u, 25.4, SPRING.gentle);
     if (k > 0) { const sc = lerp(1.25, 1, Math.min(k, 1)); ctx.save(); ctx.translate(X0, 800); ctx.scale(sc, sc); txt(ctx, '+ 417', 0, 0, f(140), C.or); ctx.restore(); }
     line(ctx, [[T.failed, C.white]], X0, 880, 54, u, 25.8, { weight: 700, fam: UI });
     line(ctx, [[T.src2, C.bandSoft]], X0, 990, 30, u, 26.6, { weight: 700, fam: UI });
@@ -254,7 +246,7 @@ function sBuried(ctx, u) {
 // ---------------------------------------------------------------- 4 reveal   (u 34..40)
 function sReveal(ctx, u) {
   fill(ctx, C.paper);
-  const k = springU(u, 33.8, SPRING.bouncy);
+  const k = springU(u, 33.8, SPRING.gentle);
   const leave = E.inOutCubic(prog(u, 38.9, 39.4));
   ctx.save(); ctx.translate(0, -leave * 200); ctx.globalAlpha = 1 - leave;
   if (k > 0) {
@@ -313,7 +305,7 @@ function sVerdict(ctx, u, IMG) {
   fill(ctx, C.paper);
   const leave = E.inOutCubic(prog(u, 55.6, 56.2));
   ctx.save(); ctx.translate(-leave * W, 0);
-  const k = springU(u, 49, SPRING.bouncy), q = 0.05 * wobble(u - 49, 2.4, 6);
+  const k = springU(u, 49, SPRING.gentle), q = 0.05 * wobble(u - 49, 2.4, 6);
   const cw = 880, s = cw / 858, wh = 740, cx = (W - cw) / 2, cy = 190;
   const sc = lerp(1.1, 1, Math.min(k, 1.1));
   // the card scrolls from the verdict down to the complaint options
@@ -362,7 +354,7 @@ function sValues(ctx, u) {
   fill(ctx, C.paper);
   txt(ctx, T.chipsEy, X0, 330, f(32, 700, UI), C.rx);
   T.chips.forEach((c, i) => {
-    const k = springU(u, 65.7 + i * 0.35, SPRING.bouncy);
+    const k = springU(u, 65.7 + i * 0.35, SPRING.gentle);
     if (k <= 0) return;
     const y = 420 + i * 150, ft = f(56, 700, UI), w = widthOf(ctx, c, ft) + 88;
     ctx.save(); ctx.translate(X0, y + 50); ctx.scale(Math.min(k, 1.06), Math.min(k, 1.06));
@@ -377,7 +369,7 @@ function sEnd(ctx, u) {
   const bg = E.inOutCubic(prog(u, 69.9, 70.6));
   ctx.save(); ctx.beginPath(); ctx.arc(W / 2, 560, lerp(0, 1500, bg), 0, Math.PI * 2); ctx.fillStyle = C.rx; ctx.fill(); ctx.restore();
   if (bg < 0.4) return;
-  const k = springU(u, 70.3, SPRING.bouncy), q = 0.06 * wobble(u - 70.3, 2.2, 5);
+  const k = springU(u, 70.3, SPRING.gentle), q = 0.06 * wobble(u - 70.3, 2.2, 5);
   if (k > 0) {
     const s = Math.min(k, 1.1);
     ctx.save(); ctx.translate(540, 400); ctx.scale(1 + q, 1 - q); ctx.translate(-540, -400);
